@@ -1,0 +1,240 @@
+#!/usr/bin/env python3
+"""Build index.html from ideas.md: python3 build.py"""
+import html
+import re
+from pathlib import Path
+
+HERE = Path(__file__).parent
+SRC = HERE / "ideas.md"
+OUT = HERE / "index.html"
+
+
+def inline(text):
+    text = html.escape(text, quote=False)
+    text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
+    text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"(?<![*\w])\*([^*]+)\*(?![*\w])", r"<em>\1</em>", text)
+    text = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r'<a href="\2">\1</a>', text)
+    text = re.sub(r'(?<![">])(https?://[^\s)<]+)', r'<a href="\1">\1</a>', text)
+    return text
+
+
+LIST_ITEM = r"^\s*(?:[-*]|\d+\.)\s+"
+
+
+def slug(text):
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def cells(row):
+    return [c.strip() for c in row.strip().strip("|").split("|")]
+
+
+def render_table(rows):
+    head, body = cells(rows[0]), [cells(r) for r in rows[2:]]
+    out = ['<div class="table-wrap"><table><thead><tr>']
+    out += [f"<th>{inline(c)}</th>" for c in head]
+    out.append("</tr></thead><tbody>")
+    for r in body:
+        out.append("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>")
+    out.append("</tbody></table></div>")
+    return "".join(out)
+
+
+def render_list(items, tag="ul"):
+    """items: list of (indent, text). Builds nested lists; the outer one is <tag>."""
+    out, stack = [], []
+    for indent, text in items:
+        while stack and indent < stack[-1]:
+            out.append(f"</li></{tag if len(stack) == 1 else 'ul'}>")
+            stack.pop()
+        if not stack or indent > stack[-1]:
+            out.append(f"<{tag if not stack else 'ul'}><li>")
+            stack.append(indent)
+        else:
+            out.append("</li><li>")
+        out.append(inline(text))
+    out += ["</li></ul>"] * (len(stack) - 1) + ([f"</li></{tag}>"] if stack else [])
+    return "".join(out)
+
+
+def parse(md):
+    """Returns intro html and a tree of sections: {level, title, blocks, children, has_table}."""
+    root = {"level": 0, "title": "", "blocks": [], "children": [], "has_table": False}
+    stack = [root]
+    lines = md.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        m = re.match(r"^(#{1,6})\s+(.*)", line)
+        if m:
+            level = len(m.group(1))
+            while stack[-1]["level"] >= level:
+                stack.pop()
+            sec = {"level": level, "title": m.group(2).strip(), "blocks": [], "children": [], "has_table": False}
+            stack[-1]["children"].append(sec)
+            stack.append(sec)
+            i += 1
+            continue
+        cur = stack[-1]
+        if line.lstrip().startswith("|"):
+            rows = []
+            while i < len(lines) and lines[i].lstrip().startswith("|"):
+                rows.append(lines[i])
+                i += 1
+            cur["blocks"].append(("table", render_table(rows)))
+            for s in stack:
+                s["has_table"] = True
+            continue
+        if re.match(LIST_ITEM, line):
+            tag = "ol" if re.match(r"^\d+\.", line) else "ul"
+            items = []
+            while i < len(lines) and (re.match(LIST_ITEM, lines[i]) or (lines[i].startswith("   ") and items)):
+                lm = re.match(r"^(\s*)(?:[-*]|\d+\.)\s+(.*)", lines[i])
+                if lm:
+                    items.append((len(lm.group(1)), lm.group(2)))
+                else:  # continuation line
+                    items[-1] = (items[-1][0], items[-1][1] + " " + lines[i].strip())
+                i += 1
+            cur["blocks"].append(("list", render_list(items, tag)))
+            continue
+        if line.strip():
+            para = []
+            while i < len(lines) and lines[i].strip() and not re.match(r"^(#|\s*[-*]\s|\d+\.\s|\s*\|)", lines[i]):
+                para.append(lines[i].strip())
+                i += 1
+            text = " ".join(para)
+            kind = "why" if text.startswith("**Why:**") else "decided" if "Decided" in text or "decided)" in text else "para"
+            cur["blocks"].append((kind, f"<p>{inline(text)}</p>"))
+            if kind in ("decided", "why"):
+                for s in stack:
+                    s["has_table"] = True
+            continue
+        i += 1
+    return root
+
+
+def render_section(sec, parent_slug=""):
+    sid = slug((parent_slug + " " if sec["level"] > 1 else "") + sec["title"])
+    cls = "has-table" if sec["has_table"] else "no-table"
+    out = [f'<section class="{cls}" id="{sid}">', f'<h{sec["level"] + 1}>{inline(sec["title"])}</h{sec["level"] + 1}>']
+    for kind, h in sec["blocks"]:
+        out.append(f'<div class="block {kind}">{h}</div>')
+    for child in sec["children"]:
+        out.append(render_section(child, sid))
+    out.append("</section>")
+    return "\n".join(out)
+
+
+def build():
+    root = parse(SRC.read_text())
+    toc = []
+    for sec in root["children"]:
+        sid = slug(sec["title"])
+        subs = "".join(
+            f'<li><a href="#{slug(sid + " " + c["title"])}">{inline(c["title"])}</a></li>' for c in sec["children"]
+        )
+        toc.append(
+            f'<li class="{"has-table" if sec["has_table"] else "no-table"}"><a href="#{sid}">{inline(sec["title"])}</a>'
+            + (f"<ul>{subs}</ul>" if subs else "")
+            + "</li>"
+        )
+    intro = "\n".join(f'<div class="block {k}">{h}</div>' for k, h in root["blocks"])
+    body = "\n".join(render_section(s) for s in root["children"])
+    OUT.write_text(TEMPLATE.replace("{{TOC}}", "\n".join(toc)).replace("{{INTRO}}", intro).replace("{{BODY}}", body))
+    print(f"wrote {OUT.name}")
+
+
+TEMPLATE = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paludal Units</title>
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 24px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h3 { font-size: 18px; margin: 28px 0 8px; }
+h4, h5 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+a { color: var(--accent); }
+.intro { color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  nav ul ul { display: none; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav>
+<h1>Paludal units</h1>
+<label class="toggle"><input type="checkbox" id="tables-only"> Tables, decisions and reasons only</label>
+<ul>
+{{TOC}}
+</ul>
+</nav>
+<main>
+<div class="intro">{{INTRO}}</div>
+{{BODY}}
+</main>
+</div>
+<script>
+const box = document.getElementById("tables-only");
+function apply() { document.body.classList.toggle("tables-only", box.checked); }
+try { box.checked = localStorage.getItem("tables-only") === "1"; } catch (e) {}
+apply();
+box.addEventListener("change", () => {
+  apply();
+  try { localStorage.setItem("tables-only", box.checked ? "1" : "0"); } catch (e) {}
+});
+</script>
+</body>
+</html>
+"""
+
+if __name__ == "__main__":
+    build()
