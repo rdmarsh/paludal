@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Paludal Units</title>
+<!-- ↊ ↋ (U+218A/B) are missing from most system fonts; load just those two glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
 <style>
 :root {
   --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
@@ -21,7 +23,7 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg);
-  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", sans-serif; }
 .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
 nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
   border-right: 1px solid var(--line); font-size: 14px; }
