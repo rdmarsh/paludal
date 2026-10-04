@@ -338,8 +338,39 @@ directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X0
 Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and
 Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.
 
-- Time zones are still open: offsets in hours are half-chimes (UTC+10 = +5;00, UTC+9:30 = +4;90,
-  UTC-5 = -2;60). Twelve whole-chime zones would be too few.
+**Decided (for now):** keep today's 24 time zones, based on UTC (London is +0). Neighbouring zones are half a
+chime (1 hour) apart, so offsets are whole or half chimes; a few places keep their quarter-hour offsets.
+To review later.
+
+**Why:** twelve whole-chime zones would probably be too few.
+
+Standard time (no daylight saving):
+
+| City | UTC now (standard time) | Paludal (chimes) | Local time when London is 6;00 (noon) |
+|---|---|---|---|
+| Honolulu | UTC-10 | UTC-5;00 | 1;00 |
+| Anchorage | UTC-9 | UTC-4;60 | 1;60 |
+| Los Angeles, Vancouver | UTC-8 | UTC-4;00 | 2;00 |
+| Denver | UTC-7 | UTC-3;60 | 2;60 |
+| Chicago, Mexico City | UTC-6 | UTC-3;00 | 3;00 |
+| New York, Toronto | UTC-5 | UTC-2;60 | 3;60 |
+| Santiago | UTC-4 | UTC-2;00 | 4;00 |
+| São Paulo, Buenos Aires | UTC-3 | UTC-1;60 | 4;60 |
+| London, Reykjavik | UTC | UTC | 6;00 |
+| Paris, Berlin, Rome | UTC+1 | UTC+0;60 | 6;60 |
+| Cairo, Johannesburg | UTC+2 | UTC+1;00 | 7;00 |
+| Moscow, Istanbul | UTC+3 | UTC+1;60 | 7;60 |
+| Dubai | UTC+4 | UTC+2;00 | 8;00 |
+| Karachi | UTC+5 | UTC+2;60 | 8;60 |
+| Delhi, Mumbai | UTC+5:30 | UTC+2;90 | 8;90 |
+| Kathmandu | UTC+5:45 | UTC+2;X6 | 8;X6 |
+| Dhaka | UTC+6 | UTC+3;00 | 9;00 |
+| Bangkok, Jakarta | UTC+7 | UTC+3;60 | 9;60 |
+| Beijing, Singapore, Perth | UTC+8 | UTC+4;00 | X;00 |
+| Tokyo, Seoul | UTC+9 | UTC+4;60 | X;60 |
+| Adelaide, Darwin | UTC+9:30 | UTC+4;90 | X;90 |
+| Sydney, Melbourne, Brisbane | UTC+10 | UTC+5;00 | E;00 |
+| Auckland | UTC+12 | UTC+6;00 | 0;00 (next day) |
 
 ## Years
 
@@ -450,6 +481,17 @@ Four hands - hour, minute and second, plus a light beat hand:
 
 **Why:** a round speed of light gives an exact, SI-quality definition. The size is human: close to the
 Roman pace (Latin passus, ~1.48 m), and 1000 paces ≈ a Roman mile.
+
+Other round values of c were checked. Fewer paces per blink means a longer pace, so:
+
+| c (paces/blink) | pace   | unc     | dig    | cub (≈ lib of water) | vis (force) | opus (energy) |
+|-----------------|--------|---------|--------|----------------------|-------------|---------------|
+| 1 × 10^7        | 2.91 m | 24.2 cm | 2.0 cm | 14.2 L               | 342 N       | 993 J         |
+| **2 × 10^7**    | 1.45 m | 12.1 cm | 1.0 cm | 1.77 L               | 21.4 N      | 31.0 J        |
+| 4 × 10^7        | 73 cm  | 6.1 cm  | 5 mm   | 0.22 L               | 1.3 N       | 1.0 J         |
+
+1 × 10^7 makes everything bigger: a 2.9 m pace and a 14 kg lib are too large for everyday use.
+4 × 10^7 makes the unc (6 cm) and cub (0.22 L) small, though its opus is almost exactly a joule.
 
 Named sub-units (named because they're everyday sizes, like the inch and centimetre):
 
@@ -1063,6 +1105,9 @@ UK and US units differ for volume and tons.
 | Length   | 1 yard            | 0;767X p                 | 1 p = 1.589 yd (4.765 ft)      |
 | Length   | 1 mile            | 783;E p (0;784 it)      | 1 it = 1.560 mi               |
 | Length   | 1 nautical mile   | 8X3 p                    | 1 it = 1.355 nmi              |
+| Length   | 1 furlong         | E6;6 p                   | 1 it = 12.48 furlongs          |
+| Area     | 1 square foot     | 6;41 un²                 | 1 un² = 0.1577 sq ft           |
+| Area     | 1 acre            | 1;13X ag                 | 1 ag = 0.9009 acre             |
 | Mass     | 1 ounce           | 2;37X bcli               | 1 bcli = 0.4339 oz             |
 | Mass     | 1 pound           | 0;30X6 li                | 1 li = 3.905 lb                |
 | Mass     | 1 stone           | 3;703 li                 | 1 li = 0.2790 st               |
@@ -1074,7 +1119,9 @@ UK and US units differ for volume and tons.
 | Volume   | 1 pint (US)       | 0;325 cu                 | 1 cu = 3.748 pt (US)           |
 | Volume   | 1 gallon (UK)     | 2;691 cu                 | 1 cu = 0.3901 gal (UK)         |
 | Volume   | 1 gallon (US)     | 2;174 cu                 | 1 cu = 0.4685 gal (US)         |
+| Volume   | 1 cup (US)        | 0;1726 cu                | 1 cu = 7.496 cups (US)         |
 | Speed    | 1 mph             | 1;348 p/br               | 1 p/br = 0.7798 mph            |
+| Speed    | 1 knot            | 1;586 p/br               | 1 p/br = 0.6776 knot           |
 | Energy   | 1 Calorie (kcal)  | E2;E op                  | 1 tqop = 12.80 kcal            |
 | Energy   | 1 BTU             | 2X;05 op                 | 1 op = 0.02938 BTU             |
 | Power    | 1 horsepower      | 8;429 vg                 | 1 vg = 0.1197 hp               |
@@ -1185,7 +1232,7 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
 - Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;
   60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec),
   frequency units, and note lengths
-- Time zones: offsets are half-chimes, and twelve whole-chime zones are too few. Keep today's zones?
+- Time zones: review the 24-zone decision (see Daylight saving and time zones)
 - Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a
   "paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?
 - Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is
