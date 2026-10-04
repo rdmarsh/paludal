@@ -856,6 +856,7 @@ Times are chime;moments (6;00 is noon). Values are rounded the way a label or si
 | 3;76 | A regular coffee and two eggs | 250 tccu (357 mL), 50 tcli each | 7:15 am, 12 oz coffee (355 mL), 60 g eggs |
 | 4;20 | Drive to work: 4;9 iters, about 26 moments door to door, 40 on the signs | 4;9 ir, 26 mt, 40 p/br | 8:20 am, 12 km, 25 min, 60 km/h |
 | 6;30 | Lunch break | 30 mt (0;3 ch) | 12:30 pm, 30 min |
+| 6;60 | Back to work | | 1:00 pm |
 | 8;76 | Fill up on the way home: 1X;7 cubs at $3;56 a cub. The family car uses 14;4 cu/100 ir, so the drive to work took 0;66 cu, about $1;X6 | 1X;7 cu for $66, 0;66 cu for $1;X6 | 5:15 pm, 40 L at $1.95/L = $78; 1 L, $1.87, at 8 L/100 km |
 | 8;90 | An after-work run: 2 iters in 30 moments | 2 ir, 30 mt | 5:30 pm, 5 km in 30 min |
 | 9;46 | Shopping: mince, milk and flour | 0;3 li, 1;2 cu, 0;7 li | 6:45 pm, 450 g, 2 L, 1 kg |
@@ -1461,7 +1462,18 @@ Where the ideas came from, and what's still to decide.
   Maz ≈ 25.8 kg (water cube). Earth-based (hour + gravity), so less rigorous than this system;
   length and mass have no clean relation to ours.
 - **SDN** (DSA): the prefix system adopted above. Inspired by Pendlebury's TGM prefixes.
-- **Primel** metrology: base time 1/10^6 day (= 0;01 breath), length unit ≈ 8.2 mm, uses an SDN variant.
+- **Primel** metrology (John Volan, 2019 CE, revised since): base time 1/10^6 day (= 0;01 breath), length
+  unit ≈ 8.2 mm, uses an SDN variant. Built on the day, the Earth's gravity and the density of water, not on
+  fixed constants, so like TGM it doesn't convert exactly to SI.
+- **Twelve double-hours a day** (the chime) is the oldest clock division there is: the Babylonian *bēru*
+  (Sumerian *danna*, from about 2400 BCE) and the Chinese *shíchen* (named after the twelve Earthly Branches)
+  were both 2-hour units, twelve to a day. The DSA's dozenal clock uses the same split: the short hand turns
+  once a day, midnight is 0 and noon is 600.
+- **French Revolutionary decimal time** (1793-1795 CE): 10 hours a day, 100 minutes an hour, 100 seconds a
+  minute. Dropped after 18 months: every clock had to be replaced, and people saw little reason to change.
+  The metric units brought in at the same time survived.
+- **Swatch Internet Time** (1998 CE): the day in 1,000 (dec) ".beats" of 86.4 s. Its "beat" is a different
+  size from the Paludal beat (1.04 s).
 - **Do-Gro-Mo** (early DSA): do = 12, gro = 144, mo = 1,728 (dec). Adopted for spoken numbers, extended with bimo / trimo.
 
 ## Open items / next steps
