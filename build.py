@@ -10,14 +10,15 @@ OUT = HERE / "index.html"
 
 
 UNITS = {
-    "bl": "blink", "be": "beat", "br": "breath", "ch": "chime", "mt": "moment",
-    "p": "pace", "un": "unc", "di": "dig", "li": "lib", "cu": "cub", "te": "tep",
-    "vi": "vis", "op": "opus", "vg": "vig", "pr": "pres", "ri": "riv", "on": "onus",
+    "bl": "blink", "bt": "beat", "br": "breath", "ch": "chime", "mt": "moment",
+    "p": "pace", "un": "unc", "di": "dig", "sp": "span", "ul": "ulna", "ir": "iter", "na": "navis",
+    "li": "lib", "cu": "cub", "te": "tep",
+    "vi": "vis", "op": "opus", "vg": "vig", "pr": "pres", "ri": "riv", "os": "onus",
     "im": "imp", "gx": "grex", "la": "lam", "vo": "vox", "ag": "ager",
 }
 ROOTS = dict(zip("nubtqphsoedl", "nil un bi tri quad pent hex sept oct enn dek el".split()))
 UNIT_RE = "|".join(sorted(UNITS, key=len, reverse=True))
-# A prefixed symbol (tqop) is always a unit; a bare one (p, on, be) only straight after a number or / or ·,
+# A prefixed symbol (tqop) is always a unit; a bare one (p, op) only straight after a number or / or ·,
 # so ordinary words are left alone.
 SYMBOL = re.compile(
     rf"\b([nubtqphsoedl]+[qc])({UNIT_RE})(?![A-Za-z0-9_])|(?:(?<=\d )|(?<=[\d/·]))({UNIT_RE})(?![A-Za-z0-9_])|(?<=\d )(°t)"
@@ -26,8 +27,6 @@ SYMBOL = re.compile(
 
 def expand(m):
     prefix, unit = (m.group(1), m.group(2)) if m.group(1) else (None, m.group(3) or m.group(4))
-    if not prefix and unit in ("on", "be") and re.match(r" [a-z]", m.string[m.end():]):
-        return m.group(0)  # the English word: "3;00 on the left"
     name = "tep (degrees from freezing)" if unit == "°t" else UNITS[unit]
     if prefix:
         roots = "".join(ROOTS[ch] for ch in prefix[:-1])
@@ -159,14 +158,18 @@ def parse(md):
     return root
 
 
+def is_part(sec):
+    return sec["level"] == 1 and re.match(r"Part \d", sec["title"])
+
+
 def render_section(sec, parent_slug=""):
-    sid = slug((parent_slug + " " if sec["level"] > 1 else "") + sec["title"])
+    sid = slug((parent_slug + " " if parent_slug else "") + sec["title"])
     cls = "has-table" if sec["has_table"] else "no-table"
     out = [f'<section class="{cls}" id="{sid}">', f'<h{sec["level"] + 1}>{inline(sec["title"])}</h{sec["level"] + 1}>']
     for kind, h in sec["blocks"]:
         out.append(f'<div class="block {kind}">{h}</div>')
     for child in sec["children"]:
-        out.append(render_section(child, sid))
+        out.append(render_section(child, "" if is_part(sec) else sid))  # chapters get short ids: #prefixes
     out.append("</section>")
     return "\n".join(out)
 
@@ -177,7 +180,8 @@ def build():
     for sec in root["children"]:
         sid = slug(sec["title"])
         subs = "".join(
-            f'<li><a href="#{slug(sid + " " + c["title"])}">{inline(c["title"])}</a></li>' for c in sec["children"]
+            f'<li><a href="#{slug(("" if is_part(sec) else sid + " ") + c["title"])}">{inline(c["title"])}</a></li>'
+            for c in sec["children"]
         )
         toc.append(
             f'<li class="{"has-table" if sec["has_table"] else "no-table"}"><a href="#{sid}">{inline(sec["title"])}</a>'
@@ -234,9 +238,10 @@ nav ul ul a { color: var(--muted); }
 .conv .hint { grid-column: 1 / -1; font-size: 12px; }
 .toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
-h2 { font-size: 24px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
-h3 { font-size: 18px; margin: 28px 0 8px; }
-h4, h5 { font-size: 15px; margin: 20px 0 6px; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
 section { scroll-margin-top: 16px; }
 p, ul { margin: 6px 0 10px; }
 ul { padding-left: 20px; }
@@ -261,7 +266,6 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
-  nav ul ul { display: none; }
   main { padding: 8px 16px 60px; }
 }
 </style>

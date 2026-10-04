@@ -24,9 +24,13 @@ Numbers below are dozenal unless marked "(dec)".
 Goals: as rigorous as SI (every unit defined by a fixed constant, exact conversion to SI),
 but human focused - everyday sizes and rules of thumb matter more than round constants.
 
-# Summary
+# Part 1: The system
 
-## Base units and defining constants
+The units themselves: how numbers are written, the defining constants, the base and derived units, prefixes, symbols and names.
+
+## Summary
+
+### Base units and defining constants
 
 | Quantity    | Unit  | Size (SI)              | Defined by (exact)                            | Named after |
 |-------------|-------|------------------------|-----------------------------------------------|---|
@@ -36,9 +40,9 @@ but human focused - everyday sizes and rules of thumb matter more than round con
 | Temperature | tep   | 0.694346 K             | k = 2;07 × 10^-1E, 0 tep = 273.15 K (freezing) | Latin tepor, warmth |
 | Current     | riv   | 1.0237 A               | e = 1 × 10^-15 onus                           | Latin rivus, stream |
 | Amount      | grex  | 6.17235 × 10^23 (dec) things | 1 grex = 1;15 × 10^1X things            | Latin grex, flock |
-| Light       | lam   | 1 cd                   | same as SI candela (K_cd = 683 lm/W dec)      | Latin lampas, lamp |
+| Light       | lam   | 0.980246 cd            | K_cd = 3 × 10^4 lam·sr/vg at 1904290X764540 per blink | Latin lampas, lamp |
 
-## Derived and everyday units
+### Derived and everyday units
 
 | Quantity          | Unit | Size (SI)        | Named after |
 |-------------------|------|------------------|---|
@@ -49,7 +53,9 @@ but human focused - everyday sizes and rules of thumb matter more than round con
 | 1/10 pace         | unc  | 12.1 cm          | Latin uncia, a twelfth |
 | 1/100 pace        | dig  | 1.01 cm          | Latin digitus, finger |
 | 0;2 pace          | span | 24.2 cm          | English span, a hand's spread |
+| 0;4 pace          | ulna | 48.4 cm          | Latin ulna, forearm |
 | 1000 paces        | iter | 2.51 km          | Latin iter, road, journey |
+| 930 paces (sea, air) | navis | 1.935 km      | Latin navis, ship |
 | Volume (unc³)     | cub  | 1.7736 L         | Latin cubus, cube |
 | Force             | vis  | ≈ 21.3 N         | Latin vis, force |
 | Energy            | opus | ≈ 31.0 J         | Latin opus, work |
@@ -58,7 +64,7 @@ but human focused - everyday sizes and rules of thumb matter more than round con
 | Charge            | onus | ≈ 0.3555 C       | Latin onus, load |
 | Voltage           | imp  | ≈ 87.21 V        | Latin impetus, push |
 
-## How the units connect
+### How the units connect
 
 Each fixed constant defines one base unit; the derived units are built from the base units.
 
@@ -68,15 +74,15 @@ flowchart LR
     cs(["caesium frequency"])
     c(["c = 2 × 10^7 p/bl"])
     h(["h = 2;13 × 10^-28"])
-    e(["e = 1 × 10^-15 on"])
+    e(["e = 1 × 10^-15 os"])
     k(["k = 2;07 × 10^-1E op/°t"])
     n(["1;15 × 10^1X things"])
-    kcd(["K_cd = 683 lm/W (dec)"])
+    kcd(["K_cd = 3 × 10^4 la·sr/vg"])
   end
   cs --> bl["blink: time"]
   c --> p["pace: length"]
   h --> li["lib: mass"]
-  e --> on("onus: charge")
+  e --> os("onus: charge")
   k --> te["tep: temperature"]
   n --> gx["grex: amount"]
   kcd --> la["lam: light"]
@@ -86,12 +92,12 @@ flowchart LR
   vi --> op("opus = vi·p: energy")
   op --> vg("vig = op/bl: power")
   vi --> pr("pres = vi/p²: pressure")
-  on & bl --> ri["riv = on/bl: current"]
-  op & on --> im("imp = op/on: voltage")
+  os & bl --> ri["riv = os/bl: current"]
+  op & os --> im("imp = op/os: voltage")
   op --> te
 ```
 
-## Rules of thumb
+### Rules of thumb
 
 - A cub of water weighs a lib (0.9994 at 20 °C). A dig-cube of water ≈ 1/1000 lib ≈ 1 g.
 - Time of day = chime;moments (d;dd), like hours:minutes: 0;00 midnight, 3;00 dawn, 6;00 noon, 9;00 dusk.
@@ -101,14 +107,20 @@ flowchart LR
 - 240 V mains ≈ 2;9 imp, 120 V ≈ 1;46 imp.
 - A 6 ft person ≈ 1¼ paces. 1 inch ≈ 2;6 digs.
 
-# Symbols
+## Symbols
 
 **Decided:** digits 0 1 2 3 4 5 6 7 8 9 X E (X = ten, E = eleven); print alternative ↊ ↋ (U+218A / U+218B).
 
 **Why:** X and E can be typed on any keyboard and work in plain text; ↊ ↋ are the Unicode standard glyphs for
-typeset documents.
+typeset documents. Kept after review, even though software reads E as an exponent (a spreadsheet turns
+6E62 into 6 × 10^62) and hexadecimal uses E for fourteen. Rejected: lowercase x and e (software reads 6e62
+the same way); A and B as in hexadecimal (A = ten, B = eleven) - safe in software, but they lose the link
+to the spoken names dek and el.
 
-## Unit symbols
+- In data files, write ↊ ↋ or store dozenal numbers as text (quoted), so software can't misread them.
+  Quoting also protects the semicolon, which some files use to separate fields
+
+### Unit symbols
 
 **Decided:** first two letters of the name, lowercase. Exceptions: pace = **p** (most used, and "pa" would
 clash with Pa), vig = **vg** (vi is vis), grex = **gx** (gr = grain). No symbol may clash with an SI or
@@ -116,10 +128,16 @@ imperial symbol, since both systems will be in use side by side.
 
 **Why:** one simple rule is easy to learn and guess. Symbols must not clash with SI or imperial ones because both systems will be in use side by side for a long time. Pace gets a single letter because it's used most.
 
+**Decided:** where the first two letters make a common English word, use the first and last letters instead,
+as the moment does (mt): beat = **bt** (not be), iter = **ir** (not it), onus = **os** (not on).
+
+**Why:** a review found that "add 3 it", "2 on of charge" and "1;3 be" read as English. opus keeps **op**:
+its first and last letters (os) would be the onus, and "op" isn't a common word on its own.
+
 | Unit   | Symbol | Quantity |
 |--------|--------|----------|
 | blink  | bl     | time |
-| beat   | be     | time |
+| beat   | bt     | time |
 | breath | br     | time |
 | moment | mt     | time |
 | chime  | ch     | time |
@@ -127,7 +145,9 @@ imperial symbol, since both systems will be in use side by side.
 | unc    | un     | length |
 | dig    | di     | length |
 | span   | sp     | length |
-| iter   | it     | length |
+| ulna   | ul     | length |
+| iter   | ir     | length |
+| navis  | na     | length (sea and air) |
 | lib    | li     | mass |
 | cub    | cu     | volume |
 | ager   | ag     | area |
@@ -137,7 +157,7 @@ imperial symbol, since both systems will be in use side by side.
 | vig    | vg     | power |
 | pres   | pr     | pressure |
 | riv    | ri     | current |
-| onus   | on     | charge |
+| onus   | os     | charge |
 | imp    | im     | voltage |
 | grex   | gx     | amount |
 | lam    | la     | light |
@@ -161,7 +181,7 @@ would clash with chemical elements (Cu, Be, Br, La), and all-capital units read 
 prefix letters for powers of twelve (k = ×1000;) was rejected: the same letter meaning a 1.728× different
 factor would cause errors where both systems are in use.
 
-## Prefix symbols
+### Prefix symbols
 
 **Decided:** initials of the SDN digit roots, then **q** (multiply) or **c** (divide). The last letter is always
 q or c, so a symbol can always be read unambiguously.
@@ -179,7 +199,7 @@ q or c, so a symbol can always be read unambiguously.
 - el's letter is **l** ("el" is how L is said); e is taken by enn
 - Watch: enn's "e" (9) is easily confused with the digit E (el); bq looks like Bq (becquerel)
 
-## Spoken numbers
+### Spoken numbers
 
 **Decided:** digits X = **dek**, E = **el** (the DSA standard names). Powers use **do / gro / mo**:
 
@@ -199,7 +219,7 @@ q or c, so a symbol can always be read unambiguously.
 - Codes, phone numbers etc. are read digit by digit; after the semicolon, always digit by digit
   (3;14 = "three point one four")
 
-# Writing numbers
+## Writing numbers
 
 **Decided:** decimal uses a dot (eg 3.14); dozenal uses a semicolon (3;18481).
 
@@ -257,7 +277,63 @@ plain text and for colour-blind readers. Numeric subscripts (46₁₂) were reje
 ambiguous - in dozenal it means fourteen. Years get their era instead of a marker because
 the era is already written with years (CE / HE), so it costs nothing extra.
 
-# Time
+## Prefixes
+
+**Decided:** use SDN (Systematic Dozenal Nomenclature, Dozenal Society of America).
+
+**Why:** it's an existing standard, it's systematic (prefixes are built from digit names, not memorised), and it extends to any power. Roots for X and E were changed to dek / el to match the spoken digits.
+
+Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 enn, X dek, E el
+(SDN's own roots for X and E are dec and lev; changed to match the spoken digit names)
+
+- multiply by 10^n: root(s) + **-qua**  (unqua- ×10, biqua- ×100, triqua- ×1000, ... unnilqua- ×10^10)
+- divide by 10^n:   root(s) + **-cia**  (uncia- ÷10, bicia- ÷100, tricia- ÷1000, ...)
+- uncia = Latin "a twelfth" (origin of inch and ounce)
+- Common sizes also get short everyday names (unc = uncia-pace, dig = bicia-pace)
+- Prefix symbols: see Symbols
+
+## Names
+
+**Decided:** short names (3-4 letters preferred), Latin roots where possible, no clash with an existing unit,
+no everyday word whose meaning would mislead, and no object or container names.
+
+**Why:** short names are quick to say and write; Latin roots echo older measures (pace, uncia, libra) and work
+across languages; clashes cause confusion when both systems are in use. Everyday words are fine when their
+meaning fits the size (pace, span, dig, blink, beat, breath, moment, chime) - that's what makes them easy to
+remember. The rule used to say "no clash with existing everyday words", which contradicted those names.
+
+| Quantity               | Name  | Symbol | Size (SI)           | Named after                                       | English relatives            |
+|------------------------|-------|--------|---------------------|---------------------------------------------------|------------------------------|
+| Time (base)            | blink | bl     | 0.3472 s            | English: the blink of an eye                      |                              |
+| Time (≈ second)        | beat  | bt     | 1.0417 s            | English: a heartbeat                              |                              |
+| Time (clock)           | breath | br    | 4.1667 s            | English: one breath                               |                              |
+| Time (dozenal hour)    | chime | ch     | 2 h exactly         | English: clocks chime on the hour                 |                              |
+| Time (dozenal minute)  | moment | mt    | 50 s exactly        | Latin momentum, movement; medieval moment = 90 s  | moment, momentum             |
+| Length (base)          | pace  | p      | 1.4525 m            | Latin passus, a pace (Roman pace ≈ 1.48 m)        | pace, passage                |
+| 1/10 pace              | unc   | un     | ≈ 12.1 cm           | Latin uncia, a twelfth                            | inch, ounce                  |
+| 1/100 pace             | dig   | di     | ≈ 1.01 cm           | Latin digitus, finger (Roman digit ≈ 1.85 cm)     | digit                        |
+| 0;4 pace               | ulna  | ul     | ≈ 48.4 cm           | Latin ulna, forearm (elbow to fingertip)          | ell                          |
+| 1000 paces (distance)  | iter  | ir     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
+| 930 paces (sea, air)   | navis | na     | ≈ 1.935 km          | Latin navis, ship                                 | navy, navigate               |
+| Mass                   | lib   | li     | ≈ 1.7714 kg         | Latin libra, pound; also scales (Roman pound)     | lb (pound), Libra            |
+| Volume (unc cube)      | cub   | cu     | 1.7736 L            | Latin cubus, cube                                 | cube, cubic                  |
+| Temperature            | tep   | °t     | 0.694 K/°C          | Latin tepor, warmth                               | tepid                        |
+| Force                  | vis   | vi     | ≈ 21.3 N            | Latin vis, force, strength                        | vim                          |
+| Energy                 | opus  | op     | ≈ 31.0 J            | Latin opus, work                                  | opus, operate                |
+| Power                  | vig   | vg     | ≈ 89.3 W            | Latin vigor, liveliness, energy                   | vigour, vigorous             |
+| Pressure               | pres  | pr     | ≈ 10.1 Pa           | Latin pressus, pressed                            | press, pressure              |
+| Current                | riv   | ri     | ≈ 1.024 A           | Latin rivus, a stream                             | rivulet, derive              |
+| Charge                 | onus  | os     | ≈ 0.3555 C          | Latin onus, load, burden                          | onus, onerous                |
+| Voltage                | imp   | im     | ≈ 87.21 V           | Latin impetus, push, rush                         | impetus, impetuous           |
+| Amount of substance    | grex  | gx     | 6.17 × 10^23 things | Latin grex, flock, herd                           | gregarious, congregate       |
+| Luminous intensity     | lam   | la     | 0.980 cd            | Latin lampas, lamp, torch                         | lamp                         |
+| Sound level            | vox   | vo     | ≈ 0.90 dB per vox   | Latin vox, voice                                  | voice, vocal                 |
+
+- Rejected: heft, jug (object names), pond (sounds like a lake), mass/vol (clash with quantity names / "% vol"),
+  hand (clashes with horse hand 10.16 cm), nail, inc (too close to "inch"), lux/lum (existing SI units),
+  cal (calorie), pot (container), erg (CGS unit), grad (gradian), mol (mole)
+
+## Time
 
 **Decided:** base unit **the blink** = 1/10 breath ≈ 0.34722 seconds (1/100000 of a day)
 
@@ -330,130 +406,7 @@ directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X0
 (E;X05 3) makes the digits look unrelated. Decimal times do the same: 9.58 s, 1:23.45 on a stopwatch.
 - spoken like "nine forty-five": E;91 = "el, nine-one"; 6;00 = "six"; with breaths, "el, nine-one, seven"
 
-## Daylight saving and time zones
-
-**Decided:** no daylight saving, for now.
-
-**Why:** a 1-hour shift is half a chime (0;6), which changes the moment digits (6;45 becomes 6;X5).
-Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and
-Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.
-
-**Decided (for now):** keep today's 24 time zones, based on UTC (London is +0). Neighbouring zones are half a
-chime (1 hour) apart, so offsets are whole or half chimes; a few places keep their quarter-hour offsets.
-To review later.
-
-**Why:** twelve whole-chime zones would probably be too few.
-
-Standard time (no daylight saving):
-
-| City | UTC now (standard time) | Paludal (chimes) | Local time when London is 6;00 (noon) |
-|---|---|---|---|
-| Honolulu | UTC-10 | UTC-5;00 | 1;00 |
-| Anchorage | UTC-9 | UTC-4;60 | 1;60 |
-| Los Angeles, Vancouver | UTC-8 | UTC-4;00 | 2;00 |
-| Denver | UTC-7 | UTC-3;60 | 2;60 |
-| Chicago, Mexico City | UTC-6 | UTC-3;00 | 3;00 |
-| New York, Toronto | UTC-5 | UTC-2;60 | 3;60 |
-| Santiago | UTC-4 | UTC-2;00 | 4;00 |
-| São Paulo, Buenos Aires | UTC-3 | UTC-1;60 | 4;60 |
-| London, Reykjavik | UTC | UTC | 6;00 |
-| Paris, Berlin, Rome | UTC+1 | UTC+0;60 | 6;60 |
-| Cairo, Johannesburg | UTC+2 | UTC+1;00 | 7;00 |
-| Moscow, Istanbul | UTC+3 | UTC+1;60 | 7;60 |
-| Dubai | UTC+4 | UTC+2;00 | 8;00 |
-| Karachi | UTC+5 | UTC+2;60 | 8;60 |
-| Delhi, Mumbai | UTC+5:30 | UTC+2;90 | 8;90 |
-| Kathmandu | UTC+5:45 | UTC+2;X6 | 8;X6 |
-| Dhaka | UTC+6 | UTC+3;00 | 9;00 |
-| Bangkok, Jakarta | UTC+7 | UTC+3;60 | 9;60 |
-| Beijing, Singapore, Perth | UTC+8 | UTC+4;00 | X;00 |
-| Tokyo, Seoul | UTC+9 | UTC+4;60 | X;60 |
-| Adelaide, Darwin | UTC+9:30 | UTC+4;90 | X;90 |
-| Sydney, Melbourne, Brisbane | UTC+10 | UTC+5;00 | E;00 |
-| Auckland | UTC+12 | UTC+6;00 | 0;00 (next day) |
-
-## Years
-
-**Decided:** year numbering follows the **Human (Holocene) Era**: 1 HE = 10,000 BCE, so add 10,000 (dec) to the CE year.
-
-**Why:** TODO - reason not recorded.
-
-- 2026 CE = 12026 HE (dec) = **6E62 HE**
-- Spoken as two pairs, like "twenty twenty-six" (that's how years are said now): 6E62 = "six do el, six do two"
-  - round years: 7000 = "seven mo", 6E00 = "six do el gro"
-
-## Calendar
-
-**Decided:** keep the standard Gregorian months and 7-day weeks. Only the numbering changes:
-**week numbers** (ISO weeks) are written in dozenal: week 1 to 44 (52 dec), 45 in long years (53 dec).
-
-**Why:** 365 (dec) days can't be split into dozenal-round months, and changing the 7-day week is too big a change. Writing the numbers in dozenal keeps the whole system consistent.
-
-- eg 3 Oct 2026 CE is week 34 (ISO week 40 dec)
-
-**Month names (decided):** the SDN digit roots, used as the names themselves.
-
-**Why:** no new words to learn - each name is the month's number, its prefix root and its spoken digit. It also fixes the Roman misnumbering (September-December were the seventh to tenth months when the year began in March).
-
-| #  | Month | Was |
-|----|-------|-----|
-| 1  | Un    | Jan |
-| 2  | Bi    | Feb |
-| 3  | Tri   | Mar |
-| 4  | Quad  | Apr |
-| 5  | Pent  | May |
-| 6  | Hex   | Jun |
-| 7  | Sept  | Jul |
-| 8  | Oct   | Aug |
-| 9  | Enn   | Sep |
-| X  | Dek   | Oct |
-| E  | El    | Nov |
-| 10 | Do    | Dec |
-
-- Same lengths and dates as the Gregorian months; only the names change
-- Fixes the Roman shift: Sept/Oct/Dek are finally the 7th/8th/Xth months (Sept-Dec were named when the year began in March)
-- Do = "the dozenth month"
-- Rejected: a -men suffix (Latin mensis) - reads as English "men" (Hexmen, Septmen)
-
-**Day of month (decided):** written in dozenal, 1 to 27 (31 dec).
-
-**Why:** every number in the system is dozenal; a date shouldn't mix bases.
-
-- eg today (3 Oct 2026 CE) = 3 Dek 6E62; 31 (dec) Oct = 27 Dek; Christmas = 21 Do
-
-**Possibility (not decided):** the Dozenal Solstice / Holocene calendar (clocks.dozenal.ca):
-twelve months of 30 (dec) days, with the 5-6 leftover "S-days" outside any month; often paired with a 6-day week
-(divides into halves and thirds). https://clocks.dozenal.ca/pdf/dozenal-calendar.pdf
-- A 6-day week would mean a 4-day working week with the usual 2-day weekend
-- For now, the 7-day week stays: changing it is too big a change, and 365 (dec) days can't be split evenly anyway
-
-## Analogue clocks
-
-**Decided:** a 24-hour dial with twelve marks, noon at the top, turning clockwise.
-
-**Why:** one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest,
-and clockwise keeps the convention people already know.
-
-Four hands - hour, minute and second, plus a light beat hand:
-
-| Hand    | Turns once per | Reads         | Dial                                   | Like        |
-|---------|----------------|---------------|----------------------------------------|-------------|
-| Chime   | day            | chime (0-E)   | 12 marks                               | hour hand   |
-| Moment  | chime (2 h)    | moments 00-EE | 12 marks + 144 (dec) fine marks        | minute hand |
-| Breath  | moment (50 s)  | breath (0-E)  | 12 marks; steps once per breath (onto each mark) | second hand |
-| Beat    | moment (50 s)  | beat (4 per breath) | steps once per beat; thin and light grey, like the dial | ticking second hand |
-
-- The breath hand steps once per breath, landing on each mark, so it always points at the breath digit.
-  It used to step once per beat (4 steps per mark), but then it looked like a beat hand while labelled breath
-- **Noon (6;00) points straight up, midnight (0;00) straight down**
-  - dawn ≈ 3;00 on the left, dusk ≈ 9;00 on the right (at the equinoxes)
-  - **Clockwise everywhere** (bottom → left → top → right), both hemispheres - matches convention,
-    and clocks are clockwise because they copied northern sundials
-  - matches the sun's path when facing south in the northern hemisphere, so a correctly
-    oriented clock roughly agrees with a sundial
-- Existing dozenal clock designs to compare: https://clocks.dozenal.ca (not yet reviewed - blocked by sandbox network policy)
-
-## Caesium definition
+### Caesium definition
 
 **Decided:** 1 breath = 750E583273 caesium periods exactly (38,302,632,375 dec).
 
@@ -475,7 +428,7 @@ Four hands - hour, minute and second, plus a light beat hand:
     longer be exactly 25/6 s, so Paludal clocks would drift ~2.5 ms/year from UTC (1 s in ~400 years)
     and every time conversion would need a long factor.
 
-# Length
+## Length
 
 **Decided:** the **pace** ≈ 1.4525 m, defined by **c = 2 × 10^7 paces per blink** (exact).
 
@@ -504,7 +457,13 @@ Named sub-units (named because they're everyday sizes, like the inch and centime
 **Why:** a body-measure name like pace and dig, for the gap between the unc (12 cm) and the pace (145 cm);
 the old English span (9 in, 22.9 cm) is close. "Hand" was rejected earlier (the horse hand is 10.16 cm).
 
-**Decided:** the **iter** (symbol **it**) = 1000 paces (1728 dec) ≈ 2.51 km, the unit for distances.
+**Decided:** the **ulna** (symbol **ul**) = 0;4 pace = 4 uncs ≈ 48.4 cm, elbow to fingertip (a third of a pace).
+
+**Why:** another body measure, filling the gap between the span (24 cm) and the pace (145 cm); it's also a
+handy length for a board ruler. Latin *ulna* is the forearm (and the forearm bone), and the old ell measure
+came from it. Rejected: cubit (Latin cubitum, elbow), which was liked, but its symbol would be "cu", the cub.
+
+**Decided:** the **iter** (symbol **ir**) = 1000 paces (1728 dec) ≈ 2.51 km, the unit for distances.
 
 **Why:** a thousand paces is the Roman mile (mille passus), so it's the natural distance unit. Latin
 *iter* means a road or journey (as in itinerary), and Roman route lists counted in milia passuum.
@@ -518,6 +477,23 @@ considered; their clashes hardly matter since almost no one uses them now, but i
 - 1 iter = 1000 paces = 2.51 km is literally a "thousand paces" (Latin mille passus = Roman mile)
 - 15 iters ≈ 42.67 km ≈ a marathon (marathon = 14;99 iters)
 
+**Decided:** the **navis** (symbol **na**) = 930 paces (1332 dec) ≈ 1.935 km, the sea and air mile, replacing
+the nautical mile (1852 m).
+
+**Why:** the nautical mile exists because one nautical mile north or south is one minute of latitude
+(1/21600 (dec) of a turn), so a navigator can measure distance off a chart's latitude scale. The dozenal
+version is 0;0001 turn of the Earth's meridian (1/20736 (dec), four digits of a turn):
+
+- Meridian (pole to pole and back) = 40 007.86 km (dec)
+- 0;0001 turn = 40 007 860 m / 20 736 = 1929.4 m = 1328.3 (dec) paces = **928;34 paces**
+- A minute of latitude isn't constant (1843 m at the equator, 1862 m at the poles, as the Earth is flattened),
+  so the nautical mile was fixed at a round 1852 m in 1929 CE. The navis is rounded the same way
+- 928 paces is the nearest whole number (0.03% short); **930** was chosen as rounder (ends in 0) and it's
+  only 0.3% long, well inside the ±0.5% that a minute of latitude itself varies
+- So 1 navis ≈ 0;0001 turn of latitude, and 10000 navis ≈ once round the Earth through the poles
+- Name: Latin *navis*, a ship (as in navy, navigate). Symbol "na" follows the first-two-letters rule
+- Still open: a speed unit for ships and aircraft, to replace the knot (1 nautical mile per hour)
+
 Imperial comparisons:
 
 | Imperial | Paces  | Uncs  | Digs  |
@@ -527,69 +503,13 @@ Imperial comparisons:
 | 6 in     | 0;131  | 1;31  | 13;1  |
 | 1 in     | 0;026  | 0;26  | 2;6   |
 
-
-## Shoe sizes
-
-Proposed (not decided): **shoe size = foot length in digs**, in half-dig steps (0;6 di ≈ 5 mm).
-
-Today's systems: UK and US sizes count barleycorns (1/3 in, 8.5 mm) from different starting points, with
-separate men's, women's and children's scales; EU sizes count Paris points (2/3 cm) of the shoe's last, not
-the foot. Japan and China already use foot length in cm, and the ISO Mondopoint (ski boots, military)
-uses foot length in mm. A dig is about a centimetre, so digs work the way Japanese sizes do, with
-half-dig steps close to their 5 mm steps.
-
-| Foot length | Digs (nearest half) | US (approx.) | UK (approx.) | EU (approx.) |
-|-------------|---------------------|--------------|--------------|--------------|
-| 16 cm       | 14 di               | kids' 9      | kids' 8      | 26           |
-| 24 cm       | 20 di               | women's 7    | 5            | 38           |
-| 25 cm       | 21 di               | women's 8½, men's 7 | 6     | 39-40        |
-| 26 cm       | 22 di               | men's 8      | 7            | 41           |
-| 27 cm       | 23 di               | men's 9      | 8            | 42-43        |
-| 28 cm       | 24 di               | men's 10     | 9            | 44           |
-
-- Sizes vary between brands; the US/UK/EU columns are rough
-- Width could be added the Mondopoint way, as a second number
-## Speed
-
-- 100 km/h ≈ 67;82 paces/breath. Same digits at every scale because units step by twelve
-  (≈ 6782;14 paces per 0;01 day, ≈ 67821;49 paces per 0;1 day)
-- Speed signs in paces/breath; each 10 = 15.06 km/h (dec):
-
-| Sign | km/h  | mph  | Use           |
-|------|-------|------|---------------|
-| 20   | 30.1  | 18.7 | school zone   |
-| 30   | 45.2  | 28.1 | residential   |
-| 40   | 60.2  | 37.4 | urban         |
-| 50   | 75.3  | 46.8 | rural         |
-| 60   | 90.4  | 56.1 | highway       |
-| 70   | 105.4 | 65.5 | motorway      |
-| 80   | 120.5 | 74.9 | fast motorway |
-
-- Real limits needn't be round: like any changeover, existing values would be set to the nearest
-  whole number rather than converted exactly. The nearest whole numbers land within 0.5 km/h:
-
-| km/h now | Sign | km/h  |
-|----------|------|-------|
-| 40       | 28   | 40.2  |
-| 50       | 34   | 50.2  |
-| 60       | 40   | 60.2  |
-| 70       | 48   | 70.3  |
-| 80       | 54   | 80.3  |
-| 90       | 60   | 90.4  |
-| 100      | 68   | 100.4 |
-| 110      | 74   | 110.4 |
-
-**Decided:** real-world values (limits, products, standards) get rounded new values, not exact conversions.
-
-**Why:** that's how every changeover works in practice (eg metric speed limits), and a whole number is easier to read.
-
-## Gravity
+### Gravity
 
 - Would like g to be a nice dozenal number, but c and g have a fixed ratio (~2559X65 breaths), so only one can be exact.
 - With c exact: g ≈ 0;9926 paces/blink² (≈ 99;26 paces/breath², 117.2 dec)
 - g varies ~0.5% over Earth's surface anyway, so it's a poor basis for a definition.
 
-# Mass
+## Mass
 
 **Decided:** the **lib** ≈ 1.7714 kg, defined by fixing Planck's constant:
 **h = 2;13 × 10^-28 exactly** (lib × pace² / blink) - same method SI has used since 2019 CE.
@@ -610,7 +530,7 @@ half-dig steps close to their 5 mm steps.
   - h = 2 × 10^-28 (1.864 kg): rounder h, but water cube only 0.95
 - Priority used: c round > water ≈ 1 > h round. Normal people use c-based length and water; almost nobody uses h directly.
 
-# Area
+## Area
 
 **Decided:** the **ager** (symbol **ag**) = 1000 square paces (1728 dec), eg a strip 100 × 10 paces
 ≈ 3646 m² (dec) = 0.90 acre. Everyday land sizes are fractions of it.
@@ -627,7 +547,7 @@ appear in the same sentence.
 | 1     | 3646     | acre (4047 m²) |
 | 10    | 43 750   | a 100 × 100 pace square, 4.4 ha |
 
-# Volume
+## Volume
 
 **Decided:** the **cub** = a cube 1 unc per side ≈ 1.7736 L. Water in it ≈ 1 lib.
 
@@ -672,7 +592,7 @@ Small volumes (kitchen and drinks):
 | 0;004    | 4.1  | teaspoon (5 mL)                                                     |
 | 0;001    | 1.03 | a dig-cube, about 1 mL / 1 g of water                               |
 
-# Temperature
+## Temperature
 
 **Decided:** the **tep**, defined by fixing the Boltzmann constant **k = 2;07 × 10^-1E** (opus/tep), exact.
 
@@ -697,7 +617,7 @@ freezes at 0 °t and boils at 100 °t - the dozenal version of Celsius's 0 and 1
 just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square
 inch absolute / gauge). Rejected: "tabs" and "tea" (English words).
 
-# Electricity
+## Electricity
 
 **Decided:** fix the elementary charge **e = 1 × 10^-15 onus** exactly (12^-17 dec).
 
@@ -705,10 +625,10 @@ inch absolute / gauge). Rejected: "tabs" and "tea" (English words).
 
 ```mermaid
 flowchart LR
-  e(["e = 1 × 10^-15 on"]) --> on["onus: charge<br>0.3555 C"]
-  on -->|"per blink"| ri["riv: current<br>1.024 A"]
+  e(["e = 1 × 10^-15 os"]) --> os["onus: charge<br>0.3555 C"]
+  os -->|"per blink"| ri["riv: current<br>1.024 A"]
   op["opus: energy<br>31.0 J"] -->|"per onus"| im["imp: voltage<br>87.21 V"]
-  on --> im
+  os --> im
   im -->|"× riv"| vg["vig: power<br>89.3 W"]
   ri --> vg
 ```
@@ -734,7 +654,7 @@ flowchart LR
   units. With the riv ≈ 1 A the imp must be ≈ 89 V; an imp near 1 V would need a riv near 89 A. Small
   voltages use the uncia-imp (7.27 V) and bicia-imp (0;01 imp ≈ 0.606 V)
 
-# Amount of substance
+## Amount of substance
 
 **Decided:** the **grex** = exactly **1;15 × 10^1X** entities (≈ 6.17235 × 10^23 dec).
 
@@ -744,15 +664,578 @@ flowchart LR
 - Rejected: exactly 10^1X (5.52 × 10^23 dec) - rounder, but molar masses come out ×0.894;
   SI's Avogadro number - molar masses off by 2.5%
 
-# Light
+## Light
 
-**Decided:** the **lam** = 1 candela (SI definition carried over: K_cd = 683 lm/W at 540 THz, dec).
+**Decided:** the **lam** is defined by fixing the luminous efficacy of green light at
+**K_cd = 3 × 10^4 lam·sr/vg** (exact), for light of frequency **1904290X764540 per blink** (exact; 540 THz).
+That makes 1 lam ≈ 0.980246 cd.
 
-**Why:** it's rarely used day to day, so there's nothing to gain from changing it.
+**Why:** every other base unit is defined by a constant stated in Paludal units; the lam used to be the SI
+candela carried over, so it couldn't be defined without SI. A round K_cd per vig is the Paludal equivalent of
+SI's 683 lm/W. Replaces the earlier decision to keep lam = 1 cd ("rarely used, nothing to gain").
 
-- Rarely used day to day. Option later: rescale lam so K_cd is a round dozenal number per vig.
+- The frequency is SI's 540 THz exactly, expressed per blink. It isn't round (≈ 1;9043 × 10^11), for the same
+  reason the caesium count isn't: a round frequency (eg 1;9 × 10^11 per blink, 556 nm instead of 555 nm) would
+  mean converting to the candela through the eye's sensitivity curve, so the conversion would no longer be exact
+- 683 lm/W expressed per vig is 2E357;1E (60 979 dec). 3 × 10^4 (62 208 dec) is the nearest one-digit round
+  number; 2E000 would be closer (lam = 1.008 cd) but isn't as round
+- Lamp ratings change by 2%: an 800 lumen bulb is about 816 paludal lumens (lam·sr)
 
-# Sound
+## Angle
+
+**Decided:** angles are measured in **turns**, written as dozenal fractions.
+
+**Why:** it matches the clock: the chime hand turns once a day, so the time of day in days *is* the angle of
+the hand (0;1 turn = one chime on the dial). The common angles become round: right angle 0;3, 30° is 0;1,
+60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward
+(90° = 76°, 45° = 39°), because 360 is a decimal-era choice.
+
+| Turn   | Degrees (dec) | Note |
+|--------|---------------|------|
+| 1      | 360           | full turn |
+| 0;6    | 180           | half turn |
+| 0;3    | 90            | right angle |
+| 0;2    | 60            | |
+| 0;16   | 45            | |
+| 0;1    | 30            | one clock mark |
+| 0;01   | 2.5           | |
+| 0;001  | 0.208         | finest everyday step |
+
+- Compass bearings as three digits of a turn: 000 north, 300 east, 600 south, 900 west
+- Latitude and longitude in turns: one navis (930 p) along a meridian is about 0;0001 turn of latitude
+- Three digits act as "more degrees": 1000; steps per turn (1728 dec, 0.208° each), and every common angle
+  is a round whole number: right angle 300, 60° 200, 45° 160, 30° 100. A right angle of 1000; adds nothing
+  over this, since 4 already divides 100;.
+- 1 turn = 2π radians = 6;34941696 radians
+
+## Constants
+
+Physical constants in Paludal units (3-4 significant dozenal digits unless exact). "Exact" means fixed by
+definition; measured values carry the same uncertainty as in SI.
+
+### Defining constants (exact)
+
+| Constant | Paludal value | SI value (dec) |
+|---|---|---|
+| Caesium frequency Δν_Cs | 750E583273 per breath (750E58327;3 per blink) | 9 192 631 770 Hz |
+| Speed of light c | 2 × 10^7 p/bl (2 × 10^8 p/br) | 299 792 458 m/s |
+| Planck constant h | 2;13 × 10^-28 li·p²/bl | 6.626 070 15 × 10^-34 J s |
+| Elementary charge e | 1 × 10^-15 os | 1.602 176 634 × 10^-19 C |
+| Boltzmann constant k | 2;07 × 10^-1E op/tep | 1.380 649 × 10^-23 J/K |
+| Grex number | 1;15 × 10^1X per grex | 6.172 35 × 10^23 (Avogadro: 6.022 × 10^23) |
+| Luminous efficacy K_cd | 3 × 10^4 lam·sr/vg, for light at 1904290X764540 per blink | 683 lm/W, at 540 THz |
+
+### Derived from them (also exact)
+
+| Constant | Paludal value | SI value (dec) |
+|---|---|---|
+| Reduced Planck ħ = h/2π | 4;028 × 10^-29 li·p²/bl | 1.054 572 × 10^-34 J s |
+| Gas constant R = k × grex number | 0;2359X op/(tep·gx) | 8.314 J/(mol K) |
+| Faraday constant F = e × grex number | **1;15 × 10^5 os/gx** | 96 485 C/mol |
+| Stefan-Boltzmann σ | 1;735 × 10^-9 vg/(p²·tep⁴) | 5.670 × 10^-8 W/(m² K⁴) |
+
+### Measured
+
+| Constant | Paludal value | SI value (dec) |
+|---|---|---|
+| Gravitational constant G | 3;558 × 10^-E p³/(li·bl²) | 6.674 × 10^-11 m³/(kg s²) |
+| Electron mass | X;21 × 10^-25 li | 9.109 × 10^-31 kg |
+| Proton mass | X;986 × 10^-22 li | 1.673 × 10^-27 kg |
+| Fine-structure constant α (no units) | 1 / E5;0523 | 1 / 137.036 |
+
+### Earth and everyday
+
+| Value | Paludal | SI (dec) |
+|---|---|---|
+| Standard gravity g (conventional, exact) | 0;9926 p/bl² (99;26 p/br²) | 9.806 65 m/s² |
+| Standard atmosphere | 5;969 tqpr | 101 325 Pa |
+| Absolute zero | -289;485 °t | -273.15 °C |
+| Water freezes / boils (sea level) | 0 °t / ≈ EE;E9 °t | 0 °C / 99.974 °C |
+| Water density | 1;002 li/cu at 4 °C, 0;EEX at 20 °C | 999.97 / 998.2 kg/m³ |
+| Speed of sound (20 °C) | ≈ 6X p/bl | 343 m/s |
+| Day | 10^5 bl = 10^4 br (exact) | 86 400 s |
+| Tropical year | 265;2XX days | 365.2422 days |
+| Earth radius (mean) | 1576 ir | 6371 km |
+| Earth-Moon distance | 7;476 × 10^4 ir | 384 400 km |
+| Astronomical unit (Earth-Sun, exact) | 1;7E63 × 10^X p = 1;7E63 × 10^7 ir | 149 597 870 700 m |
+| Light from the Sun to Earth | 9E;9 br ≈ X moments | 499.0 s (8 min 19 s) |
+| Light from the Moon to Earth | 3;84 bl ≈ 1;3 bt | 1.282 s |
+| Light-year | 5;0X6 × 10^12 p | 9.461 × 10^15 m |
+
+### Pure numbers (the same in any base, dozenal digits)
+
+| Number | Dozenal | Decimal |
+|---|---|---|
+| π | 3;184809493E91 | 3.14159265358979 |
+| 2π (radians in a turn) | 6;34941696 | 6.28318531 |
+| e | 2;875236069821 | 2.71828182846 |
+| √2 (paper ratio) | 1;4E79170X07E8 | 1.41421356237 |
+| φ (golden ratio) | 1;74EE6772802X | 1.61803398875 |
+
+- The Faraday constant comes out round because both e and the grex number are round
+- g isn't round: c is, and only one of them can be (see Gravity)
+
+# Part 2: Using it
+
+How the units meet everyday life: clocks and calendars, changeover, money, standard sizes, everyday values and conversions.
+
+## Clocks, time zones and calendar
+
+The time units themselves are in Part 1 (Time).
+
+### Analogue clocks
+
+**Decided:** a 24-hour dial with twelve marks, noon at the top, turning clockwise.
+
+**Why:** one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest,
+and clockwise keeps the convention people already know.
+
+Four hands - hour, minute and second, plus a light beat hand:
+
+| Hand    | Turns once per | Reads         | Dial                                   | Like        |
+|---------|----------------|---------------|----------------------------------------|-------------|
+| Chime   | day            | chime (0-E)   | 12 marks                               | hour hand   |
+| Moment  | chime (2 h)    | moments 00-EE | 12 marks + 144 (dec) fine marks        | minute hand |
+| Breath  | moment (50 s)  | breath (0-E)  | 12 marks; steps once per breath (onto each mark) | second hand |
+| Beat    | moment (50 s)  | beat (4 per breath) | steps once per beat; thin and light grey, like the dial | ticking second hand |
+
+- The breath hand steps once per breath, landing on each mark, so it always points at the breath digit.
+  It used to step once per beat (4 steps per mark), but then it looked like a beat hand while labelled breath
+- **Noon (6;00) points straight up, midnight (0;00) straight down**
+  - dawn ≈ 3;00 on the left, dusk ≈ 9;00 on the right (at the equinoxes)
+  - **Clockwise everywhere** (bottom → left → top → right), both hemispheres - matches convention,
+    and clocks are clockwise because they copied northern sundials
+  - matches the sun's path when facing south in the northern hemisphere, so a correctly
+    oriented clock roughly agrees with a sundial
+- Existing dozenal clock designs to compare: https://clocks.dozenal.ca (not yet reviewed - blocked by sandbox network policy)
+
+### Daylight saving and time zones
+
+**Decided:** no daylight saving, for now.
+
+**Why:** a 1-hour shift is half a chime (0;6), which changes the moment digits (6;45 becomes 6;X5).
+Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and
+Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.
+
+**Decided (for now):** keep today's 24 time zones, based on UTC (London is +0). Neighbouring zones are half a
+chime (1 hour) apart, so offsets are whole or half chimes; a few places keep their quarter-hour offsets.
+To review later.
+
+**Why:** twelve whole-chime zones would probably be too few.
+
+Standard time (no daylight saving):
+
+| City | UTC now (standard time) | Paludal (chimes) | Local time when London is 6;00 (noon) |
+|---|---|---|---|
+| Honolulu | UTC-10 | UTC-5;00 | 1;00 |
+| Anchorage | UTC-9 | UTC-4;60 | 1;60 |
+| Los Angeles, Vancouver | UTC-8 | UTC-4;00 | 2;00 |
+| Denver | UTC-7 | UTC-3;60 | 2;60 |
+| Chicago, Mexico City | UTC-6 | UTC-3;00 | 3;00 |
+| New York, Toronto | UTC-5 | UTC-2;60 | 3;60 |
+| Santiago | UTC-4 | UTC-2;00 | 4;00 |
+| São Paulo, Buenos Aires | UTC-3 | UTC-1;60 | 4;60 |
+| London, Reykjavik | UTC | UTC | 6;00 |
+| Paris, Berlin, Rome | UTC+1 | UTC+0;60 | 6;60 |
+| Cairo, Johannesburg | UTC+2 | UTC+1;00 | 7;00 |
+| Moscow, Istanbul | UTC+3 | UTC+1;60 | 7;60 |
+| Dubai | UTC+4 | UTC+2;00 | 8;00 |
+| Karachi | UTC+5 | UTC+2;60 | 8;60 |
+| Delhi, Mumbai | UTC+5:30 | UTC+2;90 | 8;90 |
+| Kathmandu | UTC+5:45 | UTC+2;X6 | 8;X6 |
+| Dhaka | UTC+6 | UTC+3;00 | 9;00 |
+| Bangkok, Jakarta | UTC+7 | UTC+3;60 | 9;60 |
+| Beijing, Singapore, Perth | UTC+8 | UTC+4;00 | X;00 |
+| Tokyo, Seoul | UTC+9 | UTC+4;60 | X;60 |
+| Adelaide, Darwin | UTC+9:30 | UTC+4;90 | X;90 |
+| Sydney, Melbourne, Brisbane | UTC+10 | UTC+5;00 | E;00 |
+| Auckland | UTC+12 | UTC+6;00 | 0;00 (next day) |
+
+### Years
+
+**Decided:** year numbering follows the **Human (Holocene) Era**: 1 HE = 10,000 BCE, so add 10,000 (dec) to the CE year.
+
+**Why:** TODO - reason not recorded.
+
+- 2026 CE = 12026 HE (dec) = **6E62 HE**
+- Spoken as two pairs, like "twenty twenty-six" (that's how years are said now): 6E62 = "six do el, six do two"
+  - round years: 7000 = "seven mo", 6E00 = "six do el gro"
+
+### Calendar
+
+**Decided:** keep the standard Gregorian months and 7-day weeks. Only the numbering changes:
+**week numbers** (ISO weeks) are written in dozenal: week 1 to 44 (52 dec), 45 in long years (53 dec).
+
+**Why:** 365 (dec) days can't be split into dozenal-round months, and changing the 7-day week is too big a change. Writing the numbers in dozenal keeps the whole system consistent.
+
+- eg 3 Oct 2026 CE is week 34 (ISO week 40 dec)
+
+**Decided:** keep the month names January to December (Jan to Dec). In all-number dates the month is its
+dozenal number: October is X, November E, December 10 (eg 6E62-X-03).
+
+**Why:** the names were briefly replaced by the SDN digit roots (Un, Bi, Tri ... Sept, Oct, Enn, Dek, El, Do),
+which fixed the Roman misnumbering (September to December were the seventh to tenth months when the year began
+in March). But Sept and Oct already mean September and October, so "3 Oct" became ambiguous - a permanent
+confusion, worse than the old misnumbering. Rejected: SDN roots (that clash); Greek roots (mono, di, tri,
+tetra ... octa, ennea, deca), which shorten to Oct and Dec and clash the same way; a -men suffix (Latin
+mensis), which reads as English "men" (Hexmen, Septmen).
+
+**Day of month (decided):** written in dozenal, 1 to 27 (31 dec).
+
+**Why:** every number in the system is dozenal; a date shouldn't mix bases.
+
+- eg today (3 Oct 2026 CE) = 3 Oct 6E62; 31 (dec) Oct = 27 Oct; Christmas = 21 Dec
+
+**Possibility (not decided):** the Dozenal Solstice / Holocene calendar (clocks.dozenal.ca):
+twelve months of 30 (dec) days, with the 5-6 leftover "S-days" outside any month; often paired with a 6-day week
+(divides into halves and thirds). https://clocks.dozenal.ca/pdf/dozenal-calendar.pdf
+- A 6-day week would mean a 4-day working week with the usual 2-day weekend
+- For now, the 7-day week stays: changing it is too big a change, and 365 (dec) days can't be split evenly anyway
+
+## Speed limits and changeover
+
+- 100 km/h ≈ 67;82 paces/breath. Same digits at every scale because units step by twelve
+  (≈ 6782;14 paces per 0;01 day, ≈ 67821;49 paces per 0;1 day)
+- Speed signs in paces/breath; each 10 = 15.06 km/h (dec):
+
+| Sign | km/h  | mph  | Use           |
+|------|-------|------|---------------|
+| 20   | 30.1  | 18.7 | school zone   |
+| 30   | 45.2  | 28.1 | residential   |
+| 40   | 60.2  | 37.4 | urban         |
+| 50   | 75.3  | 46.8 | rural         |
+| 60   | 90.4  | 56.1 | highway       |
+| 70   | 105.4 | 65.5 | motorway      |
+| 80   | 120.5 | 74.9 | fast motorway |
+
+- Real limits needn't be round: like any changeover, existing values would be set to the nearest
+  whole number rather than converted exactly. The nearest whole numbers land within 0.5 km/h:
+
+| km/h now | Sign | km/h  |
+|----------|------|-------|
+| 40       | 28   | 40.2  |
+| 50       | 34   | 50.2  |
+| 60       | 40   | 60.2  |
+| 70       | 48   | 70.3  |
+| 80       | 54   | 80.3  |
+| 90       | 60   | 90.4  |
+| 100      | 68   | 100.4 |
+| 110      | 74   | 110.4 |
+
+**Decided:** real-world values (limits, products, standards) get rounded new values, not exact conversions.
+
+**Why:** that's how every changeover works in practice (eg metric speed limits), and a whole number is easier to read.
+
+Some fields would keep their current units for a long time, as they did through metrication, because the units
+are set by international agreement or built into long-lived equipment:
+
+- Aviation: feet for altitude, knots and nautical miles (set by ICAO, the UN aviation body)
+- Shipping: nautical miles and knots
+- Medicine: blood pressure in mmHg, and drug doses in mg until it's decided how doses are written
+- Inch sizes: screens, wheels and tyre rims, pipe threads
+- Traditional sport distances: the marathon and cricket pitch (see Races and sport)
+
+## Money
+
+**Proposed (not decided):** keep each currency's main unit (eg the dollar) at its current value, and divide it
+into 100; (144 dec) parts instead of 100 (dec) cents. One part ≈ 0.69 c.
+
+- No currency needs revaluing: $1 stays $1, and only the small change is new
+- Halves, thirds, quarters, sixths, eighths and ninths of a dollar are whole numbers of parts:
+  a third is $0;40, a quarter $0;30, an eighth $0;16
+- Fifths and tenths aren't (20 c = $0;2497...), so prices would be set to round dozenal values, as with any
+  changeover (see Speed limits and changeover)
+- The cent is from Latin *centum* (100). Name for the 1/100; part: to be decided
+
+## Paper sizes
+
+**Decided:** a **P series**, made the same way as the A series: each size halves the one before, sides in
+the ratio 1 : √2, and **P0 = 1 square pace** (as A0 = 1 m²).
+
+**Why:** halving keeps the shape, which is why the A series works; only the starting size needs changing.
+P5 lands almost exactly between A4 and US Letter (its width is Letter's 8.5 in), so one sheet can replace both.
+
+| Size | mm (dec)      | Close to            |
+|------|---------------|---------------------|
+| P0   | 1221 × 1727   | A0 (841 × 1189), 2.11 m² |
+| P3   | 432 × 611     | A2 (420 × 594)      |
+| P4   | 305 × 432     | A3 (297 × 420)      |
+| P5   | 215.9 × 305   | A4 (210 × 297), Letter (215.9 × 279) |
+| P6   | 153 × 216     | A5 (148 × 210)      |
+| P7   | 108 × 153     | A6 postcard (105 × 148) |
+
+- Sides aren't round in uncs (P5 = 1;94 × 2;63 un), for the same reason A4 isn't round in mm: √2
+
+## Shoe sizes
+
+Proposed (not decided): **shoe size = foot length in digs**, in half-dig steps (0;6 di ≈ 5 mm).
+
+Today's systems: UK and US sizes count barleycorns (1/3 in, 8.5 mm) from different starting points, with
+separate men's, women's and children's scales; EU sizes count Paris points (2/3 cm) of the shoe's last, not
+the foot. Japan and China already use foot length in cm, and the ISO Mondopoint (ski boots, military)
+uses foot length in mm. A dig is about a centimetre, so digs work the way Japanese sizes do, with
+half-dig steps close to their 5 mm steps.
+
+| Foot length | Digs (nearest half) | US (approx.) | UK (approx.) | EU (approx.) |
+|-------------|---------------------|--------------|--------------|--------------|
+| 16 cm       | 14 di               | kids' 9      | kids' 8      | 26           |
+| 24 cm       | 20 di               | women's 7    | 5            | 38           |
+| 25 cm       | 21 di               | women's 8½, men's 7 | 6     | 39-40        |
+| 26 cm       | 22 di               | men's 8      | 7            | 41           |
+| 27 cm       | 23 di               | men's 9      | 8            | 42-43        |
+| 28 cm       | 24 di               | men's 10     | 9            | 44           |
+
+- Sizes vary between brands; the US/UK/EU columns are rough
+- Width could be added the Mondopoint way, as a second number
+## Everyday reference
+
+What things come to in the new units (3 significant digits). **Round** is the nearest round dozenal value
+(whole, half, third or quarter, within 3%) - what a product, limit or setting would probably become.
+Left blank for natural values (body temperature, speed of sound) and where the value is already round.
+**US** gives the size in US customary units, for things measured that way in the US. Prefixes are used where the plain unit
+gives awkward numbers: tc ÷1000, bc ÷100, uc ÷10, tq ×1000.
+
+- tcli (1/1000 lib) ≈ 1.03 g and tccu (1 dig³) ≈ 1.03 mL - the new gram and millilitre
+- ir (iter, 1000 paces = tqp) ≈ 2.51 km; tqop (1000 opus) ≈ 53.6 kJ; tqpr (1000 pres) ≈ 17.5 kPa
+
+### Length
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Credit card (long side) | 85.6 mm | 3.37 in | 8;5X di | 8;6 di |
+| Pencil-case ruler | 15-20 cm | 6 in | 0;12X-0;17X p | 0;2 p (a span, 24.2 cm) |
+| Desk ruler | 30 cm | 12 in | 0;258 p | 0;3 p (36.3 cm) |
+| A4 page (long side) | 297 mm |  | 2;55 un | 2;6 un |
+| Adult height | 1.70 m | 5 ft 7 in | 1;21 p | 1;2 p |
+| Tall person (6 ft) | 1.83 m | 6 ft | 1;31 p | 1;3 p |
+| Door height | 2.04 m | 6 ft 8 in | 1;4X p | 1;5 p |
+| Car length | 4.5 m | 15 ft | 3;12 p | 3;1 p |
+| Cricket pitch | 20.12 m | 22 yd | 11;X p | (keeps 22 yd) |
+| Olympic pool | 50 m | 164 ft | 2X;5 p | 30 p |
+| 1 km | 1 km | 0.62 mi | 494 p |  |
+| Marathon | 42.195 km | 26.2 mi | 14;99 ir | (keeps 42.195 km) |
+| Sydney–Melbourne (straight line) | 713 km | 443 mi | 1E8 ir |  |
+| Letter page (long side) | 279 mm | 11 in | 2;38 un | 2;4 un (P5 replaces Letter and A4) |
+| Ceiling height | 2.44 m | 8 ft | 1;82 p | 1;8 p |
+| Building sheet (plasterboard, plywood) | 1200 × 2400 mm | 4 × 8 ft | 0;9XE × 1;79E p | 0;X × 1;8 p (1210 × 2421 mm) |
+| Stud spacing (wide) | 600 mm | 24 in | 0;4E5 p | 0;5 p (605 mm) |
+| Stud spacing (close) | 450 mm | 16 in | 0;387 p |  |
+| Football field (US) | 91.4 m | 100 yd | 52;E p | (keeps 100 yd) |
+| Mile | 1.61 km | 1 mi | 0;784 ir |  |
+
+### Races and sport
+
+Exact conversions, and the round distance that would likely replace each one (rounded, not converted -
+see Speed limits and changeover). Traditional distances tied to history (marathon, cricket pitch) keep their length.
+
+| Distance now       | Exact            | Likely new distance | That is   |
+|--------------------|------------------|---------------------|-----------|
+| 25 m pool          | 15;3 p           | 16 p                | 26.1 m    |
+| 50 m pool          | 2X;5 p           | 30 p                | 52.3 m    |
+| 100 m sprint       | 58;X p           | 60 p                | 104.6 m   |
+| 200 m              | E5;8 p           | 100 p               | 209.2 m   |
+| 400 m (1 lap)      | 1XE;5 p          | 200 p (1 lap)       | 418.3 m   |
+| 800 m              | 39X;9 p          | 400 p               | 836.7 m   |
+| 1500 m / mile      | 720;8 p / 783;E p | 700 p              | 1464 m    |
+| 5 km (parkrun)     | 1;EX ir         | 2 ir               | 5.02 km   |
+| 10 km              | 3;EX ir         | 4 ir               | 10.04 km  |
+| Half marathon      | 8;4X ir         | keeps 21.1 km       |           |
+| Marathon           | 14;99 ir        | keeps 42.195 km     |           |
+| Cricket pitch      | 11;X p           | keeps 22 yd         |           |
+
+- The 100 m becomes the **60-pace sprint**; the 5 km and 10 km land almost exactly on 2 and 4 iters
+
+### Mass
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Egg | 60 g | 2.1 oz | 4X;6 tcli | 50 tcli |
+| Apple | 150 g | 5.3 oz | 102 tcli | 100 tcli |
+| 1 L of water | 1 kg | 2.2 lb | 0;693 li |  |
+| Newborn baby | 3.5 kg | 7.7 lb | 1;E9 li | 2 li |
+| Checked-in bag limit | 23 kg | 50 lb | 11 li |  |
+| Adult | 75 kg | 165 lb | 36;4 li | 36 li |
+| Small car | 1300 kg | 2900 lb | 512 li | 500 li |
+| Stick of butter | 113 g | 4 oz | 92;7 tcli | 90 tcli |
+| Pack of ground beef | 454 g | 1 lb | 0;30X li | 0;3 li |
+| Bag of flour | 2.27 kg | 5 lb | 1;34 li | 1;3 li |
+| Turkey | 6.8 kg | 15 lb | 3;X1 li |  |
+
+### Temperature
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Freezer | -18 °C | 0 °F | -21;E °t | -22 °t |
+| Fridge | 4 °C | 39 °F | 5;92 °t | 5;8 °t |
+| Cool day | 15 °C | 59 °F | 19;7 °t | 1X °t |
+| Room | 21 °C | 70 °F | 26;3 °t | 26 °t |
+| Warm day | 30 °C | 86 °F | 37;2 °t | 36 °t |
+| Body | 37 °C | 98.6 °F | 45;3 °t |  |
+| Heatwave | 45 °C | 113 °F | 54;X °t | 56 °t |
+| Boiling water | 100 °C | 212 °F | 100 °t |  |
+| Oven (moderate) | 180 °C | 350 °F | 197 °t | 1X0 °t |
+
+### Volume
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Teaspoon | 5 mL | 1 tsp | 4;X6 tccu | 5 tccu |
+| Cup | 250 mL | 1 cup (237 mL) | 184 tccu | 180 tccu |
+| Can of drink (AU) | 375 mL |  | 265 tccu | 260 tccu |
+| Wine bottle | 750 mL | 25.4 fl oz | 0;50E cu | 0;5 cu |
+| Milk bottle (AU) | 2 L |  | 1;16 cu | 1;2 cu |
+| Bucket | 10 L | 2.6 gal | 5;78 cu | 5;6 cu |
+| Car fuel tank | 50 L | 13 gal | 24;2 cu | 24 cu |
+| Bath | 150 L | 40 gal | 70;7 cu | 70 cu |
+| Soda can (US) | 355 mL | 12 fl oz | 24X tccu | 250 tccu |
+| Pint glass (US) | 473 mL | 16 fl oz | 325 tccu | 320 tccu |
+| Quart | 946 mL | 1 qt | 0;64X cu |  |
+| Gallon of milk or gas | 3.79 L | 1 gal | 2;17 cu | 2;2 cu |
+| Bucket (US) | 18.9 L | 5 gal | X;81 cu | X;9 cu |
+
+### Time
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Heartbeat | 0.8 s |  | 0;93 bt |  |
+| Minute | 60 s |  | 1;25 mt |  |
+| Hour | 60 min |  | 0;6 ch (60 mt) |  |
+| Feature film | 2 h |  | 1 ch |  |
+| Short meeting, lunch break | 30 min |  | 0;3 ch (30 mt) |  |
+| Lesson, meeting | 45 min |  | 0;46 ch (46 mt) | 0;4 ch (40 min) or 0;5 ch (50 min) |
+| Long meeting, lecture | 60 min |  | 0;6 ch (60 mt) |  |
+| School day | 9:00-15:00 (6 h) |  | 4;60-7;60 (3 ch) |  |
+| Working day | 9:00-17:00 (8 h) |  | 4;60-8;60 (4 ch) |  |
+| Working week (AU) | 38 h |  | 17 ch |  |
+| Working week (US) | 40 h | 40 h | 18 ch |  |
+| Night's sleep | 8 h |  | 4 ch |  |
+| School year | about 200 days |  | about 148 days |  |
+| Year | 365.2422 days |  | 265;2XX days |  |
+| School starting age | 5 years |  | 5 years |  |
+| Adult (voting, driving) | 18 years |  | 16 years |  |
+| Coming of age (21st birthday), US drinking age | 21 years | 21 years | 19 years |  |
+| Retirement age (Australia, US) | 67 years | 67 years | 57 years |  |
+| Average lifetime (world) | 73 years, about 26 700 days |  | 61 years, about 13 520 days |  |
+| Average lifetime (Australia) | 83 years |  | 6E years |  |
+| Century | 100 years |  | 84 years | a gro of years (100) is 144 (dec) |
+
+### Speed
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Walking | 5 km/h | 3 mph | 3;EX p/br | 4 p/br |
+| Cycling | 20 km/h | 12 mph | 13;E p/br | 14 p/br |
+| School zone | 40 km/h | 25 mph | 27;X p/br | 28 p/br |
+| Town | 50 km/h | 30 mph | 33;X p/br | 34 p/br |
+| Motorway | 110 km/h | 70 mph | 73;8 p/br | 74 p/br |
+| Airliner | 900 km/h | 560 mph | 4E9 p/br | 500 p/br |
+| Sound | 343 m/s | 767 mph | 6X p/bl |  |
+| Residential street (US) | 40 km/h | 25 mph | 28;1 p/br | 28 p/br |
+| Freeway (US) | 105 km/h | 65 mph | 6E;4 p/br | 70 p/br |
+
+### Energy
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Apple (food energy) | 400 kJ | 95 Cal | 7;57 tqop | 7;6 tqop |
+| Daily food intake | 8700 kJ | 2100 Cal | 116 tqop | 120 tqop |
+| Phone battery | 15 Wh | 15 Wh | 1;01 tqop | 1 tqop |
+| 1 kWh | 3.6 MJ | 1 kWh | 57;2 tqop | 56 tqop |
+| Daily value (US food labels) | 8.37 MJ | 2000 Cal | 110 tqop |  |
+| Gallon of gasoline | 121 MJ | 33.7 kWh | 1390 tqop | 1400 tqop |
+
+### Power
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| LED bulb | 10 W | 10 W | 1;42 ucvg | 1;4 ucvg |
+| Person at rest | 100 W | 100 W | 1;15 vg |  |
+| Kettle | 2400 W |  | 22;E vg | 23 vg |
+| Small car engine | 100 kW | 134 hp | 794 vg | 800 vg |
+| Space heater, US kettle | 1500 W | 1500 W | 14;X vg | 15 vg |
+
+### Pressure
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Atmosphere | 101.3 kPa | 14.7 psi | 5;97 tqpr |  |
+| Car tyre (gauge) | 220 kPa | 32 psi | 10;7 tqpr | 11 tqpr |
+| Car tyre (US) | 241 kPa | 35 psi | 11;X tqpr | 12 tqpr |
+
+### Voltage
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| AA battery | 1.5 V | 1.5 V | 2;59 bcim | 2;6 bcim |
+| USB | 5 V | 5 V | 8;31 bcim | 8;6 bcim |
+| Car battery | 12 V | 12 V | 17;X bcim | 18 bcim |
+| Mains (AU) | 230 V |  | 2;78 im | 2;8 im |
+| Mains (US) | 120 V | 120 V | 1;46 im | 1;5 im |
+
+Notes:
+- Temperatures, heights, speeds and voltages come out in comfortable numbers
+- Energy and pressure need the tq prefix for everyday sizes (opus and pres are small); food labels in tqop
+- A feature film is 1 chime; a working day and a night's sleep are 4 chimes each
+- A 0;X p building sheet spans two 0;5 p stud gaps, as a 1200 mm sheet spans two 600 mm gaps. The close
+  spacing (450 mm, 16 in) has no round value nearby: 0;4 p is 484 mm
+
+## Imperial conversions
+
+Both directions. Dozenal-side values are dozenal; imperial-side values are decimal (as imperial is used now).
+UK and US units differ for volume and tons.
+
+| Quantity | Imperial          | = dozenal units          | Dozenal unit = imperial (dec)  |
+|----------|-------------------|--------------------------|--------------------------------|
+| Length   | 1 inch            | 2;627 di                 | 1 di = 0.3971 in               |
+| Length   | 1 foot            | 2;627 un                 | 1 un = 0.3971 ft (4.765 in)    |
+| Length   | 1 yard            | 0;767X p                 | 1 p = 1.589 yd (4.765 ft)      |
+| Length   | 1 mile            | 783;E p (0;784 ir)      | 1 ir = 1.560 mi               |
+| Length   | 1 nautical mile   | 8X3 p (0;E5X na)         | 1 na = 1.045 nmi              |
+| Length   | 1 furlong         | E6;6 p                   | 1 ir = 12.48 furlongs          |
+| Area     | 1 square foot     | 6;41 un²                 | 1 un² = 0.1577 sq ft           |
+| Area     | 1 acre            | 1;13X ag                 | 1 ag = 0.9009 acre             |
+| Mass     | 1 ounce           | 2;37X bcli               | 1 bcli = 0.4339 oz             |
+| Mass     | 1 pound           | 0;30X6 li                | 1 li = 3.905 lb                |
+| Mass     | 1 stone           | 3;703 li                 | 1 li = 0.2790 st               |
+| Mass     | 1 ton (UK long)   | 3E9;7 li                 |                                |
+| Mass     | 1 ton (US short)  | 368;1 li                 |                                |
+| Volume   | 1 fl oz (UK)      | 23;82 tccu               | 1 tccu = 0.03612 fl oz (UK)    |
+| Volume   | 1 fl oz (US)      | 24;99 tccu               | 1 tccu = 0.03471 fl oz (US)    |
+| Volume   | 1 pint (UK)       | 0;3X18 cu                | 1 cu = 3.121 pt (UK)           |
+| Volume   | 1 pint (US)       | 0;325 cu                 | 1 cu = 3.748 pt (US)           |
+| Volume   | 1 gallon (UK)     | 2;691 cu                 | 1 cu = 0.3901 gal (UK)         |
+| Volume   | 1 gallon (US)     | 2;174 cu                 | 1 cu = 0.4685 gal (US)         |
+| Volume   | 1 cup (US)        | 0;1726 cu                | 1 cu = 7.496 cups (US)         |
+| Speed    | 1 mph             | 1;348 p/br               | 1 p/br = 0.7798 mph            |
+| Speed    | 1 knot            | 1;586 p/br               | 1 p/br = 0.6776 knot           |
+| Energy   | 1 Calorie (kcal)  | E2;E op                  | 1 tqop = 12.80 kcal            |
+| Energy   | 1 BTU             | 2X;05 op                 | 1 op = 0.02938 BTU             |
+| Power    | 1 horsepower      | 8;429 vg                 | 1 vg = 0.1197 hp               |
+| Pressure | 1 psi             | 0;4897 tqpr              | 1 tqpr = 2.535 psi             |
+
+- Inch → dig and foot → unc give the same digits (2;627), because both systems step by twelve there
+- The name links too: Latin *uncia* (a twelfth) is the root of both inch (1/12 foot) and ounce (1/12 Roman pound)
+
+### Fahrenheit
+
+°t = (°F - 32) × 0.8001 (decimal arithmetic, then convert) - so roughly **(°F - 32) × 4/5**.
+
+| °F    | °t     | Note |
+|-------|--------|------|
+| 0     | -21;7  | |
+| 32    | 0      | freezing |
+| 50    | 12;5   | |
+| 68    | 24;X   | room |
+| 98.6  | 45;3   | body |
+| 100   | 46;5   | |
+| 212   | 100    | boiling |
+| 350   | 192    | oven |
+
+## Log scales
+
+Levels and scales that are ratios, so they need no Paludal units.
+
+### Sound
 
 **Decided:** sound level uses the **vox** (symbol **vo**): a dozenal log scale, 10 vox (twelve steps) for every
 ×12 in sound power, zero at the threshold of hearing (same reference as dB). 1 vox ≈ 0.90 dB.
@@ -777,14 +1260,14 @@ headphone warnings), so converting is worth it. Name: Latin vox, voice; "son" re
 | Pain                        | 120    | E1        | E0        |
 | Jet at 30 m                 | 140    | 110       | 110       |
 
-# Earthquakes
+### Earthquakes
 
 **Decided:** keep the moment magnitude scale (Mw) unchanged, just written in dozenal digits: M 7.5 = **M 7;6**.
 
 **Why:** it's a log scale (no units needed), almost nobody does arithmetic with it, and every historical
 record uses it. A base-12 version would change values by only ~7% - not worth breaking the records.
 
-# Acidity (pH)
+### Acidity (pH)
 
 **Decided:** replace pH with an acidity scale where **0 is neutral, acids are positive and bases negative**.
 
@@ -839,410 +1322,11 @@ but that's not a serious clash. So
   acidity = Ka-acidity - log12(base/acid), where Ka-acidity = (7 - pKa) × 0;E15, a one-off conversion of old tables
 - Converting old pH readings needs the temperature, because neutral moves with it
 
-# Angle
+# Part 3: Background
 
-**Decided:** angles are measured in **turns**, written as dozenal fractions.
+Where the ideas came from, and what's still to decide.
 
-**Why:** it matches the clock: the chime hand turns once a day, so the time of day in days *is* the angle of
-the hand (0;1 turn = one chime on the dial). The common angles become round: right angle 0;3, 30° is 0;1,
-60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward
-(90° = 76°, 45° = 39°), because 360 is a decimal-era choice.
-
-| Turn   | Degrees (dec) | Note |
-|--------|---------------|------|
-| 1      | 360           | full turn |
-| 0;6    | 180           | half turn |
-| 0;3    | 90            | right angle |
-| 0;2    | 60            | |
-| 0;16   | 45            | |
-| 0;1    | 30            | one clock mark |
-| 0;01   | 2.5           | |
-| 0;001  | 0.208         | finest everyday step |
-
-- Compass bearings as three digits of a turn: 000 north, 300 east, 600 south, 900 west
-- Three digits act as "more degrees": 1000; steps per turn (1728 dec, 0.208° each), and every common angle
-  is a round whole number: right angle 300, 60° 200, 45° 160, 30° 100. A right angle of 1000; adds nothing
-  over this, since 4 already divides 100;.
-- 1 turn = 2π radians = 6;34941696 radians
-
-# Paper sizes
-
-**Decided:** a **P series**, made the same way as the A series: each size halves the one before, sides in
-the ratio 1 : √2, and **P0 = 1 square pace** (as A0 = 1 m²).
-
-**Why:** halving keeps the shape, which is why the A series works; only the starting size needs changing.
-P5 lands almost exactly between A4 and US Letter (its width is Letter's 8.5 in), so one sheet can replace both.
-
-| Size | mm (dec)      | Close to            |
-|------|---------------|---------------------|
-| P0   | 1221 × 1727   | A0 (841 × 1189), 2.11 m² |
-| P3   | 432 × 611     | A2 (420 × 594)      |
-| P4   | 305 × 432     | A3 (297 × 420)      |
-| P5   | 215.9 × 305   | A4 (210 × 297), Letter (215.9 × 279) |
-| P6   | 153 × 216     | A5 (148 × 210)      |
-| P7   | 108 × 153     | A6 postcard (105 × 148) |
-
-- Sides aren't round in uncs (P5 = 1;94 × 2;63 un), for the same reason A4 isn't round in mm: √2
-
-# Constants
-
-Physical constants in Paludal units (3-4 significant dozenal digits unless exact). "Exact" means fixed by
-definition; measured values carry the same uncertainty as in SI.
-
-## Defining constants (exact)
-
-| Constant | Paludal value | SI value (dec) |
-|---|---|---|
-| Caesium frequency Δν_Cs | 750E583273 per breath (750E58327;3 per blink) | 9 192 631 770 Hz |
-| Speed of light c | 2 × 10^7 p/bl (2 × 10^8 p/br) | 299 792 458 m/s |
-| Planck constant h | 2;13 × 10^-28 li·p²/bl | 6.626 070 15 × 10^-34 J s |
-| Elementary charge e | 1 × 10^-15 on | 1.602 176 634 × 10^-19 C |
-| Boltzmann constant k | 2;07 × 10^-1E op/tep | 1.380 649 × 10^-23 J/K |
-| Grex number | 1;15 × 10^1X per grex | 6.172 35 × 10^23 (Avogadro: 6.022 × 10^23) |
-| Luminous efficacy K_cd | ≈ 2E357 lam·sr/vg (fixed through SI) | 683 lm/W |
-
-## Derived from them (also exact)
-
-| Constant | Paludal value | SI value (dec) |
-|---|---|---|
-| Reduced Planck ħ = h/2π | 4;028 × 10^-29 li·p²/bl | 1.054 572 × 10^-34 J s |
-| Gas constant R = k × grex number | 0;2359X op/(tep·gx) | 8.314 J/(mol K) |
-| Faraday constant F = e × grex number | **1;15 × 10^5 on/gx** | 96 485 C/mol |
-| Stefan-Boltzmann σ | 1;735 × 10^-9 vg/(p²·tep⁴) | 5.670 × 10^-8 W/(m² K⁴) |
-
-## Measured
-
-| Constant | Paludal value | SI value (dec) |
-|---|---|---|
-| Gravitational constant G | 3;558 × 10^-E p³/(li·bl²) | 6.674 × 10^-11 m³/(kg s²) |
-| Electron mass | X;21 × 10^-25 li | 9.109 × 10^-31 kg |
-| Proton mass | X;986 × 10^-22 li | 1.673 × 10^-27 kg |
-| Fine-structure constant α (no units) | 1 / E5;0523 | 1 / 137.036 |
-
-## Earth and everyday
-
-| Value | Paludal | SI (dec) |
-|---|---|---|
-| Standard gravity g (conventional, exact) | 0;9926 p/bl² (99;26 p/br²) | 9.806 65 m/s² |
-| Standard atmosphere | 5;969 tqpr | 101 325 Pa |
-| Absolute zero | -289;485 °t | -273.15 °C |
-| Water freezes / boils (sea level) | 0 °t / ≈ EE;E9 °t | 0 °C / 99.974 °C |
-| Water density | 1;002 li/cu at 4 °C, 0;EEX at 20 °C | 999.97 / 998.2 kg/m³ |
-| Speed of sound (20 °C) | ≈ 6X p/bl | 343 m/s |
-| Day | 10^5 bl = 10^4 br (exact) | 86 400 s |
-| Tropical year | 265;2XX days | 365.2422 days |
-| Earth radius (mean) | 1576 it | 6371 km |
-| Earth-Moon distance | 7;476 × 10^4 it | 384 400 km |
-| Astronomical unit (Earth-Sun, exact) | 1;7E63 × 10^X p = 1;7E63 × 10^7 it | 149 597 870 700 m |
-| Light from the Sun to Earth | 9E;9 br ≈ X moments | 499.0 s (8 min 19 s) |
-| Light from the Moon to Earth | 3;84 bl ≈ 1;3 be | 1.282 s |
-| Light-year | 5;0X6 × 10^12 p | 9.461 × 10^15 m |
-
-## Pure numbers (the same in any base, dozenal digits)
-
-| Number | Dozenal | Decimal |
-|---|---|---|
-| π | 3;184809493E91 | 3.14159265358979 |
-| 2π (radians in a turn) | 6;34941696 | 6.28318531 |
-| e | 2;875236069821 | 2.71828182846 |
-| √2 (paper ratio) | 1;4E79170X07E8 | 1.41421356237 |
-| φ (golden ratio) | 1;74EE6772802X | 1.61803398875 |
-
-- The Faraday constant comes out round because both e and the grex number are round
-- g isn't round: c is, and only one of them can be (see Gravity)
-
-# Everyday reference
-
-What things come to in the new units (3 significant digits). **Round** is the nearest round dozenal value
-(whole, half, third or quarter, within 3%) - what a product, limit or setting would probably become.
-Left blank for natural values (body temperature, speed of sound) and where the value is already round.
-**US** gives the size in US customary units, for things measured that way in the US. Prefixes are used where the plain unit
-gives awkward numbers: tc ÷1000, bc ÷100, uc ÷10, tq ×1000.
-
-- tcli (1/1000 lib) ≈ 1.03 g and tccu (1 dig³) ≈ 1.03 mL - the new gram and millilitre
-- it (iter, 1000 paces = tqp) ≈ 2.51 km; tqop (1000 opus) ≈ 53.6 kJ; tqpr (1000 pres) ≈ 17.5 kPa
-
-## Length
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Credit card (long side) | 85.6 mm | 3.37 in | 8;5X di | 8;6 di |
-| Pencil-case ruler | 15-20 cm | 6 in | 0;12X-0;17X p | 0;2 p (a span, 24.2 cm) |
-| Desk ruler | 30 cm | 12 in | 0;258 p | 0;3 p (36.3 cm) |
-| A4 page (long side) | 297 mm |  | 2;55 un | 2;6 un |
-| Adult height | 1.70 m | 5 ft 7 in | 1;21 p | 1;2 p |
-| Tall person (6 ft) | 1.83 m | 6 ft | 1;31 p | 1;3 p |
-| Door height | 2.04 m | 6 ft 8 in | 1;4X p | 1;5 p |
-| Car length | 4.5 m | 15 ft | 3;12 p | 3;1 p |
-| Cricket pitch | 20.12 m | 22 yd | 11;X p | (keeps 22 yd) |
-| Olympic pool | 50 m | 164 ft | 2X;5 p | 30 p |
-| 1 km | 1 km | 0.62 mi | 494 p |  |
-| Marathon | 42.195 km | 26.2 mi | 14;99 it | (keeps 42.195 km) |
-| Sydney–Melbourne (straight line) | 713 km | 443 mi | 1E8 it |  |
-| Letter page (long side) | 279 mm | 11 in | 2;38 un | 2;4 un (P5 replaces Letter and A4) |
-| Ceiling height | 2.44 m | 8 ft | 1;82 p | 1;8 p |
-| Football field (US) | 91.4 m | 100 yd | 52;E p | (keeps 100 yd) |
-| Mile | 1.61 km | 1 mi | 0;784 it |  |
-
-## Races and sport
-
-Exact conversions, and the round distance that would likely replace each one (rounded, not converted -
-see Speed). Traditional distances tied to history (marathon, cricket pitch) keep their length.
-
-| Distance now       | Exact            | Likely new distance | That is   |
-|--------------------|------------------|---------------------|-----------|
-| 25 m pool          | 15;3 p           | 16 p                | 26.1 m    |
-| 50 m pool          | 2X;5 p           | 30 p                | 52.3 m    |
-| 100 m sprint       | 58;X p           | 60 p                | 104.6 m   |
-| 200 m              | E5;8 p           | 100 p               | 209.2 m   |
-| 400 m (1 lap)      | 1XE;5 p          | 200 p (1 lap)       | 418.3 m   |
-| 800 m              | 39X;9 p          | 400 p               | 836.7 m   |
-| 1500 m / mile      | 720;8 p / 783;E p | 700 p              | 1464 m    |
-| 5 km (parkrun)     | 1;EX it         | 2 it               | 5.02 km   |
-| 10 km              | 3;EX it         | 4 it               | 10.04 km  |
-| Half marathon      | 8;4X it         | keeps 21.1 km       |           |
-| Marathon           | 14;99 it        | keeps 42.195 km     |           |
-| Cricket pitch      | 11;X p           | keeps 22 yd         |           |
-
-- The 100 m becomes the **60-pace sprint**; the 5 km and 10 km land almost exactly on 2 and 4 iters
-
-## Mass
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Egg | 60 g | 2.1 oz | 4X;6 tcli | 50 tcli |
-| Apple | 150 g | 5.3 oz | 102 tcli | 100 tcli |
-| 1 L of water | 1 kg | 2.2 lb | 0;693 li |  |
-| Newborn baby | 3.5 kg | 7.7 lb | 1;E9 li | 2 li |
-| Checked-in bag limit | 23 kg | 50 lb | 11 li |  |
-| Adult | 75 kg | 165 lb | 36;4 li | 36 li |
-| Small car | 1300 kg | 2900 lb | 512 li | 500 li |
-| Stick of butter | 113 g | 4 oz | 92;7 tcli | 90 tcli |
-| Pack of ground beef | 454 g | 1 lb | 0;30X li | 0;3 li |
-| Bag of flour | 2.27 kg | 5 lb | 1;34 li | 1;3 li |
-| Turkey | 6.8 kg | 15 lb | 3;X1 li |  |
-
-## Temperature
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Freezer | -18 °C | 0 °F | -21;E °t | -22 °t |
-| Fridge | 4 °C | 39 °F | 5;92 °t | 5;8 °t |
-| Cool day | 15 °C | 59 °F | 19;7 °t | 1X °t |
-| Room | 21 °C | 70 °F | 26;3 °t | 26 °t |
-| Warm day | 30 °C | 86 °F | 37;2 °t | 36 °t |
-| Body | 37 °C | 98.6 °F | 45;3 °t |  |
-| Heatwave | 45 °C | 113 °F | 54;X °t | 56 °t |
-| Boiling water | 100 °C | 212 °F | 100 °t |  |
-| Oven (moderate) | 180 °C | 350 °F | 197 °t | 1X0 °t |
-
-## Volume
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Teaspoon | 5 mL | 1 tsp | 4;X6 tccu | 5 tccu |
-| Cup | 250 mL | 1 cup (237 mL) | 184 tccu | 180 tccu |
-| Can of drink (AU) | 375 mL |  | 265 tccu | 260 tccu |
-| Wine bottle | 750 mL | 25.4 fl oz | 0;50E cu | 0;5 cu |
-| Milk bottle (AU) | 2 L |  | 1;16 cu | 1;2 cu |
-| Bucket | 10 L | 2.6 gal | 5;78 cu | 5;6 cu |
-| Car fuel tank | 50 L | 13 gal | 24;2 cu | 24 cu |
-| Bath | 150 L | 40 gal | 70;7 cu | 70 cu |
-| Soda can (US) | 355 mL | 12 fl oz | 24X tccu | 250 tccu |
-| Pint glass (US) | 473 mL | 16 fl oz | 325 tccu | 320 tccu |
-| Quart | 946 mL | 1 qt | 0;64X cu |  |
-| Gallon of milk or gas | 3.79 L | 1 gal | 2;17 cu | 2;2 cu |
-| Bucket (US) | 18.9 L | 5 gal | X;81 cu | X;9 cu |
-
-## Time
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Heartbeat | 0.8 s |  | 0;93 be |  |
-| Minute | 60 s |  | 1;25 mt |  |
-| Hour | 60 min |  | 0;6 ch (60 mt) |  |
-| Feature film | 2 h |  | 1 ch |  |
-| Short meeting, lunch break | 30 min |  | 0;3 ch (30 mt) |  |
-| Lesson, meeting | 45 min |  | 0;46 ch (46 mt) | 0;4 ch (40 min) or 0;5 ch (50 min) |
-| Long meeting, lecture | 60 min |  | 0;6 ch (60 mt) |  |
-| School day | 9:00-15:00 (6 h) |  | 4;60-7;60 (3 ch) |  |
-| Working day | 9:00-17:00 (8 h) |  | 4;60-8;60 (4 ch) |  |
-| Working week (AU) | 38 h |  | 17 ch |  |
-| Working week (US) | 40 h | 40 h | 18 ch |  |
-| Night's sleep | 8 h |  | 4 ch |  |
-| School year | about 200 days |  | about 148 days |  |
-| Year | 365.2422 days |  | 265;2XX days |  |
-| School starting age | 5 years |  | 5 years |  |
-| Adult (voting, driving) | 18 years |  | 16 years |  |
-| Coming of age (21st birthday), US drinking age | 21 years | 21 years | 19 years |  |
-| Retirement age (Australia, US) | 67 years | 67 years | 57 years |  |
-| Average lifetime (world) | 73 years, about 26 700 days |  | 61 years, about 13 520 days |  |
-| Average lifetime (Australia) | 83 years |  | 6E years |  |
-| Century | 100 years |  | 84 years | a gro of years (100) is 144 (dec) |
-
-## Speed
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Walking | 5 km/h | 3 mph | 3;EX p/br | 4 p/br |
-| Cycling | 20 km/h | 12 mph | 13;E p/br | 14 p/br |
-| School zone | 40 km/h | 25 mph | 27;X p/br | 28 p/br |
-| Town | 50 km/h | 30 mph | 33;X p/br | 34 p/br |
-| Motorway | 110 km/h | 70 mph | 73;8 p/br | 74 p/br |
-| Airliner | 900 km/h | 560 mph | 4E9 p/br | 500 p/br |
-| Sound | 343 m/s | 767 mph | 6X p/bl |  |
-| Residential street (US) | 40 km/h | 25 mph | 28;1 p/br | 28 p/br |
-| Freeway (US) | 105 km/h | 65 mph | 6E;4 p/br | 70 p/br |
-
-## Energy
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Apple (food energy) | 400 kJ | 95 Cal | 7;57 tqop | 7;6 tqop |
-| Daily food intake | 8700 kJ | 2100 Cal | 116 tqop | 120 tqop |
-| Phone battery | 15 Wh | 15 Wh | 1;01 tqop | 1 tqop |
-| 1 kWh | 3.6 MJ | 1 kWh | 57;2 tqop | 56 tqop |
-| Daily value (US food labels) | 8.37 MJ | 2000 Cal | 110 tqop |  |
-| Gallon of gasoline | 121 MJ | 33.7 kWh | 1390 tqop | 1400 tqop |
-
-## Power
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| LED bulb | 10 W | 10 W | 1;42 ucvg | 1;4 ucvg |
-| Person at rest | 100 W | 100 W | 1;15 vg |  |
-| Kettle | 2400 W |  | 22;E vg | 23 vg |
-| Small car engine | 100 kW | 134 hp | 794 vg | 800 vg |
-| Space heater, US kettle | 1500 W | 1500 W | 14;X vg | 15 vg |
-
-## Pressure
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Atmosphere | 101.3 kPa | 14.7 psi | 5;97 tqpr |  |
-| Car tyre (gauge) | 220 kPa | 32 psi | 10;7 tqpr | 11 tqpr |
-| Car tyre (US) | 241 kPa | 35 psi | 11;X tqpr | 12 tqpr |
-
-## Voltage
-
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| AA battery | 1.5 V | 1.5 V | 2;59 bcim | 2;6 bcim |
-| USB | 5 V | 5 V | 8;31 bcim | 8;6 bcim |
-| Car battery | 12 V | 12 V | 17;X bcim | 18 bcim |
-| Mains (AU) | 230 V |  | 2;78 im | 2;8 im |
-| Mains (US) | 120 V | 120 V | 1;46 im | 1;5 im |
-
-Notes:
-- Temperatures, heights, speeds and voltages come out in comfortable numbers
-- Energy and pressure need the tq prefix for everyday sizes (opus and pres are small); food labels in tqop
-- A feature film is 1 chime; a working day and a night's sleep are 4 chimes each
-
-# Imperial conversions
-
-Both directions. Dozenal-side values are dozenal; imperial-side values are decimal (as imperial is used now).
-UK and US units differ for volume and tons.
-
-| Quantity | Imperial          | = dozenal units          | Dozenal unit = imperial (dec)  |
-|----------|-------------------|--------------------------|--------------------------------|
-| Length   | 1 inch            | 2;627 di                 | 1 di = 0.3971 in               |
-| Length   | 1 foot            | 2;627 un                 | 1 un = 0.3971 ft (4.765 in)    |
-| Length   | 1 yard            | 0;767X p                 | 1 p = 1.589 yd (4.765 ft)      |
-| Length   | 1 mile            | 783;E p (0;784 it)      | 1 it = 1.560 mi               |
-| Length   | 1 nautical mile   | 8X3 p                    | 1 it = 1.355 nmi              |
-| Length   | 1 furlong         | E6;6 p                   | 1 it = 12.48 furlongs          |
-| Area     | 1 square foot     | 6;41 un²                 | 1 un² = 0.1577 sq ft           |
-| Area     | 1 acre            | 1;13X ag                 | 1 ag = 0.9009 acre             |
-| Mass     | 1 ounce           | 2;37X bcli               | 1 bcli = 0.4339 oz             |
-| Mass     | 1 pound           | 0;30X6 li                | 1 li = 3.905 lb                |
-| Mass     | 1 stone           | 3;703 li                 | 1 li = 0.2790 st               |
-| Mass     | 1 ton (UK long)   | 3E9;7 li                 |                                |
-| Mass     | 1 ton (US short)  | 368;1 li                 |                                |
-| Volume   | 1 fl oz (UK)      | 23;82 tccu               | 1 tccu = 0.03612 fl oz (UK)    |
-| Volume   | 1 fl oz (US)      | 24;99 tccu               | 1 tccu = 0.03471 fl oz (US)    |
-| Volume   | 1 pint (UK)       | 0;3X18 cu                | 1 cu = 3.121 pt (UK)           |
-| Volume   | 1 pint (US)       | 0;325 cu                 | 1 cu = 3.748 pt (US)           |
-| Volume   | 1 gallon (UK)     | 2;691 cu                 | 1 cu = 0.3901 gal (UK)         |
-| Volume   | 1 gallon (US)     | 2;174 cu                 | 1 cu = 0.4685 gal (US)         |
-| Volume   | 1 cup (US)        | 0;1726 cu                | 1 cu = 7.496 cups (US)         |
-| Speed    | 1 mph             | 1;348 p/br               | 1 p/br = 0.7798 mph            |
-| Speed    | 1 knot            | 1;586 p/br               | 1 p/br = 0.6776 knot           |
-| Energy   | 1 Calorie (kcal)  | E2;E op                  | 1 tqop = 12.80 kcal            |
-| Energy   | 1 BTU             | 2X;05 op                 | 1 op = 0.02938 BTU             |
-| Power    | 1 horsepower      | 8;429 vg                 | 1 vg = 0.1197 hp               |
-| Pressure | 1 psi             | 0;4897 tqpr              | 1 tqpr = 2.535 psi             |
-
-- Inch → dig and foot → unc give the same digits (2;627), because both systems step by twelve there
-- The name links too: Latin *uncia* (a twelfth) is the root of both inch (1/12 foot) and ounce (1/12 Roman pound)
-
-## Fahrenheit
-
-°t = (°F - 32) × 0.8001 (decimal arithmetic, then convert) - so roughly **(°F - 32) × 4/5**.
-
-| °F    | °t     | Note |
-|-------|--------|------|
-| 0     | -21;7  | |
-| 32    | 0      | freezing |
-| 50    | 12;5   | |
-| 68    | 24;X   | room |
-| 98.6  | 45;3   | body |
-| 100   | 46;5   | |
-| 212   | 100    | boiling |
-| 350   | 192    | oven |
-
-# Names
-
-**Decided:** short names (3-4 letters preferred), Latin roots where possible, no clash with existing everyday
-words or units, and no object or container names.
-
-**Why:** short names are quick to say and write; Latin roots echo older measures (pace, uncia, libra) and work
-across languages; clashes cause confusion when both systems are in use.
-
-| Quantity               | Name  | Symbol | Size (SI)           | Named after                                       | English relatives            |
-|------------------------|-------|--------|---------------------|---------------------------------------------------|------------------------------|
-| Time (base)            | blink | bl     | 0.3472 s            | English: the blink of an eye                      |                              |
-| Time (≈ second)        | beat  | be     | 1.0417 s            | English: a heartbeat                              |                              |
-| Time (clock)           | breath | br    | 4.1667 s            | English: one breath                               |                              |
-| Time (dozenal hour)    | chime | ch     | 2 h exactly         | English: clocks chime on the hour                 |                              |
-| Time (dozenal minute)  | moment | mt    | 50 s exactly        | Latin momentum, movement; medieval moment = 90 s  | moment, momentum             |
-| Length (base)          | pace  | p      | 1.4525 m            | Latin passus, a pace (Roman pace ≈ 1.48 m)        | pace, passage                |
-| 1/10 pace              | unc   | un     | ≈ 12.1 cm           | Latin uncia, a twelfth                            | inch, ounce                  |
-| 1/100 pace             | dig   | di     | ≈ 1.01 cm           | Latin digitus, finger (Roman digit ≈ 1.85 cm)     | digit                        |
-| 1000 paces (distance)  | iter  | it     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
-| Mass                   | lib   | li     | ≈ 1.7714 kg         | Latin libra, pound; also scales (Roman pound)     | lb (pound), Libra            |
-| Volume (unc cube)      | cub   | cu     | 1.7736 L            | Latin cubus, cube                                 | cube, cubic                  |
-| Temperature            | tep   | °t     | 0.694 K/°C          | Latin tepor, warmth                               | tepid                        |
-| Force                  | vis   | vi     | ≈ 21.3 N            | Latin vis, force, strength                        | vim                          |
-| Energy                 | opus  | op     | ≈ 31.0 J            | Latin opus, work                                  | opus, operate                |
-| Power                  | vig   | vg     | ≈ 89.3 W            | Latin vigor, liveliness, energy                   | vigour, vigorous             |
-| Pressure               | pres  | pr     | ≈ 10.1 Pa           | Latin pressus, pressed                            | press, pressure              |
-| Current                | riv   | ri     | ≈ 1.024 A           | Latin rivus, a stream                             | rivulet, derive              |
-| Charge                 | onus  | on     | ≈ 0.3555 C          | Latin onus, load, burden                          | onus, onerous                |
-| Voltage                | imp   | im     | ≈ 87.21 V           | Latin impetus, push, rush                         | impetus, impetuous           |
-| Amount of substance    | grex  | gx     | 6.17 × 10^23 things | Latin grex, flock, herd                           | gregarious, congregate       |
-| Luminous intensity     | lam   | la     | 1 cd                | Latin lampas, lamp, torch                         | lamp                         |
-| Sound level            | vox   | vo     | ≈ 0.90 dB per vox   | Latin vox, voice                                  | voice, vocal                 |
-
-- Rejected: heft, jug (object names), pond (sounds like a lake), mass/vol (clash with quantity names / "% vol"),
-  hand (clashes with horse hand 10.16 cm), nail, inc (too close to "inch"), lux/lum (existing SI units),
-  cal (calorie), pot (container), erg (CGS unit), grad (gradian), mol (mole)
-
-# Prefixes
-
-**Decided:** use SDN (Systematic Dozenal Nomenclature, Dozenal Society of America).
-
-**Why:** it's an existing standard, it's systematic (prefixes are built from digit names, not memorised), and it extends to any power. Roots for X and E were changed to dek / el to match the spoken digits.
-
-Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 enn, X dek, E el
-(SDN's own roots for X and E are dec and lev; changed to match the spoken digit names)
-
-- multiply by 10^n: root(s) + **-qua**  (unqua- ×10, biqua- ×100, triqua- ×1000, ... unnilqua- ×10^10)
-- divide by 10^n:   root(s) + **-cia**  (uncia- ÷10, bicia- ÷100, tricia- ÷1000, ...)
-- uncia = Latin "a twelfth" (origin of inch and ounce)
-- Common sizes also get short everyday names (unc = uncia-pace, dig = bicia-pace)
-- Prefix symbols: see Symbols
-
-# Prior art
+## Prior art
 
 - **TGM** (Tom Pendlebury): Tim = 1/10^4 hour ≈ 0.1736 s (= half a blink exactly), Grafut ≈ 29.6 cm (from gravity),
   Maz ≈ 25.8 kg (water cube). Earth-based (hour + gravity), so less rigorous than this system;
@@ -1251,7 +1335,7 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
 - **Primel** metrology: base time 1/10^6 day (= 0;01 breath), length unit ≈ 8.2 mm, uses an SDN variant.
 - **Do-Gro-Mo** (early DSA): do = 12, gro = 144, mo = 1728 (dec). Adopted for spoken numbers, extended with bimo / trimo.
 
-# Open items / next steps
+## Open items / next steps
 
 - Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)
 - Give short names to a few everyday multiples (food energy tqop, pressure tqpr) instead of changing the
@@ -1260,20 +1344,14 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
 - A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)
 - Standard sizes: food energy labels (opus), clothing sizes; shoe sizes in digs (proposed, see Shoe sizes)
 - Review existing dozenal clock designs (https://clocks.dozenal.ca)
-- Optional: rescale lam for a round K_cd
-- Month names clash: Sept / Oct already mean September / October, so "3 Oct" is ambiguous. Revisit the
-  calendar as its own project: keep Gregorian (with new month names or numbers only) or change it radically
-- Name for 0;4 p (≈ 48 cm): cubit (Latin cubitum, elbow - elbow to fingertip) is liked, but its symbol would
-  be "cu", which is the cub. Alternative: ulna (Latin for forearm, and the forearm bone; the old ell measure
-  came from it), symbol "ul"
 - Name for 0;1 dig (≈ 0.84 mm, the new millimetre): **lin**, from Latin linea (a linen thread, a line); the
   old line was 1/12 inch, and watch and button sizes still use the French ligne. Needs a symbol exception:
   "li" is the lib
 - Cooking measures: teaspoon 0;004 cu, tablespoon 0;01 cu (= 3 tsp), cup 0;2 cu (= 20 tbsp), proposed
 - Same-name units within a few percent: say "paludal cup" in full where ambiguous (like UK pint / US
   pint), rather than a subscript p you can't hear
-- Rulers: the pencil-case 0;2 p and desk 0;3 p are in Everyday reference. Still open: board ruler (0;4 p if
-  the ulna is adopted, or 0;6 p) and the metre stick's replacement (1 p?)
+- Rulers: the pencil-case 0;2 p and desk 0;3 p are in Everyday reference. Still open: board ruler (an ulna,
+  0;4 p, or 0;6 p) and the metre stick's replacement (1 p?)
 - Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;
   60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec),
   frequency units, and note lengths
@@ -1285,3 +1363,9 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
   numbers group in threes (bimo = 10^6).
 - The wink (half a blink) was removed as too fast to be useful, though it equals TGM's Tim exactly. Check
   whether to reinstate it
+- Missing coherent units, to be named: frequency (per blink, 2.88 Hz; concert A = 108;9 per blink),
+  resistance (imp/riv, 85.2 Ω), capacitance (onus/imp, 4.08 mF), inductance (imp·blink/riv, 29.6 H),
+  magnetic flux (imp·blink, 30.3 Wb), flux density (flux/pace², 14.4 T), absorbed dose (opus/lib, 17.5 Gy)
+- Money: a name for the 1/100; part of a dollar (see Money)
+- A speed unit for ships and aircraft, to replace the knot (see the navis in Length)
+- Drug doses: how they're written (medicine keeps mg for now)
