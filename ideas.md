@@ -152,6 +152,7 @@ its first and last letters (os) would be the onus, and "op" isn't a common word 
 | ulna   | ul     | length |
 | iter   | ir     | length |
 | navis  | na     | length (sea and air) |
+| parax  | px     | length (stars) |
 | lib    | li     | mass |
 | cub    | cu     | volume |
 | ager   | ag     | area |
@@ -334,6 +335,7 @@ remember. The rule used to say "no clash with existing everyday words", which co
 | 0;4 pace               | ulna  | ul     | ≈ 48.4 cm           | Latin ulna, forearm (elbow to fingertip)          | ell                          |
 | 1,000 paces (distance)  | iter  | ir     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
 | 930 paces (sea, air)   | navis | na     | ≈ 1.935 km          | Latin navis, ship                                 | navy, navigate               |
+| Star distances         | parax | px     | 2.30 pc, 7.5 ly     | Greek parallaxis, parallax (as parsec)            | parallax                     |
 | Area                   | ager  | ag     | ≈ 3,646 m²          | Latin ager, field                                 | agriculture                  |
 | Mass                   | lib   | li     | ≈ 1.7714 kg         | Latin libra, pound; also scales (Roman pound)     | lb (pound), Libra            |
 | Volume (unc cube)      | cub   | cu     | 1.7736 L            | Latin cubus, cube                                 | cube, cubic                  |
@@ -536,8 +538,8 @@ Imperial comparisons:
 
 ### Star distances
 
-**Decided:** a dozenal **parsec**: the distance at which the Earth's orbit (1 AU, the Earth-Sun distance)
-spans **0;000001 turn** (1/2,985,984 dec of a turn, 0.434 arcseconds). Name still to be decided.
+**Decided:** the **parax** (symbol **px**), a dozenal parsec: the distance at which the Earth's orbit (1 AU, the Earth-Sun distance)
+spans **0;000001 turn** (1/2,985,984 dec of a turn, 0.434 arcseconds).
 
 **Why:** star distances come out as handy numbers - the nearest star is just under 1 (0;694), the centre of
 the Milky Way about 2,000 - and the distance is simply 1 over the parallax in millionths of a turn.
@@ -547,12 +549,12 @@ The parsec is the same idea in degrees: the distance at which 1 AU spans 1 arcse
 so a star's distance follows straight from its parallax, the yearly shift in its position seen from either
 side of the Earth's orbit. The parsec is exact in SI (648,000/π AU), and this would be too:
 
-- 1 unit = 1,000,000 / 2π AU = 1X,E02;14 AU (475,234 dec) = 3;2155 × 10^13 p
+- 1 parax = 1,000,000 / 2π AU = 1X,E02;14 AU (475,234 dec) = 3;2155 × 10^13 p
 - = 2.304 parsecs = 7.515 light-years (dec)
-- Parallax in millionths of a turn gives the distance directly: a star that shifts 0;000004 turn is 0;3 units away
+- Parallax in millionths of a turn gives the distance directly: a star that shifts 0;000004 turn is 0;3 px away
 - 0;00001 turn (5.2 arcseconds) would give 0.192 parsecs
 
-| Object | Parsecs (dec) | New unit |
+| Object | Parsecs (dec) | Parax |
 |---|---|---|
 | Proxima Centauri (nearest star) | 1.30 | 0;694 |
 | Sirius | 2.64 | 1;19 |
@@ -560,11 +562,12 @@ side of the Earth's orbit. The parsec is exact in SI (648,000/π AU), and this w
 | Centre of the Milky Way | 8,180 | 2,079 |
 | Andromeda galaxy | 765,000 | 140,193 |
 
-- Name candidates (none clash with an SI or imperial symbol, but each has a catch):
-  - **parax** (from parallax, as parsec is from parallax-second): symbol **px**, since "pa" is the pascal; px is
-    also the screen pixel
-  - **sidus** (Latin, a star): symbol **sd** (first and last), since "si" reads as SI; five letters
-  - **caelum** (Latin, the sky): too long, and "ca" reads as circa
+**Decided:** the name **parax**, symbol **px**.
+
+**Why:** it's named after parallax, the way the parsec (parallax-second) is, so astronomers will recognise
+it. Greek rather than Latin (*parallaxis*), and five letters, but the link to parallax is worth more than
+the rules. Symbol: "pa" is the pascal, so first and last letters; px is also the screen pixel, which isn't
+an SI or imperial unit. Rejected: sidus (Latin, a star; "si" reads as SI), caelum (Latin, the sky; too long).
 
 ## Mass
 
@@ -1458,7 +1461,6 @@ Where the ideas came from, and what's still to decide.
 - Money: a name for the 1/100; part of a dollar (see Money)
 - A speed unit for ships and aircraft, to replace the knot (see the navis in Length)
 - Drug doses: how they're written (medicine keeps mg for now)
-- Dozenal parsec: choose a name (see Star distances in Length)
 - Rename the iter? It looks and sounds close to litre, and the US spelling **liter** is "l" + "iter", which will
   confuse things like fuel economy ("iters per liter"). Candidate: **lapis** (Latin, a stone: Roman milestones
   stood every 1,000 paces, and distances were given as "at the third stone"), so the meaning matches the size

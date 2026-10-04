@@ -11,7 +11,7 @@ OUT = HERE / "index.html"
 
 UNITS = {
     "bl": "blink", "bt": "beat", "br": "breath", "ch": "chime", "mt": "moment",
-    "p": "pace", "un": "unc", "di": "dig", "sp": "span", "ul": "ulna", "ir": "iter", "na": "navis",
+    "p": "pace", "un": "unc", "di": "dig", "sp": "span", "ul": "ulna", "ir": "iter", "na": "navis", "px": "parax",
     "li": "lib", "cu": "cub", "te": "tep",
     "vi": "vis", "op": "opus", "vg": "vig", "pr": "pres", "ri": "riv", "os": "onus",
     "im": "imp", "gx": "grex", "la": "lam", "vo": "vox", "ag": "ager", "tu": "turn",
