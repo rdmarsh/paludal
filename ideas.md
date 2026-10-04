@@ -1114,7 +1114,7 @@ gives awkward numbers: tc ÷1,000, bc ÷100, uc ÷10, tq ×1,000.
 | Stud spacing (wide) | 600 mm | 24 in | 0;4E6 p | 0;5 p (605 mm) |
 | Stud spacing (close) | 450 mm | 16 in | 0;387 p |  |
 | Football field (US) | 91.4 m | 100 yd | 52;E p | (keeps 100 yd) |
-| Mile | 1.61 km | 1 mi | 0;784 ir |  |
+| Mile | 1.61 km | 1 mi | 0;784 ir (783;E p) | 780 p (1.60 km) |
 
 ### Races and sport
 
