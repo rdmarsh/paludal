@@ -1226,6 +1226,34 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 | Residential street (US) | 40 km/h | 25 mph | 28;1 p/br | 28 p/br |
 | Freeway (US) | 105 km/h | 65 mph | 6E;4 p/br | 70 p/br |
 
+### Fuel use
+
+**Proposed (not decided):** fuel use in **cubs per 100 iters** (cu/100 ir, per 361 km dec), the way
+Australia and Europe use L/100 km. 100 iters is a similar trip length, and the numbers stay whole-ish.
+Rule of thumb: the value is about **double** the L/100 km figure (×2.04 dec). The alternative, iters per
+cub (ir/cu, like mpg or km/L), is in the last column; there a bigger number is better.
+
+| L/100 km (dec) | US mpg (dec) | cu/100 ir | ir/cu | Like |
+|---|---|---|---|---|
+| 4  | 58.8 | 8;2  | 15;8 | hybrid |
+| 5  | 47.0 | X;2  | 12;2 | small car, highway |
+| 6  | 39.2 | 10;3 | E;9  | small car |
+| 7  | 33.6 | 12;3 | X;1  | mid-size car |
+| 8  | 29.4 | 14;4 | 8;X  | family car |
+| 10 | 23.5 | 18;5 | 7;1  | large car, SUV |
+| 12 | 19.6 | 20;5 | 5;E  | ute, 4WD |
+| 15 | 15.7 | 26;7 | 4;9  | large 4WD, towing |
+| 20 | 11.8 | 34;9 | 3;7  | truck, city driving |
+
+Electric cars, in tqop per iter (the energy to drive one iter):
+
+| kWh/100 km (dec) | tqop/ir | Like |
+|---|---|---|
+| 12 | 1X;3 | small EV |
+| 15 | 21;4 | typical EV |
+| 18 | 26;4 | large EV |
+| 20 | 29;9 | EV SUV |
+
 ### Energy
 
 | Thing | SI | US | Dozenal | Round |
