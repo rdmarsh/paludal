@@ -110,8 +110,7 @@ func drawFace(rows int, n int64) string {
 	const blinksPerMoment = blinksPerChime / 144
 	chime := float64(n) / blinksPerDay                   // whole day
 	moment := float64(n%blinksPerChime) / blinksPerChime // sweeps smoothly
-	beat := (n % blinksPerMoment) / 3 * 3                // steps once per beat
-	breath := float64(beat) / blinksPerMoment
+	breath := float64(n%blinksPerMoment/12) / 12         // steps once per breath, onto a mark
 
 	c.line(breath, 0, r-1, colBreath)
 	c.line(moment, 0, r*0.85, colMoment)

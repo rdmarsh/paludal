@@ -106,6 +106,21 @@ def parse(md):
             i += 1
             continue
         cur = stack[-1]
+        if line.startswith("```"):
+            lang, src = line[3:].strip(), []
+            i += 1
+            while i < len(lines) and not lines[i].startswith("```"):
+                src.append(lines[i])
+                i += 1
+            i += 1
+            src = html.escape("\n".join(src), quote=False)
+            if lang == "mermaid":
+                cur["blocks"].append(("diagram", f'<pre class="mermaid">{src}</pre>'))
+                for s in stack:
+                    s["has_table"] = True
+            else:
+                cur["blocks"].append(("code", f"<pre><code>{src}</code></pre>"))
+            continue
         if line.lstrip().startswith("|"):
             rows = []
             while i < len(lines) and lines[i].lstrip().startswith("|"):
@@ -129,7 +144,7 @@ def parse(md):
             continue
         if line.strip():
             para = []
-            while i < len(lines) and lines[i].strip() and not re.match(r"^(#|\s*[-*]\s|\d+\.\s|\s*\|)", lines[i]):
+            while i < len(lines) and lines[i].strip() and not re.match(r"^(#|```|\s*[-*]\s|\d+\.\s|\s*\|)", lines[i]):
                 para.append(lines[i].strip())
                 i += 1
             text = " ".join(para)
@@ -222,6 +237,8 @@ a { color: var(--accent); }
 abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
 .intro { color: var(--muted); }
 .table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
 table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
 th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
 th { background: var(--panel); font-weight: 600; }
@@ -263,6 +280,21 @@ box.addEventListener("change", () => {
   apply();
   try { localStorage.setItem("tables-only", box.checked ? "1" : "0"); } catch (e) {}
 });
+</script>
+<script type="module">
+// Diagrams: mermaid needs plain colours, so read them from the page's tokens (light or dark).
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+const css = getComputedStyle(document.documentElement), v = name => css.getPropertyValue(name).trim();
+mermaid.initialize({
+  startOnLoad: false, theme: "base",
+  themeVariables: {
+    background: v("--bg"), primaryColor: v("--panel"), primaryTextColor: v("--fg"),
+    primaryBorderColor: v("--accent"), lineColor: v("--muted"), textColor: v("--fg"),
+    secondaryColor: v("--row"), tertiaryColor: v("--bg"), clusterBkg: v("--row"), clusterBorder: v("--line"),
+    edgeLabelBackground: v("--bg"), fontFamily: getComputedStyle(document.body).fontFamily, fontSize: "14px",
+  },
+});
+await mermaid.run();
 </script>
 </body>
 </html>

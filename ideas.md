@@ -1,6 +1,12 @@
 # The Paludal system
 
-Ideas for a dozenal based system similar to metric or to replace SI units with.
+Paludal is a dozenal (base-12) system of units, built the way SI is built but counted in twelves.
+Time comes from a 24-hour day of 86 400 s (dec): the blink is 1/100000 of a day (twelve to the fifth
+power, 25/72 s exactly), and every time unit up to the day is a power of twelve of it. Length comes from
+the speed of light, fixed at 2 × 10^7 paces per blink, which makes the pace about 1.45 m - close to the
+Roman pace. Mass comes from the Planck constant, chosen so that a cub of water (a cube 0;1 pace on each side)
+weighs a lib. Temperature, charge, amount and light are each fixed by a constant, as in SI, so every unit
+converts exactly to SI. Multiples and fractions step by twelve, which divides evenly by 2, 3, 4 and 6.
 
 **Decided:** the system is called **Paludal** ("paludal units", "is that metric or paludal?").
 Fallbacks if needed: **Uncial** (Latin uncia, a twelfth) or **Passic** (from passus, the pace - as metric is from the metre).
@@ -37,6 +43,8 @@ but human focused - everyday sizes and rules of thumb matter more than round con
 | Dozenal minute    | moment | 50 s exactly (0;01 chime, 10 breaths) | English moment, from Latin momentum |
 | 1/10 pace         | unc  | 12.1 cm          | Latin uncia, a twelfth |
 | 1/100 pace        | dig  | 1.01 cm          | Latin digitus, finger |
+| 0;2 pace          | span | 24.2 cm          | English span, a hand's spread |
+| 1000 paces        | iter | 2.51 km          | Latin iter, road, journey |
 | Volume (unc³)     | cub  | 1.7736 L         | Latin cubus, cube |
 | Force             | vis  | ≈ 21.3 N         | Latin vis, force |
 | Energy            | opus | ≈ 31.0 J         | Latin opus, work |
@@ -44,6 +52,39 @@ but human focused - everyday sizes and rules of thumb matter more than round con
 | Pressure          | pres | ≈ 10.1 Pa        | Latin pressus, pressed |
 | Charge            | onus | ≈ 0.3555 C       | Latin onus, load |
 | Voltage           | imp  | ≈ 87.21 V        | Latin impetus, push |
+
+## How the units connect
+
+Each fixed constant defines one base unit; the derived units are built from the base units.
+
+```mermaid
+flowchart LR
+  subgraph K [Fixed constants]
+    cs(["caesium frequency"])
+    c(["c = 2 × 10^7 p/bl"])
+    h(["h = 2;13 × 10^-28"])
+    e(["e = 1 × 10^-15 on"])
+    k(["k = 2;07 × 10^-1E op/°t"])
+    n(["1;15 × 10^1X things"])
+    kcd(["K_cd = 683 lm/W (dec)"])
+  end
+  cs --> bl["blink: time"]
+  c --> p["pace: length"]
+  h --> li["lib: mass"]
+  e --> on("onus: charge")
+  k --> te["tep: temperature"]
+  n --> gx["grex: amount"]
+  kcd --> la["lam: light"]
+  bl --> p
+  bl & p --> li
+  li & p & bl --> vi("vis = li·p/bl²: force")
+  vi --> op("opus = vi·p: energy")
+  op --> vg("vig = op/bl: power")
+  vi --> pr("pres = vi/p²: pressure")
+  on & bl --> ri["riv = on/bl: current"]
+  op & on --> im("imp = op/on: voltage")
+  op --> te
+```
 
 ## Rules of thumb
 
@@ -78,6 +119,8 @@ imperial symbol, since both systems will be in use side by side.
 | pace  | p      | | tep   | °t     | | onus  | on     |
 | unc   | un     | | vis   | vi     | | imp   | im     |
 | dig   | di     | | opus  | op     | | grex  | gx     |
+| span  | sp     | |       |        | |       |        |
+| iter  | it     | |       |        | |       |        |
 |       |        | | vig   | vg     | | lam   | la     |
 |       |        | |       |        | | vox   | vo     |
 
@@ -145,6 +188,26 @@ q or c, so a symbol can always be read unambiguously.
 
 - eg 0;4 is 4/10; (a third), or 0.333... (dec)
 
+Halves, thirds, quarters and sixths all end after one digit. The catch: a quarter is 0;3 and a third is
+0;4, the opposite of what the digits suggest. Fifths and tenths recur, as thirds do in decimal.
+
+| Fraction        | Dozenal      | Decimal   |
+|-----------------|--------------|-----------|
+| 1/2             | 0;6          | 0.5       |
+| 1/3             | 0;4          | 0.333...  |
+| 2/3             | 0;8          | 0.666...  |
+| 1/4             | 0;3          | 0.25      |
+| 3/4             | 0;9          | 0.75      |
+| 1/6             | 0;2          | 0.1666... |
+| 1/8             | 0;16         | 0.125     |
+| 3/8             | 0;46         | 0.375     |
+| 1/9             | 0;14         | 0.111...  |
+| 1/12 (dec)      | 0;1          | 0.0833... |
+| 1/16 (dec)      | 0;09         | 0.0625    |
+| 1/5             | 0;2497 2497... | 0.2     |
+| 1/10 (dec)      | 0;1 2497 2497... | 0.1   |
+| 1/7             | 0;186X35 186X35... | 0.142857... |
+
 **Decided:** the dozenal percent is **per gro** (per 144 dec), written **/gro**: 65% = 0;79 = 79 /gro.
 
 **Why:** it parallels "per cent" (Latin centum is the number word, as gro is ours). The two digits after
@@ -192,6 +255,18 @@ useful at human scale.
 
 **Why:** with the breath as base, derived units are tiny (force 0.148 N, power 0.052 W).
 With the blink: force ≈ 21.3 N, energy ≈ 31 J, power ≈ 89 W, pressure ≈ 10.1 Pa - human-sized.
+
+Steps are dozenal (× 10 = ×12 dec, × 100 = ×144 dec):
+
+```mermaid
+flowchart LR
+  bl["blink<br>0.347 s"] -->|"× 3"| be["beat<br>1.04 s"]
+  be -->|"× 4"| br["breath<br>4.17 s"]
+  bl -->|"× 10"| br
+  br -->|"× 10"| mt["moment<br>50 s"]
+  mt -->|"× 100"| ch["chime<br>2 h"]
+  ch -->|"× 10"| day["day<br>24 h"]
+```
 
 - Blink is the base for physics; beat and breath are the everyday units (like the second and minute in SI).
 - Human scale: reaction time ≈ 3/4 blink, heartbeat 2-3 blinks, 100 m sprint ≈ 28 (dec) blinks
@@ -298,9 +373,10 @@ Three hands, like hour / minute / second:
 |---------|----------------|---------------|----------------------------------------|-------------|
 | Chime   | day            | chime (0-E)   | 12 marks                               | hour hand   |
 | Moment  | chime (2 h)    | moments 00-EE | 12 marks + 144 (dec) fine marks        | minute hand |
-| Breath  | moment (50 s)  | breath (0-E)  | 12 marks; steps once per beat (4 per mark) | second hand |
+| Breath  | moment (50 s)  | breath (0-E)  | 12 marks; steps once per breath (onto each mark) | second hand |
 
-- The breath hand moves at about the pace of a second hand, stepping once per beat - clocks still "tick"
+- The breath hand steps once per breath, landing on each mark, so it always points at the breath digit.
+  It used to step once per beat (4 steps per mark), but then it looked like a beat hand while labelled breath
 - **Noon (6;00) points straight up, midnight (0;00) straight down**
   - dawn ≈ 3;00 on the left, dusk ≈ 9;00 on the right (at the equinoxes)
   - **Clockwise everywhere** (bottom → left → top → right), both hemispheres - matches convention,
@@ -348,12 +424,19 @@ Named sub-units (named because they're everyday sizes, like the inch and centime
 **Why:** a body-measure name like pace and dig, for the gap between the unc (12 cm) and the pace (145 cm);
 the old English span (9 in, 22.9 cm) is close. "Hand" was rejected earlier (the horse hand is 10.16 cm).
 
+**Decided:** the **iter** (symbol **it**) = 1000 paces (1728 dec) ≈ 2.51 km, the unit for distances.
+
+**Why:** a thousand paces is the Roman mile (mille passus), so it's the natural distance unit. Latin
+*iter* means a road or journey (as in itinerary), and Roman route lists counted in milia passuum.
+Rejected: mille / mil (mi is the mile, mil is the thou), via (vi is the vis). League and stade were also
+considered; their clashes hardly matter since almost no one uses them now, but iter was preferred.
+
 - Defined by the speed of light: **c = 2 × 10^7 paces per blink** (exact)
   - = 2 × 10^8 paces per breath = 859,963,392 (dec) per breath
   - (equivalently 2 × 10^10 paces per day)
 - Light travels 2 × 10^8 paces in one breath ≈ 1,249,135 km (dec), about 3.25× the Earth-Moon distance
-- 1000 paces = 2.51 km is literally a "thousand paces" (Latin mille passus = Roman mile)
-- 15 triqua-paces ≈ 42.67 km ≈ a marathon (marathon = 14;98 triqua-paces)
+- 1 iter = 1000 paces = 2.51 km is literally a "thousand paces" (Latin mille passus = Roman mile)
+- 15 iters ≈ 42.67 km ≈ a marathon (marathon = 14;98 iters)
 
 Imperial comparisons:
 
@@ -430,7 +513,7 @@ Imperial comparisons:
 **Decided:** the **ager** (symbol **ag**) = 1000 square paces (1728 dec), eg a strip 100 × 10 paces
 ≈ 3646 m² (dec) = 0.90 acre. Everyday land sizes are fractions of it.
 
-**Why:** land needs a unit between the square pace and the square tqp, and this one lands close to the acre
+**Why:** land needs a unit between the square pace and the square iter, and this one lands close to the acre
 with nearly the same strip shape (the acre is a furlong × a chain, 10:1; this is 12:1). Name: Latin *ager*,
 field (as in agriculture). The symbol "ag" also reads as silver (Ag), but land sizes and silver rarely
 appear in the same sentence.
@@ -448,6 +531,20 @@ appear in the same sentence.
 
 **Why:** volume follows directly from length (no separate definition), it makes the water rule of thumb
 work, and dozenal fractions of it land close to common drink sizes.
+
+How length leads to area, volume and (through water) mass:
+
+```mermaid
+flowchart LR
+  di["dig<br>1.01 cm"] -->|"× 10"| un["unc<br>12.1 cm"]
+  un -->|"× 2"| sp["span<br>24.2 cm"]
+  un -->|"× 10"| p["pace<br>1.45 m"]
+  p -->|"squared, × 1000"| ag["ager<br>3646 m²"]
+  un -->|"cubed"| cu["cub<br>1.77 L"]
+  di -->|"cubed"| dc["dig-cube<br>1.03 mL"]
+  cu -->|"of water ≈"| li["lib<br>1.77 kg"]
+  dc -->|"of water ≈"| mli["0;001 lib<br>1.03 g"]
+```
 
 Good size for milk. Dozenal fractions land close to common drink and pub sizes (all ~4% larger):
 
@@ -503,6 +600,16 @@ inch absolute / gauge). Rejected: "tabs" and "tea" (English words).
 **Decided:** fix the elementary charge **e = 1 × 10^-15 onus** exactly (12^-17 dec).
 
 **Why:** a round fixed constant, exactly like SI; it makes the riv almost exactly an amp, and the alternatives were no better for common voltages.
+
+```mermaid
+flowchart LR
+  e(["e = 1 × 10^-15 on"]) --> on["onus: charge<br>0.3555 C"]
+  on -->|"per blink"| ri["riv: current<br>1.024 A"]
+  op["opus: energy<br>31.0 J"] -->|"per onus"| im["imp: voltage<br>87.21 V"]
+  on --> im
+  im -->|"× riv"| vg["vig: power<br>89.3 W"]
+  ri --> vg
+```
 
 - 1 onus (charge) ≈ 0.3555 C
 - 1 riv (current, onus/blink) ≈ 1.0237 A - almost exactly an amp
@@ -670,9 +777,11 @@ definition; measured values carry the same uncertainty as in SI.
 | Speed of sound (20 °C) | ≈ 6X p/bl | 343 m/s |
 | Day | 10^5 bl = 10^4 br (exact) | 86 400 s |
 | Tropical year | 265;2XX days | 365.2422 days |
-| Earth radius (mean) | 1576 tqp | 6371 km |
-| Earth-Moon distance | 7;476 × 10^4 tqp | 384 400 km |
-| Astronomical unit (exact) | 1;7E63 × 10^X p | 149 597 870 700 m |
+| Earth radius (mean) | 1576 it | 6371 km |
+| Earth-Moon distance | 7;476 × 10^4 it | 384 400 km |
+| Astronomical unit (Earth-Sun, exact) | 1;7E63 × 10^X p = 1;7E63 × 10^7 it | 149 597 870 700 m |
+| Light from the Sun to Earth | 9E;9 br ≈ X moments | 499.0 s (8 min 19 s) |
+| Light from the Moon to Earth | 3;84 bl ≈ 1;3 be | 1.282 s |
 | Light-year | 5;0X6 × 10^12 p | 9.461 × 10^15 m |
 
 ## Pure numbers (the same in any base, dozenal digits)
@@ -696,13 +805,15 @@ Left blank for natural values (body temperature, speed of sound) and where the v
 gives awkward numbers: tc ÷1000, bc ÷100, uc ÷10, tq ×1000.
 
 - tcli (1/1000 lib) ≈ 1.03 g and tccu (1 dig³) ≈ 1.03 mL - the new gram and millilitre
-- tqp (1000 paces) ≈ 2.51 km; tqop (1000 opus) ≈ 53.6 kJ; tqpr (1000 pres) ≈ 17.5 kPa
+- it (iter, 1000 paces = tqp) ≈ 2.51 km; tqop (1000 opus) ≈ 53.6 kJ; tqpr (1000 pres) ≈ 17.5 kPa
 
 ## Length
 
 | Thing | SI | Dozenal | Round |
 |---|---|---|---|
 | Credit card (long side) | 85.6 mm | 8;5X di | 8;6 di |
+| Pencil-case ruler | 15-20 cm | 0;12X-0;17X p | 0;2 p (a span, 24.2 cm) |
+| Desk ruler | 30 cm | 0;258 p | 0;3 p (36.3 cm) |
 | A4 page (long side) | 297 mm | 2;55 un | 2;6 un |
 | Adult height | 1.70 m | 1;21 p | 1;2 p |
 | Tall person (6 ft) | 1.83 m | 1;31 p | 1;3 p |
@@ -711,8 +822,8 @@ gives awkward numbers: tc ÷1000, bc ÷100, uc ÷10, tq ×1000.
 | Cricket pitch | 20.12 m | 11;X p | (keeps 22 yd) |
 | Olympic pool | 50 m | 2X;5 p | 30 p |
 | 1 km | 1 km | 494 p |  |
-| Marathon | 42.195 km | 14;X tqp | (keeps 42.195 km) |
-| Sydney–Melbourne (straight line) | 713 km | 1E8 tqp |  |
+| Marathon | 42.195 km | 14;X it | (keeps 42.195 km) |
+| Sydney–Melbourne (straight line) | 713 km | 1E8 it |  |
 
 ## Races and sport
 
@@ -728,13 +839,13 @@ see Speed). Traditional distances tied to history (marathon, cricket pitch) keep
 | 400 m (1 lap)      | 1XE;5 p          | 200 p (1 lap)       | 418.3 m   |
 | 800 m              | 39X;9 p          | 400 p               | 836.7 m   |
 | 1500 m / mile      | 720;8 p / 783;E p | 700 p              | 1464 m    |
-| 5 km (parkrun)     | 1;EE tqp         | 2 tqp               | 5.02 km   |
-| 10 km              | 3;EX tqp         | 4 tqp               | 10.04 km  |
-| Half marathon      | 8;4X tqp         | keeps 21.1 km       |           |
-| Marathon           | 14;99 tqp        | keeps 42.195 km     |           |
+| 5 km (parkrun)     | 1;EE it         | 2 it               | 5.02 km   |
+| 10 km              | 3;EX it         | 4 it               | 10.04 km  |
+| Half marathon      | 8;4X it         | keeps 21.1 km       |           |
+| Marathon           | 14;99 it        | keeps 42.195 km     |           |
 | Cricket pitch      | 11;X p           | keeps 22 yd         |           |
 
-- The 100 m becomes the **60-pace sprint**; the 5 km and 10 km land almost exactly on 2 and 4 tqp
+- The 100 m becomes the **60-pace sprint**; the 5 km and 10 km land almost exactly on 2 and 4 iters
 
 ## Mass
 
@@ -847,8 +958,8 @@ UK and US units differ for volume and tons.
 | Length   | 1 inch            | 2;627 di                 | 1 di = 0.3971 in               |
 | Length   | 1 foot            | 2;627 un                 | 1 un = 0.3971 ft (4.765 in)    |
 | Length   | 1 yard            | 0;767X p                 | 1 p = 1.589 yd (4.765 ft)      |
-| Length   | 1 mile            | 783;E p (0;784 tqp)      | 1 tqp = 1.560 mi               |
-| Length   | 1 nautical mile   | 8X3 p                    | 1 tqp = 1.355 nmi              |
+| Length   | 1 mile            | 783;E p (0;784 it)      | 1 it = 1.560 mi               |
+| Length   | 1 nautical mile   | 8X3 p                    | 1 it = 1.355 nmi              |
 | Mass     | 1 ounce           | 2;37X bcli               | 1 bcli = 0.4339 oz             |
 | Mass     | 1 pound           | 0;30X6 li                | 1 li = 3.905 lb                |
 | Mass     | 1 stone           | 3;703 li                 | 1 li = 0.2790 st               |
@@ -902,6 +1013,7 @@ across languages; clashes cause confusion when both systems are in use.
 | Length (base)          | pace  | p      | 1.4525 m            | Latin passus, a pace (Roman pace ≈ 1.48 m)        | pace, passage                |
 | 1/10 pace              | unc   | un     | ≈ 12.1 cm           | Latin uncia, a twelfth                            | inch, ounce                  |
 | 1/100 pace             | dig   | di     | ≈ 1.01 cm           | Latin digitus, finger (Roman digit ≈ 1.85 cm)     | digit                        |
+| 1000 paces (distance)  | iter  | it     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
 | Mass                   | lib   | li     | ≈ 1.7714 kg         | Latin libra, pound; also scales (Roman pound)     | lb (pound), Libra            |
 | Volume (unc cube)      | cub   | cu     | 1.7736 L            | Latin cubus, cube                                 | cube, cubic                  |
 | Temperature            | tep   | °t     | 0.694 K/°C          | Latin tepor, warmth                               | tepid                        |
@@ -965,7 +1077,24 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
 - Cooking measures: teaspoon 0;004 cu, tablespoon 0;01 cu (= 3 tsp), cup 0;2 cu (= 20 tbsp), proposed
 - Same-name units within a few percent: say "paludal cup" in full where ambiguous (like UK pint / US
   pint), rather than a subscript p you can't hear
-- School rulers: 0;3 p (3 un, 36 cm) likely replaces the 30 cm ruler
+- Rulers: the pencil-case 0;2 p and desk 0;3 p are in Everyday reference. Still open: board ruler (0;4 p if
+  the ulna is adopted, or 0;6 p) and the metre stick's replacement (1 p?)
+- Revisit pH so that 0 is neutral (conflicts with the pH decision). Options:
+  - pH - 7: one step is still ×10 (dec) acidity, so pKa tables, buffer maths and meter calibration
+    (buffers 4, 7, 10 become -3, 0, +3) carry over by subtracting 7. But neutral is only exactly 7 at 25 °C
+    (7.47 at 0 °C, 6.8 at body temperature, 6.14 at 100 °C)
+  - log([H+]/[OH-]) = 14 - 2 pH (dec) at 25 °C: 0 at every temperature, and a ratio needs no
+    concentration unit (so no mol/L vs grex/cub problem). But the numbers double, buffer maths gains a
+    factor of 2, and converting old readings needs the temperature
+  - No hard bounds either way: everyday values run pH 0-14 (dec), but strong acids go below 0 and strong
+    alkalis above 14; superacids are measured on other scales (Hammett, to about -25)
+  - Also decide the sign (acids positive or negative), and whether the log stays base ten (dec) or
+    becomes base twelve (one step = ×10 acidity, shifting every value again)
+- Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;
+  60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec),
+  frequency units, and note lengths
+- Daylight saving: Paludal time follows the local civil clock, so a 1-hour change is 0;60 (half a chime).
+  Time zones are half-chimes too: UTC+10 = +5;00, UTC+9:30 = +4;90. Keep 1-hour DST, or shift a whole chime?
 - Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a
   "paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?
 - Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is

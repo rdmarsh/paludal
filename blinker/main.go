@@ -91,13 +91,16 @@ func main() {
 // nextBlink returns the number of the next blink since local midnight and when it starts.
 // Boundaries are computed from midnight each time, so the beat never drifts.
 func nextBlink(now time.Time) (int64, time.Time) {
-	midnight := midnightOf(now)
-	n := now.Sub(midnight).Nanoseconds()/blinkNanos + 1
-	return n % blinksPerDay, midnight.Add(time.Duration(n * blinkNanos))
+	since := sinceMidnight(now)
+	n := since/blinkNanos + 1
+	return n % blinksPerDay, now.Add(time.Duration(n*blinkNanos - since))
 }
 
-func midnightOf(t time.Time) time.Time {
-	return time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
+// sinceMidnight is the local wall-clock time of day in nanoseconds. It reads the clock face, not
+// elapsed time, so a daylight-saving change moves Paludal time with it: 1 hour is 0;60.
+func sinceMidnight(t time.Time) int64 {
+	h, m, s := t.Clock()
+	return (int64(h)*3600+int64(m)*60+int64(s))*int64(time.Second) + int64(t.Nanosecond())
 }
 
 // format writes a blink count as time of day: chime, semicolon, two moment digits and the
@@ -125,7 +128,7 @@ func startAudio(every int64) error {
 	}
 	<-ready
 	now := time.Now()
-	s := &stream{every: every, start: now.Sub(midnightOf(now)).Nanoseconds()}
+	s := &stream{every: every, start: sinceMidnight(now)}
 	p := ctx.NewPlayer(s)
 	p.Play()
 	go func() { // keep the player referenced for the life of the program
