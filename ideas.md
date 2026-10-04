@@ -1228,22 +1228,24 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 
 ### Fuel use
 
-**Proposed (not decided):** fuel use in **cubs per 100 iters** (cu/100 ir, per 361 km dec), the way
-Australia and Europe use L/100 km. 100 iters is a similar trip length, and the numbers stay whole-ish.
-Rule of thumb: the value is about **double** the L/100 km figure (×2.04 dec). The alternative, iters per
-cub (ir/cu, like mpg or km/L), is in the last column; there a bigger number is better.
+**Decided:** fuel use is given in **cubs per 100 iters** (cu/100 ir, per 361 km dec), the way Australia and
+Europe use L/100 km. Rule of thumb: the value is about **double** the L/100 km figure (×2.04 dec).
 
-| L/100 km (dec) | US mpg (dec) | cu/100 ir | ir/cu | Like |
-|---|---|---|---|---|
-| 4  | 58.8 | 8;2  | 15;8 | hybrid |
-| 5  | 47.0 | X;2  | 12;2 | small car, highway |
-| 6  | 39.2 | 10;3 | E;9  | small car |
-| 7  | 33.6 | 12;3 | X;1  | mid-size car |
-| 8  | 29.4 | 14;4 | 8;X  | family car |
-| 10 | 23.5 | 18;5 | 7;1  | large car, SUV |
-| 12 | 19.6 | 20;5 | 5;E  | ute, 4WD |
-| 15 | 15.7 | 26;7 | 4;9  | large 4WD, towing |
-| 20 | 11.8 | 34;9 | 3;7  | truck, city driving |
+**Why:** fuel per distance is the sensible measure, and 100 iters is a similar trip length to 100 km, so the
+numbers stay whole-ish. Rejected: distance per fuel (iters per cub, like mpg or km/L), judged a poor
+measure. The US mpg column is kept only as a familiar comparison for people learning the system.
+
+| L/100 km (dec) | US mpg (dec) | cu/100 ir | Like |
+|---|---|---|---|
+| 4  | 58.8 | 8;2  | hybrid |
+| 5  | 47.0 | X;2  | small car, highway |
+| 6  | 39.2 | 10;3 | small car |
+| 7  | 33.6 | 12;3 | mid-size car |
+| 8  | 29.4 | 14;4 | family car |
+| 10 | 23.5 | 18;5 | large car, SUV |
+| 12 | 19.6 | 20;5 | ute, 4WD |
+| 15 | 15.7 | 26;7 | large 4WD, towing |
+| 20 | 11.8 | 34;9 | truck, city driving |
 
 Electric cars, in tqop per iter (the energy to drive one iter):
 
