@@ -1172,6 +1172,7 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 | Teaspoon | 5 mL | 1 tsp | 4;X6 tccu | 5 tccu |
 | Coffee, small (café) | 237 mL | 8 fl oz | 173 tccu | 170 tccu |
 | Coffee, regular (café) | 355 mL | 12 fl oz | 24X tccu | 250 tccu |
+| Coffee, large (café) | 473 mL | 16 fl oz | 325 tccu | 320 tccu |
 | Cup | 250 mL | 1 cup (237 mL) | 184 tccu | 180 tccu |
 | Can of drink (AU) | 375 mL |  | 265 tccu | 260 tccu |
 | Wine bottle | 750 mL | 25.4 fl oz | 0;50E cu | 0;5 cu |
@@ -1266,6 +1267,8 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 
 Notes:
 - Temperatures, heights, speeds and voltages come out in comfortable numbers
+- Café coffee sizes (8, 12 and 16 oz: 170, 250 and 320 tccu) are the cup's brim capacity, the way cups are
+  sold. The drink served is less, depending on milk and froth: about 200 mL in a small, 300 mL in a regular
 - Energy and pressure need the tq prefix for everyday sizes (opus and pres are small); food labels in tqop
 - A feature film is 1 chime; a working day and a night's sleep are 4 chimes each
 - A 0;X p building sheet spans two 0;5 p stud gaps, as a 1,200 mm sheet spans two 600 mm gaps. The close
