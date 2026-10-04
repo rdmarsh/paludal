@@ -490,6 +490,11 @@ came from it. Rejected: cubit (Latin cubitum, elbow), which was liked, but its s
 Rejected: mille / mil (mi is the mile, mil is the thou), via (vi is the vis). League and stade were also
 considered; their clashes hardly matter since almost no one uses them now, but iter was preferred.
 
+**Decided:** iter is pronounced **"EYE-ter"**, as in itinerary.
+
+**Why:** a fixed pronunciation stops it being heard several ways ("IT-er", as in Latin, or "EE-ter"),
+and it's the sound people already know from itinerary.
+
 - Defined by the speed of light: **c = 2 × 10^7 paces per blink** (exact)
   - = 2 × 10^8 paces per breath = 859,963,392 (dec) per breath
   - (equivalently 2 × 10^10 paces per day)
@@ -1421,3 +1426,9 @@ Where the ideas came from, and what's still to decide.
 - Money: a name for the 1/100; part of a dollar (see Money)
 - A speed unit for ships and aircraft, to replace the knot (see the navis in Length)
 - Drug doses: how they're written (medicine keeps mg for now)
+- Rename the iter? It looks and sounds close to litre, and the US spelling **liter** is "l" + "iter", which will
+  confuse things like fuel economy ("iters per liter"). Candidate: **lapis** (Latin, a stone: Roman milestones
+  stood every 1,000 paces, and distances were given as "at the third stone"), so the meaning matches the size
+  exactly. Against: "la" is the lam, so it would need **ls** (first and last letters); five letters; an awkward
+  plural (lapides); people may shorten it to "lap", which clashes with a lap of a track; and "lapis" alone
+  often means lapis lazuli. Rejected: trek (sounds hard going, and too Star Trek)
