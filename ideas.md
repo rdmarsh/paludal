@@ -167,6 +167,7 @@ its first and last letters (os) would be the onus, and "op" isn't a common word 
 | grex   | gx     | amount |
 | lam    | la     | light |
 | vox    | vo     | sound level |
+| turn   | tu     | angle |
 
 - chime: **ch** (the imperial chain is no longer used, so no real clash)
 - moment: **mt** (first and last letters: "mo" is the spoken word for 1,000, and mm is the millimetre)
@@ -709,6 +710,11 @@ the hand (0;1 turn = one chime on the dial). The common angles become round: rig
 60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward
 (90° = 76°, 45° = 39°), because 360 is a decimal-era choice.
 
+**Decided:** the turn's symbol is **tu** (eg a right angle is 0;3 tu).
+
+**Why:** it follows the first-two-letters rule. "t" alone was considered, but it's the tonne's symbol, and no
+symbol may clash with an SI one.
+
 | Turn   | Degrees (dec) | Note |
 |--------|---------------|------|
 | 1      | 360           | full turn |
@@ -797,6 +803,26 @@ definition; measured values carry the same uncertainty as in SI.
 # Part 2: Using it
 
 How the units meet everyday life: clocks and calendars, changeover, money, standard sizes, everyday values and conversions.
+
+## A day in Paludal
+
+**Draft (not decided):** a walk through one ordinary day, for someone seeing the system for the first time.
+Times are chime;moments (6;00 is noon). Values are rounded the way a label or sign would be.
+
+| Time | What happens | Paludal | Today |
+|---|---|---|---|
+| 3;30 | The alarm goes off. The forecast says 18° now, top of 28° | 18°t, 28°t | 6:30 am, 14°C, 22°C |
+| 3;76 | A regular coffee and two eggs | 250 tccu (357 mL), 50 tcli each | 7:15 am, 12 oz coffee (355 mL), 60 g eggs |
+| 4;20 | Drive to work: 4;9 iters, about 26 moments door to door, 40 on the signs | 4;9 ir, 26 mt, 40 p/br | 8:20 am, 12 km, 25 min, 60 km/h |
+| 6;30 | Lunch break | 30 mt (0;3 ch) | 12:30 pm, 30 min |
+| 8;90 | An after-work run: 2 iters in 30 moments | 2 ir, 30 mt | 5:30 pm, 5 km in 30 min |
+| 9;46 | Shopping: mince, milk and flour | 0;3 li, 1;2 cu, 0;7 li | 6:45 pm, 450 g, 2 L, 1 kg |
+| 9;46 | A roast goes in for 0;9 chime | 1X0°t for 0;9 ch (90 mt) | 180°C for 1½ hours |
+| E;30 | Bed, for 4 chimes of sleep | 4 ch | 10:30 pm, 8 hours |
+
+- The clock reads like a 24-hour clock halved: 3;30 is a quarter past the third chime (6:30 am)
+- Every step is twelve, so the common fractions are single digits: 30 moments is 0;3 chime (a quarter),
+  0;6 is a half, 0;4 a third
 
 ## Clocks, time zones and calendar
 
@@ -1103,6 +1129,8 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 | Thing | SI | US | Dozenal | Round |
 |---|---|---|---|---|
 | Teaspoon | 5 mL | 1 tsp | 4;X6 tccu | 5 tccu |
+| Coffee, small (café) | 237 mL | 8 fl oz | 173 tccu | 170 tccu |
+| Coffee, regular (café) | 355 mL | 12 fl oz | 24X tccu | 250 tccu |
 | Cup | 250 mL | 1 cup (237 mL) | 184 tccu | 180 tccu |
 | Can of drink (AU) | 375 mL |  | 265 tccu | 260 tccu |
 | Wine bottle | 750 mL | 25.4 fl oz | 0;50E cu | 0;5 cu |

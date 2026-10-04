@@ -14,7 +14,7 @@ UNITS = {
     "p": "pace", "un": "unc", "di": "dig", "sp": "span", "ul": "ulna", "ir": "iter", "na": "navis",
     "li": "lib", "cu": "cub", "te": "tep",
     "vi": "vis", "op": "opus", "vg": "vig", "pr": "pres", "ri": "riv", "os": "onus",
-    "im": "imp", "gx": "grex", "la": "lam", "vo": "vox", "ag": "ager",
+    "im": "imp", "gx": "grex", "la": "lam", "vo": "vox", "ag": "ager", "tu": "turn",
 }
 ROOTS = dict(zip("nubtqphsoedl", "nil un bi tri quad pent hex sept oct enn dek el".split()))
 UNIT_RE = "|".join(sorted(UNITS, key=len, reverse=True))
