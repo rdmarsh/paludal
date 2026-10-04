@@ -21,12 +21,12 @@ UNIT_RE = "|".join(sorted(UNITS, key=len, reverse=True))
 # A prefixed symbol (tqop) is always a unit; a bare one (p, op) only straight after a number or / or ·,
 # so ordinary words are left alone.
 SYMBOL = re.compile(
-    rf"\b([nubtqphsoedl]+[qc])({UNIT_RE})(?![A-Za-z0-9_])|(?:(?<=\d )|(?<=[\d/·]))({UNIT_RE})(?![A-Za-z0-9_])|(?<=\d )(°t)"
+    rf"\b([nubtqphsoedl]+[qc])({UNIT_RE})(?![A-Za-z0-9_])|(?:(?<=\d )|(?<=[\d/·]))({UNIT_RE})(?![A-Za-z0-9_])|(?<=[\dXE] )(°t)|(?<=[\dXE])(°t)"
 )
 
 
 def expand(m):
-    prefix, unit = (m.group(1), m.group(2)) if m.group(1) else (None, m.group(3) or m.group(4))
+    prefix, unit = (m.group(1), m.group(2)) if m.group(1) else (None, m.group(3) or m.group(4) or m.group(5))
     name = "tep (degrees from freezing)" if unit == "°t" else UNITS[unit]
     if prefix:
         roots = "".join(ROOTS[ch] for ch in prefix[:-1])
@@ -305,11 +305,12 @@ box.addEventListener("change", () => document.body.classList.toggle("tables-only
     const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
     let i = Math.floor(n / 1728), f = n % 1728, s = "";
     do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
     const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
     return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
   }
   function fromDoz(t) {
-    t = t.trim().toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
     const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
     if (!m || (m[2] + (m[3] || "")) === "") return null;
     let v = 0;
@@ -320,7 +321,7 @@ box.addEventListener("change", () => document.body.classList.toggle("tables-only
   }
   const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
   dec.addEventListener("input", () => {
-    const t = dec.value.trim(), v = Number(t);
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
     if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
     if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
     doz.value = toDoz(v);
@@ -330,8 +331,9 @@ box.addEventListener("change", () => document.body.classList.toggle("tables-only
     const v = fromDoz(doz.value);
     if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
     if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
-    dec.value = String(Number(v.toFixed(3)));
-    hint.textContent = near(Number(dec.value), v) ? "Exact." : "Rounded to 3 decimal places.";
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
   });
 })();
 </script>
