@@ -92,6 +92,13 @@ Celsius), and people already read 25 °C / °F that way. Lowercase because tep i
 (°C and °F are), and it avoids T (tesla). It's still two characters, so it fits the spirit of the rule.
 - Examples: 1;3 p tall, 2;6 li, 25 °t, 68 p/br, 2;9 im
 
+**Decided:** all unit and prefix symbols are lowercase (tqop, not tqOP or TQop).
+
+**Why:** every prefix ends in q or c, so the boundary between prefix and unit is already clear. Capitals
+would clash with chemical elements (Cu, Be, Br, La), and all-capital units read as acronyms. Reusing SI
+prefix letters for powers of twelve (k = ×1000;) was rejected: the same letter meaning a 1.728× different
+factor would cause errors where both systems are in use.
+
 ## Prefix symbols
 
 **Decided:** initials of the SDN digit roots, then **q** (multiply) or **c** (divide). The last letter is always
@@ -137,6 +144,13 @@ q or c, so a symbol can always be read unambiguously.
 **Why:** the punctuation shows which base a number is in, so the two can't be confused.
 
 - eg 0;4 is 4/10; (a third), or 0.333... (dec)
+
+**Decided:** the dozenal percent is **per gro** (per 144 dec), written **/gro**: 65% = 0;79 = 79 /gro.
+
+**Why:** it parallels "per cent" (Latin centum is the number word, as gro is ours). The two digits after
+the semicolon are already the per-gro figure, so nothing needs converting. "Per bicia" was rejected: bicia
+already means ÷100;, so "per bicia" would mean ×100;. % can't be reused - it would be read as decimal. No
+established dozenal symbol is known, so /gro is used for now.
 
 **Decided:** fractions (numbers below one) always have a leading zero: 0;6, never ;6.
 
@@ -304,13 +318,18 @@ Three hands, like hour / minute / second:
 - So 1 blink = 750E58327;3 periods (terminates in dozenal; 3,191,886,031.25 dec)
 - Equivalent to: 1 breath = 25/6 SI seconds exactly, so the day stays at exactly 86400 SI seconds.
 - Converting between SI and dozenal time is exact (no drift, no leap breaths beyond what SI already needs).
-- Leap breaths (like leap seconds) needed only when Earth drifts ~half a breath (~2 s) - roughly 1/4 as often as leap seconds were.
+- Leap breaths: none of our own. The breath follows UTC, and leap seconds are being phased out
+  (CGPM 2022 CE: UTC will be allowed to drift further from the Earth's rotation by 2035 CE), so whatever UTC
+  does, Paludal time does too.
 - Survives the planned SI redefinition of the second (optical clocks, ~2030 CE): the breath simply follows the SI second.
 - Not based on the day itself (Earth's rotation is irregular) - must be as good as SI.
 - Rejected:
   - 7500000000 (fully round): day 77 s too short, drifts ~8 h/year.
   - 750E580000: drifts ~4.6 s (~1.1 breaths)/year, needs a leap breath nearly every year.
   - 750E583000: drifts ~0.31 s/year - acceptable, but no real benefit over exact.
+  - 750E583270: would make the blink a whole number of periods (750E58327), but the breath would no
+    longer be exactly 25/6 s, so Paludal clocks would drift ~2.5 ms/year from UTC (1 s in ~400 years)
+    and every time conversion would need a long factor.
 
 # Length
 
@@ -323,6 +342,11 @@ Named sub-units (named because they're everyday sizes, like the inch and centime
 
 - **unc** = 1/10 pace (1/12 dec) ≈ 12.1 cm
 - **dig** = 1/100 pace (1/144 dec) ≈ 1.01 cm
+
+**Decided:** the **span** (symbol **sp**) = 0;2 pace = 2 uncs ≈ 24.2 cm, a hand's spread.
+
+**Why:** a body-measure name like pace and dig, for the gap between the unc (12 cm) and the pace (145 cm);
+the old English span (9 in, 22.9 cm) is close. "Hand" was rejected earlier (the horse hand is 10.16 cm).
 
 - Defined by the speed of light: **c = 2 × 10^7 paces per blink** (exact)
   - = 2 × 10^8 paces per breath = 859,963,392 (dec) per breath
@@ -401,6 +425,23 @@ Imperial comparisons:
   - h = 2 × 10^-28 (1.864 kg): rounder h, but water cube only 0.95
 - Priority used: c round > water ≈ 1 > h round. Normal people use c-based length and water; almost nobody uses h directly.
 
+# Area
+
+**Decided:** the **ager** (symbol **ag**) = 1000 square paces (1728 dec), eg a strip 100 × 10 paces
+≈ 3646 m² (dec) = 0.90 acre. Everyday land sizes are fractions of it.
+
+**Why:** land needs a unit between the square pace and the square tqp, and this one lands close to the acre
+with nearly the same strip shape (the acre is a furlong × a chain, 10:1; this is 12:1). Name: Latin *ager*,
+field (as in agriculture). The symbol "ag" also reads as silver (Ag), but land sizes and silver rarely
+appear in the same sentence.
+
+| Ager  | m² (dec) | Close to |
+|-------|----------|----------|
+| 0;3   | 911      | quarter-acre house block (1012 m²) |
+| 0;6   | 1823     | half acre |
+| 1     | 3646     | acre (4047 m²) |
+| 10    | 43 750   | a 100 × 100 pace square, 4.4 ha |
+
 # Volume
 
 **Decided:** the **cub** = a cube 1 unc per side ≈ 1.7736 L. Water in it ≈ 1 lib.
@@ -448,6 +489,14 @@ freezes at 0 °t and boils at 100 °t - the dozenal version of Celsius's 0 and 1
 - 1 tep ≈ 0.694 °C ≈ 1.25 °F
 - body temperature ≈ 45;35 tep, room temperature (21 °C) ≈ 26 tep
 - absolute zero ≈ -289;48 tep (no nice ratio between absolute zero, freezing and boiling - fine)
+
+**Decided:** absolute temperature (from absolute zero, for gas laws and physics) is written **ta**, spoken
+"tep absolute": 0 ta = absolute zero, freezing = 289;485 ta, so ta = °t + 289;485. Everyday temperatures stay
+°t (or te), from freezing.
+
+**Why:** most people will only ever use the everyday scale, so it keeps the plain names; the absolute scale
+just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square
+inch absolute / gauge). Rejected: "tabs" and "tea" (English words).
 
 # Electricity
 
@@ -521,6 +570,123 @@ headphone warnings), so converting is worth it. Name: Latin vox, voice; "son" re
 
 **Why:** it's a log scale (no units needed), almost nobody does arithmetic with it, and every historical
 record uses it. A base-12 version would change values by only ~7% - not worth breaking the records.
+
+# pH
+
+**Decided:** keep the pH scale unchanged, just written in dozenal digits: pH 5.5 = **pH 5;6**, neutral = pH 7.
+
+**Why:** same reasoning as earthquakes: it's a log scale with no units, and every record and textbook uses
+it. pH is defined from mol/L, so a "dozenal pH" would shift every value (neutral would no longer be 7).
+
+# Angle
+
+**Decided:** angles are measured in **turns**, written as dozenal fractions.
+
+**Why:** it matches the clock: the chime hand turns once a day, so the time of day in days *is* the angle of
+the hand (0;1 turn = one chime on the dial). The common angles become round: right angle 0;3, 30° is 0;1,
+60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward
+(90° = 76°, 45° = 39°), because 360 is a decimal-era choice.
+
+| Turn   | Degrees (dec) | |
+|--------|---------------|-|
+| 1      | 360           | full turn |
+| 0;6    | 180           | half turn |
+| 0;3    | 90            | right angle |
+| 0;2    | 60            | |
+| 0;16   | 45            | |
+| 0;1    | 30            | one clock mark |
+| 0;01   | 2.5           | |
+| 0;001  | 0.208         | finest everyday step |
+
+- Compass bearings as three digits of a turn: 000 north, 300 east, 600 south, 900 west
+- Three digits act as "more degrees": 1000; steps per turn (1728 dec, 0.208° each), and every common angle
+  is a round whole number: right angle 300, 60° 200, 45° 160, 30° 100. A right angle of 1000; adds nothing
+  over this, since 4 already divides 100;.
+- 1 turn = 2π radians = 6;34941696 radians
+
+# Paper sizes
+
+**Decided:** a **P series**, made the same way as the A series: each size halves the one before, sides in
+the ratio 1 : √2, and **P0 = 1 square pace** (as A0 = 1 m²).
+
+**Why:** halving keeps the shape, which is why the A series works; only the starting size needs changing.
+P5 lands almost exactly between A4 and US Letter (its width is Letter's 8.5 in), so one sheet can replace both.
+
+| Size | mm (dec)      | Close to            |
+|------|---------------|---------------------|
+| P0   | 1221 × 1727   | A0 (841 × 1189), 2.11 m² |
+| P3   | 432 × 611     | A2 (420 × 594)      |
+| P4   | 305 × 432     | A3 (297 × 420)      |
+| P5   | 215.9 × 305   | A4 (210 × 297), Letter (215.9 × 279) |
+| P6   | 153 × 216     | A5 (148 × 210)      |
+| P7   | 108 × 153     | A6 postcard (105 × 148) |
+
+- Sides aren't round in uncs (P5 = 1;94 × 2;63 un), for the same reason A4 isn't round in mm: √2
+
+# Constants
+
+Physical constants in Paludal units (3-4 significant dozenal digits unless exact). "Exact" means fixed by
+definition; measured values carry the same uncertainty as in SI.
+
+## Defining constants (exact)
+
+| Constant | Paludal value | SI value (dec) |
+|---|---|---|
+| Caesium frequency Δν_Cs | 750E583273 per breath (750E58327;3 per blink) | 9 192 631 770 Hz |
+| Speed of light c | 2 × 10^7 p/bl (2 × 10^8 p/br) | 299 792 458 m/s |
+| Planck constant h | 2;13 × 10^-28 li·p²/bl | 6.626 070 15 × 10^-34 J s |
+| Elementary charge e | 1 × 10^-15 on | 1.602 176 634 × 10^-19 C |
+| Boltzmann constant k | 2;07 × 10^-1E op/tep | 1.380 649 × 10^-23 J/K |
+| Grex number | 1;15 × 10^1X per grex | 6.172 35 × 10^23 (Avogadro: 6.022 × 10^23) |
+| Luminous efficacy K_cd | ≈ 2E357 lam·sr/vg (fixed through SI) | 683 lm/W |
+
+## Derived from them (also exact)
+
+| Constant | Paludal value | SI value (dec) |
+|---|---|---|
+| Reduced Planck ħ = h/2π | 4;028 × 10^-29 li·p²/bl | 1.054 572 × 10^-34 J s |
+| Gas constant R = k × grex number | 0;2359X op/(tep·gx) | 8.314 J/(mol K) |
+| Faraday constant F = e × grex number | **1;15 × 10^5 on/gx** | 96 485 C/mol |
+| Stefan-Boltzmann σ | 1;735 × 10^-9 vg/(p²·tep⁴) | 5.670 × 10^-8 W/(m² K⁴) |
+
+## Measured
+
+| Constant | Paludal value | SI value (dec) |
+|---|---|---|
+| Gravitational constant G | 3;558 × 10^-E p³/(li·bl²) | 6.674 × 10^-11 m³/(kg s²) |
+| Electron mass | X;21 × 10^-25 li | 9.109 × 10^-31 kg |
+| Proton mass | X;986 × 10^-22 li | 1.673 × 10^-27 kg |
+| Fine-structure constant α (no units) | 1 / E5;0523 | 1 / 137.036 |
+
+## Earth and everyday
+
+| Value | Paludal | SI (dec) |
+|---|---|---|
+| Standard gravity g (conventional, exact) | 0;9926 p/bl² (99;26 p/br²) | 9.806 65 m/s² |
+| Standard atmosphere | 5;969 tqpr | 101 325 Pa |
+| Absolute zero | -289;485 °t | -273.15 °C |
+| Water freezes / boils (sea level) | 0 °t / ≈ EE;E9 °t | 0 °C / 99.974 °C |
+| Water density | 1;002 li/cu at 4 °C, 0;EEX at 20 °C | 999.97 / 998.2 kg/m³ |
+| Speed of sound (20 °C) | ≈ 6X p/bl | 343 m/s |
+| Day | 10^5 bl = 10^4 br (exact) | 86 400 s |
+| Tropical year | 265;2XX days | 365.2422 days |
+| Earth radius (mean) | 1576 tqp | 6371 km |
+| Earth-Moon distance | 7;476 × 10^4 tqp | 384 400 km |
+| Astronomical unit (exact) | 1;7E63 × 10^X p | 149 597 870 700 m |
+| Light-year | 5;0X6 × 10^12 p | 9.461 × 10^15 m |
+
+## Pure numbers (the same in any base, dozenal digits)
+
+| Number | Dozenal | Decimal |
+|---|---|---|
+| π | 3;184809493E91 | 3.14159265358979 |
+| 2π (radians in a turn) | 6;34941696 | 6.28318531 |
+| e | 2;875236069821 | 2.71828182846 |
+| √2 (paper ratio) | 1;4E79170X07E8 | 1.41421356237 |
+| φ (golden ratio) | 1;74EE6772802X | 1.61803398875 |
+
+- The Faraday constant comes out round because both e and the grex number are round
+- g isn't round: c is, and only one of them can be (see Gravity)
 
 # Everyday reference
 
@@ -785,6 +951,28 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
   coherent derived units (proposed, not decided)
 - Holocene Era: record why it was chosen
 - A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)
-- Standard sizes: food energy labels (opus), paper sizes, clothing/shoe sizes
+- Standard sizes: food energy labels (opus), clothing/shoe sizes
 - Review existing dozenal clock designs (https://clocks.dozenal.ca)
 - Optional: rescale lam for a round K_cd
+- Month names clash: Sept / Oct already mean September / October, so "3 Oct" is ambiguous. Revisit the
+  calendar as its own project: keep Gregorian (with new month names or numbers only) or change it radically
+- Absolute temperature: °t / te stays the everyday scale (0 = freezing); the absolute scale needs its own
+  name. Ideas: "tabs" (t absolute, but an English word), or **ta** spoken "tep absolute", after the
+  precedent of psia / psig (pressure absolute / gauge)
+- Name for 0;4 p (≈ 48 cm): cubit (Latin cubitum, elbow - elbow to fingertip) is liked, but its symbol would
+  be "cu", which is the cub. Alternative: ulna (Latin for forearm, and the forearm bone; the old ell measure
+  came from it), symbol "ul"
+- Name for 0;1 dig (≈ 0.84 mm, the new millimetre): **lin**, from Latin linea (a linen thread, a line); the
+  old line was 1/12 inch, and watch and button sizes still use the French ligne. Needs a symbol exception:
+  "li" is the lib
+- Cooking measures: teaspoon 0;004 cu, tablespoon 0;01 cu (= 3 tsp), cup 0;2 cu (= 20 tbsp), proposed
+- Same-name units within a few percent: say "paludal cup" in full where ambiguous (like UK pint / US
+  pint), rather than a subscript p you can't hear
+- School rulers: 0;3 p (3 un, 36 cm) likely replaces the 30 cm ruler
+- Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a
+  "paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?
+- Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is
+  the established DSA name, so keeping it is suggested. "Bigro" would also clash with the rule that big
+  numbers group in threes (bimo = 10^6).
+- The wink (half a blink) was removed as too fast to be useful, though it equals TGM's Tim exactly. Check
+  whether to reinstate it

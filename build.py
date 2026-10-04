@@ -9,8 +9,37 @@ SRC = HERE / "ideas.md"
 OUT = HERE / "index.html"
 
 
+UNITS = {
+    "bl": "blink", "be": "beat", "br": "breath", "ch": "chime", "mt": "moment",
+    "p": "pace", "un": "unc", "di": "dig", "li": "lib", "cu": "cub", "te": "tep",
+    "vi": "vis", "op": "opus", "vg": "vig", "pr": "pres", "ri": "riv", "on": "onus",
+    "im": "imp", "gx": "grex", "la": "lam", "vo": "vox", "ag": "ager",
+}
+ROOTS = dict(zip("nubtqphsoedl", "nil un bi tri quad pent hex sept oct enn dek el".split()))
+UNIT_RE = "|".join(sorted(UNITS, key=len, reverse=True))
+# A prefixed symbol (tqop) is always a unit; a bare one (p, on, be) only straight after a number or / or ·,
+# so ordinary words are left alone.
+SYMBOL = re.compile(
+    rf"\b([nubtqphsoedl]+[qc])({UNIT_RE})(?![A-Za-z0-9_])|(?:(?<=\d )|(?<=[\d/·]))({UNIT_RE})(?![A-Za-z0-9_])|(?<=\d )(°t)"
+)
+
+
+def expand(m):
+    prefix, unit = (m.group(1), m.group(2)) if m.group(1) else (None, m.group(3) or m.group(4))
+    if not prefix and unit in ("on", "be") and re.match(r" [a-z]", m.string[m.end():]):
+        return m.group(0)  # the English word: "3;00 on the left"
+    name = "tep (degrees from freezing)" if unit == "°t" else UNITS[unit]
+    if prefix:
+        roots = "".join(ROOTS[ch] for ch in prefix[:-1])
+        power = "".join("0123456789XE"["nubtqphsoedl".index(ch)] for ch in prefix[:-1])
+        mul = prefix[-1] == "q"
+        name = f"{roots}{'qua' if mul else 'cia'}-{name} ({'×' if mul else '÷'} 10^{power})"
+    return f'<abbr title="{name}">{m.group(0)}</abbr>'
+
+
 def inline(text):
     text = html.escape(text, quote=False)
+    text = SYMBOL.sub(expand, text)
     text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"(?<![*\w])\*([^*]+)\*(?![*\w])", r"<em>\1</em>", text)
@@ -188,6 +217,7 @@ p, ul { margin: 6px 0 10px; }
 ul { padding-left: 20px; }
 code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
 a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
 .intro { color: var(--muted); }
 .table-wrap { overflow-x: auto; margin: 10px 0 16px; }
 table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
