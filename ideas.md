@@ -335,7 +335,7 @@ remember. The rule used to say "no clash with existing everyday words", which co
 | 0;4 pace               | ulna  | ul     | ≈ 48.4 cm           | Latin ulna, forearm (elbow to fingertip)          | ell                          |
 | 1,000 paces (distance)  | iter  | ir     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
 | 930 paces (sea, air)   | navis | na     | ≈ 1.935 km          | Latin navis, ship                                 | navy, navigate               |
-| Star distances         | parax | px     | 2.30 pc, 7.5 ly     | Greek parallaxis, parallax (as parsec)            | parallax                     |
+| Star distances         | parax | px     | 2.30 pc, 7.5 ly     | parallaxis, astronomers' Latin (from Greek)       | parallax                     |
 | Area                   | ager  | ag     | ≈ 3,646 m²          | Latin ager, field                                 | agriculture                  |
 | Mass                   | lib   | li     | ≈ 1.7714 kg         | Latin libra, pound; also scales (Roman pound)     | lb (pound), Libra            |
 | Volume (unc cube)      | cub   | cu     | 1.7736 L            | Latin cubus, cube                                 | cube, cubic                  |
@@ -565,8 +565,9 @@ side of the Earth's orbit. The parsec is exact in SI (648,000/π AU), and this w
 **Decided:** the name **parax**, symbol **px**.
 
 **Why:** it's named after parallax, the way the parsec (parallax-second) is, so astronomers will recognise
-it. Greek rather than Latin (*parallaxis*), and five letters, but the link to parallax is worth more than
-the rules. Symbol: "pa" is the pascal, so first and last letters; px is also the screen pixel, which isn't
+it. The root is Greek, but *parallaxis* was the word astronomers used when they wrote in Latin (Tycho Brahe,
+Kepler); classical Latin had no word for it, and the medieval *diversitas aspectus* ("difference of view")
+is too long to shorten well. Five letters, but the link to parallax is worth more than the rule. Symbol: "pa" is the pascal, so first and last letters; px is also the screen pixel, which isn't
 an SI or imperial unit. Rejected: sidus (Latin, a star; "si" reads as SI), caelum (Latin, the sky; too long).
 
 ## Mass
