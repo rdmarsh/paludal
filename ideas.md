@@ -727,12 +727,14 @@ record uses it. A base-12 version would change values by only ~7% - not worth br
 more acidic) and centres on 7, which is only neutral at 25 °C. Replaces the earlier decision to keep pH
 unchanged in dozenal digits.
 
-Proposed name: **acidity** (eg lemon juice is acidity +4;5). The word already means acid content in wine and
-food (in g/L), so watch for confusion.
+**Decided:** the scale is called **acidity** (eg lemon juice is acidity +4;5), and
+**acidity = log base 12 of ([H+] / [H+] in pure water at the same temperature)**.
 
-Proposed definition (not decided): **acidity = log base 12 of ([H+] / [H+] in pure water at the same
-temperature)**. Nothing needs converting: more H+ than pure water gives a positive number, less gives a
-negative one, and pure water gives 0. So
+**Why:** it's the simplest formula that gets it right: nothing needs converting (more H+ than pure water
+gives a positive number, less a negative one, pure water 0), and each step is twelve times. Rejected:
+log 12 of [H+]/[OH-] (the same information with every number doubled) and 7 - pH (keeps base-ten steps,
+and 0 is only neutral at 25 °C). The word acidity already means acid content in wine and food (in g/L),
+but that's not a serious clash. So
 
 - 0 is neutral at **every** temperature (pH's neutral point is 7.47 at 0 °C, 7 at 25 °C, 6.8 at body
   temperature and 6.14 at 100 °C)
@@ -762,7 +764,7 @@ negative one, and pure water gives 0. So
 | Drain cleaner (lye) | 14.0 | -6;6 | -11;0 | -7;0 |
 
 - Values at 25 °C, in dozenal digits. The three columns are three ways to build the scale:
-  - **Acidity (log 12)**, proposed: compares H+ with pure water. Each step is 12 times more acidic
+  - **Acidity (log 12)**, chosen: compares H+ with pure water. Each step is 12 times more acidic
   - **log 12 of [H+]/[OH-]**: compares acid (H+) with base (OH-). As one rises the other falls, so the
     ratio moves twice as fast and every number is doubled. Same information, bigger numbers
   - **7 - pH**: today's pH flipped and shifted. Steps are still ×10 (dec), and 0 is only neutral at 25 °C
@@ -981,7 +983,9 @@ see Speed). Traditional distances tied to history (marathon, cricket pitch) keep
 | Minute | 60 s | 1;25 mt |  |
 | Hour | 60 min | 0;6 ch (60 mt) |  |
 | Feature film | 2 h | 1 ch |  |
-| Lunch break | 30 min | 0;3 ch (30 mt) |  |
+| Short meeting, lunch break | 30 min | 0;3 ch (30 mt) |  |
+| Lesson, meeting | 45 min | 0;46 ch (46 mt) | 0;4 ch (40 min) or 0;5 ch (50 min) |
+| Long meeting, lecture | 60 min | 0;6 ch (60 mt) |  |
 | School day | 9:00-15:00 (6 h) | 4;60-7;60 (3 ch) |  |
 | Working day | 9:00-17:00 (8 h) | 4;60-8;60 (4 ch) |  |
 | Working week | 38 h (Australian standard) | 17 ch |  |
@@ -990,9 +994,11 @@ see Speed). Traditional distances tied to history (marathon, cricket pitch) keep
 | Year | 365.2422 days | 265;2XX days |  |
 | School starting age | 5 years | 5 years |  |
 | Adult (voting, driving) | 18 years | 16 years |  |
+| Coming of age (21st birthday) | 21 years | 19 years |  |
 | Retirement age (Australia) | 67 years | 57 years |  |
 | Average lifetime (world) | 73 years, about 26 700 days | 61 years, about 13 520 days |  |
 | Average lifetime (Australia) | 83 years | 6E years |  |
+| Century | 100 years | 84 years | a gro of years (100) is 144 (dec) |
 
 ## Speed
 
@@ -1176,7 +1182,6 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
   pint), rather than a subscript p you can't hear
 - Rulers: the pencil-case 0;2 p and desk 0;3 p are in Everyday reference. Still open: board ruler (0;4 p if
   the ulna is adopted, or 0;6 p) and the metre stick's replacement (1 p?)
-- Acidity (pH replacement): confirm the name "acidity" and the log-12 definition. See [Acidity (pH)](#acidity-ph)
 - Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;
   60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec),
   frequency units, and note lengths

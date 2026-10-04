@@ -6,6 +6,7 @@
 //	go run . -bell            terminal bell on breaths instead of generated tones
 //	go run . -face=false      digital time only, no clock face
 //	go run . -size=16         clock face height in terminal rows
+//	go run . -dst             follow daylight saving (Paludal time ignores it by default)
 package main
 
 import (
@@ -45,6 +46,7 @@ func main() {
 	bell := flag.Bool("bell", false, "use the terminal bell on breaths instead of generated tones")
 	face := flag.Bool("face", true, "draw a clock face")
 	size := flag.Int("size", 21, "clock face height in terminal rows")
+	flag.BoolVar(&followDST, "dst", false, "follow daylight saving (by default Paludal time stays on standard time)")
 	flag.Parse()
 
 	every, ok := map[string]int64{"blink": 1, "beat": 3, "breath": 12}[*from]
@@ -96,9 +98,16 @@ func nextBlink(now time.Time) (int64, time.Time) {
 	return n % blinksPerDay, now.Add(time.Duration(n*blinkNanos - since))
 }
 
-// sinceMidnight is the local wall-clock time of day in nanoseconds. It reads the clock face, not
-// elapsed time, so a daylight-saving change moves Paludal time with it: 1 hour is 0;60.
+// followDST makes Paludal time follow daylight saving. Paludal has none, so by default the clock stays
+// on the time zone's standard time all year.
+var followDST bool
+
+// sinceMidnight is the local time of day in nanoseconds. It reads the clock face, not elapsed time, so
+// with -dst a daylight-saving change moves Paludal time with it (1 hour is 0;60).
 func sinceMidnight(t time.Time) int64 {
+	if !followDST {
+		t = standardTime(t)
+	}
 	h, m, s := t.Clock()
 	return (int64(h)*3600+int64(m)*60+int64(s))*int64(time.Second) + int64(t.Nanosecond())
 }
@@ -177,4 +186,12 @@ func (t tone) sample(offset time.Duration) float64 {
 	}
 	fade := math.Min(1, (t.length-offset).Seconds()/0.005) // 5 ms fade-out avoids a click
 	return t.volume * fade * math.Sin(2*math.Pi*t.freq*offset.Seconds())
+}
+
+// standardTime converts t to its zone's standard (non-daylight-saving) time. Daylight saving always
+// moves clocks forward, so standard time has the smaller of the January and July offsets.
+func standardTime(t time.Time) time.Time {
+	_, jan := time.Date(t.Year(), 1, 1, 0, 0, 0, 0, t.Location()).Zone()
+	_, jul := time.Date(t.Year(), 7, 1, 0, 0, 0, 0, t.Location()).Zone()
+	return t.In(time.FixedZone("standard", min(jan, jul)))
 }
