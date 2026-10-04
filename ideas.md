@@ -534,6 +534,34 @@ Imperial comparisons:
 - With c exact: g ≈ 0;9926 paces/blink² (≈ 99;26 paces/breath², 117.2 dec)
 - g varies ~0.5% over Earth's surface anyway, so it's a poor basis for a definition.
 
+### Star distances
+
+**Proposed (not decided):** a dozenal **parsec**: the distance at which the Earth's orbit (1 AU, the
+Earth-Sun distance) spans **0;000001 turn** (1/2,985,984 dec of a turn, 0.434 arcseconds). Name to be decided.
+
+The parsec is the same idea in degrees: the distance at which 1 AU spans 1 arcsecond (1/3,600 of a degree),
+so a star's distance follows straight from its parallax, the yearly shift in its position seen from either
+side of the Earth's orbit. The parsec is exact in SI (648,000/π AU), and this would be too:
+
+- 1 unit = 1,000,000 / 2π AU = 1X,E02;14 AU (475,234 dec) = 3;2155 × 10^13 p
+- = 2.304 parsecs = 7.515 light-years (dec)
+- Parallax in millionths of a turn gives the distance directly: a star that shifts 0;000004 turn is 0;3 units away
+- Rejected: 0;00001 turn (5.2 arcseconds), which gives 0.192 parsecs, so star distances run to large numbers
+
+| Object | Parsecs (dec) | New unit |
+|---|---|---|
+| Proxima Centauri (nearest star) | 1.30 | 0;694 |
+| Sirius | 2.64 | 1;19 |
+| Pleiades | 136 | 4E |
+| Centre of the Milky Way | 8,180 | 2,079 |
+| Andromeda galaxy | 765,000 | 140,193 |
+
+- Name candidates (none clash with an SI or imperial symbol, but each has a catch):
+  - **parax** (from parallax, as parsec is from parallax-second): symbol **px**, since "pa" is the pascal; px is
+    also the screen pixel
+  - **sidus** (Latin, a star): symbol **sd** (first and last), since "si" reads as SI; five letters
+  - **caelum** (Latin, the sky): too long, and "ca" reads as circa
+
 ## Mass
 
 **Decided:** the **lib** ≈ 1.7714 kg, defined by fixing Planck's constant:
@@ -1426,6 +1454,7 @@ Where the ideas came from, and what's still to decide.
 - Money: a name for the 1/100; part of a dollar (see Money)
 - A speed unit for ships and aircraft, to replace the knot (see the navis in Length)
 - Drug doses: how they're written (medicine keeps mg for now)
+- Dozenal parsec: confirm 0;000001 turn and choose a name (see Star distances in Length)
 - Rename the iter? It looks and sounds close to litre, and the US spelling **liter** is "l" + "iter", which will
   confuse things like fuel economy ("iters per liter"). Candidate: **lapis** (Latin, a stone: Roman milestones
   stood every 1,000 paces, and distances were given as "at the third stone"), so the meaning matches the size
