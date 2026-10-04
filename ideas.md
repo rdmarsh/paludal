@@ -956,9 +956,6 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
 - Optional: rescale lam for a round K_cd
 - Month names clash: Sept / Oct already mean September / October, so "3 Oct" is ambiguous. Revisit the
   calendar as its own project: keep Gregorian (with new month names or numbers only) or change it radically
-- Absolute temperature: °t / te stays the everyday scale (0 = freezing); the absolute scale needs its own
-  name. Ideas: "tabs" (t absolute, but an English word), or **ta** spoken "tep absolute", after the
-  precedent of psia / psig (pressure absolute / gauge)
 - Name for 0;4 p (≈ 48 cm): cubit (Latin cubitum, elbow - elbow to fingertip) is liked, but its symbol would
   be "cu", which is the cub. Alternative: ulna (Latin for forearm, and the forearm bone; the old ell measure
   came from it), symbol "ul"
