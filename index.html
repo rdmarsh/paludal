@@ -64,6 +64,7 @@ td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg
 .why strong { color: var(--fg); }
 body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
 body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
@@ -73,21 +74,21 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 </style>
 </head>
 <body>
-<div class="layout">
+<div class="layout" id="top">
 <nav>
-<h1>Paludal units</h1>
+<h1><a href="#top">Paludal units</a></h1>
 <label class="toggle"><input type="checkbox" id="tables-only"> Tables, decisions and reasons only</label>
 <div class="conv">
 <label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
 <label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
-<span class="hint" id="conv-hint">Type in either box. X = ten, E = eleven.</span>
+<span class="hint" id="conv-hint">Type in either box. X = ten, E = eleven. Rounded to 3 places.</span>
 </div>
 <ul>
 <li class="has-table"><a href="#the-paludal-system">The Paludal system</a></li>
 <li class="has-table"><a href="#summary">Summary</a><ul><li><a href="#summary-base-units-and-defining-constants">Base units and defining constants</a></li><li><a href="#summary-derived-and-everyday-units">Derived and everyday units</a></li><li><a href="#summary-how-the-units-connect">How the units connect</a></li><li><a href="#summary-rules-of-thumb">Rules of thumb</a></li></ul></li>
 <li class="has-table"><a href="#symbols">Symbols</a><ul><li><a href="#symbols-unit-symbols">Unit symbols</a></li><li><a href="#symbols-prefix-symbols">Prefix symbols</a></li><li><a href="#symbols-spoken-numbers">Spoken numbers</a></li></ul></li>
 <li class="has-table"><a href="#writing-numbers">Writing numbers</a></li>
-<li class="has-table"><a href="#time">Time</a><ul><li><a href="#time-years">Years</a></li><li><a href="#time-calendar">Calendar</a></li><li><a href="#time-analogue-clocks">Analogue clocks</a></li><li><a href="#time-caesium-definition">Caesium definition</a></li></ul></li>
+<li class="has-table"><a href="#time">Time</a><ul><li><a href="#time-daylight-saving-and-time-zones">Daylight saving and time zones</a></li><li><a href="#time-years">Years</a></li><li><a href="#time-calendar">Calendar</a></li><li><a href="#time-analogue-clocks">Analogue clocks</a></li><li><a href="#time-caesium-definition">Caesium definition</a></li></ul></li>
 <li class="has-table"><a href="#length">Length</a><ul><li><a href="#length-speed">Speed</a></li><li><a href="#length-gravity">Gravity</a></li></ul></li>
 <li class="has-table"><a href="#mass">Mass</a></li>
 <li class="has-table"><a href="#area">Area</a></li>
@@ -98,7 +99,7 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <li class="has-table"><a href="#light">Light</a></li>
 <li class="has-table"><a href="#sound">Sound</a></li>
 <li class="has-table"><a href="#earthquakes">Earthquakes</a></li>
-<li class="has-table"><a href="#ph">pH</a></li>
+<li class="has-table"><a href="#acidity-ph">Acidity (pH)</a></li>
 <li class="has-table"><a href="#angle">Angle</a></li>
 <li class="has-table"><a href="#paper-sizes">Paper sizes</a></li>
 <li class="has-table"><a href="#constants">Constants</a><ul><li><a href="#constants-defining-constants-exact">Defining constants (exact)</a></li><li><a href="#constants-derived-from-them-also-exact">Derived from them (also exact)</a></li><li><a href="#constants-measured">Measured</a></li><li><a href="#constants-earth-and-everyday">Earth and everyday</a></li><li><a href="#constants-pure-numbers-the-same-in-any-base-dozenal-digits">Pure numbers (the same in any base, dozenal digits)</a></li></ul></li>
@@ -107,16 +108,18 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <li class="has-table"><a href="#names">Names</a></li>
 <li class="has-table"><a href="#prefixes">Prefixes</a></li>
 <li class="no-table"><a href="#prior-art">Prior art</a></li>
-<li class="has-table"><a href="#open-items-next-steps">Open items / next steps</a></li>
+<li class="no-table"><a href="#open-items-next-steps">Open items / next steps</a></li>
 </ul>
 </nav>
 <main>
 <div class="intro"></div>
-<section class="has-table" id="the-paludal-system">
+<section class="lead has-table" id="the-paludal-system">
 <h2>The Paludal system</h2>
 <div class="block para"><p>Paludal is a dozenal (base-12) system of units, built the way SI is built but counted in twelves. Time comes from a 24-hour day of 86 400 s (dec): the blink is 1/100000 of a day (twelve to the fifth power, 25/72 s exactly), and every time unit up to the day is a power of twelve of it. Length comes from the speed of light, fixed at 2 × 10^7 paces per blink, which makes the pace about 1.45 m - close to the Roman pace. Mass comes from the Planck constant, chosen so that a cub of water (a cube 0;1 pace on each side) weighs a lib. Temperature, charge, amount and light are each fixed by a constant, as in SI, so every unit converts exactly to SI. Multiples and fractions step by twelve, which divides evenly by 2, 3, 4 and 6.</p></div>
 <div class="block decided"><p><strong>Decided:</strong> the system is called <strong>Paludal</strong> ("paludal units", "is that metric or paludal?"). Fallbacks if needed: <strong>Uncial</strong> (Latin uncia, a twelfth) or <strong>Passic</strong> (from passus, the pace - as metric is from the metre).</p></div>
 <div class="block why"><p><strong>Why:</strong> named after its creator, as Fahrenheit, Celsius and Kelvin are - but hidden: Latin <em>palus, paludis</em> means "a marsh". It matches the Latin naming style of the units, and works as an adjective like "metric".</p></div>
+<div class="block decided"><p><strong>Decided:</strong> <strong>dozenal</strong> is the number system (base twelve) and <strong>Paludal</strong> is the system of units built on it, as decimal is the number system and metric the units.</p></div>
+<div class="block why"><p><strong>Why:</strong> TODO - reason not recorded.</p></div>
 <div class="block para"><p>Numbers below are dozenal unless marked "(dec)".</p></div>
 <div class="block para"><p>Goals: as rigorous as SI (every unit defined by a fixed constant, exact conversion to SI), but human focused - everyday sizes and rules of thumb matter more than round constants.</p></div>
 </section>
@@ -193,8 +196,7 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <div class="block decided"><p><strong>Decided:</strong> digits X = <strong>dek</strong>, E = <strong>el</strong> (the DSA standard names). Powers use <strong>do / gro / mo</strong>:</p></div>
 <div class="block why"><p><strong>Why:</strong> dek and el are the established standard names, so we use them (and changed the prefix roots to match, not the other way round). Calling 10; "ten" would be heard as decimal. do / gro / mo are short, and bimo / trimo extend them the way million / billion extend thousand.</p></div>
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>Number</th><th>Name</th><th>(dec)</th></tr></thead><tbody><tr><td>10</td><td>do</td><td>12</td></tr><tr><td>100</td><td>gro</td><td>144</td></tr><tr><td>1000</td><td>mo</td><td>1728</td></tr><tr><td>10^6</td><td>bimo</td><td>2985984</td></tr><tr><td>10^9</td><td>trimo</td><td>5.16 × 10^9</td></tr></tbody></table></div></div>
-<div class="block list"><ul><li>Digits are grouped in threes, like thousand / million: 4,000,000 = four bimo</li><li>46 = "four do six", 2X3 = "two gro dek do three", 6E62 = "six mo el gro six do two"</li><li>Never say "ten" for 10; - it gets heard as decimal</li><li>Codes, phone numbers etc. are read digit by digit; after the semicolon, always digit by digit</li></ul></div>
-<div class="block para"><p>(3;14 = "three point one four")</p></div>
+<div class="block list"><ul><li>Digits are grouped in threes, like thousand / million: 4,000,000 = four bimo</li><li>46 = "four do six", 2X3 = "two gro dek do three", 6E62 = "six mo el gro six do two"</li><li>Never say "ten" for 10; - it gets heard as decimal</li><li>Codes, phone numbers etc. are read digit by digit; after the semicolon, always digit by digit (3;14 = "three point one four")</li></ul></div>
 </section>
 </section>
 <section class="has-table" id="writing-numbers">
@@ -239,6 +241,12 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <div class="block decided"><p><strong>Decided:</strong> times more precise than a breath just add digits, with no separator: E;X053 (3 blinks past E;X05). On screens, the extra digits are shown smaller or dimmer, like the hundredths on a stopwatch.</p></div>
 <div class="block why"><p><strong>Why:</strong> a time of day is a single number - chimes since midnight - so times can be subtracted and compared directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X05;3) would break that, and a space (E;X05 3) makes the digits look unrelated. Decimal times do the same: 9.58 s, 1:23.45 on a stopwatch.</p></div>
 <div class="block list"><ul><li>spoken like "nine forty-five": E;91 = "el, nine-one"; 6;00 = "six"; with breaths, "el, nine-one, seven"</li></ul></div>
+<section class="has-table" id="time-daylight-saving-and-time-zones">
+<h3>Daylight saving and time zones</h3>
+<div class="block decided"><p><strong>Decided:</strong> no daylight saving, for now.</p></div>
+<div class="block why"><p><strong>Why:</strong> a 1-hour shift is half a chime (0;6), which changes the moment digits (6;45 becomes 6;X5). Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.</p></div>
+<div class="block list"><ul><li>Time zones are still open: offsets in hours are half-chimes (UTC+10 = +5;00, UTC+9:30 = +4;90, UTC-5 = -2;60). Twelve whole-chime zones would be too few.</li></ul></div>
+</section>
 <section class="has-table" id="time-years">
 <h3>Years</h3>
 <div class="block decided"><p><strong>Decided:</strong> year numbering follows the <strong>Human (Holocene) Era</strong>: 1 HE = 10,000 BCE, so add 10,000 (dec) to the CE year.</p></div>
@@ -266,17 +274,13 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <div class="block why"><p><strong>Why:</strong> one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest, and clockwise keeps the convention people already know.</p></div>
 <div class="block para"><p>Four hands - hour, minute and second, plus a light beat hand:</p></div>
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>Hand</th><th>Turns once per</th><th>Reads</th><th>Dial</th><th>Like</th></tr></thead><tbody><tr><td>Chime</td><td>day</td><td>chime (0-E)</td><td>12 marks</td><td>hour hand</td></tr><tr><td>Moment</td><td>chime (2 h)</td><td>moments 00-EE</td><td>12 marks + 144 (dec) fine marks</td><td>minute hand</td></tr><tr><td>Breath</td><td>moment (50 s)</td><td>breath (0-E)</td><td>12 marks; steps once per breath (onto each mark)</td><td>second hand</td></tr><tr><td>Beat</td><td>moment (50 s)</td><td>beat (4 per breath)</td><td>steps once per beat; thin and light grey, like the dial</td><td>ticking second hand</td></tr></tbody></table></div></div>
-<div class="block list"><ul><li>The breath hand steps once per breath, landing on each mark, so it always points at the breath digit.</li></ul></div>
-<div class="block para"><p>It used to step once per beat (4 steps per mark), but then it looked like a beat hand while labelled breath</p></div>
-<div class="block list"><ul><li><strong>Noon (6;00) points straight up, midnight (0;00) straight down</strong><ul><li>dawn ≈ 3;00 on the left, dusk ≈ 9;00 on the right (at the equinoxes)</li><li><strong>Clockwise everywhere</strong> (bottom → left → top → right), both hemispheres - matches convention, and clocks are clockwise because they copied northern sundials</li><li>matches the sun's path when facing south in the northern hemisphere, so a correctly oriented clock roughly agrees with a sundial</li></ul></li><li>Existing dozenal clock designs to compare: <a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a> (not yet reviewed - blocked by sandbox network policy)</li></ul></div>
+<div class="block list"><ul><li>The breath hand steps once per breath, landing on each mark, so it always points at the breath digit. It used to step once per beat (4 steps per mark), but then it looked like a beat hand while labelled breath</li><li><strong>Noon (6;00) points straight up, midnight (0;00) straight down</strong><ul><li>dawn ≈ 3;00 on the left, dusk ≈ 9;00 on the right (at the equinoxes)</li><li><strong>Clockwise everywhere</strong> (bottom → left → top → right), both hemispheres - matches convention, and clocks are clockwise because they copied northern sundials</li><li>matches the sun's path when facing south in the northern hemisphere, so a correctly oriented clock roughly agrees with a sundial</li></ul></li><li>Existing dozenal clock designs to compare: <a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a> (not yet reviewed - blocked by sandbox network policy)</li></ul></div>
 </section>
 <section class="has-table" id="time-caesium-definition">
 <h3>Caesium definition</h3>
 <div class="block decided"><p><strong>Decided:</strong> 1 breath = 750E583273 caesium periods exactly (38,302,632,375 dec).</p></div>
 <div class="block why"><p><strong>Why:</strong> it makes the breath exactly 25/6 SI seconds, so conversion to SI is exact and the system inherits SI's precision and any future redefinition of the second (details below).</p></div>
-<div class="block list"><ul><li>So 1 blink = 750E58327;3 periods (terminates in dozenal; 3,191,886,031.25 dec)</li><li>Equivalent to: 1 breath = 25/6 SI seconds exactly, so the day stays at exactly 86400 SI seconds.</li><li>Converting between SI and dozenal time is exact (no drift, no leap breaths beyond what SI already needs).</li><li>Leap breaths: none of our own. The breath follows UTC, and leap seconds are being phased out</li></ul></div>
-<div class="block para"><p>(CGPM 2022 CE: UTC will be allowed to drift further from the Earth's rotation by 2035 CE), so whatever UTC does, Paludal time does too.</p></div>
-<div class="block list"><ul><li>Survives the planned SI redefinition of the second (optical clocks, ~2030 CE): the breath simply follows the SI second.</li><li>Not based on the day itself (Earth's rotation is irregular) - must be as good as SI.</li><li>Rejected:<ul><li>7500000000 (fully round): day 77 s too short, drifts ~8 h/year.</li><li>750E580000: drifts ~4.6 s (~1.1 breaths)/year, needs a leap breath nearly every year.</li><li>750E583000: drifts ~0.31 s/year - acceptable, but no real benefit over exact.</li><li>750E583270: would make the blink a whole number of periods (750E58327), but the breath would no longer be exactly 25/6 s, so Paludal clocks would drift ~2.5 ms/year from UTC (1 s in ~400 years) and every time conversion would need a long factor.</li></ul></li></ul></div>
+<div class="block list"><ul><li>So 1 blink = 750E58327;3 periods (terminates in dozenal; 3,191,886,031.25 dec)</li><li>Equivalent to: 1 breath = 25/6 SI seconds exactly, so the day stays at exactly 86400 SI seconds.</li><li>Converting between SI and dozenal time is exact (no drift, no leap breaths beyond what SI already needs).</li><li>Leap breaths: none of our own. The breath follows UTC, and leap seconds are being phased out (CGPM 2022 CE: UTC will be allowed to drift further from the Earth's rotation by 2035 CE), so whatever UTC does, Paludal time does too.</li><li>Survives the planned SI redefinition of the second (optical clocks, ~2030 CE): the breath simply follows the SI second.</li><li>Not based on the day itself (Earth's rotation is irregular) - must be as good as SI.</li><li>Rejected:<ul><li>7500000000 (fully round): day 77 s too short, drifts ~8 h/year.</li><li>750E580000: drifts ~4.6 s (~1.1 breaths)/year, needs a leap breath nearly every year.</li><li>750E583000: drifts ~0.31 s/year - acceptable, but no real benefit over exact.</li><li>750E583270: would make the blink a whole number of periods (750E58327), but the breath would no longer be exactly 25/6 s, so Paludal clocks would drift ~2.5 ms/year from UTC (1 s in ~400 years) and every time conversion would need a long factor.</li></ul></li></ul></div>
 </section>
 </section>
 <section class="has-table" id="length">
@@ -294,12 +298,9 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>Imperial</th><th>Paces</th><th>Uncs</th><th>Digs</th></tr></thead><tbody><tr><td>6 ft</td><td>1;313</td><td>13;13</td><td>131;3</td></tr><tr><td>1 ft</td><td>0;262</td><td>2;62</td><td>26;2</td></tr><tr><td>6 in</td><td>0;131</td><td>1;31</td><td>13;1</td></tr><tr><td>1 in</td><td>0;026</td><td>0;26</td><td>2;6</td></tr></tbody></table></div></div>
 <section class="has-table" id="length-speed">
 <h3>Speed</h3>
-<div class="block list"><ul><li>100 km/h ≈ 67;82 paces/breath. Same digits at every scale because units step by twelve</li></ul></div>
-<div class="block para"><p>(≈ 6782;14 paces per 0;01 day, ≈ 67821;49 paces per 0;1 day)</p></div>
-<div class="block list"><ul><li>Speed signs in paces/breath; each 10 = 15.06 km/h (dec):</li></ul></div>
+<div class="block list"><ul><li>100 km/h ≈ 67;82 paces/breath. Same digits at every scale because units step by twelve (≈ 6782;14 paces per 0;01 day, ≈ 67821;49 paces per 0;1 day)</li><li>Speed signs in paces/breath; each 10 = 15.06 km/h (dec):</li></ul></div>
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>Sign</th><th>km/h</th><th>mph</th><th>Use</th></tr></thead><tbody><tr><td>20</td><td>30.1</td><td>18.7</td><td>school zone</td></tr><tr><td>30</td><td>45.2</td><td>28.1</td><td>residential</td></tr><tr><td>40</td><td>60.2</td><td>37.4</td><td>urban</td></tr><tr><td>50</td><td>75.3</td><td>46.8</td><td>rural</td></tr><tr><td>60</td><td>90.4</td><td>56.1</td><td>highway</td></tr><tr><td>70</td><td>105.4</td><td>65.5</td><td>motorway</td></tr><tr><td>80</td><td>120.5</td><td>74.9</td><td>fast motorway</td></tr></tbody></table></div></div>
-<div class="block list"><ul><li>Real limits needn't be round: like any changeover, existing values would be set to the nearest</li></ul></div>
-<div class="block para"><p>whole number rather than converted exactly. The nearest whole numbers land within 0.5 km/h:</p></div>
+<div class="block list"><ul><li>Real limits needn't be round: like any changeover, existing values would be set to the nearest whole number rather than converted exactly. The nearest whole numbers land within 0.5 km/h:</li></ul></div>
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>km/h now</th><th>Sign</th><th>km/h</th></tr></thead><tbody><tr><td>40</td><td>28</td><td>40.2</td></tr><tr><td>50</td><td>34</td><td>50.2</td></tr><tr><td>60</td><td>40</td><td>60.2</td></tr><tr><td>70</td><td>48</td><td>70.3</td></tr><tr><td>80</td><td>54</td><td>80.3</td></tr><tr><td>90</td><td>60</td><td>90.4</td></tr><tr><td>100</td><td>68</td><td>100.4</td></tr><tr><td>110</td><td>74</td><td>110.4</td></tr></tbody></table></div></div>
 <div class="block decided"><p><strong>Decided:</strong> real-world values (limits, products, standards) get rounded new values, not exact conversions.</p></div>
 <div class="block why"><p><strong>Why:</strong> that's how every changeover works in practice (eg metric speed limits), and a whole number is easier to read.</p></div>
@@ -344,9 +345,7 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <h2>Temperature</h2>
 <div class="block decided"><p><strong>Decided:</strong> the <strong>tep</strong>, defined by fixing the Boltzmann constant <strong>k = 2;07 × 10^-1E</strong> (opus/tep), exact.</p></div>
 <div class="block why"><p><strong>Why:</strong> 0 tep = freezing is what people actually need for weather and cooking (like Celsius). The size splits the gap between freezing and boiling into 100; equal steps (144 dec), so water freezes at 0 <abbr title="tep (degrees from freezing)">°t</abbr> and boils at 100 <abbr title="tep (degrees from freezing)">°t</abbr> - the dozenal version of Celsius's 0 and 100.</p></div>
-<div class="block list"><ul><li>1 tep = 0.694346 K (within 0.014% of 0;01 of the freezing-boiling gap)</li><li><strong>0 tep = freezing</strong> (273.15 K, same anchor as Celsius) - human focused; kelvin-style zero rejected</li><li>Triple point of water (273.16 K = 0.01 °C) ≈ <strong>0;021 <abbr title="tep (degrees from freezing)">°t</abbr></strong>, not 0. Anchoring 0 <abbr title="tep (degrees from freezing)">°t</abbr> at 273.15 K exactly, like</li></ul></div>
-<div class="block para"><p>Celsius, keeps 0 <abbr title="tep (degrees from freezing)">°t</abbr> = 0 °C; the triple point has been a measured value (not exact) since SI's 2019 redefinition, so anchoring there would gain nothing</p></div>
-<div class="block list"><ul><li>boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974 °C)</li><li>1 tep ≈ 0.694 °C ≈ 1.25 °F</li><li>body temperature ≈ 45;35 tep, room temperature (21 °C) ≈ 26 tep</li><li>absolute zero ≈ -289;48 tep (no nice ratio between absolute zero, freezing and boiling - fine)</li></ul></div>
+<div class="block list"><ul><li>1 tep = 0.694346 K (within 0.014% of 0;01 of the freezing-boiling gap)</li><li><strong>0 tep = freezing</strong> (273.15 K, same anchor as Celsius) - human focused; kelvin-style zero rejected</li><li>Triple point of water (273.16 K = 0.01 °C) ≈ <strong>0;021 <abbr title="tep (degrees from freezing)">°t</abbr></strong>, not 0. Anchoring 0 <abbr title="tep (degrees from freezing)">°t</abbr> at 273.15 K exactly, like Celsius, keeps 0 <abbr title="tep (degrees from freezing)">°t</abbr> = 0 °C; the triple point has been a measured value (not exact) since SI's 2019 redefinition, so anchoring there would gain nothing</li><li>boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974 °C)</li><li>1 tep ≈ 0.694 °C ≈ 1.25 °F</li><li>body temperature ≈ 45;35 tep, room temperature (21 °C) ≈ 26 tep</li><li>absolute zero ≈ -289;48 tep (no nice ratio between absolute zero, freezing and boiling - fine)</li></ul></div>
 <div class="block decided"><p><strong>Decided:</strong> absolute temperature (from absolute zero, for gas laws and physics) is written <strong>ta</strong>, spoken "tep absolute": 0 ta = absolute zero, freezing = 289;485 ta, so ta = °t + 289;485. Everyday temperatures stay °t (or te), from freezing.</p></div>
 <div class="block why"><p><strong>Why:</strong> most people will only ever use the everyday scale, so it keeps the plain names; the absolute scale just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square inch absolute / gauge). Rejected: "tabs" and "tea" (English words).</p></div>
 </section>
@@ -361,18 +360,15 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
   on --&gt; im
   im --&gt;|"× riv"| vg["vig: power&lt;br&gt;89.3 W"]
   ri --&gt; vg</pre></div>
-<div class="block list"><ul><li>1 onus (charge) ≈ 0.3555 C</li><li>1 riv (current, onus/blink) ≈ 1.0237 A - almost exactly an amp</li><li>1 imp (voltage, opus/onus) ≈ 87.21 V</li><li>Common voltages aren't round (set by chemistry/history), but mains lines up. An uncia-imp is 0;1 imp</li></ul></div>
-<div class="block para"><p>≈ 7.27 V (uncia- = ÷10, see <a href="#prefixes">Prefixes</a>):</p></div>
+<div class="block list"><ul><li>1 onus (charge) ≈ 0.3555 C</li><li>1 riv (current, onus/blink) ≈ 1.0237 A - almost exactly an amp</li><li>1 imp (voltage, opus/onus) ≈ 87.21 V</li><li>Common voltages aren't round (set by chemistry/history), but mains lines up. An uncia-imp is 0;1 imp ≈ 7.27 V (uncia- = ÷10, see <a href="#prefixes">Prefixes</a>):</li></ul></div>
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>Voltage</th><th>imp</th><th>uncia-imp</th></tr></thead><tbody><tr><td>1.5 V (AA)</td><td>0;026</td><td>0;26</td></tr><tr><td>5 V (USB)</td><td>0;083</td><td>0;83</td></tr><tr><td>12 V (car)</td><td>0;17X</td><td>1;7X</td></tr><tr><td>24 V</td><td>0;338</td><td>3;38</td></tr><tr><td>120 V mains</td><td>1;462</td><td>14;62</td></tr><tr><td>230 V mains</td><td>2;779</td><td>27;79</td></tr><tr><td>240 V mains</td><td>2;903</td><td>29;03</td></tr></tbody></table></div></div>
-<div class="block list"><ul><li>Rejected: e = 2 × 10^-15 (2.05 A, 43.6 V) or 0;6 × 10^-15 (0.51 A, 174 V) - no better for common voltages.</li><li>The imp can't also be close to a volt: imp × riv = vig (89.3 W), and the vig is fixed by the mechanical</li></ul></div>
-<div class="block para"><p>units. With the riv ≈ 1 A the imp must be ≈ 89 V; an imp near 1 V would need a riv near 89 A. Small voltages use the uncia-imp (7.27 V) and bicia-imp (0;01 imp ≈ 0.606 V)</p></div>
+<div class="block list"><ul><li>Rejected: e = 2 × 10^-15 (2.05 A, 43.6 V) or 0;6 × 10^-15 (0.51 A, 174 V) - no better for common voltages.</li><li>The imp can't also be close to a volt: imp × riv = vig (89.3 W), and the vig is fixed by the mechanical units. With the riv ≈ 1 A the imp must be ≈ 89 V; an imp near 1 V would need a riv near 89 A. Small voltages use the uncia-imp (7.27 V) and bicia-imp (0;01 imp ≈ 0.606 V)</li></ul></div>
 </section>
 <section class="has-table" id="amount-of-substance">
 <h2>Amount of substance</h2>
 <div class="block decided"><p><strong>Decided:</strong> the <strong>grex</strong> = exactly <strong>1;15 × 10^1X</strong> entities (≈ 6.17235 × 10^23 dec).</p></div>
 <div class="block why"><p><strong>Why:</strong> molar masses then come out ≈ atomic masses in 1/1000 lib, the same convenience chemists have with g/mol.</p></div>
-<div class="block list"><ul><li>Chosen so molar masses ≈ atomic masses in 1/1000 lib (like SI's g/mol): carbon-12 = 11.998, water = 18.01 (dec)</li><li>Rejected: exactly 10^1X (5.52 × 10^23 dec) - rounder, but molar masses come out ×0.894;</li></ul></div>
-<div class="block para"><p>SI's Avogadro number - molar masses off by 2.5%</p></div>
+<div class="block list"><ul><li>Chosen so molar masses ≈ atomic masses in 1/1000 lib (like SI's g/mol): carbon-12 = 11.998, water = 18.01 (dec)</li><li>Rejected: exactly 10^1X (5.52 × 10^23 dec) - rounder, but molar masses come out ×0.894; SI's Avogadro number - molar masses off by 2.5%</li></ul></div>
 </section>
 <section class="has-table" id="light">
 <h2>Light</h2>
@@ -392,29 +388,22 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <div class="block decided"><p><strong>Decided:</strong> keep the moment magnitude scale (Mw) unchanged, just written in dozenal digits: M 7.5 = <strong>M 7;6</strong>.</p></div>
 <div class="block why"><p><strong>Why:</strong> it's a log scale (no units needed), almost nobody does arithmetic with it, and every historical record uses it. A base-12 version would change values by only ~7% - not worth breaking the records.</p></div>
 </section>
-<section class="has-table" id="ph">
-<h2>pH</h2>
+<section class="has-table" id="acidity-ph">
+<h2>Acidity (pH)</h2>
 <div class="block decided"><p><strong>Decided:</strong> replace pH with an acidity scale where <strong>0 is neutral, acids are positive and bases negative</strong>.</p></div>
 <div class="block why"><p><strong>Why:</strong> if the system is being changed anyway, it may as well be done right. pH runs backwards (lower = more acidic) and centres on 7, which is only neutral at 25 °C. Replaces the earlier decision to keep pH unchanged in dozenal digits.</p></div>
-<div class="block decided"><p>Proposed definition (not decided): acidity = log base 12 of ([H+] / [H+ at neutral]), so</p></div>
-<div class="block list"><ul><li>0 is neutral at <strong>every</strong> temperature (pH's neutral point is 7.47 at 0 °C, 7 at 25 °C, 6.8 at body</li></ul></div>
-<div class="block para"><p>temperature and 6.14 at 100 °C)</p></div>
-<div class="block list"><ul><li>each step of 1 is 10 (12 dec) times more acidic</li><li>it's a ratio of two concentrations, so it needs no concentration unit (no mol/L vs grex/cub problem)</li><li>at 25 °C: acidity = (7 - pH) × 0;E15 (0.9266 dec). Everyday values run from about +6;6 to -6;6</li></ul></div>
+<div class="block para"><p>Proposed name: <strong>acidity</strong> (eg lemon juice is acidity +4;5). The word already means acid content in wine and food (in g/L), so watch for confusion.</p></div>
+<div class="block decided"><p>Proposed definition (not decided): <strong>acidity = log base 12 of ([H+] / [H+] in pure water at the same temperature)</strong>. Nothing needs converting: more H+ than pure water gives a positive number, less gives a negative one, and pure water gives 0. So</p></div>
+<div class="block list"><ul><li>0 is neutral at <strong>every</strong> temperature (pH's neutral point is 7.47 at 0 °C, 7 at 25 °C, 6.8 at body temperature and 6.14 at 100 °C)</li><li>each step of 1 is 10 (12 dec) times more acidic</li><li>it's a ratio of two concentrations, so it needs no concentration unit (no mol/L vs grex/cub problem)</li><li>at 25 °C: acidity = (7 - pH) × 0;E15 (0.9266 dec). Everyday values run from about +6;6 to -6;6</li></ul></div>
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>Substance</th><th>pH (dec)</th><th>Acidity (log 12)</th><th>log 12 of [H+]/[OH-]</th><th>7 - pH (log 10)</th></tr></thead><tbody><tr><td>Battery acid</td><td>0.8</td><td>+5;9</td><td>+E;6</td><td>+6;2</td></tr><tr><td>Stomach acid</td><td>1.5</td><td>+5;0</td><td>+X;1</td><td>+5;6</td></tr><tr><td>Lemon juice</td><td>2.2</td><td>+4;5</td><td>+8;X</td><td>+4;9</td></tr><tr><td>Cola</td><td>2.5</td><td>+4;2</td><td>+8;4</td><td>+4;6</td></tr><tr><td>Vinegar</td><td>2.9</td><td>+3;X</td><td>+7;6</td><td>+4;0</td></tr><tr><td>Orange juice</td><td>3.5</td><td>+3;3</td><td>+6;6</td><td>+3;6</td></tr><tr><td>Tomato</td><td>4.3</td><td>+2;6</td><td>+5;0</td><td>+2;7</td></tr><tr><td>Black coffee</td><td>5.0</td><td>+1;X</td><td>+3;7</td><td>+2;0</td></tr><tr><td>Clean rain</td><td>5.6</td><td>+1;3</td><td>+2;7</td><td>+1;5</td></tr><tr><td>Milk</td><td>6.6</td><td>+0;4</td><td>+0;9</td><td>+0;5</td></tr><tr><td>Pure water</td><td>7.0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Blood</td><td>7.4</td><td>-0;4</td><td>-0;9</td><td>-0;5</td></tr><tr><td>Sea water</td><td>8.1</td><td>-1;0</td><td>-2;0</td><td>-1;0</td></tr><tr><td>Baking soda</td><td>8.3</td><td>-1;2</td><td>-2;4</td><td>-1;3</td></tr><tr><td>Soap</td><td>10.0</td><td>-2;9</td><td>-5;6</td><td>-3;0</td></tr><tr><td>Household ammonia</td><td>11.6</td><td>-4;3</td><td>-8;6</td><td>-4;6</td></tr><tr><td>Bleach</td><td>12.5</td><td>-5;0</td><td>-X;1</td><td>-5;6</td></tr><tr><td>Drain cleaner (lye)</td><td>14.0</td><td>-6;6</td><td>-11;0</td><td>-7;0</td></tr></tbody></table></div></div>
-<div class="block list"><ul><li>Values at 25 °C, in dozenal digits. Column 4 is twice column 3 (one step is 100 (144 dec) times in the</li></ul></div>
-<div class="block para"><p>[H+]/[OH-] ratio); column 5 keeps pH's base-ten steps, flipped and shifted</p></div>
-<div class="block list"><ul><li>No hard bounds: strong acids go above +6;6 and strong alkalis below -6;6, as pH goes below 0 and above<ul><li>Superacids are measured on other scales (Hammett, down to about -25 pH)</li></ul></li><li>Chemists' buffer maths keeps its shape: pH = pKa + log(base/acid) becomes</li></ul></div>
-<div class="block para"><p>acidity = Ka-acidity - log12(base/acid), where Ka-acidity = (7 - pKa) × 0;E15, a one-off conversion of old tables</p></div>
-<div class="block list"><ul><li>Converting old pH readings needs the temperature, because neutral moves with it</li><li>Needs a name (TODO)</li></ul></div>
+<div class="block list"><ul><li>Values at 25 °C, in dozenal digits. The three columns are three ways to build the scale:<ul><li><strong>Acidity (log 12)</strong>, proposed: compares H+ with pure water. Each step is 12 times more acidic</li><li><strong>log 12 of [H+]/[OH-]</strong>: compares acid (H+) with base (OH-). As one rises the other falls, so the ratio moves twice as fast and every number is doubled. Same information, bigger numbers</li><li><strong>7 - pH</strong>: today's pH flipped and shifted. Steps are still ×10 (dec), and 0 is only neutral at 25 °C</li></ul></li><li>No hard bounds: strong acids go above +6;6 and strong alkalis below -6;6, as pH goes below 0 and above<ul><li>Superacids are measured on other scales (Hammett, down to about -25 pH)</li></ul></li><li>Chemists' buffer maths keeps its shape: pH = pKa + log(base/acid) becomes acidity = Ka-acidity - log12(base/acid), where Ka-acidity = (7 - pKa) × 0;E15, a one-off conversion of old tables</li><li>Converting old pH readings needs the temperature, because neutral moves with it</li></ul></div>
 </section>
 <section class="has-table" id="angle">
 <h2>Angle</h2>
 <div class="block decided"><p><strong>Decided:</strong> angles are measured in <strong>turns</strong>, written as dozenal fractions.</p></div>
 <div class="block why"><p><strong>Why:</strong> it matches the clock: the chime hand turns once a day, so the time of day in days <em>is</em> the angle of the hand (0;1 turn = one chime on the dial). The common angles become round: right angle 0;3, 30° is 0;1, 60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward (90° = 76°, 45° = 39°), because 360 is a decimal-era choice.</p></div>
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>Turn</th><th>Degrees (dec)</th><th>Note</th></tr></thead><tbody><tr><td>1</td><td>360</td><td>full turn</td></tr><tr><td>0;6</td><td>180</td><td>half turn</td></tr><tr><td>0;3</td><td>90</td><td>right angle</td></tr><tr><td>0;2</td><td>60</td><td></td></tr><tr><td>0;16</td><td>45</td><td></td></tr><tr><td>0;1</td><td>30</td><td>one clock mark</td></tr><tr><td>0;01</td><td>2.5</td><td></td></tr><tr><td>0;001</td><td>0.208</td><td>finest everyday step</td></tr></tbody></table></div></div>
-<div class="block list"><ul><li>Compass bearings as three digits of a turn: 000 north, 300 east, 600 south, 900 west</li><li>Three digits act as "more degrees": 1000; steps per turn (1728 dec, 0.208° each), and every common angle</li></ul></div>
-<div class="block para"><p>is a round whole number: right angle 300, 60° 200, 45° 160, 30° 100. A right angle of 1000; adds nothing over this, since 4 already divides 100;.</p></div>
-<div class="block list"><ul><li>1 turn = 2π radians = 6;34941696 radians</li></ul></div>
+<div class="block list"><ul><li>Compass bearings as three digits of a turn: 000 north, 300 east, 600 south, 900 west</li><li>Three digits act as "more degrees": 1000; steps per turn (1728 dec, 0.208° each), and every common angle is a round whole number: right angle 300, 60° 200, 45° 160, 30° 100. A right angle of 1000; adds nothing over this, since 4 already divides 100;.</li><li>1 turn = 2π radians = 6;34941696 radians</li></ul></div>
 </section>
 <section class="has-table" id="paper-sizes">
 <h2>Paper sizes</h2>
@@ -476,7 +465,7 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 </section>
 <section class="has-table" id="everyday-reference-time">
 <h3>Time</h3>
-<div class="block table"><div class="table-wrap"><table><thead><tr><th>Thing</th><th>SI</th><th>Dozenal</th><th>Round</th></tr></thead><tbody><tr><td>Heartbeat</td><td>0.8 s</td><td>0;93 <abbr title="beat">be</abbr></td><td></td></tr><tr><td>Minute</td><td>60 s</td><td>1;25 <abbr title="moment">mt</abbr></td><td></td></tr><tr><td>Hour</td><td>60 min</td><td>0;6 <abbr title="chime">ch</abbr> (60 <abbr title="moment">mt</abbr>)</td><td></td></tr><tr><td>Feature film</td><td>2 h</td><td>1 <abbr title="chime">ch</abbr></td><td></td></tr><tr><td>Working day</td><td>8 h</td><td>4 <abbr title="chime">ch</abbr></td><td></td></tr><tr><td>Night's sleep</td><td>8 h</td><td>4 <abbr title="chime">ch</abbr></td><td></td></tr></tbody></table></div></div>
+<div class="block table"><div class="table-wrap"><table><thead><tr><th>Thing</th><th>SI</th><th>Dozenal</th><th>Round</th></tr></thead><tbody><tr><td>Heartbeat</td><td>0.8 s</td><td>0;93 <abbr title="beat">be</abbr></td><td></td></tr><tr><td>Minute</td><td>60 s</td><td>1;25 <abbr title="moment">mt</abbr></td><td></td></tr><tr><td>Hour</td><td>60 min</td><td>0;6 <abbr title="chime">ch</abbr> (60 <abbr title="moment">mt</abbr>)</td><td></td></tr><tr><td>Feature film</td><td>2 h</td><td>1 <abbr title="chime">ch</abbr></td><td></td></tr><tr><td>Lunch break</td><td>30 min</td><td>0;3 <abbr title="chime">ch</abbr> (30 <abbr title="moment">mt</abbr>)</td><td></td></tr><tr><td>School day</td><td>9:00-15:00 (6 h)</td><td>4;60-7;60 (3 <abbr title="chime">ch</abbr>)</td><td></td></tr><tr><td>Working day</td><td>9:00-17:00 (8 h)</td><td>4;60-8;60 (4 <abbr title="chime">ch</abbr>)</td><td></td></tr><tr><td>Working week</td><td>38 h (Australian standard)</td><td>17 <abbr title="chime">ch</abbr></td><td></td></tr><tr><td>Night's sleep</td><td>8 h</td><td>4 <abbr title="chime">ch</abbr></td><td></td></tr><tr><td>School year</td><td>about 200 days</td><td>about 148 days</td><td></td></tr><tr><td>Year</td><td>365.2422 days</td><td>265;2XX days</td><td></td></tr><tr><td>School starting age</td><td>5 years</td><td>5 years</td><td></td></tr><tr><td>Adult (voting, driving)</td><td>18 years</td><td>16 years</td><td></td></tr><tr><td>Retirement age (Australia)</td><td>67 years</td><td>57 years</td><td></td></tr><tr><td>Average lifetime (world)</td><td>73 years, about 26 700 days</td><td>61 years, about 13 520 days</td><td></td></tr><tr><td>Average lifetime (Australia)</td><td>83 years</td><td>6E years</td><td></td></tr></tbody></table></div></div>
 </section>
 <section class="has-table" id="everyday-reference-speed">
 <h3>Speed</h3>
@@ -517,8 +506,7 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <div class="block decided"><p><strong>Decided:</strong> short names (3-4 letters preferred), Latin roots where possible, no clash with existing everyday words or units, and no object or container names.</p></div>
 <div class="block why"><p><strong>Why:</strong> short names are quick to say and write; Latin roots echo older measures (pace, uncia, libra) and work across languages; clashes cause confusion when both systems are in use.</p></div>
 <div class="block table"><div class="table-wrap"><table><thead><tr><th>Quantity</th><th>Name</th><th>Symbol</th><th>Size (SI)</th><th>Named after</th><th>English relatives</th></tr></thead><tbody><tr><td>Time (base)</td><td>blink</td><td>bl</td><td>0.3472 s</td><td>English: the blink of an eye</td><td></td></tr><tr><td>Time (≈ second)</td><td>beat</td><td>be</td><td>1.0417 s</td><td>English: a heartbeat</td><td></td></tr><tr><td>Time (clock)</td><td>breath</td><td>br</td><td>4.1667 s</td><td>English: one breath</td><td></td></tr><tr><td>Time (dozenal hour)</td><td>chime</td><td>ch</td><td>2 h exactly</td><td>English: clocks chime on the hour</td><td></td></tr><tr><td>Time (dozenal minute)</td><td>moment</td><td>mt</td><td>50 s exactly</td><td>Latin momentum, movement; medieval moment = 90 s</td><td>moment, momentum</td></tr><tr><td>Length (base)</td><td>pace</td><td>p</td><td>1.4525 m</td><td>Latin passus, a pace (Roman pace ≈ 1.48 m)</td><td>pace, passage</td></tr><tr><td>1/10 pace</td><td>unc</td><td>un</td><td>≈ 12.1 cm</td><td>Latin uncia, a twelfth</td><td>inch, ounce</td></tr><tr><td>1/100 pace</td><td>dig</td><td>di</td><td>≈ 1.01 cm</td><td>Latin digitus, finger (Roman digit ≈ 1.85 cm)</td><td>digit</td></tr><tr><td>1000 paces (distance)</td><td>iter</td><td>it</td><td>≈ 2.51 km</td><td>Latin iter, road, journey</td><td>itinerary</td></tr><tr><td>Mass</td><td>lib</td><td>li</td><td>≈ 1.7714 kg</td><td>Latin libra, pound; also scales (Roman pound)</td><td>lb (pound), Libra</td></tr><tr><td>Volume (unc cube)</td><td>cub</td><td>cu</td><td>1.7736 L</td><td>Latin cubus, cube</td><td>cube, cubic</td></tr><tr><td>Temperature</td><td>tep</td><td>°t</td><td>0.694 K/°C</td><td>Latin tepor, warmth</td><td>tepid</td></tr><tr><td>Force</td><td>vis</td><td>vi</td><td>≈ 21.3 N</td><td>Latin vis, force, strength</td><td>vim</td></tr><tr><td>Energy</td><td>opus</td><td>op</td><td>≈ 31.0 J</td><td>Latin opus, work</td><td>opus, operate</td></tr><tr><td>Power</td><td>vig</td><td>vg</td><td>≈ 89.3 W</td><td>Latin vigor, liveliness, energy</td><td>vigour, vigorous</td></tr><tr><td>Pressure</td><td>pres</td><td>pr</td><td>≈ 10.1 Pa</td><td>Latin pressus, pressed</td><td>press, pressure</td></tr><tr><td>Current</td><td>riv</td><td>ri</td><td>≈ 1.024 A</td><td>Latin rivus, a stream</td><td>rivulet, derive</td></tr><tr><td>Charge</td><td>onus</td><td>on</td><td>≈ 0.3555 C</td><td>Latin onus, load, burden</td><td>onus, onerous</td></tr><tr><td>Voltage</td><td>imp</td><td>im</td><td>≈ 87.21 V</td><td>Latin impetus, push, rush</td><td>impetus, impetuous</td></tr><tr><td>Amount of substance</td><td>grex</td><td>gx</td><td>6.17 × 10^23 things</td><td>Latin grex, flock, herd</td><td>gregarious, congregate</td></tr><tr><td>Luminous intensity</td><td>lam</td><td>la</td><td>1 cd</td><td>Latin lampas, lamp, torch</td><td>lamp</td></tr><tr><td>Sound level</td><td>vox</td><td>vo</td><td>≈ 0.90 dB per vox</td><td>Latin vox, voice</td><td>voice, vocal</td></tr></tbody></table></div></div>
-<div class="block list"><ul><li>Rejected: heft, jug (object names), pond (sounds like a lake), mass/vol (clash with quantity names / "% vol"),</li></ul></div>
-<div class="block para"><p>hand (clashes with horse hand 10.16 cm), nail, inc (too close to "inch"), lux/lum (existing SI units), cal (calorie), pot (container), erg (CGS unit), grad (gradian), mol (mole)</p></div>
+<div class="block list"><ul><li>Rejected: heft, jug (object names), pond (sounds like a lake), mass/vol (clash with quantity names / "% vol"), hand (clashes with horse hand 10.16 cm), nail, inc (too close to "inch"), lux/lum (existing SI units), cal (calorie), pot (container), erg (CGS unit), grad (gradian), mol (mole)</li></ul></div>
 </section>
 <section class="has-table" id="prefixes">
 <h2>Prefixes</h2>
@@ -529,36 +517,11 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 </section>
 <section class="no-table" id="prior-art">
 <h2>Prior art</h2>
-<div class="block list"><ul><li><strong>TGM</strong> (Tom Pendlebury): Tim = 1/10^4 hour ≈ 0.1736 s (= half a blink exactly), Grafut ≈ 29.6 cm (from gravity),</li></ul></div>
-<div class="block para"><p>Maz ≈ 25.8 kg (water cube). Earth-based (hour + gravity), so less rigorous than this system; length and mass have no clean relation to ours.</p></div>
-<div class="block list"><ul><li><strong>SDN</strong> (DSA): the prefix system adopted above. Inspired by Pendlebury's TGM prefixes.</li><li><strong>Primel</strong> metrology: base time 1/10^6 day (= 0;01 breath), length unit ≈ 8.2 mm, uses an SDN variant.</li><li><strong>Do-Gro-Mo</strong> (early DSA): do = 12, gro = 144, mo = 1728 (dec). Adopted for spoken numbers, extended with bimo / trimo.</li></ul></div>
+<div class="block list"><ul><li><strong>TGM</strong> (Tom Pendlebury): Tim = 1/10^4 hour ≈ 0.1736 s (= half a blink exactly), Grafut ≈ 29.6 cm (from gravity), Maz ≈ 25.8 kg (water cube). Earth-based (hour + gravity), so less rigorous than this system; length and mass have no clean relation to ours.</li><li><strong>SDN</strong> (DSA): the prefix system adopted above. Inspired by Pendlebury's TGM prefixes.</li><li><strong>Primel</strong> metrology: base time 1/10^6 day (= 0;01 breath), length unit ≈ 8.2 mm, uses an SDN variant.</li><li><strong>Do-Gro-Mo</strong> (early DSA): do = 12, gro = 144, mo = 1728 (dec). Adopted for spoken numbers, extended with bimo / trimo.</li></ul></div>
 </section>
-<section class="has-table" id="open-items-next-steps">
+<section class="no-table" id="open-items-next-steps">
 <h2>Open items / next steps</h2>
-<div class="block list"><ul><li>Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)</li><li>Give short names to a few everyday multiples (food energy <abbr title="triqua-opus (× 10^3)">tqop</abbr>, pressure <abbr title="triqua-pres (× 10^3)">tqpr</abbr>) instead of changing the</li></ul></div>
-<div class="block decided"><p>coherent derived units (proposed, not decided)</p></div>
-<div class="block list"><ul><li>Holocene Era: record why it was chosen</li><li>A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)</li><li>Standard sizes: food energy labels (opus), clothing/shoe sizes</li><li>Review existing dozenal clock designs (<a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a>)</li><li>Optional: rescale lam for a round K_cd</li><li>Month names clash: Sept / Oct already mean September / October, so "3 Oct" is ambiguous. Revisit the</li></ul></div>
-<div class="block para"><p>calendar as its own project: keep Gregorian (with new month names or numbers only) or change it radically</p></div>
-<div class="block list"><ul><li>Name for 0;4 <abbr title="pace">p</abbr> (≈ 48 cm): cubit (Latin cubitum, elbow - elbow to fingertip) is liked, but its symbol would</li></ul></div>
-<div class="block para"><p>be "cu", which is the cub. Alternative: ulna (Latin for forearm, and the forearm bone; the old ell measure came from it), symbol "ul"</p></div>
-<div class="block list"><ul><li>Name for 0;1 dig (≈ 0.84 mm, the new millimetre): <strong>lin</strong>, from Latin linea (a linen thread, a line); the</li></ul></div>
-<div class="block para"><p>old line was 1/12 inch, and watch and button sizes still use the French ligne. Needs a symbol exception: "li" is the lib</p></div>
-<div class="block list"><ul><li>Cooking measures: teaspoon 0;004 <abbr title="cub">cu</abbr>, tablespoon 0;01 <abbr title="cub">cu</abbr> (= 3 tsp), cup 0;2 <abbr title="cub">cu</abbr> (= 20 tbsp), proposed</li><li>Same-name units within a few percent: say "paludal cup" in full where ambiguous (like UK pint / US</li></ul></div>
-<div class="block para"><p>pint), rather than a subscript p you can't hear</p></div>
-<div class="block list"><ul><li>Rulers: the pencil-case 0;2 <abbr title="pace">p</abbr> and desk 0;3 <abbr title="pace">p</abbr> are in Everyday reference. Still open: board ruler (0;4 <abbr title="pace">p</abbr> if</li></ul></div>
-<div class="block para"><p>the ulna is adopted, or 0;6 <abbr title="pace">p</abbr>) and the metre stick's replacement (1 <abbr title="pace">p</abbr>?)</p></div>
-<div class="block list"><ul><li>pH replacement: pick the definition (log 12 of [H+] vs neutral is proposed; alternatives are the</li></ul></div>
-<div class="block para"><p>[H+]/[OH-] ratio, which doubles the numbers, or 7 - pH, which keeps base-ten steps but isn't neutral at every temperature) and a name. See pH</p></div>
-<div class="block list"><ul><li>Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;</li></ul></div>
-<div class="block para"><p>60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec), frequency units, and note lengths</p></div>
-<div class="block list"><ul><li>Daylight saving: a 1-hour change is 0;6 chime, so the moment digits change (6;45 becomes 6;X5) - a pain,</li></ul></div>
-<div class="block para"><p>where today's 1-hour change only touches the hour. Options:</p></div>
-<div class="block list"><ul><li>Shift a whole chime (2 h): the moments stay the same, but 2 h is a big jump (Britain's wartime "double summer time" was one; summer sunrise would be 2 h later)</li><li>No daylight saving (Queensland, WA and the NT already do without; most countries don't use it)</li><li>Keep 1 hour and live with 0;6</li><li>Related: time zones are half-chimes now (UTC+10 = +5;00, UTC+9:30 = +4;90, UTC-5 = -2;60). Twelve whole-chime zones would keep the moment digits the same everywhere, but half the world would move an hour</li></ul><ul><li>Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a</li></ul></div>
-<div class="block para"><p>"paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?</p></div>
-<div class="block list"><ul><li>Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is</li></ul></div>
-<div class="block para"><p>the established DSA name, so keeping it is suggested. "Bigro" would also clash with the rule that big numbers group in threes (bimo = 10^6).</p></div>
-<div class="block list"><ul><li>The wink (half a blink) was removed as too fast to be useful, though it equals TGM's Tim exactly. Check</li></ul></div>
-<div class="block para"><p>whether to reinstate it</p></div>
+<div class="block list"><ul><li>Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)</li><li>Give short names to a few everyday multiples (food energy <abbr title="triqua-opus (× 10^3)">tqop</abbr>, pressure <abbr title="triqua-pres (× 10^3)">tqpr</abbr>) instead of changing the coherent derived units (proposed, not decided)</li><li>Holocene Era: record why it was chosen</li><li>A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)</li><li>Standard sizes: food energy labels (opus), clothing/shoe sizes</li><li>Review existing dozenal clock designs (<a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a>)</li><li>Optional: rescale lam for a round K_cd</li><li>Month names clash: Sept / Oct already mean September / October, so "3 Oct" is ambiguous. Revisit the calendar as its own project: keep Gregorian (with new month names or numbers only) or change it radically</li><li>Name for 0;4 <abbr title="pace">p</abbr> (≈ 48 cm): cubit (Latin cubitum, elbow - elbow to fingertip) is liked, but its symbol would be "cu", which is the cub. Alternative: ulna (Latin for forearm, and the forearm bone; the old ell measure came from it), symbol "ul"</li><li>Name for 0;1 dig (≈ 0.84 mm, the new millimetre): <strong>lin</strong>, from Latin linea (a linen thread, a line); the old line was 1/12 inch, and watch and button sizes still use the French ligne. Needs a symbol exception: "li" is the lib</li><li>Cooking measures: teaspoon 0;004 <abbr title="cub">cu</abbr>, tablespoon 0;01 <abbr title="cub">cu</abbr> (= 3 tsp), cup 0;2 <abbr title="cub">cu</abbr> (= 20 tbsp), proposed</li><li>Same-name units within a few percent: say "paludal cup" in full where ambiguous (like UK pint / US pint), rather than a subscript p you can't hear</li><li>Rulers: the pencil-case 0;2 <abbr title="pace">p</abbr> and desk 0;3 <abbr title="pace">p</abbr> are in Everyday reference. Still open: board ruler (0;4 <abbr title="pace">p</abbr> if the ulna is adopted, or 0;6 <abbr title="pace">p</abbr>) and the metre stick's replacement (1 <abbr title="pace">p</abbr>?)</li><li>Acidity (pH replacement): confirm the name "acidity" and the log-12 definition. See <a href="#acidity-ph">Acidity (pH)</a></li><li>Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats; 60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec), frequency units, and note lengths</li><li>Time zones: offsets are half-chimes, and twelve whole-chime zones are too few. Keep today's zones?</li><li>Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a "paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?</li><li>Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is the established DSA name, so keeping it is suggested. "Bigro" would also clash with the rule that big numbers group in threes (bimo = 10^6).</li><li>The wink (half a blink) was removed as too fast to be useful, though it equals TGM's Tim exactly. Check whether to reinstate it</li></ul></div>
 </section>
 </main>
 </div>
@@ -573,18 +536,17 @@ box.addEventListener("change", () => {
 });
 </script>
 <script>
-// Number converter. Fractions are shown to 6 places; "…" marks a value that doesn't end there.
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {
   const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
     doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = ten, E = eleven. Rounded to 3 places.";
   function toDoz(x) {
-    const neg = x < 0; x = Math.abs(x);
-    let i = Math.floor(x), f = x - i, s = "";
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
     do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
-    let frac = "";
-    for (let k = 0; k < 6 && f > 1e-12; k++) { f *= 12; const d = Math.floor(f + 1e-9); frac += DIG[Math.min(d, 11)]; f -= d; }
-    if (frac) s += ";" + frac + (f > 1e-9 ? "…" : "");
-    return (neg ? "-" : "") + s;
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
   }
   function fromDoz(t) {
     t = t.trim().toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
@@ -596,18 +558,20 @@ box.addEventListener("change", () => {
     for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
     return m[1] ? -v : v;
   }
-  const fmtDec = v => String(Number(v.toPrecision(12)));
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
   dec.addEventListener("input", () => {
     const t = dec.value.trim(), v = Number(t);
-    if (t === "") { doz.value = ""; hint.textContent = "Type in either box. X = ten, E = eleven."; return; }
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
     if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
-    doz.value = toDoz(v); hint.textContent = "Dozenal uses a semicolon: 0;6 is a half.";
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
   });
   doz.addEventListener("input", () => {
     const v = fromDoz(doz.value);
-    if (doz.value.trim() === "") { dec.value = ""; return; }
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
     if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
-    dec.value = fmtDec(v); hint.textContent = "Type in either box. X = ten, E = eleven.";
+    dec.value = String(Number(v.toFixed(3)));
+    hint.textContent = near(Number(dec.value), v) ? "Exact." : "Rounded to 3 decimal places.";
   });
 })();
 </script>

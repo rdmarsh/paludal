@@ -14,6 +14,11 @@ Fallbacks if needed: **Uncial** (Latin uncia, a twelfth) or **Passic** (from pas
 **Why:** named after its creator, as Fahrenheit, Celsius and Kelvin are - but hidden: Latin *palus, paludis*
 means "a marsh". It matches the Latin naming style of the units, and works as an adjective like "metric".
 
+**Decided:** **dozenal** is the number system (base twelve) and **Paludal** is the system of units built on
+it, as decimal is the number system and metric the units.
+
+**Why:** TODO - reason not recorded.
+
 Numbers below are dozenal unless marked "(dec)".
 
 Goals: as rigorous as SI (every unit defined by a fixed constant, exact conversion to SI),
@@ -324,6 +329,17 @@ E;X05). On screens, the extra digits are shown smaller or dimmer, like the hundr
 directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X05;3) would break that, and a space
 (E;X05 3) makes the digits look unrelated. Decimal times do the same: 9.58 s, 1:23.45 on a stopwatch.
 - spoken like "nine forty-five": E;91 = "el, nine-one"; 6;00 = "six"; with breaths, "el, nine-one, seven"
+
+## Daylight saving and time zones
+
+**Decided:** no daylight saving, for now.
+
+**Why:** a 1-hour shift is half a chime (0;6), which changes the moment digits (6;45 becomes 6;X5).
+Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and
+Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.
+
+- Time zones are still open: offsets in hours are half-chimes (UTC+10 = +5;00, UTC+9:30 = +4;90,
+  UTC-5 = -2;60). Twelve whole-chime zones would be too few.
 
 ## Years
 
@@ -703,7 +719,7 @@ headphone warnings), so converting is worth it. Name: Latin vox, voice; "son" re
 **Why:** it's a log scale (no units needed), almost nobody does arithmetic with it, and every historical
 record uses it. A base-12 version would change values by only ~7% - not worth breaking the records.
 
-# pH
+# Acidity (pH)
 
 **Decided:** replace pH with an acidity scale where **0 is neutral, acids are positive and bases negative**.
 
@@ -711,7 +727,12 @@ record uses it. A base-12 version would change values by only ~7% - not worth br
 more acidic) and centres on 7, which is only neutral at 25 °C. Replaces the earlier decision to keep pH
 unchanged in dozenal digits.
 
-Proposed definition (not decided): acidity = log base 12 of ([H+] / [H+ at neutral]), so
+Proposed name: **acidity** (eg lemon juice is acidity +4;5). The word already means acid content in wine and
+food (in g/L), so watch for confusion.
+
+Proposed definition (not decided): **acidity = log base 12 of ([H+] / [H+] in pure water at the same
+temperature)**. Nothing needs converting: more H+ than pure water gives a positive number, less gives a
+negative one, and pure water gives 0. So
 
 - 0 is neutral at **every** temperature (pH's neutral point is 7.47 at 0 °C, 7 at 25 °C, 6.8 at body
   temperature and 6.14 at 100 °C)
@@ -740,14 +761,16 @@ Proposed definition (not decided): acidity = log base 12 of ([H+] / [H+ at neutr
 | Bleach | 12.5 | -5;0 | -X;1 | -5;6 |
 | Drain cleaner (lye) | 14.0 | -6;6 | -11;0 | -7;0 |
 
-- Values at 25 °C, in dozenal digits. Column 4 is twice column 3 (one step is 100 (144 dec) times in the
-  [H+]/[OH-] ratio); column 5 keeps pH's base-ten steps, flipped and shifted
+- Values at 25 °C, in dozenal digits. The three columns are three ways to build the scale:
+  - **Acidity (log 12)**, proposed: compares H+ with pure water. Each step is 12 times more acidic
+  - **log 12 of [H+]/[OH-]**: compares acid (H+) with base (OH-). As one rises the other falls, so the
+    ratio moves twice as fast and every number is doubled. Same information, bigger numbers
+  - **7 - pH**: today's pH flipped and shifted. Steps are still ×10 (dec), and 0 is only neutral at 25 °C
 - No hard bounds: strong acids go above +6;6 and strong alkalis below -6;6, as pH goes below 0 and above
   14. Superacids are measured on other scales (Hammett, down to about -25 pH)
 - Chemists' buffer maths keeps its shape: pH = pKa + log(base/acid) becomes
   acidity = Ka-acidity - log12(base/acid), where Ka-acidity = (7 - pKa) × 0;E15, a one-off conversion of old tables
 - Converting old pH readings needs the temperature, because neutral moves with it
-- Needs a name (TODO)
 
 # Angle
 
@@ -958,8 +981,18 @@ see Speed). Traditional distances tied to history (marathon, cricket pitch) keep
 | Minute | 60 s | 1;25 mt |  |
 | Hour | 60 min | 0;6 ch (60 mt) |  |
 | Feature film | 2 h | 1 ch |  |
-| Working day | 8 h | 4 ch |  |
+| Lunch break | 30 min | 0;3 ch (30 mt) |  |
+| School day | 9:00-15:00 (6 h) | 4;60-7;60 (3 ch) |  |
+| Working day | 9:00-17:00 (8 h) | 4;60-8;60 (4 ch) |  |
+| Working week | 38 h (Australian standard) | 17 ch |  |
 | Night's sleep | 8 h | 4 ch |  |
+| School year | about 200 days | about 148 days |  |
+| Year | 365.2422 days | 265;2XX days |  |
+| School starting age | 5 years | 5 years |  |
+| Adult (voting, driving) | 18 years | 16 years |  |
+| Retirement age (Australia) | 67 years | 57 years |  |
+| Average lifetime (world) | 73 years, about 26 700 days | 61 years, about 13 520 days |  |
+| Average lifetime (Australia) | 83 years | 6E years |  |
 
 ## Speed
 
@@ -1143,20 +1176,11 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
   pint), rather than a subscript p you can't hear
 - Rulers: the pencil-case 0;2 p and desk 0;3 p are in Everyday reference. Still open: board ruler (0;4 p if
   the ulna is adopted, or 0;6 p) and the metre stick's replacement (1 p?)
-- pH replacement: pick the definition (log 12 of [H+] vs neutral is proposed; alternatives are the
-  [H+]/[OH-] ratio, which doubles the numbers, or 7 - pH, which keeps base-ten steps but isn't neutral at
-  every temperature) and a name. See pH
+- Acidity (pH replacement): confirm the name "acidity" and the log-12 definition. See [Acidity (pH)](#acidity-ph)
 - Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;
   60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec),
   frequency units, and note lengths
-- Daylight saving: a 1-hour change is 0;6 chime, so the moment digits change (6;45 becomes 6;X5) - a pain,
-  where today's 1-hour change only touches the hour. Options:
-  - Shift a whole chime (2 h): the moments stay the same, but 2 h is a big jump (Britain's wartime "double
-    summer time" was one; summer sunrise would be 2 h later)
-  - No daylight saving (Queensland, WA and the NT already do without; most countries don't use it)
-  - Keep 1 hour and live with 0;6
-  - Related: time zones are half-chimes now (UTC+10 = +5;00, UTC+9:30 = +4;90, UTC-5 = -2;60). Twelve
-    whole-chime zones would keep the moment digits the same everywhere, but half the world would move an hour
+- Time zones: offsets are half-chimes, and twelve whole-chime zones are too few. Keep today's zones?
 - Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a
   "paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?
 - Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is

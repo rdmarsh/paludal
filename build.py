@@ -134,7 +134,7 @@ def parse(md):
         if re.match(LIST_ITEM, line):
             tag = "ol" if re.match(r"^\d+\.", line) else "ul"
             items = []
-            while i < len(lines) and (re.match(LIST_ITEM, lines[i]) or (lines[i].startswith("   ") and items)):
+            while i < len(lines) and (re.match(LIST_ITEM, lines[i]) or (re.match(r"^\s+\S", lines[i]) and items)):
                 lm = re.match(r"^(\s*)(?:[-*]|\d+\.)\s+(.*)", lines[i])
                 if lm:
                     items.append((len(lm.group(1)), lm.group(2)))
@@ -186,6 +186,7 @@ def build():
         )
     intro = "\n".join(f'<div class="block {k}">{h}</div>' for k, h in root["blocks"])
     body = "\n".join(render_section(s) for s in root["children"])
+    body = body.replace('<section class="', '<section class="lead ', 1)  # the opening section is the intro
     OUT.write_text(TEMPLATE.replace("{{TOC}}", "\n".join(toc)).replace("{{INTRO}}", intro).replace("{{BODY}}", body))
     print(f"wrote {OUT.name}")
 
@@ -256,6 +257,7 @@ td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg
 .why strong { color: var(--fg); }
 body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
 body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
@@ -265,14 +267,14 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 </style>
 </head>
 <body>
-<div class="layout">
+<div class="layout" id="top">
 <nav>
-<h1>Paludal units</h1>
+<h1><a href="#top">Paludal units</a></h1>
 <label class="toggle"><input type="checkbox" id="tables-only"> Tables, decisions and reasons only</label>
 <div class="conv">
 <label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
 <label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
-<span class="hint" id="conv-hint">Type in either box. X = ten, E = eleven.</span>
+<span class="hint" id="conv-hint">Type in either box. X = ten, E = eleven. Rounded to 3 places.</span>
 </div>
 <ul>
 {{TOC}}
@@ -294,18 +296,17 @@ box.addEventListener("change", () => {
 });
 </script>
 <script>
-// Number converter. Fractions are shown to 6 places; "…" marks a value that doesn't end there.
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {
   const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
     doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = ten, E = eleven. Rounded to 3 places.";
   function toDoz(x) {
-    const neg = x < 0; x = Math.abs(x);
-    let i = Math.floor(x), f = x - i, s = "";
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
     do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
-    let frac = "";
-    for (let k = 0; k < 6 && f > 1e-12; k++) { f *= 12; const d = Math.floor(f + 1e-9); frac += DIG[Math.min(d, 11)]; f -= d; }
-    if (frac) s += ";" + frac + (f > 1e-9 ? "…" : "");
-    return (neg ? "-" : "") + s;
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
   }
   function fromDoz(t) {
     t = t.trim().toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
@@ -317,18 +318,20 @@ box.addEventListener("change", () => {
     for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
     return m[1] ? -v : v;
   }
-  const fmtDec = v => String(Number(v.toPrecision(12)));
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
   dec.addEventListener("input", () => {
     const t = dec.value.trim(), v = Number(t);
-    if (t === "") { doz.value = ""; hint.textContent = "Type in either box. X = ten, E = eleven."; return; }
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
     if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
-    doz.value = toDoz(v); hint.textContent = "Dozenal uses a semicolon: 0;6 is a half.";
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
   });
   doz.addEventListener("input", () => {
     const v = fromDoz(doz.value);
-    if (doz.value.trim() === "") { dec.value = ""; return; }
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
     if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
-    dec.value = fmtDec(v); hint.textContent = "Type in either box. X = ten, E = eleven.";
+    dec.value = String(Number(v.toFixed(3)));
+    hint.textContent = near(Number(dec.value), v) ? "Exact." : "Rounded to 3 decimal places.";
   });
 })();
 </script>
