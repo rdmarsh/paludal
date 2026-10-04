@@ -1191,29 +1191,29 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 
 ### Time
 
-| Thing | SI | US | Dozenal | Round |
-|---|---|---|---|---|
-| Heartbeat | 0.8 s |  | 0;93 bt |  |
-| Minute | 60 s |  | 1;25 mt |  |
-| Hour | 60 min |  | 0;6 ch (60 mt) |  |
-| Feature film | 2 h |  | 1 ch |  |
-| Short meeting, lunch break | 30 min |  | 0;3 ch (30 mt) |  |
-| Lesson, meeting | 45 min |  | 0;46 ch (46 mt) | 0;4 ch (40 min) or 0;5 ch (50 min) |
-| Long meeting, lecture | 60 min |  | 0;6 ch (60 mt) |  |
-| School day | 9:00-15:00 (6 h) |  | 4;60-7;60 (3 ch) |  |
-| Working day | 9:00-17:00 (8 h) |  | 4;60-8;60 (4 ch) |  |
-| Working week (AU) | 38 h |  | 17 ch |  |
-| Working week (US) | 40 h | 40 h | 18 ch |  |
-| Night's sleep | 8 h |  | 4 ch |  |
-| School year | about 200 days |  | about 148 days |  |
-| Year | 365.2422 days |  | 265;2XX days |  |
-| School starting age | 5 years |  | 5 years |  |
-| Adult (voting, driving) | 18 years |  | 16 years |  |
-| Coming of age (21st birthday), US drinking age | 21 years | 21 years | 19 years |  |
-| Retirement age (Australia, US) | 67 years | 67 years | 57 years |  |
-| Average lifetime (world) | 73 years, about 26,660 days |  | 61 years, about 13,520 days |  |
-| Average lifetime (Australia) | 83 years |  | 6E years |  |
-| Century | 100 years |  | 84 years | a gro of years (100) is 144 (dec) |
+| Thing | SI | Dozenal | Round |
+|---|---|---|---|
+| Heartbeat | 0.8 s | 0;93 bt |  |
+| Minute | 60 s | 1;25 mt |  |
+| Hour | 60 min | 0;6 ch (60 mt) |  |
+| Feature film | 2 h | 1 ch |  |
+| Short meeting, lunch break | 30 min | 0;3 ch (30 mt) |  |
+| Lesson, meeting | 45 min | 0;46 ch (46 mt) | 0;4 ch (40 min) or 0;5 ch (50 min) |
+| Long meeting, lecture | 60 min | 0;6 ch (60 mt) |  |
+| School day | 9:00-15:00 (6 h) | 4;60-7;60 (3 ch) |  |
+| Working day | 9:00-17:00 (8 h) | 4;60-8;60 (4 ch) |  |
+| Working week (AU) | 38 h | 17 ch |  |
+| Working week (US) | 40 h | 18 ch |  |
+| Night's sleep | 8 h | 4 ch |  |
+| School year | about 200 days | about 148 days |  |
+| Year | 365.2422 days | 265;2XX days |  |
+| School starting age | 5 years | 5 years |  |
+| Adult (voting, driving) | 18 years | 16 years |  |
+| Coming of age (21st birthday), US drinking age | 21 years | 19 years |  |
+| Retirement age (Australia, US) | 67 years | 57 years |  |
+| Average lifetime (world) | 73 years, about 26,660 days | 61 years, about 13,520 days |  |
+| Average lifetime (Australia) | 83 years | 6E years |  |
+| Century | 100 years | 84 years | a gro of years (100) is 144 (dec) |
 
 ### Speed
 
