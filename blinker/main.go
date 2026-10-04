@@ -76,9 +76,9 @@ func main() {
 		n, at := nextBlink(time.Now())
 		time.Sleep(time.Until(at))
 		if *face {
-			fmt.Printf("\x1b[H%s\n%*s%s\x1b[K\n\n  %schime%s  %smoment%s  %sbreath%s  (0 at the bottom, noon at the top)\x1b[K",
+			fmt.Printf("\x1b[H%s\n%*s%s\x1b[K\n\n  %schime%s  %smoment%s  %sbreath%s  %sbeat%s  (0 at the bottom, noon at the top)\x1b[K",
 				drawFace(*size, n), *size-3, "", format(n),
-				colChime, colReset, colMoment, colReset, colBreath, colReset)
+				colChime, colReset, colMoment, colReset, colBreath, colReset, colDial, colReset)
 		} else {
 			fmt.Printf("\r  %s  ", format(n))
 		}

@@ -91,7 +91,7 @@ func (c *canvas) String() string {
 	return b.String()
 }
 
-// drawFace draws the dial and three hands for blink n of the day.
+// drawFace draws the dial and four hands for blink n of the day.
 func drawFace(rows int, n int64) string {
 	c := newCanvas(rows)
 	r := float64(rows*2) - 7 // dial radius in dots, leaving room for the numbers
@@ -111,8 +111,10 @@ func drawFace(rows int, n int64) string {
 	chime := float64(n) / blinksPerDay                   // whole day
 	moment := float64(n%blinksPerChime) / blinksPerChime // sweeps smoothly
 	breath := float64(n%blinksPerMoment/12) / 12         // steps once per breath, onto a mark
+	beat := float64(n%blinksPerMoment/3) / 48            // steps once per beat, 4 per mark
 
-	c.line(breath, 0, r-1, colBreath)
+	c.line(beat, 0, r-1, colDial) // drawn first, so the coloured hands win where they overlap
+	c.line(breath, 0, r-3, colBreath)
 	c.line(moment, 0, r*0.85, colMoment)
 	c.line(chime, 0, r*0.55, colChime)
 	return c.String()

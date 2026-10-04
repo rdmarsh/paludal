@@ -44,6 +44,7 @@ def inline(text):
     text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"(?<![*\w])\*([^*]+)\*(?![*\w])", r"<em>\1</em>", text)
     text = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r'<a href="\2">\1</a>', text)
+    text = re.sub(r"\[([^\]]+)\]\((#[\w-]+)\)", r'<a href="\2">\1</a>', text)
     text = re.sub(r'(?<![">])(https?://[^\s)<]+)', r'<a href="\1">\1</a>', text)
     return text
 
@@ -224,6 +225,12 @@ nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
 nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
 nav a:hover { color: var(--accent); }
 nav ul ul a { color: var(--muted); }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
 .toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
 h2 { font-size: 24px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
@@ -262,6 +269,11 @@ body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
 <nav>
 <h1>Paludal units</h1>
 <label class="toggle"><input type="checkbox" id="tables-only"> Tables, decisions and reasons only</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = ten, E = eleven.</span>
+</div>
 <ul>
 {{TOC}}
 </ul>
@@ -280,6 +292,45 @@ box.addEventListener("change", () => {
   apply();
   try { localStorage.setItem("tables-only", box.checked ? "1" : "0"); } catch (e) {}
 });
+</script>
+<script>
+// Number converter. Fractions are shown to 6 places; "…" marks a value that doesn't end there.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  function toDoz(x) {
+    const neg = x < 0; x = Math.abs(x);
+    let i = Math.floor(x), f = x - i, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    let frac = "";
+    for (let k = 0; k < 6 && f > 1e-12; k++) { f *= 12; const d = Math.floor(f + 1e-9); frac += DIG[Math.min(d, 11)]; f -= d; }
+    if (frac) s += ";" + frac + (f > 1e-9 ? "…" : "");
+    return (neg ? "-" : "") + s;
+  }
+  function fromDoz(t) {
+    t = t.trim().toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const fmtDec = v => String(Number(v.toPrecision(12)));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim(), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = "Type in either box. X = ten, E = eleven."; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v); hint.textContent = "Dozenal uses a semicolon: 0;6 is a half.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    dec.value = fmtDec(v); hint.textContent = "Type in either box. X = ten, E = eleven.";
+  });
+})();
 </script>
 <script type="module">
 // Diagrams: mermaid needs plain colours, so read them from the page's tokens (light or dark).

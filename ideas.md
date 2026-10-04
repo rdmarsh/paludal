@@ -111,18 +111,32 @@ imperial symbol, since both systems will be in use side by side.
 
 **Why:** one simple rule is easy to learn and guess. Symbols must not clash with SI or imperial ones because both systems will be in use side by side for a long time. Pace gets a single letter because it's used most.
 
-| Unit  | Symbol | | Unit  | Symbol | | Unit  | Symbol |
-|-------|--------|-|-------|--------|-|-------|--------|
-| blink | bl     | | lib   | li     | | pres  | pr     |
-| beat  | be     | | cub   | cu     | | riv   | ri     |
-| breath | br    | |       |        | |       |        |
-| pace  | p      | | tep   | °t     | | onus  | on     |
-| unc   | un     | | vis   | vi     | | imp   | im     |
-| dig   | di     | | opus  | op     | | grex  | gx     |
-| span  | sp     | |       |        | |       |        |
-| iter  | it     | |       |        | |       |        |
-|       |        | | vig   | vg     | | lam   | la     |
-|       |        | |       |        | | vox   | vo     |
+| Unit   | Symbol | Quantity |
+|--------|--------|----------|
+| blink  | bl     | time |
+| beat   | be     | time |
+| breath | br     | time |
+| moment | mt     | time |
+| chime  | ch     | time |
+| pace   | p      | length |
+| unc    | un     | length |
+| dig    | di     | length |
+| span   | sp     | length |
+| iter   | it     | length |
+| lib    | li     | mass |
+| cub    | cu     | volume |
+| ager   | ag     | area |
+| tep    | °t     | temperature |
+| vis    | vi     | force |
+| opus   | op     | energy |
+| vig    | vg     | power |
+| pres   | pr     | pressure |
+| riv    | ri     | current |
+| onus   | on     | charge |
+| imp    | im     | voltage |
+| grex   | gx     | amount |
+| lam    | la     | light |
+| vox    | vo     | sound level |
 
 - chime: **ch** (the imperial chain is no longer used, so no real clash)
 - moment: **mt** (first and last letters: "mo" is the spoken word for 1000, and mm is the millimetre)
@@ -334,14 +348,20 @@ directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X0
 
 **Why:** no new words to learn - each name is the month's number, its prefix root and its spoken digit. It also fixes the Roman misnumbering (September-December were the seventh to tenth months when the year began in March).
 
-| # | Month | Was | | # | Month | Was |
-|---|-------|-----|-|---|-------|-----|
-| 1 | Un    | Jan | | 7 | Sept  | Jul |
-| 2 | Bi    | Feb | | 8 | Oct   | Aug |
-| 3 | Tri   | Mar | | 9 | Enn   | Sep |
-| 4 | Quad  | Apr | | X | Dek   | Oct |
-| 5 | Pent  | May | | E | El    | Nov |
-| 6 | Hex   | Jun | | 10 | Do   | Dec |
+| #  | Month | Was |
+|----|-------|-----|
+| 1  | Un    | Jan |
+| 2  | Bi    | Feb |
+| 3  | Tri   | Mar |
+| 4  | Quad  | Apr |
+| 5  | Pent  | May |
+| 6  | Hex   | Jun |
+| 7  | Sept  | Jul |
+| 8  | Oct   | Aug |
+| 9  | Enn   | Sep |
+| X  | Dek   | Oct |
+| E  | El    | Nov |
+| 10 | Do    | Dec |
 
 - Same lengths and dates as the Gregorian months; only the names change
 - Fixes the Roman shift: Sept/Oct/Dek are finally the 7th/8th/Xth months (Sept-Dec were named when the year began in March)
@@ -367,13 +387,14 @@ twelve months of 30 (dec) days, with the 5-6 leftover "S-days" outside any month
 **Why:** one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest,
 and clockwise keeps the convention people already know.
 
-Three hands, like hour / minute / second:
+Four hands - hour, minute and second, plus a light beat hand:
 
 | Hand    | Turns once per | Reads         | Dial                                   | Like        |
 |---------|----------------|---------------|----------------------------------------|-------------|
 | Chime   | day            | chime (0-E)   | 12 marks                               | hour hand   |
 | Moment  | chime (2 h)    | moments 00-EE | 12 marks + 144 (dec) fine marks        | minute hand |
 | Breath  | moment (50 s)  | breath (0-E)  | 12 marks; steps once per breath (onto each mark) | second hand |
+| Beat    | moment (50 s)  | beat (4 per breath) | steps once per beat; thin and light grey, like the dial | ticking second hand |
 
 - The breath hand steps once per breath, landing on each mark, so it always points at the breath digit.
   It used to step once per beat (4 steps per mark), but then it looked like a beat hand while labelled breath
@@ -436,7 +457,7 @@ considered; their clashes hardly matter since almost no one uses them now, but i
   - (equivalently 2 × 10^10 paces per day)
 - Light travels 2 × 10^8 paces in one breath ≈ 1,249,135 km (dec), about 3.25× the Earth-Moon distance
 - 1 iter = 1000 paces = 2.51 km is literally a "thousand paces" (Latin mille passus = Roman mile)
-- 15 iters ≈ 42.67 km ≈ a marathon (marathon = 14;98 iters)
+- 15 iters ≈ 42.67 km ≈ a marathon (marathon = 14;99 iters)
 
 Imperial comparisons:
 
@@ -614,7 +635,8 @@ flowchart LR
 - 1 onus (charge) ≈ 0.3555 C
 - 1 riv (current, onus/blink) ≈ 1.0237 A - almost exactly an amp
 - 1 imp (voltage, opus/onus) ≈ 87.21 V
-- Common voltages aren't round (set by chemistry/history), but mains lines up:
+- Common voltages aren't round (set by chemistry/history), but mains lines up. An uncia-imp is 0;1 imp
+  ≈ 7.27 V (uncia- = ÷10, see [Prefixes](#prefixes)):
 
 | Voltage          | imp   | uncia-imp |
 |------------------|-------|-----------|
@@ -627,6 +649,9 @@ flowchart LR
 | 240 V mains      | 2;903 | 29;03     |
 
 - Rejected: e = 2 × 10^-15 (2.05 A, 43.6 V) or 0;6 × 10^-15 (0.51 A, 174 V) - no better for common voltages.
+- The imp can't also be close to a volt: imp × riv = vig (89.3 W), and the vig is fixed by the mechanical
+  units. With the riv ≈ 1 A the imp must be ≈ 89 V; an imp near 1 V would need a riv near 89 A. Small
+  voltages use the uncia-imp (7.27 V) and bicia-imp (0;01 imp ≈ 0.606 V)
 
 # Amount of substance
 
@@ -680,10 +705,49 @@ record uses it. A base-12 version would change values by only ~7% - not worth br
 
 # pH
 
-**Decided:** keep the pH scale unchanged, just written in dozenal digits: pH 5.5 = **pH 5;6**, neutral = pH 7.
+**Decided:** replace pH with an acidity scale where **0 is neutral, acids are positive and bases negative**.
 
-**Why:** same reasoning as earthquakes: it's a log scale with no units, and every record and textbook uses
-it. pH is defined from mol/L, so a "dozenal pH" would shift every value (neutral would no longer be 7).
+**Why:** if the system is being changed anyway, it may as well be done right. pH runs backwards (lower =
+more acidic) and centres on 7, which is only neutral at 25 °C. Replaces the earlier decision to keep pH
+unchanged in dozenal digits.
+
+Proposed definition (not decided): acidity = log base 12 of ([H+] / [H+ at neutral]), so
+
+- 0 is neutral at **every** temperature (pH's neutral point is 7.47 at 0 °C, 7 at 25 °C, 6.8 at body
+  temperature and 6.14 at 100 °C)
+- each step of 1 is 10 (12 dec) times more acidic
+- it's a ratio of two concentrations, so it needs no concentration unit (no mol/L vs grex/cub problem)
+- at 25 °C: acidity = (7 - pH) × 0;E15 (0.9266 dec). Everyday values run from about +6;6 to -6;6
+
+| Substance | pH (dec) | Acidity (log 12) | log 12 of [H+]/[OH-] | 7 - pH (log 10) |
+|---|---|---|---|---|
+| Battery acid | 0.8 | +5;9 | +E;6 | +6;2 |
+| Stomach acid | 1.5 | +5;0 | +X;1 | +5;6 |
+| Lemon juice | 2.2 | +4;5 | +8;X | +4;9 |
+| Cola | 2.5 | +4;2 | +8;4 | +4;6 |
+| Vinegar | 2.9 | +3;X | +7;6 | +4;0 |
+| Orange juice | 3.5 | +3;3 | +6;6 | +3;6 |
+| Tomato | 4.3 | +2;6 | +5;0 | +2;7 |
+| Black coffee | 5.0 | +1;X | +3;7 | +2;0 |
+| Clean rain | 5.6 | +1;3 | +2;7 | +1;5 |
+| Milk | 6.6 | +0;4 | +0;9 | +0;5 |
+| Pure water | 7.0 | 0 | 0 | 0 |
+| Blood | 7.4 | -0;4 | -0;9 | -0;5 |
+| Sea water | 8.1 | -1;0 | -2;0 | -1;0 |
+| Baking soda | 8.3 | -1;2 | -2;4 | -1;3 |
+| Soap | 10.0 | -2;9 | -5;6 | -3;0 |
+| Household ammonia | 11.6 | -4;3 | -8;6 | -4;6 |
+| Bleach | 12.5 | -5;0 | -X;1 | -5;6 |
+| Drain cleaner (lye) | 14.0 | -6;6 | -11;0 | -7;0 |
+
+- Values at 25 °C, in dozenal digits. Column 4 is twice column 3 (one step is 100 (144 dec) times in the
+  [H+]/[OH-] ratio); column 5 keeps pH's base-ten steps, flipped and shifted
+- No hard bounds: strong acids go above +6;6 and strong alkalis below -6;6, as pH goes below 0 and above
+  14. Superacids are measured on other scales (Hammett, down to about -25 pH)
+- Chemists' buffer maths keeps its shape: pH = pKa + log(base/acid) becomes
+  acidity = Ka-acidity - log12(base/acid), where Ka-acidity = (7 - pKa) × 0;E15, a one-off conversion of old tables
+- Converting old pH readings needs the temperature, because neutral moves with it
+- Needs a name (TODO)
 
 # Angle
 
@@ -694,8 +758,8 @@ the hand (0;1 turn = one chime on the dial). The common angles become round: rig
 60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward
 (90° = 76°, 45° = 39°), because 360 is a decimal-era choice.
 
-| Turn   | Degrees (dec) | |
-|--------|---------------|-|
+| Turn   | Degrees (dec) | Note |
+|--------|---------------|------|
 | 1      | 360           | full turn |
 | 0;6    | 180           | half turn |
 | 0;3    | 90            | right angle |
@@ -822,7 +886,7 @@ gives awkward numbers: tc ÷1000, bc ÷100, uc ÷10, tq ×1000.
 | Cricket pitch | 20.12 m | 11;X p | (keeps 22 yd) |
 | Olympic pool | 50 m | 2X;5 p | 30 p |
 | 1 km | 1 km | 494 p |  |
-| Marathon | 42.195 km | 14;X it | (keeps 42.195 km) |
+| Marathon | 42.195 km | 14;99 it | (keeps 42.195 km) |
 | Sydney–Melbourne (straight line) | 713 km | 1E8 it |  |
 
 ## Races and sport
@@ -839,7 +903,7 @@ see Speed). Traditional distances tied to history (marathon, cricket pitch) keep
 | 400 m (1 lap)      | 1XE;5 p          | 200 p (1 lap)       | 418.3 m   |
 | 800 m              | 39X;9 p          | 400 p               | 836.7 m   |
 | 1500 m / mile      | 720;8 p / 783;E p | 700 p              | 1464 m    |
-| 5 km (parkrun)     | 1;EE it         | 2 it               | 5.02 km   |
+| 5 km (parkrun)     | 1;EX it         | 2 it               | 5.02 km   |
 | 10 km              | 3;EX it         | 4 it               | 10.04 km  |
 | Half marathon      | 8;4X it         | keeps 21.1 km       |           |
 | Marathon           | 14;99 it        | keeps 42.195 km     |           |
@@ -984,8 +1048,8 @@ UK and US units differ for volume and tons.
 
 °t = (°F - 32) × 0.8001 (decimal arithmetic, then convert) - so roughly **(°F - 32) × 4/5**.
 
-| °F    | °t     | |
-|-------|--------|-|
+| °F    | °t     | Note |
+|-------|--------|------|
 | 0     | -21;7  | |
 | 32    | 0      | freezing |
 | 50    | 12;5   | |
@@ -1079,22 +1143,20 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
   pint), rather than a subscript p you can't hear
 - Rulers: the pencil-case 0;2 p and desk 0;3 p are in Everyday reference. Still open: board ruler (0;4 p if
   the ulna is adopted, or 0;6 p) and the metre stick's replacement (1 p?)
-- Revisit pH so that 0 is neutral (conflicts with the pH decision). Options:
-  - pH - 7: one step is still ×10 (dec) acidity, so pKa tables, buffer maths and meter calibration
-    (buffers 4, 7, 10 become -3, 0, +3) carry over by subtracting 7. But neutral is only exactly 7 at 25 °C
-    (7.47 at 0 °C, 6.8 at body temperature, 6.14 at 100 °C)
-  - log([H+]/[OH-]) = 14 - 2 pH (dec) at 25 °C: 0 at every temperature, and a ratio needs no
-    concentration unit (so no mol/L vs grex/cub problem). But the numbers double, buffer maths gains a
-    factor of 2, and converting old readings needs the temperature
-  - No hard bounds either way: everyday values run pH 0-14 (dec), but strong acids go below 0 and strong
-    alkalis above 14; superacids are measured on other scales (Hammett, to about -25)
-  - Also decide the sign (acids positive or negative), and whether the log stays base ten (dec) or
-    becomes base twelve (one step = ×10 acidity, shifting every value again)
+- pH replacement: pick the definition (log 12 of [H+] vs neutral is proposed; alternatives are the
+  [H+]/[OH-] ratio, which doubles the numbers, or 7 - pH, which keeps base-ten steps but isn't neutral at
+  every temperature) and a name. See pH
 - Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;
   60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec),
   frequency units, and note lengths
-- Daylight saving: Paludal time follows the local civil clock, so a 1-hour change is 0;60 (half a chime).
-  Time zones are half-chimes too: UTC+10 = +5;00, UTC+9:30 = +4;90. Keep 1-hour DST, or shift a whole chime?
+- Daylight saving: a 1-hour change is 0;6 chime, so the moment digits change (6;45 becomes 6;X5) - a pain,
+  where today's 1-hour change only touches the hour. Options:
+  - Shift a whole chime (2 h): the moments stay the same, but 2 h is a big jump (Britain's wartime "double
+    summer time" was one; summer sunrise would be 2 h later)
+  - No daylight saving (Queensland, WA and the NT already do without; most countries don't use it)
+  - Keep 1 hour and live with 0;6
+  - Related: time zones are half-chimes now (UTC+10 = +5;00, UTC+9:30 = +4;90, UTC-5 = -2;60). Twelve
+    whole-chime zones would keep the moment digits the same everywhere, but half the world would move an hour
 - Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a
   "paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?
 - Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is
