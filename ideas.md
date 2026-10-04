@@ -1105,7 +1105,7 @@ gives awkward numbers: tc ÷1,000, bc ÷100, uc ÷10, tq ×1,000.
 | Car length | 4.5 m | 15 ft | 3;12 p | 3;1 p |
 | Cricket pitch | 20.12 m | 22 yd | 11;X p | (keeps 22 yd) |
 | Olympic pool | 50 m | 164 ft | 2X;5 p | 30 p |
-| 1 km | 1 km | 0.62 mi | 494 p |  |
+| 1 km | 1 km | 0.62 mi | 494 p | 496 p (1.002 km) |
 | Marathon | 42.195 km | 26.2 mi | 14;99 ir | (keeps 42.195 km) |
 | Sydney–Melbourne (straight line) | 713 km | 443 mi | 1E8 ir |  |
 | Letter page (long side) | 279 mm | 11 in | 2;38 un | 2;4 un (P5 replaces Letter and A4) |
