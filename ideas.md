@@ -490,8 +490,9 @@ Other round values of c were checked. Fewer paces per blink means a longer pace,
 | **2 × 10^7**    | 1.45 m | 12.1 cm | 1.0 cm | 1.77 L               | 21.4 N      | 31.0 J        |
 | 4 × 10^7        | 73 cm  | 6.1 cm  | 5 mm   | 0.22 L               | 1.3 N       | 1.0 J         |
 
-1 × 10^7 makes everything bigger: a 2.9 m pace and a 14 kg lib are too large for everyday use.
-4 × 10^7 makes the unc (6 cm) and cub (0.22 L) small, though its opus is almost exactly a joule.
+Rejected: both alternatives - the values go too whacky. 1 × 10^7 makes everything bigger (a 2.9 m pace and a
+14 kg lib are too large for everyday use); 4 × 10^7 makes the unc (6 cm) and cub (0.22 L) small, though
+its opus is almost exactly a joule.
 
 Named sub-units (named because they're everyday sizes, like the inch and centimetre):
 
@@ -932,7 +933,8 @@ definition; measured values carry the same uncertainty as in SI.
 
 What things come to in the new units (3 significant digits). **Round** is the nearest round dozenal value
 (whole, half, third or quarter, within 3%) - what a product, limit or setting would probably become.
-Left blank for natural values (body temperature, speed of sound) and where the value is already round. Prefixes are used where the plain unit
+Left blank for natural values (body temperature, speed of sound) and where the value is already round.
+**US** gives the size in US customary units, for things measured that way in the US. Prefixes are used where the plain unit
 gives awkward numbers: tc ÷1000, bc ÷100, uc ÷10, tq ×1000.
 
 - tcli (1/1000 lib) ≈ 1.03 g and tccu (1 dig³) ≈ 1.03 mL - the new gram and millilitre
@@ -940,21 +942,25 @@ gives awkward numbers: tc ÷1000, bc ÷100, uc ÷10, tq ×1000.
 
 ## Length
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| Credit card (long side) | 85.6 mm | 8;5X di | 8;6 di |
-| Pencil-case ruler | 15-20 cm | 0;12X-0;17X p | 0;2 p (a span, 24.2 cm) |
-| Desk ruler | 30 cm | 0;258 p | 0;3 p (36.3 cm) |
-| A4 page (long side) | 297 mm | 2;55 un | 2;6 un |
-| Adult height | 1.70 m | 1;21 p | 1;2 p |
-| Tall person (6 ft) | 1.83 m | 1;31 p | 1;3 p |
-| Door height | 2.04 m | 1;4X p | 1;5 p |
-| Car length | 4.5 m | 3;12 p | 3;1 p |
-| Cricket pitch | 20.12 m | 11;X p | (keeps 22 yd) |
-| Olympic pool | 50 m | 2X;5 p | 30 p |
-| 1 km | 1 km | 494 p |  |
-| Marathon | 42.195 km | 14;99 it | (keeps 42.195 km) |
-| Sydney–Melbourne (straight line) | 713 km | 1E8 it |  |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Credit card (long side) | 85.6 mm | 3.37 in | 8;5X di | 8;6 di |
+| Pencil-case ruler | 15-20 cm | 6 in | 0;12X-0;17X p | 0;2 p (a span, 24.2 cm) |
+| Desk ruler | 30 cm | 12 in | 0;258 p | 0;3 p (36.3 cm) |
+| A4 page (long side) | 297 mm |  | 2;55 un | 2;6 un |
+| Adult height | 1.70 m | 5 ft 7 in | 1;21 p | 1;2 p |
+| Tall person (6 ft) | 1.83 m | 6 ft | 1;31 p | 1;3 p |
+| Door height | 2.04 m | 6 ft 8 in | 1;4X p | 1;5 p |
+| Car length | 4.5 m | 15 ft | 3;12 p | 3;1 p |
+| Cricket pitch | 20.12 m | 22 yd | 11;X p | (keeps 22 yd) |
+| Olympic pool | 50 m | 164 ft | 2X;5 p | 30 p |
+| 1 km | 1 km | 0.62 mi | 494 p |  |
+| Marathon | 42.195 km | 26.2 mi | 14;99 it | (keeps 42.195 km) |
+| Sydney–Melbourne (straight line) | 713 km | 443 mi | 1E8 it |  |
+| Letter page (long side) | 279 mm | 11 in | 2;38 un | 2;4 un (P5 replaces Letter and A4) |
+| Ceiling height | 2.44 m | 8 ft | 1;82 p | 1;8 p |
+| Football field (US) | 91.4 m | 100 yd | 52;E p | (keeps 100 yd) |
+| Mile | 1.61 km | 1 mi | 0;784 it |  |
 
 ## Races and sport
 
@@ -980,113 +986,130 @@ see Speed). Traditional distances tied to history (marathon, cricket pitch) keep
 
 ## Mass
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| Egg | 60 g | 4X;6 tcli | 50 tcli |
-| Apple | 150 g | 102 tcli | 100 tcli |
-| 1 L of water | 1 kg | 0;693 li |  |
-| Newborn baby | 3.5 kg | 1;E9 li | 2 li |
-| Checked-in bag limit | 23 kg | 11 li |  |
-| Adult | 75 kg | 36;4 li | 36 li |
-| Small car | 1300 kg | 512 li | 500 li |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Egg | 60 g | 2.1 oz | 4X;6 tcli | 50 tcli |
+| Apple | 150 g | 5.3 oz | 102 tcli | 100 tcli |
+| 1 L of water | 1 kg | 2.2 lb | 0;693 li |  |
+| Newborn baby | 3.5 kg | 7.7 lb | 1;E9 li | 2 li |
+| Checked-in bag limit | 23 kg | 50 lb | 11 li |  |
+| Adult | 75 kg | 165 lb | 36;4 li | 36 li |
+| Small car | 1300 kg | 2900 lb | 512 li | 500 li |
+| Stick of butter | 113 g | 4 oz | 92;7 tcli | 90 tcli |
+| Pack of ground beef | 454 g | 1 lb | 0;30X li | 0;3 li |
+| Bag of flour | 2.27 kg | 5 lb | 1;34 li | 1;3 li |
+| Turkey | 6.8 kg | 15 lb | 3;X1 li |  |
 
 ## Temperature
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| Freezer | -18 °C | -21;E °t | -22 °t |
-| Fridge | 4 °C | 5;92 °t | 5;8 °t |
-| Cool day | 15 °C | 19;7 °t | 1X °t |
-| Room | 21 °C | 26;3 °t | 26 °t |
-| Warm day | 30 °C | 37;2 °t | 36 °t |
-| Body | 37 °C | 45;3 °t |  |
-| Heatwave | 45 °C | 54;X °t | 56 °t |
-| Boiling water | 100 °C | 100 °t |  |
-| Oven (moderate) | 180 °C | 197 °t | 1X0 °t |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Freezer | -18 °C | 0 °F | -21;E °t | -22 °t |
+| Fridge | 4 °C | 39 °F | 5;92 °t | 5;8 °t |
+| Cool day | 15 °C | 59 °F | 19;7 °t | 1X °t |
+| Room | 21 °C | 70 °F | 26;3 °t | 26 °t |
+| Warm day | 30 °C | 86 °F | 37;2 °t | 36 °t |
+| Body | 37 °C | 98.6 °F | 45;3 °t |  |
+| Heatwave | 45 °C | 113 °F | 54;X °t | 56 °t |
+| Boiling water | 100 °C | 212 °F | 100 °t |  |
+| Oven (moderate) | 180 °C | 350 °F | 197 °t | 1X0 °t |
 
 ## Volume
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| Teaspoon | 5 mL | 4;X6 tccu | 5 tccu |
-| Cup | 250 mL | 184 tccu | 180 tccu |
-| Can of drink | 375 mL | 265 tccu | 260 tccu |
-| Wine bottle | 750 mL | 0;50E cu | 0;5 cu |
-| Milk bottle | 2 L | 1;16 cu | 1;2 cu |
-| Bucket | 10 L | 5;78 cu | 5;6 cu |
-| Car fuel tank | 50 L | 24;2 cu | 24 cu |
-| Bath | 150 L | 70;7 cu | 70 cu |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Teaspoon | 5 mL | 1 tsp | 4;X6 tccu | 5 tccu |
+| Cup | 250 mL | 1 cup (237 mL) | 184 tccu | 180 tccu |
+| Can of drink (AU) | 375 mL |  | 265 tccu | 260 tccu |
+| Wine bottle | 750 mL | 25.4 fl oz | 0;50E cu | 0;5 cu |
+| Milk bottle (AU) | 2 L |  | 1;16 cu | 1;2 cu |
+| Bucket | 10 L | 2.6 gal | 5;78 cu | 5;6 cu |
+| Car fuel tank | 50 L | 13 gal | 24;2 cu | 24 cu |
+| Bath | 150 L | 40 gal | 70;7 cu | 70 cu |
+| Soda can (US) | 355 mL | 12 fl oz | 24X tccu | 250 tccu |
+| Pint glass (US) | 473 mL | 16 fl oz | 325 tccu | 320 tccu |
+| Quart | 946 mL | 1 qt | 0;64X cu |  |
+| Gallon of milk or gas | 3.79 L | 1 gal | 2;17 cu | 2;2 cu |
+| Bucket (US) | 18.9 L | 5 gal | X;81 cu | X;9 cu |
 
 ## Time
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| Heartbeat | 0.8 s | 0;93 be |  |
-| Minute | 60 s | 1;25 mt |  |
-| Hour | 60 min | 0;6 ch (60 mt) |  |
-| Feature film | 2 h | 1 ch |  |
-| Short meeting, lunch break | 30 min | 0;3 ch (30 mt) |  |
-| Lesson, meeting | 45 min | 0;46 ch (46 mt) | 0;4 ch (40 min) or 0;5 ch (50 min) |
-| Long meeting, lecture | 60 min | 0;6 ch (60 mt) |  |
-| School day | 9:00-15:00 (6 h) | 4;60-7;60 (3 ch) |  |
-| Working day | 9:00-17:00 (8 h) | 4;60-8;60 (4 ch) |  |
-| Working week | 38 h (Australian standard) | 17 ch |  |
-| Night's sleep | 8 h | 4 ch |  |
-| School year | about 200 days | about 148 days |  |
-| Year | 365.2422 days | 265;2XX days |  |
-| School starting age | 5 years | 5 years |  |
-| Adult (voting, driving) | 18 years | 16 years |  |
-| Coming of age (21st birthday) | 21 years | 19 years |  |
-| Retirement age (Australia) | 67 years | 57 years |  |
-| Average lifetime (world) | 73 years, about 26 700 days | 61 years, about 13 520 days |  |
-| Average lifetime (Australia) | 83 years | 6E years |  |
-| Century | 100 years | 84 years | a gro of years (100) is 144 (dec) |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Heartbeat | 0.8 s |  | 0;93 be |  |
+| Minute | 60 s |  | 1;25 mt |  |
+| Hour | 60 min |  | 0;6 ch (60 mt) |  |
+| Feature film | 2 h |  | 1 ch |  |
+| Short meeting, lunch break | 30 min |  | 0;3 ch (30 mt) |  |
+| Lesson, meeting | 45 min |  | 0;46 ch (46 mt) | 0;4 ch (40 min) or 0;5 ch (50 min) |
+| Long meeting, lecture | 60 min |  | 0;6 ch (60 mt) |  |
+| School day | 9:00-15:00 (6 h) |  | 4;60-7;60 (3 ch) |  |
+| Working day | 9:00-17:00 (8 h) |  | 4;60-8;60 (4 ch) |  |
+| Working week (AU) | 38 h |  | 17 ch |  |
+| Working week (US) | 40 h | 40 h | 18 ch |  |
+| Night's sleep | 8 h |  | 4 ch |  |
+| School year | about 200 days |  | about 148 days |  |
+| Year | 365.2422 days |  | 265;2XX days |  |
+| School starting age | 5 years |  | 5 years |  |
+| Adult (voting, driving) | 18 years |  | 16 years |  |
+| Coming of age (21st birthday), US drinking age | 21 years | 21 years | 19 years |  |
+| Retirement age (Australia, US) | 67 years | 67 years | 57 years |  |
+| Average lifetime (world) | 73 years, about 26 700 days |  | 61 years, about 13 520 days |  |
+| Average lifetime (Australia) | 83 years |  | 6E years |  |
+| Century | 100 years |  | 84 years | a gro of years (100) is 144 (dec) |
 
 ## Speed
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| Walking | 5 km/h | 3;EX p/br | 4 p/br |
-| Cycling | 20 km/h | 13;E p/br | 14 p/br |
-| School zone | 40 km/h | 27;X p/br | 28 p/br |
-| Town | 50 km/h | 33;X p/br | 34 p/br |
-| Motorway | 110 km/h | 73;8 p/br | 74 p/br |
-| Airliner | 900 km/h | 4E9 p/br | 500 p/br |
-| Sound | 343 m/s | 6X p/bl |  |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Walking | 5 km/h | 3 mph | 3;EX p/br | 4 p/br |
+| Cycling | 20 km/h | 12 mph | 13;E p/br | 14 p/br |
+| School zone | 40 km/h | 25 mph | 27;X p/br | 28 p/br |
+| Town | 50 km/h | 30 mph | 33;X p/br | 34 p/br |
+| Motorway | 110 km/h | 70 mph | 73;8 p/br | 74 p/br |
+| Airliner | 900 km/h | 560 mph | 4E9 p/br | 500 p/br |
+| Sound | 343 m/s | 767 mph | 6X p/bl |  |
+| Residential street (US) | 40 km/h | 25 mph | 28;1 p/br | 28 p/br |
+| Freeway (US) | 105 km/h | 65 mph | 6E;4 p/br | 70 p/br |
 
 ## Energy
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| Apple (food energy) | 400 kJ | 7;57 tqop | 7;6 tqop |
-| Daily food intake | 8700 kJ | 116 tqop | 120 tqop |
-| Phone battery | 15 Wh | 1;01 tqop | 1 tqop |
-| 1 kWh | 3.6 MJ | 57;2 tqop | 56 tqop |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Apple (food energy) | 400 kJ | 95 Cal | 7;57 tqop | 7;6 tqop |
+| Daily food intake | 8700 kJ | 2100 Cal | 116 tqop | 120 tqop |
+| Phone battery | 15 Wh | 15 Wh | 1;01 tqop | 1 tqop |
+| 1 kWh | 3.6 MJ | 1 kWh | 57;2 tqop | 56 tqop |
+| Daily value (US food labels) | 8.37 MJ | 2000 Cal | 110 tqop |  |
+| Gallon of gasoline | 121 MJ | 33.7 kWh | 1390 tqop | 1400 tqop |
 
 ## Power
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| LED bulb | 10 W | 1;42 ucvg | 1;4 ucvg |
-| Person at rest | 100 W | 1;15 vg |  |
-| Kettle | 2400 W | 22;E vg | 23 vg |
-| Small car engine | 100 kW | 794 vg | 800 vg |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| LED bulb | 10 W | 10 W | 1;42 ucvg | 1;4 ucvg |
+| Person at rest | 100 W | 100 W | 1;15 vg |  |
+| Kettle | 2400 W |  | 22;E vg | 23 vg |
+| Small car engine | 100 kW | 134 hp | 794 vg | 800 vg |
+| Space heater, US kettle | 1500 W | 1500 W | 14;X vg | 15 vg |
 
 ## Pressure
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| Atmosphere | 101.3 kPa | 5;97 tqpr |  |
-| Car tyre (gauge) | 220 kPa | 10;7 tqpr | 11 tqpr |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Atmosphere | 101.3 kPa | 14.7 psi | 5;97 tqpr |  |
+| Car tyre (gauge) | 220 kPa | 32 psi | 10;7 tqpr | 11 tqpr |
+| Car tyre (US) | 241 kPa | 35 psi | 11;X tqpr | 12 tqpr |
 
 ## Voltage
 
-| Thing | SI | Dozenal | Round |
-|---|---|---|---|
-| AA battery | 1.5 V | 2;59 bcim | 2;6 bcim |
-| USB | 5 V | 8;31 bcim | 8;6 bcim |
-| Car battery | 12 V | 17;X bcim | 18 bcim |
-| Mains (AU) | 230 V | 2;78 im | 2;8 im |
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| AA battery | 1.5 V | 1.5 V | 2;59 bcim | 2;6 bcim |
+| USB | 5 V | 5 V | 8;31 bcim | 8;6 bcim |
+| Car battery | 12 V | 12 V | 17;X bcim | 18 bcim |
+| Mains (AU) | 230 V |  | 2;78 im | 2;8 im |
+| Mains (US) | 120 V | 120 V | 1;46 im | 1;5 im |
 
 Notes:
 - Temperatures, heights, speeds and voltages come out in comfortable numbers

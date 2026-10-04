@@ -270,7 +270,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <div class="layout" id="top">
 <nav>
 <h1><a href="#top">Paludal units</a></h1>
-<label class="toggle"><input type="checkbox" id="tables-only"> Tables, decisions and reasons only</label>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
 <div class="conv">
 <label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
 <label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
@@ -286,14 +286,10 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </main>
 </div>
 <script>
+// Not remembered: the page always opens with everything showing.
 const box = document.getElementById("tables-only");
-function apply() { document.body.classList.toggle("tables-only", box.checked); }
-try { box.checked = localStorage.getItem("tables-only") === "1"; } catch (e) {}
-apply();
-box.addEventListener("change", () => {
-  apply();
-  try { localStorage.setItem("tables-only", box.checked ? "1" : "0"); } catch (e) {}
-});
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
 </script>
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
