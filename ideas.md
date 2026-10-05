@@ -348,22 +348,22 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
 Each unit in the middle, with its fractions to the left and multiples to the right, one step of twelve at a
 time. Sizes that have their own name are in bold; use the name rather than the prefix form (a dig, not a bcp).
 
-| tc ÷1,000 | bc ÷100 | uc ÷10 | **Unit** | uq ×10 | bq ×100 | tq ×1,000 |
+| tricia- (tc) ÷1,000 | bicia- (bc) ÷100 | uncia- (uc) ÷10 | **Unit** | unqua- (uq) ×10 | biqua- (bq) ×100 | triqua- (tq) ×1,000 |
 |---|---|---|---|---|---|---|
-| tcbl, 201 µs | bcbl, 2.41 ms | ucbl, 28.9 ms | **blink** bl, 0.347 s | **breath** br, 4.17 s | **moment** mt, 50 s | tqbl, 10 min |
-| tcp (lin, proposed), 0.841 mm | **dig** di, 1.01 cm | **unc** un, 12.1 cm | **pace** p, 1.45 m | uqp, 17.4 m | bqp, 209 m | **iter** ir, 2.51 km |
-| tcli, 1.03 g | bcli, 12.3 g | ucli, 148 g | **lib** li, 1.77 kg | uqli, 21.3 kg | bqli, 255 kg | tqli, 3.06 t |
-| tcte, 402 µK | bcte, 4.82 mK | ucte, 57.9 mK | **tep** °t, 0.694 K | uqte, 8.33 K | bqte, 100 K | tqte, 1.2 kK |
-| tcri, 7.11 mA | bcri, 85.3 mA | ucri, 1.02 A | **riv** ri, 12.3 A | uqri, 147 A | bqri, 1.77 kA | tqri, 21.2 kA |
-| tcgx, 593 µmol | bcgx, 7.12 mmol | ucgx, 85.4 mmol | **grex** gx, 1.02 mol | uqgx, 12.3 mol | bqgx, 148 mol | tqgx, 1.77 kmol |
-| tcla, 567 µcd | bcla, 6.81 mcd | ucla, 81.7 mcd | **lam** la, 0.980 cd | uqla, 11.8 cd | bqla, 141 cd | tqla, 1.69 kcd |
-| tccu, 1.03 mL | bccu, 12.3 mL | uccu, 148 mL | **cub** cu, 1.77 L | uqcu, 21.3 L | bqcu, 255 L | tqcu, 3.06 m³ |
-| tcvi, 12.4 mN | bcvi, 148 mN | ucvi, 1.78 N | **vis** vi, 21.3 N | uqvi, 256 N | bqvi, 3.07 kN | tqvi, 36.9 kN |
-| tcop, 17.9 mJ | bcop, 215 mJ | ucop, 2.58 J | **opus** op, 31 J | uqop, 372 J | bqop, 4.46 kJ | tqop, 53.6 kJ |
-| tcvg, 51.7 mW | bcvg, 620 mW | ucvg, 7.44 W | **vig** vg, 89.3 W | uqvg, 1.07 kW | bqvg, 12.9 kW | tqvg, 154 kW |
-| tcpr, 5.85 mPa | bcpr, 70.2 mPa | ucpr, 843 mPa | **pres** pr, 10.1 Pa | uqpr, 121 Pa | bqpr, 1.46 kPa | tqpr, 17.5 kPa |
-| tcos, 2.47 mC | bcos, 29.6 mC | ucos, 355 mC | **onus** os, 4.27 C | uqos, 51.2 C | bqos, 614 C | tqos, 7.37 kC |
-| tcim, 4.21 mV | bcim, 50.5 mV | ucim, 606 mV | **imp** im, 7.27 V | uqim, 87.2 V | bqim, 1.05 kV | tqim, 12.6 kV |
+| tcbl<br>201 µs | bcbl<br>2.41 ms | ucbl<br>28.9 ms | **blink** bl<br>0.347 s | **breath** br<br>4.17 s | **moment** mt<br>50 s | tqbl<br>10 min |
+| tcp (lin, proposed)<br>0.841 mm | **dig** di<br>1.01 cm | **unc** un<br>12.1 cm | **pace** p<br>1.45 m | uqp<br>17.4 m | bqp<br>209 m | **iter** ir<br>2.51 km |
+| tcli<br>1.03 g | bcli<br>12.3 g | ucli<br>148 g | **lib** li<br>1.77 kg | uqli<br>21.3 kg | bqli<br>255 kg | tqli<br>3.06 t |
+| tcte<br>402 µK | bcte<br>4.82 mK | ucte<br>57.9 mK | **tep** °t<br>0.694 K | uqte<br>8.33 K | bqte<br>100 K | tqte<br>1.2 kK |
+| tcri<br>7.11 mA | bcri<br>85.3 mA | ucri<br>1.02 A | **riv** ri<br>12.3 A | uqri<br>147 A | bqri<br>1.77 kA | tqri<br>21.2 kA |
+| tcgx<br>593 µmol | bcgx<br>7.12 mmol | ucgx<br>85.4 mmol | **grex** gx<br>1.02 mol | uqgx<br>12.3 mol | bqgx<br>148 mol | tqgx<br>1.77 kmol |
+| tcla<br>567 µcd | bcla<br>6.81 mcd | ucla<br>81.7 mcd | **lam** la<br>0.980 cd | uqla<br>11.8 cd | bqla<br>141 cd | tqla<br>1.69 kcd |
+| tccu<br>1.03 mL | bccu<br>12.3 mL | uccu<br>148 mL | **cub** cu<br>1.77 L | uqcu<br>21.3 L | bqcu<br>255 L | tqcu<br>3.06 m³ |
+| tcvi<br>12.4 mN | bcvi<br>148 mN | ucvi<br>1.78 N | **vis** vi<br>21.3 N | uqvi<br>256 N | bqvi<br>3.07 kN | tqvi<br>36.9 kN |
+| tcop<br>17.9 mJ | bcop<br>215 mJ | ucop<br>2.58 J | **opus** op<br>31 J | uqop<br>372 J | bqop<br>4.46 kJ | tqop<br>53.6 kJ |
+| tcvg<br>51.7 mW | bcvg<br>620 mW | ucvg<br>7.44 W | **vig** vg<br>89.3 W | uqvg<br>1.07 kW | bqvg<br>12.9 kW | tqvg<br>154 kW |
+| tcpr<br>5.85 mPa | bcpr<br>70.2 mPa | ucpr<br>843 mPa | **pres** pr<br>10.1 Pa | uqpr<br>121 Pa | bqpr<br>1.46 kPa | tqpr<br>17.5 kPa |
+| tcos<br>2.47 mC | bcos<br>29.6 mC | ucos<br>355 mC | **onus** os<br>4.27 C | uqos<br>51.2 C | bqos<br>614 C | tqos<br>7.37 kC |
+| tcim<br>4.21 mV | bcim<br>50.5 mV | ucim<br>606 mV | **imp** im<br>7.27 V | uqim<br>87.2 V | bqim<br>1.05 kV | tqim<br>12.6 kV |
 
 - Named sizes that aren't a single prefix step: **beat** = 3 bl; **chime** = 10,000 bl (qqbl, 2 h); the day =
   100,000 bl (pqbl); **span** = 0;2 p; **ulna** = 0;4 p; **navis** = 930 p; **parax** (star distances);
@@ -1046,7 +1046,11 @@ Four hands - hour, minute and second, plus a light beat hand:
     and clocks are clockwise because they copied northern sundials
   - matches the sun's path when facing south in the northern hemisphere, so a correctly
     oriented clock roughly agrees with a sundial
-- Existing dozenal clock designs to compare: https://clocks.dozenal.ca (not yet reviewed - blocked by sandbox network policy)
+- Compared with the clocks at https://clocks.dozenal.ca (Paul Rapoport; reviewed 2026 CE): their "Diurnal 1"
+  is the same design - one turn a day, 0 (midnight) at the bottom, 6 (noon) at the top, each hand twelve
+  times faster than the next. They also offer a **semidiurnal** clock (the slow hand turns twice a day, like
+  am / pm, with dozenal hands below it), and "signed" versions that count down to the next mark after
+  half way (as "twenty to eight" does). Their readout is the same number as ours: noon is 600
 
 ### Daylight saving and time zones
 
@@ -1103,6 +1107,10 @@ Standard time (no daylight saving):
 **Advantage:** TODO - follows from the reason, once recorded.
 
 - 2026 CE = 12026 HE (dec) = **6E62 HE**
+- Note: the Dozenal Holocene calendar (clocks.dozenal.ca) also says "Holocene" but counts from a different
+  start - year 0 begins at the December solstice of 9565 BCE (the last time the Earth was nearest the Sun on
+  the northern summer solstice) - so 2026 CE is **6859** there and 6E62 here. Two dozenal "Holocene" year
+  counts 305 (437 dec) years apart would be confusing
 - Spoken as two pairs, like "twenty twenty-six" (that's how years are said now): 6E62 = "six do el, six do two"
   - round years: 7000 = "seven mo", 6E00 = "six do el gro"
 
@@ -1137,9 +1145,13 @@ mensis), which reads as English "men" (Hexmen, Septmen).
 
 - eg 3 Oct 2026 CE = 3 Oct 6E62; 31 (dec) Oct = 27 Oct; Christmas = 21 Dec
 
-**Possibility (not decided):** the Dozenal Solstice / Holocene calendar (clocks.dozenal.ca):
-twelve months of 30 (dec) days, with the 5-6 leftover "S-days" outside any month; often paired with a 6-day week
-(divides into halves and thirds). https://clocks.dozenal.ca/pdf/dozenal-calendar.pdf
+**Possibility (not decided):** the Dozenal Holocene calendar (Paul Rapoport, with Sanketh Kolhar;
+https://clocks.dozenal.ca/pdf/dozenal-calendar.pdf): twelve months of 30 (dec) days, each of five 6-day weeks
+("stretches"), with the 5-6 leftover "S-days" outside any month but spread through the year so the months
+keep in step with the seasons. The year starts on a solstice or equinox (the December solstice by default)
+instead of 1 January, so leap years follow the Sun rather than a divide-by-4 rule. Months are numbered (or
+named after the zodiac in Greek), and the six days are named after colours (Ruber, Arantius, Flāvus, Viridis,
+Cæruleus, Purpureus).
 - A 6-day week would mean a 4-day working week with the usual 2-day weekend
 - For now, the 7-day week stays: changing it is too big a change, and 365 (dec) days can't be split evenly anyway
 
@@ -1667,7 +1679,13 @@ Where the ideas came from, and what's still to decide.
 - **SDN** (DSA): the prefix system adopted above. Inspired by Pendlebury's TGM prefixes.
 - **Primel** metrology (John Volan, 2019 CE, revised since): base time 1/10^6 day (= 0;01 breath), length
   unit ≈ 8.2 mm, uses an SDN variant. Built on the day, the Earth's gravity and the density of water, not on
-  fixed constants, so like TGM it doesn't convert exactly to SI.
+  fixed constants, so like TGM it doesn't convert exactly to SI. Its time units already have names for the same
+  sizes as ours: **dwell** = 0;1 day (our chime), **breather** = 0;01 day (10 minutes), **trice** = 0;001 day
+  (our moment), **lull** = 0;0001 day (our breath) and **vibe** (0;001 trice).
+- **clocks.dozenal.ca** (Paul Rapoport, clocks by Rodrigo Flores and Thomas Cassidy): working dozenal
+  clocks (once- and twice-a-day dials), a dozenal wristwatch, a "signed" digit notation for times (counting
+  down to the next mark after half way), UTC-only clocks with no time zones, and the Dozenal Holocene
+  calendar (see Calendar).
 - **Twelve double-hours a day** (the chime) is the oldest clock division there is: the Babylonian *bēru*
   (Sumerian *danna*, from about 2400 BCE) and the Chinese *shíchen* (named after the twelve Earthly Branches)
   were both 2-hour units, twelve to a day. The DSA's dozenal clock uses the same split: the short hand turns
@@ -1681,12 +1699,13 @@ Where the ideas came from, and what's still to decide.
 
 ## Open items / next steps
 
+- Years: two dozenal "Holocene" counts now exist (see Years). Keep +10,000 (dec, Emiliani's Holocene Era,
+  6E62 for 2026 CE) or follow the Dozenal Holocene calendar (6859)? Ties in with recording why HE was chosen
 - Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)
 - Give short names to a few everyday multiples (food energy tqop, pressure tqpr) instead of changing the
   coherent derived units (proposed, not decided)
 - A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)
 - Standard sizes: food energy labels (opus), clothing sizes; shoe sizes in digs (proposed, see Shoe sizes)
-- Review existing dozenal clock designs (https://clocks.dozenal.ca)
 - Name for 0;1 dig (≈ 0.84 mm, the new millimetre): **lin**, from Latin linea (a linen thread, a line); the
   old line was 1/12 inch, and watch and button sizes still use the French ligne. Needs a symbol exception:
   "li" is the lib
@@ -1698,7 +1717,9 @@ Where the ideas came from, and what's still to decide.
 - Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;
   60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec),
   frequency units, and note lengths
-- Time zones: review the 24-zone decision (see Daylight saving and time zones)
+- Time zones: review the 24-zone decision (see Daylight saving and time zones). An alternative to weigh:
+  Rapoport's UTC-only clocks (clocks.dozenal.ca), with no zones at all - everyone uses one time, and each
+  place notes the time its local noon falls
 - Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a
   "paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?
 - Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is

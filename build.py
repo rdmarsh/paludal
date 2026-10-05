@@ -38,6 +38,7 @@ def expand(m):
 
 def inline(text):
     text = html.escape(text, quote=False)
+    text = text.replace("&lt;br&gt;", "<br>")  # line breaks inside table cells
     text = SYMBOL.sub(expand, text)
     text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
