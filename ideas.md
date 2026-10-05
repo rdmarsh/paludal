@@ -1354,6 +1354,7 @@ Times are moments since midnight (600 is noon). Values are rounded the way a lab
 | 890 | An after-work run: 2 iters in 30 moments | 2 ir, 30 mt | 5:30 pm, 5 km in 30 min |
 | 946 | Shopping: mince, milk and flour | 0;3 li, 1;2 cu, 0;7 li | 6:45 pm, 450 g, 2 L, 1 kg |
 | 946 | A roast goes in for 0;9 chime | 1X0 °t for 0;9 ch (90 mt) | 180 °C for 1½ hours |
+| X00 | Watch TV: three half-hour shows, 30 moments (a quarter chime) each, until X90 | 3 × 30 mt = 90 mt (0;9 ch) | 8:00-9:30 pm, three 30-min shows |
 | E30 | Bed, for 4 chimes of sleep | 4 ch | 10:30 pm, 8 hours |
 
 - Prices use the proposed dozenal dollar: $1 stays $1, split into 100; (144 dec) parts, so $3;56 is $3.46
@@ -2118,6 +2119,13 @@ Where the ideas came from, and what's still to decide.
   clocks (once- and twice-a-day dials), a dozenal wristwatch, a "signed" digit notation for times (counting
   down to the next mark after half way), UTC-only clocks with no time zones, and the Dozenal Holocene
   calendar (see Calendar).
+- **DSGB "Time Units" page** (Dozenal Society of Great Britain, http://www.dozenalsociety.org.uk/apps/timeunits.html):
+  sets out the two schemes - the hour in twelfths (TGM, which keeps today's 24-hour clock) and the day in
+  twelve double hours (Paludal's). Few names exist for either: TGM names only the Tim and the hour (with
+  "tekon" suggested for 10 Tim), and for the double-hour scheme only "duor" has been suggested for the double
+  hour. A reader's comment there (uaxtecum) makes Paludal's angle-time link: with *1,000 "dozenal degrees" to
+  the turn and the day in *10 double hours of *100 fifty-second "quasi-minutes", one quasi-minute is one
+  dozenal degree of the Earth's turn - our moment and our bearing in thousandths of a turn
 - **Dozenal Time Intuition** (Theo Beers, 2020-2025 CE, https://www.theobeers.com/dozenal-time/): the day
   shown as four progress bars instead of a clock face, each filling twelve times faster than the one above,
   with a readout like Rapoport's (E91.7X). Calls the 2-hour unit a "phase", 10 minutes a "spell" and 50 s a
