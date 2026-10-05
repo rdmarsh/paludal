@@ -1,0 +1,12 @@
+\usepackage{newunicodechar}
+\newfontfamily\dozsym{Noto Sans Symbols}
+\newunicodechar{↊}{{\dozsym ↊}}
+\newunicodechar{↋}{{\dozsym ↋}}
+% Tables: smaller type, tighter padding, ragged cells, so wide tables fit the page
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\small\setlength{\tabcolsep}{3pt}}
+\renewcommand{\arraystretch}{1.15}
+% Let long code lines (mermaid source, formulas) wrap rather than overflow
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+\emergencystretch=3em

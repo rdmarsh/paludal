@@ -531,7 +531,6 @@ flowchart LR
 
 - Blink is the base for physics; beat and breath are the everyday units (like the second and minute in SI).
 - Human scale: reaction time ≈ 3/4 blink, heartbeat 2-3 blinks, 100 m sprint ≈ 28 (dec) blinks
-
 - days divided into 10,000 breaths (twelve to the 4th power = 20,736 dec)
   - 0;1    day = 2 hours (1 chime)
   - 0;01   day = 10 minutes

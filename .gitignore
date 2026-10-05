@@ -1,3 +1,4 @@
 blinker/blinker
 .DS_Store
 tmp/
+out/
