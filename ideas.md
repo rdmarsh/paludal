@@ -1772,8 +1772,10 @@ Where the ideas came from, and what's still to decide.
   worked out with other members of the Dozensonline forum - the same author as Primel): the prefix system
   adopted above. Inspired by Pendlebury's TGM prefixes, which told
   multiply from divide by a vowel alone (-a / -i). In speech those vowels both fade to "uh", so SDN used
-  endings that differ in their consonants instead: **-qua** (hard "kw") and **-cia** ("shuh"). -cia echoes Latin
-  *uncia*, a twelfth, which is itself un + cia.
+  endings that differ in their consonants instead: **-qua** (hard "kw") and **-cia** ("shuh"), "novel endings
+  that will not be confused with any prior usage". uncia- (÷10) is also the Latin *uncia*, a twelfth (the
+  root of inch and ounce); the article calls this "a deliberate coincidence". The article also suggests saying
+  the dozenal point as **"dit"** (as the semicolon "Humphrey point" is said), against "dot" for decimal.
 - **Primel** metrology (John Volan, 2019 CE, revised since): base time 1/10^6 day (= 0;01 breath), length
   unit ≈ 8.2 mm, uses an SDN variant. A different aim from Paludal's: Primel builds on everyday life on Earth
   (its "mundane realities": the day, the Earth's gravity, water), with exact values in feet and inches and
@@ -1817,6 +1819,8 @@ Where the ideas came from, and what's still to decide.
 
 ## Open items / next steps
 
+- Spoken point: say the dozenal semicolon as **"dit"** (SDN, the Humphrey point) rather than "point"?
+  3;14 would be "three dit one four" (see Prior art: SDN)
 - Universal test: decide what to do about the parts that fail it - the tep's zero (273.15 K), the lam
   (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?
 - Primel notation: adopt its arrows (t↑, t↓) as the typeset form of prefix symbols, keeping q / c for plain
