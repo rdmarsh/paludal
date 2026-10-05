@@ -753,9 +753,27 @@ Other round values of c were checked. Fewer paces per blink means a longer pace,
 | **2 × 10^7**    | 1.45 m | 12.1 cm | 1.0 cm | 1.77 L               | 21.3 N      | 31.0 J        |
 | 4 × 10^7        | 73 cm  | 6.1 cm  | 5 mm   | 0.22 L               | 1.3 N       | 1.0 J         |
 
-Rejected: both alternatives - the values go too whacky. 1 × 10^7 makes everything bigger (a 2.9 m pace and a
-14 kg lib are too large for everyday use); 4 × 10^7 makes the unc (6 cm) and cub (0.22 L) small, though
-its opus is almost exactly a joule.
+Rejected: both alternatives. 1 × 10^7 makes everything bigger (a 2.9 m pace and a 14 kg lib are too large
+for everyday use).
+
+4 × 10^7, halving the pace so the base is a single step (72.6 cm), was looked at in detail (2026-10-05 CE)
+and rejected. With h re-rounded so a cub of water still weighs a lib, and e moved to 1 × 10^-15 so the riv
+is about an amp (1.02 A) and the imp 2.73 V, it has real attractions: the cub is about a cup (0.22 L), the
+lib about half a pound (0.22 kg), the opus about a joule, walking pace 8 steps per breath, and 1,000 base²
+(912 m²) about a quarter-acre block. But:
+
+- The dig stops being about a centimetre (it becomes 5 mm, and the next step down 0.42 mm), so rulers no
+  longer read like metric ones: today the dig ≈ 1 cm and the tricia-pace ≈ 0.84 mm
+- The unc (6 cm) is no body measure; today's 12 cm unc is about a hand
+- Mass becomes pound-sized: halving length makes volume, and so the water-based lib, an eighth. A 70 kg
+  person is 224 lib (316 dec) instead of 33;6
+- The vig drops to 2.8 W; today's 89 W vig is about a resting person's power
+- The gains are mostly available anyway as named sizes - the step is the gress (0;6 p), the cup is 0;2 cu -
+  but the losses can't be won back in the halved system (a centimetre would be 2 digs, a hand 2 uncs,
+  neither a prefix step)
+- Changing it would also mean recomputing almost every number in this spec
+
+So the pace stays the base, and the half pace is named instead (gress, below).
 
 Named sub-units (named because they're everyday sizes, like the inch and centimetre):
 
