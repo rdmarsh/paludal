@@ -251,28 +251,27 @@ can't be heard as 3.18.
 
 ## Hexadecimal
 
-The hexadecimal digits (base 16, used in computing) in dozenal, decimal and binary. In prose,
+The hexadecimal digits (base 16, used in computing) with their binary and dozenal values. In prose,
 hex values are marked 0x: hex E is fourteen, but dozenal E is el (eleven).
 
-| Hex | Dozenal | Decimal | Binary |
-|-----|---------|---------|--------|
-| 0   | 0       | 0       | 0000   |
-| 1   | 1       | 1       | 0001   |
-| 2   | 2       | 2       | 0010   |
-| 3   | 3       | 3       | 0011   |
-| 4   | 4       | 4       | 0100   |
-| 5   | 5       | 5       | 0101   |
-| 6   | 6       | 6       | 0110   |
-| 7   | 7       | 7       | 0111   |
-| 8   | 8       | 8       | 1000   |
-| 9   | 9       | 9       | 1001   |
-| A   | X       | 10      | 1010   |
-| B   | E       | 11      | 1011   |
-| C   | 10      | 12      | 1100   |
-| D   | 11      | 13      | 1101   |
-| E   | 12      | 14      | 1110   |
-| F   | 13      | 15      | 1111   |
-| 10  | 14      | 16      | 1 0000 |
+| Binary | Hex | Dozenal |
+|--------|-----|---------|
+| 0000   | 0   | 0       |
+| 0001   | 1   | 1       |
+| 0010   | 2   | 2       |
+| 0011   | 3   | 3       |
+| 0100   | 4   | 4       |
+| 0101   | 5   | 5       |
+| 0110   | 6   | 6       |
+| 0111   | 7   | 7       |
+| 1000   | 8   | 8       |
+| 1001   | 9   | 9       |
+| 1010   | A   | X       |
+| 1011   | B   | E       |
+| 1100   | C   | 10      |
+| 1101   | D   | 11      |
+| 1110   | E   | 12      |
+| 1111   | F   | 13      |
 
 - Every hex (and binary) fraction ends in dozenal: 100 (144 dec) is 0x90, a multiple of 0x10 (16 dec), so
   each hex place needs at most two dozenal places (0x0.1 = 0;09)
