@@ -314,7 +314,17 @@ stand, and the plain-text form still works on any keyboard.
 - 46 = "four do six", 2X3 = "two gro dek do three", 6,E62 = "six mo el gro six do two"
 - Never say "ten" for 10; - it gets heard as decimal
 - Codes, phone numbers etc. are read digit by digit; after the semicolon, always digit by digit
-  (3;14 = "three point one four")
+  (3;14 = "three dit one four")
+
+**Decided:** the dozenal point (the semicolon) is said **"dit"**: 3;14 = "three dit one four", 0;6 = "zero dit
+six". The decimal point stays "point" (or "dot"). Times of day are said without it, like clock times today
+(E;91 = "el, nine-one").
+
+**Why:** adopt prior art: "dit" is the established way to say the semicolon used as a dozenal point (the
+"Humphrey point"), and SDN uses it, in contrast to "dot" for a decimal point.
+
+**Advantage:** a spoken number carries its base, the way the written semicolon does, so "three dit one four"
+can't be heard as 3.14.
 
 ## Writing numbers
 
@@ -1819,8 +1829,6 @@ Where the ideas came from, and what's still to decide.
 
 ## Open items / next steps
 
-- Spoken point: say the dozenal semicolon as **"dit"** (SDN, the Humphrey point) rather than "point"?
-  3;14 would be "three dit one four" (see Prior art: SDN)
 - Universal test: decide what to do about the parts that fail it - the tep's zero (273.15 K), the lam
   (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?
 - Primel notation: adopt its arrows (t↑, t↓) as the typeset form of prefix symbols, keeping q / c for plain
