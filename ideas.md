@@ -726,7 +726,9 @@ the Milky Way about 2,000 - and the distance is simply 1 over the parallax in mi
 
 The parsec is the same idea in degrees: the distance at which 1 AU spans 1 arcsecond (1/3,600 of a degree),
 so a star's distance follows straight from its parallax, the yearly shift in its position seen from either
-side of the Earth's orbit. The parsec is exact in SI (648,000/π AU), and this would be too:
+side of the Earth's orbit. That, not its size, is why astronomers use it: research papers give distances in
+parsecs (kpc, Mpc), star brightness is compared at a standard 10 parsecs (absolute magnitude), and the
+light-year is mostly for the public. The parsec is exact in SI (648,000/π AU), and this would be too:
 
 - 1 parax = 1,000,000 / 2π AU = 1X,E02;14 AU (475,234 dec) = 3;2155 × 10^13 p
 - = 2.304 parsecs = 7.515 light-years (dec)
@@ -1766,9 +1768,15 @@ Where the ideas came from, and what's still to decide.
 - **TGM** (Tom Pendlebury): Tim = 1/10^4 hour ≈ 0.1736 s (= half a blink exactly), Grafut ≈ 29.6 cm (from gravity),
   Maz ≈ 25.8 kg (water cube). Earth-based (hour + gravity), so less rigorous than this system;
   length and mass have no clean relation to ours.
-- **SDN** (DSA): the prefix system adopted above. Inspired by Pendlebury's TGM prefixes.
+- **SDN** (DSA): the prefix system adopted above. Inspired by Pendlebury's TGM prefixes, which told
+  multiply from divide by a vowel alone (-a / -i). In speech those vowels both fade to "uh", so SDN used
+  endings that differ in their consonants instead: **-qua** (hard "kw") and **-cia** ("shuh"). -cia echoes Latin
+  *uncia*, a twelfth, which is itself un + cia.
 - **Primel** metrology (John Volan, 2019 CE, revised since): base time 1/10^6 day (= 0;01 breath), length
-  unit ≈ 8.2 mm, uses an SDN variant. Built on the day, the Earth's gravity and the density of water, not on
+  unit ≈ 8.2 mm, uses an SDN variant. A different aim from Paludal's: Primel builds on everyday life on Earth
+  (its "mundane realities": the day, the Earth's gravity, water), with exact values in feet and inches and
+  nicknames after customary units (hand, foot, ell); Paludal keeps only the day and year from the Earth. Built
+  on the day, the Earth's gravity and the density of water, not on
   fixed constants, so like TGM it doesn't convert exactly to SI. Its time units already have names for the same
   sizes as ours: **dwell** = 0;1 day (our chime), **breather** = 0;01 day (10 minutes), **trice** = 0;001 day
   (our moment), **lull** = 0;0001 day (our breath) and **vibe** (0;001 trice). Its beat (1/4 lull) is our beat,
