@@ -740,8 +740,7 @@ exactly, and gets every future improvement to the second for free.
 
 **Decided:** the **pace** ≈ 1.4525 m, defined by **c = 2 × 10^7 paces per blink** (exact).
 
-**Why:** the size is human: close to the Roman pace (Latin passus, ~1.48 m), and 1,000 paces ≈ a Roman
-mile. Fixing c makes the definition exact, as in SI; making it round was the tie-breaker, and cost nothing
+**Why:** the size is human: close to the Roman pace (Latin passus, ~1.48 m), a double step. Fixing c makes the definition exact, as in SI; making it round was the tie-breaker, and cost nothing
 human, since of the round values tried (table below) only this one gives a body-sized pace.
 
 **Advantage:** length is exact in SI terms and still a comfortable body size.
@@ -800,7 +799,9 @@ the 60-90 cm range gets a body measure.
 
 **Decided:** the **iter** (symbol **ir**) = 1,000 paces (1,728 dec) ≈ 2.51 km, the unit for distances.
 
-**Why:** a thousand paces is the Roman mile (mille passus), so it's the natural distance unit. Latin
+**Why:** the Romans counted distance in thousands of paces (mille passus, the Roman mile), and the iter does
+the same in dozenal. It isn't the Roman mile's length: that was a decimal thousand paces (≈ 1.48 km), and
+the iter is a dozenal thousand (1,728 dec, 2.51 km), about 1.7 Roman miles. Latin
 *iter* means a road or journey (as in itinerary), and Roman route lists counted in milia passuum.
 Rejected: mille / mil (mi is the mile, mil is the thou), via (vi is the vis). League and stade were also
 considered; their clashes hardly matter since almost no one uses them now, but iter was preferred.
@@ -818,7 +819,8 @@ and it's the sound people already know from itinerary.
   - = 2 × 10^8 paces per breath = 859,963,392 (dec) per breath
   - (equivalently 2 × 10^10 paces per day)
 - Light travels 2 × 10^8 paces in one breath ≈ 1,249,135 km (dec), about 3.25× the Earth-Moon distance
-- 1 iter = 1,000 paces = 2.51 km is literally a "thousand paces" (Latin mille passus = Roman mile)
+- 1 iter = 1,000 paces = 2.51 km is literally a "thousand paces", counted in dozenal (the Roman mille passus
+  was a decimal thousand, ≈ 1.48 km, a little longer than half an iter)
 - Half an iter, 0;6 ir (600 paces, 864 dec) ≈ 1.26 km, about a 15-minute walk, will be common. It needs no
   name of its own: halves are a single digit, and people already say "half a k" or "half a mile"
 - 15 iters ≈ 42.67 km ≈ a marathon (marathon = 14;99 iters)
@@ -1779,6 +1781,8 @@ UK and US units differ for volume and tons.
 | Power    | 1 horsepower      | 8;429 vg                 | 1 vg = 0.1197 hp               |
 | Pressure | 1 psi             | 0;4897 tqpr              | 1 tqpr = 2.535 psi             |
 
+- A mile ≈ 0;8 iter (two-thirds of an iter, 1.67 km; the mile is 4% shorter). Half an iter (1.25 km) sits
+  between a kilometre and a mile
 - Inch → dig and foot → unc give the same digits (2;627), because both systems step by twelve there
 - The name links too: Latin *uncia* (a twelfth) is the root of both inch (1/12 foot) and ounce (1/12 Roman pound)
 
