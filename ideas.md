@@ -314,17 +314,17 @@ stand, and the plain-text form still works on any keyboard.
 - 46 = "four do six", 2X3 = "two gro dek do three", 6,E62 = "six mo el gro six do two"
 - Never say "ten" for 10; - it gets heard as decimal
 - Codes, phone numbers etc. are read digit by digit; after the semicolon, always digit by digit
-  (3;14 = "three dit one four")
+  (3;18 = "three dit one eight")
 
-**Decided:** the dozenal point (the semicolon) is said **"dit"**: 3;14 = "three dit one four", 0;6 = "zero dit
+**Decided:** the dozenal point (the semicolon) is said **"dit"**: π ≈ 3;18 = "three dit one eight", 0;6 = "zero dit
 six". The decimal point stays "point" (or "dot"). Times of day are said without it, like clock times today
 (E;91 = "el, nine-one").
 
 **Why:** adopt prior art: "dit" is the established way to say the semicolon used as a dozenal point (the
 "Humphrey point"), and SDN uses it, in contrast to "dot" for a decimal point.
 
-**Advantage:** a spoken number carries its base, the way the written semicolon does, so "three dit one four"
-can't be heard as 3.14.
+**Advantage:** a spoken number carries its base, the way the written semicolon does, so "three dit one eight"
+can't be heard as 3.18.
 
 ## Writing numbers
 
@@ -1314,6 +1314,30 @@ into 100; (144 dec) parts instead of 100 (dec) cents. One part ≈ 0.69 c.
 - Fifths and tenths aren't (20 c = $0;2497...), so prices would be set to round dozenal values, as with any
   changeover (see Speed limits and changeover)
 - The cent is from Latin *centum* (100). Name for the 1/100; part: to be decided
+
+## Phone numbers and keypads
+
+**Proposed (not decided):** phone numbers stay as they are, and keypads get a dozenal layout.
+
+- Phone numbers are names, not amounts: nobody adds or divides them, so they gain nothing from dozenal, and
+  changing every number in the world would cost a great deal. They're read digit by digit as now (see Spoken
+  numbers), like postcodes, PINs and account numbers
+- Keypads still need X and E for typing dozenal amounts (prices, times, quantities). * and # can't stand in
+  for them: they're already used as menu and control keys by phone systems
+- The standard keypad already has twelve keys in a 4 × 3 grid, so a dozenal keypad puts exactly the twelve
+  digits there, and moves * and # to a row of their own:
+
+```
+ 1   2   3
+ 4   5   6
+ 7   8   9
+ X   0   E
+ *       #
+```
+
+- 0 stays in the middle of the bottom row, where it is on phones today; X and E take the corners * and # used
+  to have, in order (ten before eleven)
+- Calculators and number pads already use their own layouts and would just add two keys
 
 ## Paper sizes
 
