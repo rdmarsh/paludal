@@ -28,7 +28,9 @@ this), and Paludal doesn't claim to have invented it - only the units are new.
 **Advantage:** either half can be taught, adopted or argued about on its own - dozenal counting doesn't stand or fall with these units.
 
 Goals: as rigorous as SI (every unit defined by a fixed constant, exact conversion to SI),
-but human focused - everyday sizes and rules of thumb matter more than round constants.
+but human focused - everyday sizes and rules of thumb come first. A round constant is only a tie-breaker:
+any fixed value makes a definition exact (SI's c = 299,792,458 m/s isn't round), so where sizes are equally
+good for people, the one that makes a universal constant round is preferred.
 
 **Decided:** the **universal test**: if people and another species had to agree units without access to the
 Earth, they could both arrive at Paludal's from physics, chemistry and maths alone. The only Earth-based
@@ -738,8 +740,9 @@ exactly, and gets every future improvement to the second for free.
 
 **Decided:** the **pace** ≈ 1.4525 m, defined by **c = 2 × 10^7 paces per blink** (exact).
 
-**Why:** a round speed of light gives an exact, SI-quality definition. The size is human: close to the
-Roman pace (Latin passus, ~1.48 m), and 1,000 paces ≈ a Roman mile.
+**Why:** the size is human: close to the Roman pace (Latin passus, ~1.48 m), and 1,000 paces ≈ a Roman
+mile. Fixing c makes the definition exact, as in SI; making it round was the tie-breaker, and cost nothing
+human, since of the round values tried (table below) only this one gives a body-sized pace.
 
 **Advantage:** length is exact in SI terms and still a comfortable body size.
 
