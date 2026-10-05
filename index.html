@@ -1931,15 +1931,75 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <div class="block list">
 <ul>
-<li>Blink is the base for physics; beat and breath are the everyday units (like the second and minute in SI).</li>
+<li>Blink is the base for physics. In everyday use the chime is the hour, the moment the minute, and the beat the second; the breath is the clock's fastest digit.</li>
 <li>Human scale: reaction time ≈ 3/4 blink, heartbeat 2-3 blinks, 100 m sprint ≈ 28 (dec) blinks</li>
-<li>days divided into 10,000 breaths (twelve to the 4th power = 20,736 dec)
+</ul>
+</div>
+<div class="block para">
+<p>The day divides by twelve at every step, and each step is one digit of the time:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Part of a day</th>
+<th>Unit</th>
+<th>Size</th>
+<th>Digit of the time (E91;74)</th>
+<th>Hand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>day</td>
+<td>24 hours</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0;1</td>
+<td>chime</td>
+<td>2 hours</td>
+<td>E</td>
+<td>hand 1</td>
+</tr>
+<tr>
+<td>0;01</td>
+<td>(not yet named)</td>
+<td>10 minutes</td>
+<td>9</td>
+<td>hand 2</td>
+</tr>
+<tr>
+<td>0;001</td>
+<td>moment</td>
+<td>50 seconds</td>
+<td>1</td>
+<td>hand 3</td>
+</tr>
+<tr>
+<td>0;0001</td>
+<td>breath</td>
+<td>4.1667 seconds</td>
+<td>7</td>
+<td>hand 4</td>
+</tr>
+<tr>
+<td>0;00001</td>
+<td>blink</td>
+<td>0.3472 seconds</td>
+<td>4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
 <ul>
-<li>0;1 day = 2 hours (1 chime)</li>
-<li>0;01 day = 10 minutes</li>
-<li>0;001 day = 50 seconds (1 moment)</li>
-<li>0;0001 day = 1 breath ≈ 4.1667 seconds</li>
-</ul></li>
+<li>The beat (0;3 breath, 1.0417 s) sits between the breath and the blink: 4 beats to a breath, 3 blinks to a beat</li>
 </ul>
 </div>
 <div class="block decided">
@@ -3220,6 +3280,73 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 twelve marks is 0;1 turn (100).</figcaption>
 </figure>
 </div>
+<div class="block para">
+<p><strong>Rule of thumb: a hand held at arm's length.</strong> Hands and arms grow together, so this works for most people, adults or children. Turns are given in thousandths, the bearing digits.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>At arm's length</th>
+<th>Degrees (dec)</th>
+<th>Turns</th>
+<th>Sky turns in about</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sun or Moon</td>
+<td>0.5</td>
+<td>0;0025 (2;5)</td>
+<td>2;5 moments</td>
+</tr>
+<tr>
+<td>Little finger, width</td>
+<td>1</td>
+<td>0;005 (5)</td>
+<td>5 moments</td>
+</tr>
+<tr>
+<td>Thumb, width</td>
+<td>2</td>
+<td>0;00X (X)</td>
+<td>X moments</td>
+</tr>
+<tr>
+<td>Three middle fingers</td>
+<td>5</td>
+<td>0;02 (20)</td>
+<td>20 moments</td>
+</tr>
+<tr>
+<td>Fist, across the knuckles</td>
+<td>10</td>
+<td>0;04 (40)</td>
+<td>40 moments</td>
+</tr>
+<tr>
+<td>Index to little finger, spread</td>
+<td>15</td>
+<td>0;06 (60)</td>
+<td>60 moments (an hour)</td>
+</tr>
+<tr>
+<td>Thumb to little finger, spread</td>
+<td>20-25</td>
+<td>0;08-0;0X (80-X0)</td>
+<td>80-X0 moments</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>Fist and spread hand are round numbers of turns: 0;04 and 0;06 are exactly 10° and 15°</li>
+<li>The sky turns once a day, so it turns 0;001 turn (one bearing step) per moment: the sun and stars move about one fist every 40 moments (40 minutes). Exact on the celestial equator, slower near the poles</li>
+</ul>
+</div>
 </section>
 <section id="constants" class="has-table">
 <h3>Constants</h3>
@@ -3612,7 +3739,7 @@ twelve marks is 0;1 turn (100).</figcaption>
 </tr>
 <tr>
 <td>X00</td>
-<td>Watch TV: three half-hour shows, 30 moments (a quarter chime) each, until X90</td>
+<td>Watch TV: three half-hour shows, 30 moments (36 dec, a quarter chime) each, until X90</td>
 <td>3 × 30 <abbr title="moment">mt</abbr> = 90 <abbr title="moment">mt</abbr> (0;9 <abbr title="chime">ch</abbr>)</td>
 <td>8:00-9:30 pm, three 30-min shows</td>
 </tr>

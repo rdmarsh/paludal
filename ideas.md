@@ -665,13 +665,22 @@ flowchart LR
   ch -->|"× 10"| day["day<br>24 h"]
 ```
 
-- Blink is the base for physics; beat and breath are the everyday units (like the second and minute in SI).
+- Blink is the base for physics. In everyday use the chime is the hour, the moment the minute, and the
+  beat the second; the breath is the clock's fastest digit.
 - Human scale: reaction time ≈ 3/4 blink, heartbeat 2-3 blinks, 100 m sprint ≈ 28 (dec) blinks
-- days divided into 10,000 breaths (twelve to the 4th power = 20,736 dec)
-  - 0;1    day = 2 hours (1 chime)
-  - 0;01   day = 10 minutes
-  - 0;001  day = 50 seconds (1 moment)
-  - 0;0001 day = 1 breath ≈ 4.1667 seconds
+
+The day divides by twelve at every step, and each step is one digit of the time:
+
+| Part of a day | Unit           | Size              | Digit of the time (E91;74) | Hand   |
+|---------------|----------------|-------------------|----------------------------|--------|
+| 1             | day            | 24 hours          |                            |        |
+| 0;1           | chime          | 2 hours           | E                          | hand 1 |
+| 0;01          | (not yet named) | 10 minutes       | 9                          | hand 2 |
+| 0;001         | moment         | 50 seconds        | 1                          | hand 3 |
+| 0;0001        | breath         | 4.1667 seconds    | 7                          | hand 4 |
+| 0;00001       | blink          | 0.3472 seconds    | 4                          |        |
+
+- The beat (0;3 breath, 1.0417 s) sits between the breath and the blink: 4 beats to a breath, 3 blinks to a beat
 
 **Decided:** the **chime** = 0;1 day = 1,000 breaths = 2 hours exactly, the dozenal hour (clocks chime on the
 hour). Rejected: bell (sounds like the bel, B; ship's bells are half-hours), hora, mark.
@@ -1252,6 +1261,23 @@ symbol may clash with an SI one.
 
 ![Compass points as bearings in turns: the cardinal points are 000, 300, 600, 900 and the points between them 160, 460, 760, X60. Each of the twelve marks is 0;1 turn (100).](figures/compass.svg)
 
+**Rule of thumb: a hand held at arm's length.** Hands and arms grow together, so this works for most
+people, adults or children. Turns are given in thousandths, the bearing digits.
+
+| At arm's length                      | Degrees (dec) | Turns            | Sky turns in about |
+|--------------------------------------|---------------|------------------|--------------------|
+| Sun or Moon                          | 0.5           | 0;0025 (2;5)     | 2;5 moments        |
+| Little finger, width                 | 1             | 0;005 (5)        | 5 moments          |
+| Thumb, width                         | 2             | 0;00X (X)        | X moments          |
+| Three middle fingers                 | 5             | 0;02 (20)        | 20 moments         |
+| Fist, across the knuckles            | 10            | 0;04 (40)        | 40 moments         |
+| Index to little finger, spread       | 15            | 0;06 (60)        | 60 moments (an hour) |
+| Thumb to little finger, spread       | 20-25         | 0;08-0;0X (80-X0) | 80-X0 moments     |
+
+- Fist and spread hand are round numbers of turns: 0;04 and 0;06 are exactly 10° and 15°
+- The sky turns once a day, so it turns 0;001 turn (one bearing step) per moment: the sun and stars move
+  about one fist every 40 moments (40 minutes). Exact on the celestial equator, slower near the poles
+
 ## Constants
 
 Physical constants in Paludal units (3-4 significant dozenal digits unless exact). "Exact" means fixed by
@@ -1354,7 +1380,7 @@ Times are moments since midnight (600 is noon). Values are rounded the way a lab
 | 890 | An after-work run: 2 iters in 30 moments | 2 ir, 30 mt | 5:30 pm, 5 km in 30 min |
 | 946 | Shopping: mince, milk and flour | 0;3 li, 1;2 cu, 0;7 li | 6:45 pm, 450 g, 2 L, 1 kg |
 | 946 | A roast goes in for 0;9 chime | 1X0 °t for 0;9 ch (90 mt) | 180 °C for 1½ hours |
-| X00 | Watch TV: three half-hour shows, 30 moments (a quarter chime) each, until X90 | 3 × 30 mt = 90 mt (0;9 ch) | 8:00-9:30 pm, three 30-min shows |
+| X00 | Watch TV: three half-hour shows, 30 moments (36 dec, a quarter chime) each, until X90 | 3 × 30 mt = 90 mt (0;9 ch) | 8:00-9:30 pm, three 30-min shows |
 | E30 | Bed, for 4 chimes of sleep | 4 ch | 10:30 pm, 8 hours |
 
 - Prices use the proposed dozenal dollar: $1 stays $1, split into 100; (144 dec) parts, so $3;56 is $3.46
