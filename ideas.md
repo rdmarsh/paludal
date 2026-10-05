@@ -1345,8 +1345,14 @@ where 1-9 and 0 are.
 - 0 stays in the middle of the bottom row, where it is on phones today; X and E take the corners * and # used
   to have, in order (ten before eleven)
 
-**Proposed (not decided):** the number pad on keyboards and calculators keeps its shape and its 7-8-9-on-top
-order, and makes room for X, E and the dozenal point:
+**Decided:** the number pad on keyboards and calculators keeps its shape and its 7-8-9-on-top order, and makes
+room for X, E and the dozenal point (layout below).
+
+**Why:** the bottom row matches the phone keypad (X 0 E), the footprint stays the same so existing keyboards
+and cases still fit, and 7-8-9 stays on top so people keep the muscle memory they have.
+
+**Advantage:** every digit and the point get a key of their own without a bigger pad, and the same X 0 E row
+appears on phones, calculators and keyboards.
 
 ```
  Num   /    *    -
@@ -1363,7 +1369,12 @@ order, and makes room for X, E and the dozenal point:
 - 7-8-9 stays on top, as on every calculator: changing it would break the muscle memory people already have,
   even though phones count the other way
 
-**Proposed (not decided):** main keyboards need no new keys.
+**Decided:** main keyboards need no new keys.
+
+**Why:** X and E are typed as capital letters (the reason they were chosen; see Symbols), and the semicolon is
+already on the home row, unshifted on most layouts. ↊ ↋ only need an input method, not new keys.
+
+**Advantage:** dozenal can be typed on every keyboard in use today.
 
 - X and E are typed as capital letters (see Symbols), and ; is already on the home row, unshifted on most
   layouts - one reason the semicolon makes a good dozenal point
