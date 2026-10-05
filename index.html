@@ -740,8 +740,14 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </section>
 <section id="hexadecimal" class="has-table">
 <h3>Hexadecimal</h3>
+<div class="block decided">
+<p>Proposed (not decided): when written alongside dozenal, hexadecimal (base 16, used in computing) keeps X and E for ten and eleven, and the four digits after them take the next letters, A B C D. Hex then counts 0-9 X E A B C D.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> X and E then mean the same thing in both bases, so nobody has to remember that hex E is fourteen while dozenal E is eleven. A B C D are free, because dozenal uses no other letters.</p>
+</div>
 <div class="block para">
-<p>The hexadecimal digits (base 16, used in computing) with their binary and dozenal values. In prose, hex values are marked 0x: hex E is fourteen, but dozenal E is el (eleven).</p>
+<p><strong>Advantage:</strong> one set of digits covers both bases: dozenal is 0-E, and hex is the same digits plus four.</p>
 </div>
 <div class="block table">
 <div class="table-wrap">
@@ -749,7 +755,8 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <thead>
 <tr>
 <th>Binary</th>
-<th>Hex</th>
+<th>Hex (standard)</th>
+<th>Hex (dozenal style)</th>
 <th>Dozenal</th>
 </tr>
 </thead>
@@ -758,9 +765,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>0000</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
 <tr>
 <td>0001</td>
+<td>1</td>
 <td>1</td>
 <td>1</td>
 </tr>
@@ -768,9 +777,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>0010</td>
 <td>2</td>
 <td>2</td>
+<td>2</td>
 </tr>
 <tr>
 <td>0011</td>
+<td>3</td>
 <td>3</td>
 <td>3</td>
 </tr>
@@ -778,9 +789,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>0100</td>
 <td>4</td>
 <td>4</td>
+<td>4</td>
 </tr>
 <tr>
 <td>0101</td>
+<td>5</td>
 <td>5</td>
 <td>5</td>
 </tr>
@@ -788,9 +801,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>0110</td>
 <td>6</td>
 <td>6</td>
+<td>6</td>
 </tr>
 <tr>
 <td>0111</td>
+<td>7</td>
 <td>7</td>
 <td>7</td>
 </tr>
@@ -798,9 +813,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>1000</td>
 <td>8</td>
 <td>8</td>
+<td>8</td>
 </tr>
 <tr>
 <td>1001</td>
+<td>9</td>
 <td>9</td>
 <td>9</td>
 </tr>
@@ -808,30 +825,36 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>1010</td>
 <td>A</td>
 <td>X</td>
+<td>X</td>
 </tr>
 <tr>
 <td>1011</td>
 <td>B</td>
 <td>E</td>
+<td>E</td>
 </tr>
 <tr>
 <td>1100</td>
 <td>C</td>
+<td>A</td>
 <td>10</td>
 </tr>
 <tr>
 <td>1101</td>
 <td>D</td>
+<td>B</td>
 <td>11</td>
 </tr>
 <tr>
 <td>1110</td>
 <td>E</td>
+<td>C</td>
 <td>12</td>
 </tr>
 <tr>
 <td>1111</td>
 <td>F</td>
+<td>D</td>
 <td>13</td>
 </tr>
 </tbody>
@@ -840,6 +863,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <div class="block list">
 <ul>
+<li>Watch: in standard hex A-D mean ten to thirteen, but here they mean twelve to fifteen. Mark which is meant (standard hex keeps its 0x prefix) wherever both could appear</li>
 <li>Every hex (and binary) fraction ends in dozenal: 100 (144 dec) is 0x90, a multiple of 0x10 (16 dec), so each hex place needs at most two dozenal places (0x0.1 = 0;09)</li>
 <li>Not the other way: thirds repeat in hex, as they do in binary and decimal. Quarters are the common ground: 0x0.4 = 0;3 = 0.25 (dec)</li>
 </ul>
