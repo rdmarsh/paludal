@@ -5,7 +5,8 @@
 --    from notes. Sections holding any of those are marked has-table, the rest no-table.
 -- 2. Every format: unit symbols. HTML gets <abbr> tooltips naming the unit; every format shows a
 --    prefix with Primel's arrows (tqop -> t↑op). LaTeX gets table column widths sized from content.
---    Mermaid diagrams are drawn in HTML, kept as [mermaid] blocks in AsciiDoc, noted in LaTeX.
+--    Mermaid diagrams are drawn in HTML, kept as [mermaid] blocks in AsciiDoc, and included in
+--    LaTeX as the PDFs mermaid-cli drew for the Makefile.
 -- 3. HTML only: build the nav from the sections into the `nav` variable for the template.
 
 local stringify = pandoc.utils.stringify
@@ -244,9 +245,27 @@ local function CodeBlock(cb)
   if FORMAT:match("asciidoc") then
     -- asciidoctor-diagram renders [mermaid] blocks directly
     return pandoc.RawBlock("asciidoc", "[mermaid]\n....\n" .. cb.text .. "\n....\n")
-  elseif FORMAT:match("latex") then
-    return pandoc.Para({ pandoc.Emph({ pandoc.Str("(Diagram - see index.html for the drawn version.)") }) })
   end
+end
+
+-- LaTeX: the Makefile has mermaid-cli draw every diagram in the source, in order, as
+-- <diagrams>N.pdf (-M diagrams=out/diagrams/ideas-). Without one, say where to see it.
+local function latex_diagrams(doc)
+  local prefix = doc.meta.diagrams and stringify(doc.meta.diagrams)
+  local n = 0
+  return doc:walk({
+    CodeBlock = function(cb)
+      if not cb.classes:includes("mermaid") then return nil end
+      n = n + 1
+      local path = prefix and ("%s%d.pdf"):format(prefix, n)
+      local f = path and io.open(path)
+      if f then
+        f:close()
+        return pandoc.Para({ pandoc.Image({}, path) })
+      end
+      return pandoc.Para({ pandoc.Emph({ pandoc.Str("(Diagram - see index.html for the drawn version.)") }) })
+    end,
+  })
 end
 
 -- <br> inside a table cell (the prefix matrix) is a line break in every output format
@@ -291,4 +310,5 @@ if is_html then
 end
 return {
   { Inlines = Inlines, Table = Table, CodeBlock = CodeBlock, RawInline = RawInline },
+  FORMAT:match("latex") and { Pandoc = latex_diagrams } or {},
 }

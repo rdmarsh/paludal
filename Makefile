@@ -8,7 +8,9 @@
 #
 # Needs pandoc 3.8+ (brew install pandoc, or make PANDOC=/path/to/pandoc). The PDF also needs
 # XeLaTeX (brew install --cask basictex; sudo tlmgr install newunicodechar etoolbox fvextra)
-# and the fonts DejaVu Sans and Noto Sans Symbols (for ↊ ↋).
+# and the fonts DejaVu Sans and Noto Sans Symbols (for ↊ ↋). Diagrams in the PDF need
+# mermaid-cli (npm install -g @mermaid-js/mermaid-cli, or make MMDC=/path/to/mmdc); without it
+# the PDF says to see index.html instead.
 
 ifeq ($(filter-out 3.% 4.0% 4.1% 4.2% 4.3%,$(MAKE_VERSION)),)
 $(error GNU make 4.4 or later is needed, this is $(MAKE_VERSION))
@@ -20,6 +22,7 @@ MAKEFLAGS += --no-builtin-rules --warn-undefined-variables
 
 PANDOC  ?= pandoc
 XELATEX ?= xelatex
+MMDC    ?= mmdc
 
 SRC    := ideas.md
 FILTER := pandoc/paludal.lua
@@ -29,6 +32,9 @@ OUT    := out
 # Every format reads the same source through the same filter
 pandoc = $(PANDOC) -f gfm -s --lua-filter $(FILTER) $(SRC)
 titled = -M title=Paludal -M subtitle="A dozenal system of units"
+
+# mermaid-cli draws each diagram in the source as out/diagrams/ideas-N.pdf, numbered in order
+diagrams := $(if $(shell command -v $(MMDC)),$(OUT)/diagrams/ideas.md)
 
 .DEFAULT_GOAL := html
 .PHONY: html all docbook latex pdf asciidoc clean
@@ -49,8 +55,8 @@ $(OUT)/paludal.xml: $(DEPS) | $(OUT)
 $(OUT)/paludal.adoc: $(DEPS) | $(OUT)
 	$(pandoc) $(titled) -t asciidoc -o $@
 
-$(OUT)/paludal.tex: $(DEPS) pandoc/header.tex | $(OUT)
-	$(pandoc) $(titled) -t latex -o $@ \
+$(OUT)/paludal.tex: $(DEPS) pandoc/header.tex $(diagrams) | $(OUT)
+	$(pandoc) $(titled) -t latex -o $@ -M diagrams=$(OUT)/diagrams/ideas- \
 	  -V documentclass=article -V papersize=a4 -V geometry:margin=2cm -V fontsize=10pt \
 	  -V mainfont="DejaVu Sans" -V monofont="DejaVu Sans Mono" -V colorlinks=true \
 	  --toc --toc-depth=2 -H pandoc/header.tex
@@ -63,7 +69,10 @@ $(OUT)/paludal.pdf: $(OUT)/paludal.tex
 	test -s $@
 	@echo "overfull boxes: $$(grep -c Overfull $(OUT)/paludal.log || true)"
 
-$(OUT):
+$(OUT)/diagrams/ideas.md: $(SRC) pandoc/mermaid.json | $(OUT)/diagrams
+	$(MMDC) -q -i $< -o $@ -e pdf -c pandoc/mermaid.json
+
+$(OUT) $(OUT)/diagrams:
 	mkdir -p $@
 
 clean:

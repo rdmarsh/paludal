@@ -1,0 +1,10 @@
+{
+  "theme": "base",
+  "themeVariables": {
+    "background": "#ffffff", "primaryColor": "#f3f0ea", "primaryTextColor": "#1f1d1a",
+    "primaryBorderColor": "#9a4d1f", "lineColor": "#6b665e", "textColor": "#1f1d1a",
+    "secondaryColor": "#f7f5f0", "tertiaryColor": "#ffffff", "clusterBkg": "#f7f5f0",
+    "clusterBorder": "#e4e0d8", "edgeLabelBackground": "#ffffff",
+    "fontFamily": "DejaVu Sans, sans-serif", "fontSize": "14px"
+  }
+}
