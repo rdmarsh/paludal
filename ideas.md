@@ -1317,7 +1317,14 @@ into 100; (144 dec) parts instead of 100 (dec) cents. One part ≈ 0.69 c.
 
 ## Phone numbers and keypads
 
-**Proposed (not decided):** phone numbers stay as they are, and keypads get a dozenal layout.
+**Decided:** phone numbers stay as they are, and phone keypads get a dozenal layout (below).
+
+**Why:** phone numbers are names, not amounts, so dozenal gains them nothing; keypads still need X and E for
+amounts, and the 4 × 3 keypad has exactly twelve keys for the twelve digits. * and # can't be reused as
+digits because phone systems use them as menu keys.
+
+**Advantage:** no number changes, and the keypad gains the two digits without losing * and # or changing
+where 1-9 and 0 are.
 
 - Phone numbers are names, not amounts: nobody adds or divides them, so they gain nothing from dozenal, and
   changing every number in the world would cost a great deal. They're read digit by digit as now (see Spoken
@@ -1337,7 +1344,31 @@ into 100; (144 dec) parts instead of 100 (dec) cents. One part ≈ 0.69 c.
 
 - 0 stays in the middle of the bottom row, where it is on phones today; X and E take the corners * and # used
   to have, in order (ten before eleven)
-- Calculators and number pads already use their own layouts and would just add two keys
+
+**Proposed (not decided):** the number pad on keyboards and calculators keeps its shape and its 7-8-9-on-top
+order, and makes room for X, E and the dozenal point:
+
+```
+ Num   /    *    -
+  7    8    9    +
+  4    5    6    ;
+  1    2    3   Ent
+  X    0    E   Ent
+```
+
+- Today's wide 0 is split into X and 0, and the decimal point's key becomes E, so the bottom row reads X 0 E as
+  on the phone keypad
+- The tall + is split in two, + above and ; (the dozenal point) below; Enter stays tall
+- Same footprint and key spacing as today (19 keys instead of 17), so existing cases and keyboards fit
+- 7-8-9 stays on top, as on every calculator: changing it would break the muscle memory people already have,
+  even though phones count the other way
+
+**Proposed (not decided):** main keyboards need no new keys.
+
+- X and E are typed as capital letters (see Symbols), and ; is already on the home row, unshifted on most
+  layouts - one reason the semicolon makes a good dozenal point
+- For typeset ↊ ↋, a keyboard layout option types them with AltGr / Option + X and E; until then, text
+  replacement (eg "dek" → ↊) or the Unicode codes (U+218A, U+218B)
 
 ## Paper sizes
 
