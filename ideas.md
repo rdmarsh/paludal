@@ -540,7 +540,7 @@ time. Sizes that have their own name are in bold; use the name rather than the p
   100,000 bl (pqbl); **span** = 0;2 p; **ulna** = 0;4 p; **gress** = 0;6 p; **navis** = 930 p; **parax** (star distances);
   **ager** = 1,000 p² (tqp² would be read as (tqp)², so it gets a name)
 - Prefixed temperatures use the plain-text symbol te (tcte), as °C is rarely prefixed; they're for science only
-- tqbl is 0;1 chime (10 minutes), which needs no name, as "ten minutes" doesn't
+- tqbl is 0;1 chime (10 minutes), which has no name yet (see Open items)
 
 ## Unit symbols
 
@@ -665,8 +665,8 @@ flowchart LR
   ch -->|"× 10"| day["day<br>24 h"]
 ```
 
-- Blink is the base for physics. In everyday use the chime is the hour, the moment the minute, and the
-  beat the second; the breath is the clock's fastest digit.
+- Blink is the base for physics. On the clock the chime, moment and breath read like hours, minutes and
+  seconds; the beat is the second-sized unit for counting and timing.
 - Human scale: reaction time ≈ 3/4 blink, heartbeat 2-3 blinks, 100 m sprint ≈ 28 (dec) blinks
 
 The day divides by twelve at every step, and each step is one digit of the time:
@@ -693,7 +693,7 @@ hour). Rejected: bell (sounds like the bel, B; ship's bells are half-hours), hor
 
 **Why:** time of day works like hours, minutes and seconds: three named parts. The chime is the hour, the
 moment the minute (two digits, read from hands 2 and 3), the breath the second. The
-10-minute digit (0;1 chime) needs no name, just as "ten minutes" doesn't. "Wait a moment" already means about
+10-minute digit (0;1 chime) has no name yet (see Open items). "Wait a moment" already means about
 a minute, and the medieval moment was a unit of time (90 s).
 
 **Advantage:** the clock reads like hours, minutes and seconds, with a word people already use for about a minute.
@@ -722,7 +722,7 @@ existing dozenal clocks.
 - 000 = midnight, 600 = noon
 - the number is in moments: the time 93X is the fraction 0;93X day, and the same three digits are the angle
   of hand 1 and the compass bearing in thousandths of a turn (see Angle)
-- durations are in moments too: 130 mt is an hour and a half (or 1;3 ch)
+- durations are in moments too: 90 mt is an hour and a half (0;9 ch), and 130 mt is two and a half hours (1;3 ch)
 
 **Decided:** times more precise than a breath just add digits after it: EX0;53 (3 blinks past EX0;5). On
 screens, the extra digits are shown smaller or dimmer, like the hundredths on a stopwatch.
@@ -2106,8 +2106,8 @@ Where the ideas came from, and what's still to decide.
 - **TGM** (Tom Pendlebury): Tim = 1/10^4 hour ≈ 0.1736 s (= half a blink exactly), Grafut ≈ 29.6 cm (from gravity),
   Maz ≈ 25.8 kg (water cube). Earth-based (hour + gravity), so less rigorous than this system;
   length and mass have no clean relation to ours.
-  - Its time units are powers of twelve of the **hour**, not the day: Tim or tick (0;21 s), unctic (2;1 s),
-    bictic (21 s), block (5 minutes), hour - so today's 12-hour clock carries over unchanged. Paludal divides
+  - Its time units are powers of twelve of the **hour**, not the day: Tim or tick (0;21 s, 0.174 dec), unctic
+    (2;1 s, 2.08 dec), bictic (21 s, 25 dec), block (5 minutes), hour - so today's 12-hour clock carries over unchanged. Paludal divides
     the day instead (a diurnal clock), so the two line up only at the Tim (half a blink); the hour is 0;6 chime
 - **SDN** (John Volan, forum name Kodegadulo; published by the DSA in the Duodecimal Bulletin, 2014 CE, and
   worked out with other members of the Dozensonline forum - the same author as Primel): the prefix system
