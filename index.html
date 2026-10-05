@@ -56,6 +56,12 @@ abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2p
 .table-wrap { overflow-x: auto; margin: 10px 0 16px; }
 pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
 pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
 table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
 th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
 th { background: var(--panel); font-weight: 600; }
@@ -89,7 +95,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <li class="has-table"><a href="#part-1-dozenal-numbers">Part 1: Dozenal numbers</a><ul><li><a href="#digits">Digits</a></li><li><a href="#writing-numbers">Writing numbers</a></li><li><a href="#spoken-numbers">Spoken numbers</a></li><li><a href="#hexadecimal">Hexadecimal</a></li><li><a href="#phone-numbers-and-keypads">Phone numbers and keypads</a></li></ul></li>
 <li class="has-table"><a href="#part-2-paludal-units">Part 2: Paludal units</a><ul><li><a href="#summary">Summary</a></li><li><a href="#prefixes">Prefixes</a></li><li><a href="#unit-symbols">Unit symbols</a></li><li><a href="#time">Time</a></li><li><a href="#length">Length</a></li><li><a href="#mass">Mass</a></li><li><a href="#electricity">Electricity</a></li><li><a href="#temperature">Temperature</a></li><li><a href="#amount-of-substance">Amount of substance</a></li><li><a href="#light">Light</a></li><li><a href="#area">Area</a></li><li><a href="#volume">Volume</a></li><li><a href="#angle">Angle</a></li><li><a href="#constants">Constants</a></li></ul></li>
 <li class="has-table"><a href="#part-3-everyday-use">Part 3: Everyday use</a><ul><li><a href="#a-day-in-paludal">A day in Paludal</a></li><li><a href="#clocks-time-zones-and-calendar">Clocks, time zones and calendar</a></li><li><a href="#money">Money</a></li><li><a href="#speed-limits-and-changeover">Speed limits and changeover</a></li><li><a href="#paper-sizes">Paper sizes</a></li><li><a href="#shoe-sizes">Shoe sizes</a></li><li><a href="#everyday-reference">Everyday reference</a></li><li><a href="#imperial-conversions">Imperial conversions</a></li><li><a href="#log-scales">Log scales</a></li></ul></li>
-<li class="no-table"><a href="#part-4-background">Part 4: Background</a><ul><li><a href="#prior-art">Prior art</a></li><li><a href="#open-items-next-steps">Open items / next steps</a></li></ul></li>
+<li class="has-table"><a href="#part-4-background">Part 4: Background</a><ul><li><a href="#prior-art">Prior art</a></li><li><a href="#versions">Versions</a></li><li><a href="#open-items-next-steps">Open items / next steps</a></li></ul></li>
 </ul>
 </nav>
 <main>
@@ -100,6 +106,9 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <h2>The Paludal system</h2>
 <div class="block para">
 <p>Numbers are dozenal unless marked "(dec)".</p>
+</div>
+<div class="block para">
+<p><strong>Version 0.1</strong>, 5 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.</p>
 </div>
 <div class="block para">
 <p>Paludal is a dozenal (base-12) system of units, built the way SI is built but counted in twelves. Time comes from a 24-hour day of 86,400 s (dec): the blink is 1/100,000 of a day (twelve to the fifth power, 25/72 s exactly), and every time unit up to the day is a power of twelve of it. Length comes from the speed of light, fixed at 2 × 10^7 (20,000,000, or 71,663,616 in decimal) paces per blink, which makes the pace about 1.45 m - close to the Roman pace. Mass comes from the Planck constant, chosen so that a cub of water (a cube 0;1 pace on each side) weighs a lib. Temperature, charge, amount and light are each fixed by a constant, as in SI, so every unit converts exactly to SI. Multiples and fractions step by twelve, which divides evenly by 2, 3, 4 and 6.</p>
@@ -530,7 +539,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Advantage:</strong> the base of any number can be seen at a glance, even with no unit or marker.</p>
 </div>
 <div class="block decided">
-<p><strong>Decided:</strong> long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec). Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6859 DH), dates, times of day (E;X053), and digits after the point.</p>
+<p><strong>Decided:</strong> long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec). Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6859 DH), dates, times of day (EX0;53), and digits after the point.</p>
 </div>
 <div class="block why">
 <p><strong>Why:</strong> groups of three are the easiest for people to read, and they match how numbers are spoken (thousand / million, mo / bimo). The comma is free in both bases, since decimal uses a dot as the point and dozenal a semicolon. It replaces SI's thin space (86 400), which is easy to miss, gets lost when text is copied, and can split a number across two lines. Where the comma is the decimal point (much of Europe), 86,400 could be misread; the dot-and-semicolon rule above already settles which mark is the point.</p>
@@ -729,7 +738,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </ul>
 </div>
 <div class="block decided">
-<p><strong>Decided:</strong> the dozenal point (the semicolon) is said <strong>"dit"</strong>: π ≈ 3;18 = "three dit one eight", 0;6 = "zero dit six". The decimal point stays "point" (or "dot"). Times of day are said without it, like clock times today (E;91 = "el, nine-one").</p>
+<p><strong>Decided:</strong> the dozenal point (the semicolon) is said <strong>"dit"</strong>: π ≈ 3;18 = "three dit one eight", 0;6 = "zero dit six". The decimal point stays "point" (or "dot"). Times of day are said without it, like clock times today (E91 = "el, nine-one").</p>
 </div>
 <div class="block why">
 <p><strong>Why:</strong> adopt prior art: "dit" is the established way to say the semicolon used as a dozenal point (the "Humphrey point"), and SDN uses it, in contrast to "dot" for a decimal point.</p>
@@ -1276,7 +1285,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <div class="block list">
 <ul>
 <li>A cub of water weighs a lib (0.9994 at 20 °C). A dig-cube of water ≈ 1/1,000 lib ≈ 1 g.</li>
-<li>Time of day = chime;moments (d;dd), like hours:minutes: 0;00 midnight, 3;00 dawn, 6;00 noon, 9;00 dusk.</li>
+<li>Time of day = three digits of moments since midnight, like 24-hour time: 000 midnight, 300 dawn, 600 noon, 900 dusk.</li>
 <li>A moment (50 s) is about a minute; a beat (1.04 s) is about a second.</li>
 <li>100 km/h ≈ 68 paces/breath; motorway limit 70 (105 km/h).</li>
 <li>Water freezes at 0 tep, boils at ≈ 100 tep. Body ≈ 45;3 tep.</li>
@@ -1933,19 +1942,19 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Decided:</strong> the <strong>moment</strong> (symbol <strong>mt</strong>) = 0;01 chime = 10 breaths = 50 s exactly - the dozenal minute.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> time of day works like hours, minutes and seconds: three named parts. The chime is the hour, the moment the minute (two digits, read by the long hand against fine marks), the breath the second. The 10-minute digit (0;1 chime) needs no name, just as "ten minutes" doesn't. "Wait a moment" already means about a minute, and the medieval moment was a unit of time (90 s).</p>
+<p><strong>Why:</strong> time of day works like hours, minutes and seconds: three named parts. The chime is the hour, the moment the minute (two digits, read from hands 2 and 3), the breath the second. The 10-minute digit (0;1 chime) needs no name, just as "ten minutes" doesn't. "Wait a moment" already means about a minute, and the medieval moment was a unit of time (90 s).</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> the clock reads like hours, minutes and seconds, with a word people already use for about a minute.</p>
 </div>
 <div class="block decided">
-<p><strong>Decided:</strong> time of day is written <strong>d;dd</strong> (chime; moments) or <strong>d;ddd</strong> with breaths - like 21:45 and 21:45:30.</p>
+<p><strong>Decided:</strong> time of day is written as <strong>moments since midnight, always three digits</strong>, with breaths after the dozenal point: <strong>E91</strong> (about 23:30), or <strong>E91;7</strong> to the breath. Leading zeros are required: midnight is 000, and 051 is about 00:51.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> people handle 3-digit groups more easily than 4, the first digit matches the clock dial, and the groups match the clock's three hands.</p>
+<p><strong>Why:</strong> adopt prior art: Paul Rapoport's dozenal clocks (clocks.dozenal.ca) already read this way (E51.E4), with a dot where Paludal uses the semicolon. Everyday times then need no punctuation, like the 24-hour "2330" on timetables, and three digits is the easy group size. A time is a count of a named unit, the moment, and each digit is one hand on the clock: hands 1 to 3 before the point, hand 4 after it. The first digit is still the chime. Leading zeros, as in 24-hour "0051", keep every time three digits long, so the first digit is always the chime and times line up in tables. Replaces the earlier chime;moments form (E;91), which put the point after the first digit.</p>
 </div>
 <div class="block para">
-<p><strong>Advantage:</strong> times are short to write, and read straight off the clock's hands.</p>
+<p><strong>Advantage:</strong> times are three digits with no punctuation, read straight off the clock's hands, and match existing dozenal clocks.</p>
 </div>
 <div class="block table">
 <div class="table-wrap">
@@ -1961,18 +1970,25 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </thead>
 <tbody>
 <tr>
-<td>E;917</td>
+<td>E91;7</td>
 <td>E</td>
 <td>91</td>
 <td>7</td>
 <td>el chimes, 91 moments, 7 breaths</td>
 </tr>
 <tr>
-<td>6;00</td>
+<td>600</td>
 <td>6</td>
 <td>00</td>
 <td></td>
 <td>noon</td>
+</tr>
+<tr>
+<td>051</td>
+<td>0</td>
+<td>51</td>
+<td></td>
+<td>about 00:51</td>
 </tr>
 </tbody>
 </table>
@@ -1980,23 +1996,23 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <div class="block list">
 <ul>
-<li>0;00 = midnight, 6;00 = noon</li>
-<li>the number is in chimes: the time 9;3X0 is the fraction 0;93X day</li>
-<li>durations use the same form: +1;30</li>
+<li>000 = midnight, 600 = noon</li>
+<li>the number is in moments: the time 93X is the fraction 0;93X day, and the same three digits are the angle of hand 1 and the compass bearing in thousandths of a turn (see Angle)</li>
+<li>durations are in moments too: 130 <abbr title="moment">mt</abbr> is an hour and a half (or 1;3 <abbr title="chime">ch</abbr>)</li>
 </ul>
 </div>
 <div class="block decided">
-<p><strong>Decided:</strong> times more precise than a breath just add digits, with no separator: E;X053 (3 blinks past E;X05). On screens, the extra digits are shown smaller or dimmer, like the hundredths on a stopwatch.</p>
+<p><strong>Decided:</strong> times more precise than a breath just add digits after it: EX0;53 (3 blinks past EX0;5). On screens, the extra digits are shown smaller or dimmer, like the hundredths on a stopwatch.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> a time of day is a single number - chimes since midnight - so times can be subtracted and compared directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X05;3) would break that, and a space (E;X05 3) makes the digits look unrelated. Decimal times do the same: 9.58 s, 1:23.45 on a stopwatch.</p>
+<p><strong>Why:</strong> a time of day is a single number - moments since midnight - so times can be subtracted and compared directly (EX0;5 - 930 = 270;5 moments ≈ 5 h 10 min). A second semicolon (EX0;5;3) would break that, and a space (EX0;5 3) makes the digits look unrelated. Decimal times do the same: 9.58 s, 1:23.45 on a stopwatch.</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> any two times can be subtracted or compared as ordinary numbers, at any precision.</p>
 </div>
 <div class="block list">
 <ul>
-<li>spoken like "nine forty-five": E;91 = "el, nine-one"; 6;00 = "six"; with breaths, "el, nine-one, seven"</li>
+<li>spoken like "nine forty-five": E91 = "el, nine-one"; 600 = "six"; 051 = "zero, five-one"; with breaths, "el, nine-one, seven"</li>
 </ul>
 </div>
 <section id="time-definition-of-time" class="has-table">
@@ -2881,7 +2897,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Decided:</strong> angles are measured in <strong>turns</strong>, written as dozenal fractions.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> it matches the clock: the chime hand turns once a day, so the time of day in days <em>is</em> the angle of the hand (0;1 turn = one chime on the dial). The common angles become round: right angle 0;3, 30° is 0;1, 60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward (90° = 76°, 45° = 39°), because 360 is a decimal-era choice.</p>
+<p><strong>Why:</strong> it matches the clock: hand 1 turns once a day, so the time of day in days <em>is</em> the angle of the hand (0;1 turn = one chime on the dial). The common angles become round: right angle 0;3, 30° is 0;1, 60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward (90° = 76°, 45° = 39°), because 360 is a decimal-era choice.</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> common angles are single digits, and a clock hand's angle is the time of day.</p>
@@ -2952,11 +2968,244 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <div class="block list">
 <ul>
-<li>Compass bearings as three digits of a turn: 000 north, 300 east, 600 south, 900 west</li>
+<li>Compass bearings as three digits of a turn: 000 north, 300 east, 600 south, 900 west
+<ul>
+<li>between them: 160 north-east, 460 south-east, 760 south-west, X60 north-west</li>
+<li>a bearing and a time of day are the same three digits: the time is in thousandths of a day, the bearing in thousandths of a turn, so at 600 hand 1 points at 600 on the dial</li>
+<li>in the northern hemisphere the sun's bearing is roughly the time of day: 000 at midnight, 600 at noon (so a clock can find north - see Analogue clocks)</li>
+</ul></li>
 <li>Latitude and longitude in turns: one navis (930 <abbr title="pace">p</abbr>) along a meridian is about 0;0001 turn of latitude</li>
 <li>Three digits act as "more degrees": 1,000; steps per turn (1,728 dec, 0.208° each), and every common angle is a round whole number: right angle 300, 60° 200, 45° 160, 30° 100. A right angle of 1,000; adds nothing over this, since 4 already divides 100;.</li>
 <li>1 turn = 2π radians = 6;34941697 radians</li>
 </ul>
+</div>
+<div class="block figure">
+<figure class="figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-150 -150 300 300" width="320" role="img" color="#1f1d1a" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<title>Compass points in turns</title>
+<desc>A compass rose with north at the top. Bearings are three dozenal digits of a turn: north 000, north-east 160, east 300, south-east 460, south 600, south-west 760, west 900, north-west X60. The ring has twelve marks of 0;1 turn (100) each.</desc>
+<circle class="line" color="#e4e0d8" r="100" fill="none" stroke="currentColor" stroke-width="2"/>
+<g class="muted" color="#6b665e" stroke="currentColor" stroke-width="0.8" stroke-linecap="round">
+<line x1="4.19" y1="-95.91" x2="4.36" y2="-99.9"/>
+<line x1="8.37" y1="-95.63" x2="8.72" y2="-99.62"/>
+<line x1="12.53" y1="-95.18" x2="13.05" y2="-99.14"/>
+<line x1="16.67" y1="-94.54" x2="17.36" y2="-98.48"/>
+<line x1="20.78" y1="-93.72" x2="21.64" y2="-97.63"/>
+<line x1="24.85" y1="-92.73" x2="25.88" y2="-96.59"/>
+<line x1="28.87" y1="-91.56" x2="30.07" y2="-95.37"/>
+<line x1="32.83" y1="-90.21" x2="34.2" y2="-93.97"/>
+<line x1="36.74" y1="-88.69" x2="38.27" y2="-92.39"/>
+<line x1="40.57" y1="-87.01" x2="42.26" y2="-90.63"/>
+<line x1="44.33" y1="-85.15" x2="46.17" y2="-88.7"/>
+<line x1="51.58" y1="-80.97" x2="53.73" y2="-84.34"/>
+<line x1="55.06" y1="-78.64" x2="57.36" y2="-81.92"/>
+<line x1="58.44" y1="-76.16" x2="60.88" y2="-79.34"/>
+<line x1="61.71" y1="-73.54" x2="64.28" y2="-76.6"/>
+<line x1="64.86" y1="-70.78" x2="67.56" y2="-73.73"/>
+<line x1="67.88" y1="-67.88" x2="70.71" y2="-70.71"/>
+<line x1="70.78" y1="-64.86" x2="73.73" y2="-67.56"/>
+<line x1="73.54" y1="-61.71" x2="76.6" y2="-64.28"/>
+<line x1="76.16" y1="-58.44" x2="79.34" y2="-60.88"/>
+<line x1="78.64" y1="-55.06" x2="81.92" y2="-57.36"/>
+<line x1="80.97" y1="-51.58" x2="84.34" y2="-53.73"/>
+<line x1="85.15" y1="-44.33" x2="88.7" y2="-46.17"/>
+<line x1="87.01" y1="-40.57" x2="90.63" y2="-42.26"/>
+<line x1="88.69" y1="-36.74" x2="92.39" y2="-38.27"/>
+<line x1="90.21" y1="-32.83" x2="93.97" y2="-34.2"/>
+<line x1="91.56" y1="-28.87" x2="95.37" y2="-30.07"/>
+<line x1="92.73" y1="-24.85" x2="96.59" y2="-25.88"/>
+<line x1="93.72" y1="-20.78" x2="97.63" y2="-21.64"/>
+<line x1="94.54" y1="-16.67" x2="98.48" y2="-17.36"/>
+<line x1="95.18" y1="-12.53" x2="99.14" y2="-13.05"/>
+<line x1="95.63" y1="-8.37" x2="99.62" y2="-8.72"/>
+<line x1="95.91" y1="-4.19" x2="99.9" y2="-4.36"/>
+<line x1="95.91" y1="4.19" x2="99.9" y2="4.36"/>
+<line x1="95.63" y1="8.37" x2="99.62" y2="8.72"/>
+<line x1="95.18" y1="12.53" x2="99.14" y2="13.05"/>
+<line x1="94.54" y1="16.67" x2="98.48" y2="17.36"/>
+<line x1="93.72" y1="20.78" x2="97.63" y2="21.64"/>
+<line x1="92.73" y1="24.85" x2="96.59" y2="25.88"/>
+<line x1="91.56" y1="28.87" x2="95.37" y2="30.07"/>
+<line x1="90.21" y1="32.83" x2="93.97" y2="34.2"/>
+<line x1="88.69" y1="36.74" x2="92.39" y2="38.27"/>
+<line x1="87.01" y1="40.57" x2="90.63" y2="42.26"/>
+<line x1="85.15" y1="44.33" x2="88.7" y2="46.17"/>
+<line x1="80.97" y1="51.58" x2="84.34" y2="53.73"/>
+<line x1="78.64" y1="55.06" x2="81.92" y2="57.36"/>
+<line x1="76.16" y1="58.44" x2="79.34" y2="60.88"/>
+<line x1="73.54" y1="61.71" x2="76.6" y2="64.28"/>
+<line x1="70.78" y1="64.86" x2="73.73" y2="67.56"/>
+<line x1="67.88" y1="67.88" x2="70.71" y2="70.71"/>
+<line x1="64.86" y1="70.78" x2="67.56" y2="73.73"/>
+<line x1="61.71" y1="73.54" x2="64.28" y2="76.6"/>
+<line x1="58.44" y1="76.16" x2="60.88" y2="79.34"/>
+<line x1="55.06" y1="78.64" x2="57.36" y2="81.92"/>
+<line x1="51.58" y1="80.97" x2="53.73" y2="84.34"/>
+<line x1="44.33" y1="85.15" x2="46.17" y2="88.7"/>
+<line x1="40.57" y1="87.01" x2="42.26" y2="90.63"/>
+<line x1="36.74" y1="88.69" x2="38.27" y2="92.39"/>
+<line x1="32.83" y1="90.21" x2="34.2" y2="93.97"/>
+<line x1="28.87" y1="91.56" x2="30.07" y2="95.37"/>
+<line x1="24.85" y1="92.73" x2="25.88" y2="96.59"/>
+<line x1="20.78" y1="93.72" x2="21.64" y2="97.63"/>
+<line x1="16.67" y1="94.54" x2="17.36" y2="98.48"/>
+<line x1="12.53" y1="95.18" x2="13.05" y2="99.14"/>
+<line x1="8.37" y1="95.63" x2="8.72" y2="99.62"/>
+<line x1="4.19" y1="95.91" x2="4.36" y2="99.9"/>
+<line x1="-4.19" y1="95.91" x2="-4.36" y2="99.9"/>
+<line x1="-8.37" y1="95.63" x2="-8.72" y2="99.62"/>
+<line x1="-12.53" y1="95.18" x2="-13.05" y2="99.14"/>
+<line x1="-16.67" y1="94.54" x2="-17.36" y2="98.48"/>
+<line x1="-20.78" y1="93.72" x2="-21.64" y2="97.63"/>
+<line x1="-24.85" y1="92.73" x2="-25.88" y2="96.59"/>
+<line x1="-28.87" y1="91.56" x2="-30.07" y2="95.37"/>
+<line x1="-32.83" y1="90.21" x2="-34.2" y2="93.97"/>
+<line x1="-36.74" y1="88.69" x2="-38.27" y2="92.39"/>
+<line x1="-40.57" y1="87.01" x2="-42.26" y2="90.63"/>
+<line x1="-44.33" y1="85.15" x2="-46.17" y2="88.7"/>
+<line x1="-51.58" y1="80.97" x2="-53.73" y2="84.34"/>
+<line x1="-55.06" y1="78.64" x2="-57.36" y2="81.92"/>
+<line x1="-58.44" y1="76.16" x2="-60.88" y2="79.34"/>
+<line x1="-61.71" y1="73.54" x2="-64.28" y2="76.6"/>
+<line x1="-64.86" y1="70.78" x2="-67.56" y2="73.73"/>
+<line x1="-67.88" y1="67.88" x2="-70.71" y2="70.71"/>
+<line x1="-70.78" y1="64.86" x2="-73.73" y2="67.56"/>
+<line x1="-73.54" y1="61.71" x2="-76.6" y2="64.28"/>
+<line x1="-76.16" y1="58.44" x2="-79.34" y2="60.88"/>
+<line x1="-78.64" y1="55.06" x2="-81.92" y2="57.36"/>
+<line x1="-80.97" y1="51.58" x2="-84.34" y2="53.73"/>
+<line x1="-85.15" y1="44.33" x2="-88.7" y2="46.17"/>
+<line x1="-87.01" y1="40.57" x2="-90.63" y2="42.26"/>
+<line x1="-88.69" y1="36.74" x2="-92.39" y2="38.27"/>
+<line x1="-90.21" y1="32.83" x2="-93.97" y2="34.2"/>
+<line x1="-91.56" y1="28.87" x2="-95.37" y2="30.07"/>
+<line x1="-92.73" y1="24.85" x2="-96.59" y2="25.88"/>
+<line x1="-93.72" y1="20.78" x2="-97.63" y2="21.64"/>
+<line x1="-94.54" y1="16.67" x2="-98.48" y2="17.36"/>
+<line x1="-95.18" y1="12.53" x2="-99.14" y2="13.05"/>
+<line x1="-95.63" y1="8.37" x2="-99.62" y2="8.72"/>
+<line x1="-95.91" y1="4.19" x2="-99.9" y2="4.36"/>
+<line x1="-95.91" y1="-4.19" x2="-99.9" y2="-4.36"/>
+<line x1="-95.63" y1="-8.37" x2="-99.62" y2="-8.72"/>
+<line x1="-95.18" y1="-12.53" x2="-99.14" y2="-13.05"/>
+<line x1="-94.54" y1="-16.67" x2="-98.48" y2="-17.36"/>
+<line x1="-93.72" y1="-20.78" x2="-97.63" y2="-21.64"/>
+<line x1="-92.73" y1="-24.85" x2="-96.59" y2="-25.88"/>
+<line x1="-91.56" y1="-28.87" x2="-95.37" y2="-30.07"/>
+<line x1="-90.21" y1="-32.83" x2="-93.97" y2="-34.2"/>
+<line x1="-88.69" y1="-36.74" x2="-92.39" y2="-38.27"/>
+<line x1="-87.01" y1="-40.57" x2="-90.63" y2="-42.26"/>
+<line x1="-85.15" y1="-44.33" x2="-88.7" y2="-46.17"/>
+<line x1="-80.97" y1="-51.58" x2="-84.34" y2="-53.73"/>
+<line x1="-78.64" y1="-55.06" x2="-81.92" y2="-57.36"/>
+<line x1="-76.16" y1="-58.44" x2="-79.34" y2="-60.88"/>
+<line x1="-73.54" y1="-61.71" x2="-76.6" y2="-64.28"/>
+<line x1="-70.78" y1="-64.86" x2="-73.73" y2="-67.56"/>
+<line x1="-67.88" y1="-67.88" x2="-70.71" y2="-70.71"/>
+<line x1="-64.86" y1="-70.78" x2="-67.56" y2="-73.73"/>
+<line x1="-61.71" y1="-73.54" x2="-64.28" y2="-76.6"/>
+<line x1="-58.44" y1="-76.16" x2="-60.88" y2="-79.34"/>
+<line x1="-55.06" y1="-78.64" x2="-57.36" y2="-81.92"/>
+<line x1="-51.58" y1="-80.97" x2="-53.73" y2="-84.34"/>
+<line x1="-44.33" y1="-85.15" x2="-46.17" y2="-88.7"/>
+<line x1="-40.57" y1="-87.01" x2="-42.26" y2="-90.63"/>
+<line x1="-36.74" y1="-88.69" x2="-38.27" y2="-92.39"/>
+<line x1="-32.83" y1="-90.21" x2="-34.2" y2="-93.97"/>
+<line x1="-28.87" y1="-91.56" x2="-30.07" y2="-95.37"/>
+<line x1="-24.85" y1="-92.73" x2="-25.88" y2="-96.59"/>
+<line x1="-20.78" y1="-93.72" x2="-21.64" y2="-97.63"/>
+<line x1="-16.67" y1="-94.54" x2="-17.36" y2="-98.48"/>
+<line x1="-12.53" y1="-95.18" x2="-13.05" y2="-99.14"/>
+<line x1="-8.37" y1="-95.63" x2="-8.72" y2="-99.62"/>
+<line x1="-4.19" y1="-95.91" x2="-4.36" y2="-99.9"/>
+</g>
+<g class="fg" color="#1f1d1a" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+<line x1="0.0" y1="-90.0" x2="0.0" y2="-100.0"/>
+<line x1="45.0" y1="-77.94" x2="50.0" y2="-86.6"/>
+<line x1="77.94" y1="-45.0" x2="86.6" y2="-50.0"/>
+<line x1="90.0" y1="-0.0" x2="100.0" y2="-0.0"/>
+<line x1="77.94" y1="45.0" x2="86.6" y2="50.0"/>
+<line x1="45.0" y1="77.94" x2="50.0" y2="86.6"/>
+<line x1="0.0" y1="90.0" x2="0.0" y2="100.0"/>
+<line x1="-45.0" y1="77.94" x2="-50.0" y2="86.6"/>
+<line x1="-77.94" y1="45.0" x2="-86.6" y2="50.0"/>
+<line x1="-90.0" y1="0.0" x2="-100.0" y2="0.0"/>
+<line x1="-77.94" y1="-45.0" x2="-86.6" y2="-50.0"/>
+<line x1="-45.0" y1="-77.94" x2="-50.0" y2="-86.6"/>
+</g>
+<g class="muted" color="#6b665e" fill="currentColor" font-size="9" text-anchor="middle" dominant-baseline="central">
+<text x="39.0" y="-67.55">100</text>
+<text x="67.55" y="-39.0">200</text>
+<text x="67.55" y="39.0">400</text>
+<text x="39.0" y="67.55">500</text>
+<text x="-39.0" y="67.55">700</text>
+<text x="-67.55" y="39.0">800</text>
+<text x="-67.55" y="-39.0">X00</text>
+<text x="-39.0" y="-67.55">E00</text>
+</g>
+<path class="panel" color="#f3f0ea" d="M0 0 L6.36 6.36 L36.77 -36.77 Z" fill="currentColor"/>
+<g class="muted" color="#6b665e" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+<path d="M0 0 L-6.36 -6.36 L36.77 -36.77 Z" fill="currentColor"/>
+<path d="M-6.36 -6.36 L36.77 -36.77 L6.36 6.36 Z" fill="none"/>
+</g>
+<path class="panel" color="#f3f0ea" d="M0 0 L-6.36 6.36 L36.77 36.77 Z" fill="currentColor"/>
+<g class="muted" color="#6b665e" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+<path d="M0 0 L6.36 -6.36 L36.77 36.77 Z" fill="currentColor"/>
+<path d="M6.36 -6.36 L36.77 36.77 L-6.36 6.36 Z" fill="none"/>
+</g>
+<path class="panel" color="#f3f0ea" d="M0 0 L-6.36 -6.36 L-36.77 36.77 Z" fill="currentColor"/>
+<g class="muted" color="#6b665e" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+<path d="M0 0 L6.36 6.36 L-36.77 36.77 Z" fill="currentColor"/>
+<path d="M6.36 6.36 L-36.77 36.77 L-6.36 -6.36 Z" fill="none"/>
+</g>
+<path class="panel" color="#f3f0ea" d="M0 0 L6.36 -6.36 L-36.77 -36.77 Z" fill="currentColor"/>
+<g class="muted" color="#6b665e" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+<path d="M0 0 L-6.36 6.36 L-36.77 -36.77 Z" fill="currentColor"/>
+<path d="M-6.36 6.36 L-36.77 -36.77 L6.36 -6.36 Z" fill="none"/>
+</g>
+<path class="panel" color="#f3f0ea" d="M0 0 L12.0 -0.0 L0.0 -86.0 Z" fill="currentColor"/>
+<g class="accent" color="#9a4d1f" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+<path d="M0 0 L-12.0 -0.0 L0.0 -86.0 Z" fill="currentColor"/>
+<path d="M-12.0 -0.0 L0.0 -86.0 L12.0 -0.0 Z" fill="none"/>
+</g>
+<path class="panel" color="#f3f0ea" d="M0 0 L0.0 12.0 L86.0 -0.0 Z" fill="currentColor"/>
+<g class="fg" color="#1f1d1a" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+<path d="M0 0 L0.0 -12.0 L86.0 -0.0 Z" fill="currentColor"/>
+<path d="M0.0 -12.0 L86.0 -0.0 L0.0 12.0 Z" fill="none"/>
+</g>
+<path class="panel" color="#f3f0ea" d="M0 0 L-12.0 0.0 L0.0 86.0 Z" fill="currentColor"/>
+<g class="fg" color="#1f1d1a" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+<path d="M0 0 L12.0 -0.0 L0.0 86.0 Z" fill="currentColor"/>
+<path d="M12.0 -0.0 L0.0 86.0 L-12.0 0.0 Z" fill="none"/>
+</g>
+<path class="panel" color="#f3f0ea" d="M0 0 L-0.0 -12.0 L-86.0 0.0 Z" fill="currentColor"/>
+<g class="fg" color="#1f1d1a" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+<path d="M0 0 L0.0 12.0 L-86.0 0.0 Z" fill="currentColor"/>
+<path d="M0.0 12.0 L-86.0 0.0 L-0.0 -12.0 Z" fill="none"/>
+</g>
+<g fill="currentColor" text-anchor="middle" dominant-baseline="central">
+<text x="0.0" y="-130.0" font-size="16" font-weight="700">N</text>
+<text class="muted" color="#6b665e" x="0.0" y="-115.0" font-size="11">000</text>
+<text x="84.85" y="-90.85" font-size="12" font-weight="600">NE</text>
+<text class="muted" color="#6b665e" x="84.85" y="-75.85" font-size="11">160</text>
+<text x="124.0" y="-6.0" font-size="16" font-weight="700">E</text>
+<text class="muted" color="#6b665e" x="124.0" y="9.0" font-size="11">300</text>
+<text x="84.85" y="78.85" font-size="12" font-weight="600">SE</text>
+<text class="muted" color="#6b665e" x="84.85" y="93.85" font-size="11">460</text>
+<text x="0.0" y="118.0" font-size="16" font-weight="700">S</text>
+<text class="muted" color="#6b665e" x="0.0" y="133.0" font-size="11">600</text>
+<text x="-84.85" y="78.85" font-size="12" font-weight="600">SW</text>
+<text class="muted" color="#6b665e" x="-84.85" y="93.85" font-size="11">760</text>
+<text x="-124.0" y="-6.0" font-size="16" font-weight="700">W</text>
+<text class="muted" color="#6b665e" x="-124.0" y="9.0" font-size="11">900</text>
+<text x="-84.85" y="-90.85" font-size="12" font-weight="600">NW</text>
+<text class="muted" color="#6b665e" x="-84.85" y="-75.85" font-size="11">X60</text>
+</g>
+</svg>
+<figcaption>Compass points as bearings in turns: the cardinal points are 000, 300,
+600, 900 and the points between them 160, 460, 760, X60. Each of the
+twelve marks is 0;1 turn (100).</figcaption>
+</figure>
 </div>
 </section>
 <section id="constants" class="has-table">
@@ -3280,7 +3529,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <section id="a-day-in-paludal" class="has-table">
 <h3>A day in Paludal</h3>
 <div class="block decided">
-<p><strong>Draft (not decided):</strong> a walk through one ordinary day, for someone seeing the system for the first time. Times are chime;moments (6;00 is noon). Values are rounded the way a label or sign would be.</p>
+<p><strong>Draft (not decided):</strong> a walk through one ordinary day, for someone seeing the system for the first time. Times are moments since midnight (600 is noon). Values are rounded the way a label or sign would be.</p>
 </div>
 <div class="block table">
 <div class="table-wrap">
@@ -3295,61 +3544,61 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </thead>
 <tbody>
 <tr>
-<td>3;30</td>
+<td>330</td>
 <td>The alarm goes off. The forecast says 18° now, top of 28°</td>
 <td>18 <abbr title="tep (degrees from freezing)">°t</abbr>, 28 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 <td>6:30 am, 14 °C, 22 °C</td>
 </tr>
 <tr>
-<td>3;76</td>
+<td>376</td>
 <td>A regular coffee and two eggs</td>
 <td>250 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr> (357 mL), 50 <abbr title="tricia-lib (÷ 10^3)">t↓li</abbr> each</td>
 <td>7:15 am, 12 oz coffee (355 mL), 60 g eggs</td>
 </tr>
 <tr>
-<td>4;20</td>
+<td>420</td>
 <td>Drive to work: 4;9 iters, about 26 moments door to door, 40 on the signs</td>
 <td>4;9 <abbr title="iter">ir</abbr>, 26 <abbr title="moment">mt</abbr>, 40 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
 <td>8:20 am, 12 km, 25 min, 60 km/h</td>
 </tr>
 <tr>
-<td>6;30</td>
+<td>630</td>
 <td>Lunch break</td>
 <td>30 <abbr title="moment">mt</abbr> (0;3 <abbr title="chime">ch</abbr>)</td>
 <td>12:30 pm, 30 min</td>
 </tr>
 <tr>
-<td>6;60</td>
+<td>660</td>
 <td>Back to work</td>
 <td></td>
 <td>1:00 pm</td>
 </tr>
 <tr>
-<td>8;76</td>
+<td>876</td>
 <td>Fill up on the way home: 1X;7 cubs at $3;56 a cub. The family car uses 14;4 <abbr title="cub">cu</abbr>/100 <abbr title="iter">ir</abbr>, so the drive to work took 0;66 <abbr title="cub">cu</abbr>, about $1;X6</td>
 <td>1X;7 <abbr title="cub">cu</abbr> for $66, 0;66 <abbr title="cub">cu</abbr> for $1;X6</td>
 <td>5:15 pm, 40 L at $1.95/L = $78; 1 L, $1.87, at 8 L/100 km</td>
 </tr>
 <tr>
-<td>8;90</td>
+<td>890</td>
 <td>An after-work run: 2 iters in 30 moments</td>
 <td>2 <abbr title="iter">ir</abbr>, 30 <abbr title="moment">mt</abbr></td>
 <td>5:30 pm, 5 km in 30 min</td>
 </tr>
 <tr>
-<td>9;46</td>
+<td>946</td>
 <td>Shopping: mince, milk and flour</td>
 <td>0;3 <abbr title="lib">li</abbr>, 1;2 <abbr title="cub">cu</abbr>, 0;7 <abbr title="lib">li</abbr></td>
 <td>6:45 pm, 450 g, 2 L, 1 kg</td>
 </tr>
 <tr>
-<td>9;46</td>
+<td>946</td>
 <td>A roast goes in for 0;9 chime</td>
 <td>1X0 <abbr title="tep (degrees from freezing)">°t</abbr> for 0;9 <abbr title="chime">ch</abbr> (90 <abbr title="moment">mt</abbr>)</td>
 <td>180 °C for 1½ hours</td>
 </tr>
 <tr>
-<td>E;30</td>
+<td>E30</td>
 <td>Bed, for 4 chimes of sleep</td>
 <td>4 <abbr title="chime">ch</abbr></td>
 <td>10:30 pm, 8 hours</td>
@@ -3361,7 +3610,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <div class="block list">
 <ul>
 <li>Prices use the proposed dozenal dollar: $1 stays $1, split into 100; (144 dec) parts, so $3;56 is $3.46 (see Money)</li>
-<li>The clock reads like a 24-hour clock halved: 3;30 is a quarter past the third chime (6:30 am)</li>
+<li>The clock reads like a 24-hour clock halved: 330 is a quarter past the third chime (6:30 am)</li>
 <li>Every step is twelve, so the common fractions are single digits: 30 moments is 0;3 chime (a quarter), 0;6 is a half, 0;4 a third</li>
 </ul>
 </div>
@@ -3377,13 +3626,19 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Decided:</strong> a 24-hour dial with twelve marks, noon at the top, turning clockwise.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest, and clockwise keeps the convention people already know. The design, and the idea of splitting the day by twelve, then twelve, then twelve as the basis of Paludal time, came from Paul Rapoport's Diurnal clock (<a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a>).</p>
+<p><strong>Why:</strong> one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest, and clockwise keeps the convention people already know. The design, and the idea of splitting the day by twelve, then twelve, then twelve as the basis of Paludal time, came from Paul Rapoport's Diurnal 1 clock (<a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a>).</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> the whole day is visible at once, and the hand follows the sun.</p>
 </div>
+<div class="block decided">
+<p><strong>Decided:</strong> four hands, each turning twelve times faster than the one before, so each hand shows one digit of the time: at E91;7 they point at E, 9, 1 and 7. The hands are named after the digit they show: <strong>hand 1</strong> to <strong>hand 4</strong> (said "hand two", not "second hand").</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> with one hand per digit the time reads straight off the hands, every hand reads the same twelve marks, and the clock is the same as Paul Rapoport's Diurnal 1 (prior art adopted). The earlier design had a chime, moment and breath hand plus a beat hand: the moment hand showed two digits against 144 fine marks, and the breath hand turned 144 times faster than it, not twelve. Hour, minute and second hand don't fit four dozenal hands, and "second hand" already means something else. The beat hand was dropped: it shows no digit and adds clutter (clocks.dozenal.ca leaves out a fifth hand for the same reason).</p>
+</div>
 <div class="block para">
-<p>Four hands - hour, minute and second, plus a light beat hand:</p>
+<p><strong>Advantage:</strong> the time is read off the hands digit by digit, on the same dial as an existing dozenal clock.</p>
 </div>
 <div class="block table">
 <div class="table-wrap">
@@ -3392,54 +3647,250 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <tr>
 <th>Hand</th>
 <th>Turns once per</th>
-<th>Reads</th>
-<th>Dial</th>
+<th>Shows</th>
+<th>At E91;7</th>
 <th>Like</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Chime</td>
+<td>Hand 1</td>
 <td>day</td>
-<td>chime (0-E)</td>
-<td>12 marks</td>
+<td>chime</td>
+<td>E</td>
 <td>hour hand</td>
 </tr>
 <tr>
-<td>Moment</td>
+<td>Hand 2</td>
 <td>chime (2 h)</td>
-<td>moments 00-EE</td>
-<td>12 marks + 144 (dec) fine marks</td>
+<td>dozens of moments</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>Hand 3</td>
+<td>10 moments (10 min)</td>
+<td>moments</td>
+<td>1</td>
 <td>minute hand</td>
 </tr>
 <tr>
-<td>Breath</td>
+<td>Hand 4</td>
 <td>moment (50 s)</td>
-<td>breath (0-E)</td>
-<td>12 marks; steps once per breath (onto each mark)</td>
+<td>breath</td>
+<td>7</td>
 <td>second hand</td>
-</tr>
-<tr>
-<td>Beat</td>
-<td>moment (50 s)</td>
-<td>beat (4 per breath)</td>
-<td>steps once per beat; thin and light grey, like the dial</td>
-<td>ticking second hand</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<div class="block figure">
+<figure class="figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-130 -130 260 260" width="320" role="img" color="#1f1d1a" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<title>Paludal clock showing E91;7</title>
+<desc>A 24-hour dial with twelve marks, 0 (midnight) at the bottom and 6 (noon) at the top, numbers running clockwise. Four hands, each twelve times faster than the last, each pointing at one digit of the time: hand 1 just before 0 (E), hand 2 just past 9, hand 3 between 1 and 2, hand 4 on 7. The time is E91;7, about 23:31.</desc>
+<circle class="panel" color="#f3f0ea" r="118" fill="currentColor"/>
+<circle class="line" color="#e4e0d8" r="118" fill="none" stroke="currentColor" stroke-width="2"/>
+<g class="muted" color="#6b665e" stroke="currentColor" stroke-width="0.8" stroke-linecap="round">
+<line x1="4.71" y1="-107.9" x2="4.89" y2="-111.89"/>
+<line x1="9.41" y1="-107.59" x2="9.76" y2="-111.57"/>
+<line x1="14.1" y1="-107.08" x2="14.62" y2="-111.04"/>
+<line x1="18.75" y1="-106.36" x2="19.45" y2="-110.3"/>
+<line x1="23.38" y1="-105.44" x2="24.24" y2="-109.35"/>
+<line x1="27.95" y1="-104.32" x2="28.99" y2="-108.18"/>
+<line x1="32.48" y1="-103.0" x2="33.68" y2="-106.82"/>
+<line x1="36.94" y1="-101.49" x2="38.31" y2="-105.25"/>
+<line x1="41.33" y1="-99.78" x2="42.86" y2="-103.47"/>
+<line x1="45.64" y1="-97.88" x2="47.33" y2="-101.51"/>
+<line x1="49.87" y1="-95.8" x2="51.72" y2="-99.35"/>
+<line x1="58.03" y1="-91.09" x2="60.18" y2="-94.46"/>
+<line x1="61.95" y1="-88.47" x2="64.24" y2="-91.75"/>
+<line x1="65.75" y1="-85.68" x2="68.18" y2="-88.86"/>
+<line x1="69.42" y1="-82.73" x2="71.99" y2="-85.8"/>
+<line x1="72.96" y1="-79.63" x2="75.67" y2="-82.58"/>
+<line x1="76.37" y1="-76.37" x2="79.2" y2="-79.2"/>
+<line x1="79.63" y1="-72.96" x2="82.58" y2="-75.67"/>
+<line x1="82.73" y1="-69.42" x2="85.8" y2="-71.99"/>
+<line x1="85.68" y1="-65.75" x2="88.86" y2="-68.18"/>
+<line x1="88.47" y1="-61.95" x2="91.75" y2="-64.24"/>
+<line x1="91.09" y1="-58.03" x2="94.46" y2="-60.18"/>
+<line x1="95.8" y1="-49.87" x2="99.35" y2="-51.72"/>
+<line x1="97.88" y1="-45.64" x2="101.51" y2="-47.33"/>
+<line x1="99.78" y1="-41.33" x2="103.47" y2="-42.86"/>
+<line x1="101.49" y1="-36.94" x2="105.25" y2="-38.31"/>
+<line x1="103.0" y1="-32.48" x2="106.82" y2="-33.68"/>
+<line x1="104.32" y1="-27.95" x2="108.18" y2="-28.99"/>
+<line x1="105.44" y1="-23.38" x2="109.35" y2="-24.24"/>
+<line x1="106.36" y1="-18.75" x2="110.3" y2="-19.45"/>
+<line x1="107.08" y1="-14.1" x2="111.04" y2="-14.62"/>
+<line x1="107.59" y1="-9.41" x2="111.57" y2="-9.76"/>
+<line x1="107.9" y1="-4.71" x2="111.89" y2="-4.89"/>
+<line x1="107.9" y1="4.71" x2="111.89" y2="4.89"/>
+<line x1="107.59" y1="9.41" x2="111.57" y2="9.76"/>
+<line x1="107.08" y1="14.1" x2="111.04" y2="14.62"/>
+<line x1="106.36" y1="18.75" x2="110.3" y2="19.45"/>
+<line x1="105.44" y1="23.38" x2="109.35" y2="24.24"/>
+<line x1="104.32" y1="27.95" x2="108.18" y2="28.99"/>
+<line x1="103.0" y1="32.48" x2="106.82" y2="33.68"/>
+<line x1="101.49" y1="36.94" x2="105.25" y2="38.31"/>
+<line x1="99.78" y1="41.33" x2="103.47" y2="42.86"/>
+<line x1="97.88" y1="45.64" x2="101.51" y2="47.33"/>
+<line x1="95.8" y1="49.87" x2="99.35" y2="51.72"/>
+<line x1="91.09" y1="58.03" x2="94.46" y2="60.18"/>
+<line x1="88.47" y1="61.95" x2="91.75" y2="64.24"/>
+<line x1="85.68" y1="65.75" x2="88.86" y2="68.18"/>
+<line x1="82.73" y1="69.42" x2="85.8" y2="71.99"/>
+<line x1="79.63" y1="72.96" x2="82.58" y2="75.67"/>
+<line x1="76.37" y1="76.37" x2="79.2" y2="79.2"/>
+<line x1="72.96" y1="79.63" x2="75.67" y2="82.58"/>
+<line x1="69.42" y1="82.73" x2="71.99" y2="85.8"/>
+<line x1="65.75" y1="85.68" x2="68.18" y2="88.86"/>
+<line x1="61.95" y1="88.47" x2="64.24" y2="91.75"/>
+<line x1="58.03" y1="91.09" x2="60.18" y2="94.46"/>
+<line x1="49.87" y1="95.8" x2="51.72" y2="99.35"/>
+<line x1="45.64" y1="97.88" x2="47.33" y2="101.51"/>
+<line x1="41.33" y1="99.78" x2="42.86" y2="103.47"/>
+<line x1="36.94" y1="101.49" x2="38.31" y2="105.25"/>
+<line x1="32.48" y1="103.0" x2="33.68" y2="106.82"/>
+<line x1="27.95" y1="104.32" x2="28.99" y2="108.18"/>
+<line x1="23.38" y1="105.44" x2="24.24" y2="109.35"/>
+<line x1="18.75" y1="106.36" x2="19.45" y2="110.3"/>
+<line x1="14.1" y1="107.08" x2="14.62" y2="111.04"/>
+<line x1="9.41" y1="107.59" x2="9.76" y2="111.57"/>
+<line x1="4.71" y1="107.9" x2="4.89" y2="111.89"/>
+<line x1="-4.71" y1="107.9" x2="-4.89" y2="111.89"/>
+<line x1="-9.41" y1="107.59" x2="-9.76" y2="111.57"/>
+<line x1="-14.1" y1="107.08" x2="-14.62" y2="111.04"/>
+<line x1="-18.75" y1="106.36" x2="-19.45" y2="110.3"/>
+<line x1="-23.38" y1="105.44" x2="-24.24" y2="109.35"/>
+<line x1="-27.95" y1="104.32" x2="-28.99" y2="108.18"/>
+<line x1="-32.48" y1="103.0" x2="-33.68" y2="106.82"/>
+<line x1="-36.94" y1="101.49" x2="-38.31" y2="105.25"/>
+<line x1="-41.33" y1="99.78" x2="-42.86" y2="103.47"/>
+<line x1="-45.64" y1="97.88" x2="-47.33" y2="101.51"/>
+<line x1="-49.87" y1="95.8" x2="-51.72" y2="99.35"/>
+<line x1="-58.03" y1="91.09" x2="-60.18" y2="94.46"/>
+<line x1="-61.95" y1="88.47" x2="-64.24" y2="91.75"/>
+<line x1="-65.75" y1="85.68" x2="-68.18" y2="88.86"/>
+<line x1="-69.42" y1="82.73" x2="-71.99" y2="85.8"/>
+<line x1="-72.96" y1="79.63" x2="-75.67" y2="82.58"/>
+<line x1="-76.37" y1="76.37" x2="-79.2" y2="79.2"/>
+<line x1="-79.63" y1="72.96" x2="-82.58" y2="75.67"/>
+<line x1="-82.73" y1="69.42" x2="-85.8" y2="71.99"/>
+<line x1="-85.68" y1="65.75" x2="-88.86" y2="68.18"/>
+<line x1="-88.47" y1="61.95" x2="-91.75" y2="64.24"/>
+<line x1="-91.09" y1="58.03" x2="-94.46" y2="60.18"/>
+<line x1="-95.8" y1="49.87" x2="-99.35" y2="51.72"/>
+<line x1="-97.88" y1="45.64" x2="-101.51" y2="47.33"/>
+<line x1="-99.78" y1="41.33" x2="-103.47" y2="42.86"/>
+<line x1="-101.49" y1="36.94" x2="-105.25" y2="38.31"/>
+<line x1="-103.0" y1="32.48" x2="-106.82" y2="33.68"/>
+<line x1="-104.32" y1="27.95" x2="-108.18" y2="28.99"/>
+<line x1="-105.44" y1="23.38" x2="-109.35" y2="24.24"/>
+<line x1="-106.36" y1="18.75" x2="-110.3" y2="19.45"/>
+<line x1="-107.08" y1="14.1" x2="-111.04" y2="14.62"/>
+<line x1="-107.59" y1="9.41" x2="-111.57" y2="9.76"/>
+<line x1="-107.9" y1="4.71" x2="-111.89" y2="4.89"/>
+<line x1="-107.9" y1="-4.71" x2="-111.89" y2="-4.89"/>
+<line x1="-107.59" y1="-9.41" x2="-111.57" y2="-9.76"/>
+<line x1="-107.08" y1="-14.1" x2="-111.04" y2="-14.62"/>
+<line x1="-106.36" y1="-18.75" x2="-110.3" y2="-19.45"/>
+<line x1="-105.44" y1="-23.38" x2="-109.35" y2="-24.24"/>
+<line x1="-104.32" y1="-27.95" x2="-108.18" y2="-28.99"/>
+<line x1="-103.0" y1="-32.48" x2="-106.82" y2="-33.68"/>
+<line x1="-101.49" y1="-36.94" x2="-105.25" y2="-38.31"/>
+<line x1="-99.78" y1="-41.33" x2="-103.47" y2="-42.86"/>
+<line x1="-97.88" y1="-45.64" x2="-101.51" y2="-47.33"/>
+<line x1="-95.8" y1="-49.87" x2="-99.35" y2="-51.72"/>
+<line x1="-91.09" y1="-58.03" x2="-94.46" y2="-60.18"/>
+<line x1="-88.47" y1="-61.95" x2="-91.75" y2="-64.24"/>
+<line x1="-85.68" y1="-65.75" x2="-88.86" y2="-68.18"/>
+<line x1="-82.73" y1="-69.42" x2="-85.8" y2="-71.99"/>
+<line x1="-79.63" y1="-72.96" x2="-82.58" y2="-75.67"/>
+<line x1="-76.37" y1="-76.37" x2="-79.2" y2="-79.2"/>
+<line x1="-72.96" y1="-79.63" x2="-75.67" y2="-82.58"/>
+<line x1="-69.42" y1="-82.73" x2="-71.99" y2="-85.8"/>
+<line x1="-65.75" y1="-85.68" x2="-68.18" y2="-88.86"/>
+<line x1="-61.95" y1="-88.47" x2="-64.24" y2="-91.75"/>
+<line x1="-58.03" y1="-91.09" x2="-60.18" y2="-94.46"/>
+<line x1="-49.87" y1="-95.8" x2="-51.72" y2="-99.35"/>
+<line x1="-45.64" y1="-97.88" x2="-47.33" y2="-101.51"/>
+<line x1="-41.33" y1="-99.78" x2="-42.86" y2="-103.47"/>
+<line x1="-36.94" y1="-101.49" x2="-38.31" y2="-105.25"/>
+<line x1="-32.48" y1="-103.0" x2="-33.68" y2="-106.82"/>
+<line x1="-27.95" y1="-104.32" x2="-28.99" y2="-108.18"/>
+<line x1="-23.38" y1="-105.44" x2="-24.24" y2="-109.35"/>
+<line x1="-18.75" y1="-106.36" x2="-19.45" y2="-110.3"/>
+<line x1="-14.1" y1="-107.08" x2="-14.62" y2="-111.04"/>
+<line x1="-9.41" y1="-107.59" x2="-9.76" y2="-111.57"/>
+<line x1="-4.71" y1="-107.9" x2="-4.89" y2="-111.89"/>
+</g>
+<g class="fg" color="#1f1d1a" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+<line x1="0.0" y1="-102.0" x2="0.0" y2="-113.0"/>
+<line x1="51.0" y1="-88.33" x2="56.5" y2="-97.86"/>
+<line x1="88.33" y1="-51.0" x2="97.86" y2="-56.5"/>
+<line x1="102.0" y1="-0.0" x2="113.0" y2="-0.0"/>
+<line x1="88.33" y1="51.0" x2="97.86" y2="56.5"/>
+<line x1="51.0" y1="88.33" x2="56.5" y2="97.86"/>
+<line x1="0.0" y1="102.0" x2="0.0" y2="113.0"/>
+<line x1="-51.0" y1="88.33" x2="-56.5" y2="97.86"/>
+<line x1="-88.33" y1="51.0" x2="-97.86" y2="56.5"/>
+<line x1="-102.0" y1="0.0" x2="-113.0" y2="0.0"/>
+<line x1="-88.33" y1="-51.0" x2="-97.86" y2="-56.5"/>
+<line x1="-51.0" y1="-88.33" x2="-56.5" y2="-97.86"/>
+</g>
+<g fill="currentColor" font-size="17" font-weight="600" text-anchor="middle" dominant-baseline="central">
+<text x="-0.0" y="88.0">0</text>
+<text x="-44.0" y="76.21">1</text>
+<text x="-76.21" y="44.0">2</text>
+<text x="-88.0" y="-0.0">3</text>
+<text x="-76.21" y="-44.0">4</text>
+<text x="-44.0" y="-76.21">5</text>
+<text x="0.0" y="-88.0">6</text>
+<text x="44.0" y="-76.21">7</text>
+<text x="76.21" y="-44.0">8</text>
+<text x="88.0" y="-0.0">9</text>
+<text x="76.21" y="44.0">X</text>
+<text x="44.0" y="76.21">E</text>
+</g>
+<g class="muted" color="#6b665e" fill="currentColor" font-size="9" text-anchor="middle"><text y="-61">noon</text><text y="68">midnight</text><text x="-62" y="-11">dawn</text><text x="62" y="-11">dusk</text></g>
+<text y="-34" text-anchor="middle" font-size="15" font-weight="600" fill="currentColor">E91;7</text>
+<line x1="-1.5" y1="-11.91" x2="6.24" y2="49.61" stroke="currentColor" stroke-width="6.5" stroke-linecap="round"/>
+<line x1="-11.97" y1="-0.83" x2="67.84" y2="4.69" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="8.85" y1="-8.11" x2="-61.93" y2="56.75" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="-9.0" y1="15.59" x2="49.0" y2="-84.87" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+<circle r="4.5" fill="currentColor"/><circle class="accent" color="#9a4d1f" r="2" fill="currentColor"/>
+</svg>
+<figcaption>The clock at E91;7 (about 23:31): hand 1 just before 0, hand 2 just past
+9, hand 3 half way from 1 to 2, hand 4 on 7.</figcaption>
+</figure>
+</div>
 <div class="block list">
 <ul>
-<li>The breath hand steps once per breath, landing on each mark, so it always points at the breath digit. It used to step once per beat (4 steps per mark), but then it looked like a beat hand while labelled breath</li>
-<li><strong>Noon (6;00) points straight up, midnight (0;00) straight down</strong>
+<li>Hand 1 is short and wide, hands 2 and 3 longer and thinner, hand 4 thin and coloured, like a second hand</li>
+<li>Hand 4 steps once per breath, landing on each mark, so it always points at the breath digit. It once stepped once per beat (4 steps per mark), but then it looked like a beat hand</li>
+<li>144 (dec) fine marks between the twelve are optional (clocks.dozenal.ca calls them bicia-marks)</li>
+<li><strong>Noon (600) points straight up, midnight (000) straight down</strong>
 <ul>
-<li>dawn ≈ 3;00 on the left, dusk ≈ 9;00 on the right (at the equinoxes)</li>
+<li>dawn ≈ 300 on the left, dusk ≈ 900 on the right (at the equinoxes)</li>
 <li><strong>Clockwise everywhere</strong> (bottom → left → top → right), both hemispheres - matches convention, and clocks are clockwise because they copied northern sundials</li>
 <li>matches the sun's path when facing south in the northern hemisphere, so a correctly oriented clock roughly agrees with a sundial</li>
 </ul></li>
-<li>Compared with the clocks at <a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a> (Paul Rapoport; reviewed 2026 CE): their "Diurnal 1" is the same design - one turn a day, 0 (midnight) at the bottom, 6 (noon) at the top, each hand twelve times faster than the next. They also offer a <strong>semidiurnal</strong> clock (the slow hand turns twice a day, like am / pm, with dozenal hands below it), and "signed" versions that count down to the next mark after half way (as "twenty to eight" does). Their readout is the same number as ours: noon is 600</li>
+<li><strong>The clock as a compass</strong> (rough): the sun's bearing in turns is about the time of day - north (000) at midnight, east (300) at dawn, south (600) at noon, west (900) at dusk. So:
+<ul>
+<li>northern hemisphere: lay the clock face up and point hand 1 at the sun; 0 points north and 6 south</li>
+<li>southern hemisphere (where the sun moves the other way, through the north): point 6 at the sun; hand 1 points north</li>
+<li>it is only rough: clocks keep zone time, not sun time (up to 30 moments, half an hour, apart in most zones, another 60 with daylight saving), and the sun's bearing doesn't change evenly, least of all in the tropics near noon. The 12-hour watch trick (south is half way between the hour hand and 12) has the same limits</li>
+</ul></li>
+<li>Compared with the clocks at <a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a> (Paul Rapoport; reviewed 2026 CE): Paludal's clock is their <strong>Diurnal 1</strong> - one turn a day ("diurnal", Latin <em>diurnus</em>, daily), 0 (midnight) at the bottom, 6 (noon) at the top, each hand twelve times faster than the next. Their readout (E51.E4) is the time format adopted, with a semicolon. Their other dials:
+<ul>
+<li><strong>Diurnal 2</strong>: 0 (midnight) at the top, noon at the bottom - the same way up as a compass</li>
+<li><strong>Diurnal 3</strong>: 0 at the top, but the day counted from noon, so 0 is noon (as astronomers counted days until 1925 CE, and Julian Day numbers still do)</li>
+<li><strong>Semidiurnal</strong>: the slow hand turns twice a day, like am / pm, with dozenal hands below it</li>
+<li><strong>Signed</strong> versions of each, which count down to the next mark after half way (as "twenty to eight" does)</li>
+<li>Their hand names are SDN place values on a hidden unit of 0;001 day, which is our moment: <strong>unqua-hand</strong> (×10 moments, our hand 2), <strong>nilqua-hand</strong> (×1 moment, hand 3) and <strong>uncia-hand</strong> (÷10 moment = a breath, hand 4); the slowest hand has no name. Nilqua could as well be nilcia, since 10^0 is 1 either way. Not adopted: they only work once the moment is taken as the unit, and uncia is close to our unc</li>
+</ul></li>
 </ul>
 </div>
 </section>
@@ -3449,7 +3900,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Decided:</strong> no daylight saving, for now.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> a 1-hour shift is half a chime (0;6), which changes the moment digits (6;45 becomes 6;X5). Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.</p>
+<p><strong>Why:</strong> a 1-hour shift is half a chime (60 moments), which changes the moment digits (645 becomes 6X5). Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> the clock never jumps, and neighbouring places stay on the same time all year.</p>
@@ -3473,148 +3924,148 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <tr>
 <th>City</th>
 <th>UTC now (standard time)</th>
-<th>Paludal (chimes)</th>
-<th>Local time when London is 6;00 (noon)</th>
+<th>Paludal (moments)</th>
+<th>Local time when London is 600 (noon)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Honolulu</td>
 <td>UTC-10</td>
-<td>UTC-5;00</td>
-<td>1;00</td>
+<td>UTC-500</td>
+<td>100</td>
 </tr>
 <tr>
 <td>Anchorage</td>
 <td>UTC-9</td>
-<td>UTC-4;60</td>
-<td>1;60</td>
+<td>UTC-460</td>
+<td>160</td>
 </tr>
 <tr>
 <td>Los Angeles, Vancouver</td>
 <td>UTC-8</td>
-<td>UTC-4;00</td>
-<td>2;00</td>
+<td>UTC-400</td>
+<td>200</td>
 </tr>
 <tr>
 <td>Denver</td>
 <td>UTC-7</td>
-<td>UTC-3;60</td>
-<td>2;60</td>
+<td>UTC-360</td>
+<td>260</td>
 </tr>
 <tr>
 <td>Chicago, Mexico City</td>
 <td>UTC-6</td>
-<td>UTC-3;00</td>
-<td>3;00</td>
+<td>UTC-300</td>
+<td>300</td>
 </tr>
 <tr>
 <td>New York, Toronto</td>
 <td>UTC-5</td>
-<td>UTC-2;60</td>
-<td>3;60</td>
+<td>UTC-260</td>
+<td>360</td>
 </tr>
 <tr>
 <td>Santiago</td>
 <td>UTC-4</td>
-<td>UTC-2;00</td>
-<td>4;00</td>
+<td>UTC-200</td>
+<td>400</td>
 </tr>
 <tr>
 <td>São Paulo, Buenos Aires</td>
 <td>UTC-3</td>
-<td>UTC-1;60</td>
-<td>4;60</td>
+<td>UTC-160</td>
+<td>460</td>
 </tr>
 <tr>
 <td>London, Reykjavik</td>
 <td>UTC</td>
 <td>UTC</td>
-<td>6;00</td>
+<td>600</td>
 </tr>
 <tr>
 <td>Paris, Berlin, Rome</td>
 <td>UTC+1</td>
-<td>UTC+0;60</td>
-<td>6;60</td>
+<td>UTC+060</td>
+<td>660</td>
 </tr>
 <tr>
 <td>Cairo, Johannesburg</td>
 <td>UTC+2</td>
-<td>UTC+1;00</td>
-<td>7;00</td>
+<td>UTC+100</td>
+<td>700</td>
 </tr>
 <tr>
 <td>Moscow, Istanbul</td>
 <td>UTC+3</td>
-<td>UTC+1;60</td>
-<td>7;60</td>
+<td>UTC+160</td>
+<td>760</td>
 </tr>
 <tr>
 <td>Dubai</td>
 <td>UTC+4</td>
-<td>UTC+2;00</td>
-<td>8;00</td>
+<td>UTC+200</td>
+<td>800</td>
 </tr>
 <tr>
 <td>Karachi</td>
 <td>UTC+5</td>
-<td>UTC+2;60</td>
-<td>8;60</td>
+<td>UTC+260</td>
+<td>860</td>
 </tr>
 <tr>
 <td>Delhi, Mumbai</td>
 <td>UTC+5:30</td>
-<td>UTC+2;90</td>
-<td>8;90</td>
+<td>UTC+290</td>
+<td>890</td>
 </tr>
 <tr>
 <td>Kathmandu</td>
 <td>UTC+5:45</td>
-<td>UTC+2;X6</td>
-<td>8;X6</td>
+<td>UTC+2X6</td>
+<td>8X6</td>
 </tr>
 <tr>
 <td>Dhaka</td>
 <td>UTC+6</td>
-<td>UTC+3;00</td>
-<td>9;00</td>
+<td>UTC+300</td>
+<td>900</td>
 </tr>
 <tr>
 <td>Bangkok, Jakarta</td>
 <td>UTC+7</td>
-<td>UTC+3;60</td>
-<td>9;60</td>
+<td>UTC+360</td>
+<td>960</td>
 </tr>
 <tr>
 <td>Beijing, Singapore, Perth</td>
 <td>UTC+8</td>
-<td>UTC+4;00</td>
-<td>X;00</td>
+<td>UTC+400</td>
+<td>X00</td>
 </tr>
 <tr>
 <td>Tokyo, Seoul</td>
 <td>UTC+9</td>
-<td>UTC+4;60</td>
-<td>X;60</td>
+<td>UTC+460</td>
+<td>X60</td>
 </tr>
 <tr>
 <td>Adelaide, Darwin</td>
 <td>UTC+9:30</td>
-<td>UTC+4;90</td>
-<td>X;90</td>
+<td>UTC+490</td>
+<td>X90</td>
 </tr>
 <tr>
 <td>Sydney, Melbourne, Brisbane</td>
 <td>UTC+10</td>
-<td>UTC+5;00</td>
-<td>E;00</td>
+<td>UTC+500</td>
+<td>E00</td>
 </tr>
 <tr>
 <td>Auckland</td>
 <td>UTC+12</td>
-<td>UTC+6;00</td>
-<td>0;00 (next day)</td>
+<td>UTC+600</td>
+<td>000 (next day)</td>
 </tr>
 </tbody>
 </table>
@@ -3667,6 +4118,15 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> no month name can be mistaken for another, and dates read as they do today.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> months are numbered from 1 (January 1 to December 10), not from 0.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> numbering from 0 (January 0, December E) would fit every month in one digit, but it is confusing: month 3 would be April. Dates name a day or month (the 3rd, the tenth month), so they count from 1; a time of day measures how much of the day has passed, so it counts from 0. Days of the month would otherwise have to start at 0 too, and computing already shows the trap: JavaScript numbers months 0 to 11, a well-known source of bugs. Fixed-width dates use two digits for the month anyway (6859-0X-03, as 2026-01-03 today), so nothing is lost.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> month numbers mean what they always have; only December's is written differently (10).</p>
 </div>
 <div class="block decided">
 <p><strong>Day of month (decided):</strong> written in dozenal, 1 to 27 (31 dec).</p>
@@ -4632,13 +5092,13 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <tr>
 <td>School day</td>
 <td>9:00-15:00 (6 h)</td>
-<td>4;60-7;60 (3 <abbr title="chime">ch</abbr>)</td>
+<td>460-760 (3 <abbr title="chime">ch</abbr>)</td>
 <td></td>
 </tr>
 <tr>
 <td>Working day</td>
 <td>9:00-17:00 (8 h)</td>
-<td>4;60-8;60 (4 <abbr title="chime">ch</abbr>)</td>
+<td>460-860 (4 <abbr title="chime">ch</abbr>)</td>
 <td></td>
 </tr>
 <tr>
@@ -5774,7 +6234,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </section>
 </section>
 </section>
-<section id="part-4-background" class="no-table">
+<section id="part-4-background" class="has-table">
 <h2>Part 4: Background</h2>
 <div class="block para">
 <p>Where the ideas came from, and what's still to decide.</p>
@@ -5799,6 +6259,23 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <li><strong>French Revolutionary decimal time</strong> (1793-1795 CE): 10 hours a day, 100 minutes an hour, 100 seconds a minute. Dropped after 18 months: every clock had to be replaced, and people saw little reason to change. The metric units brought in at the same time survived.</li>
 <li><strong>Swatch Internet Time</strong> (1998 CE): the day in 1,000 (dec) ".beats" of 86.4 s. Its "beat" is a different size from the Paludal beat (1.04 s).</li>
 <li><strong>Do-Gro-Mo</strong> (early DSA): do = 12, gro = 144, mo = 1,728 (dec). Adopted for spoken numbers, extended with bimo / trimo.</li>
+</ul>
+</div>
+</section>
+<section id="versions" class="has-table">
+<h3>Versions</h3>
+<div class="block decided">
+<p><strong>Decided:</strong> the spec carries a version number, like a software release: <strong>major.minor</strong>, starting at 0.1. The minor number goes up when decisions are added or changed. 1.0 is the first version shared with the Dozenal Society and Dozensonline, once the core open items are settled; after that the major number goes up for any change to a unit's size or definition. Version numbers are dozenal (0.9, 0.X, 0.E, 0.10), with a dot, not a semicolon, because 0.10 is the tenth (dec twelfth) version, not a fraction. Each version is tagged in git (v0.1).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> asked for (2026 CE) so the spec can be released like software: feedback can name the version it read, and the list below shows what changed between versions. Dozenal numbers follow the rule that every number in the system is dozenal.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> anyone can say which version they mean, and see what changed since.</p>
+</div>
+<div class="block list">
+<ul>
+<li><strong>0.1</strong> (5 Oct 6859 DH, 2026 CE): the first numbered version. New since the last draft: clock and compass diagrams; the clock has four hands, hand 1 to hand 4, one per digit (Paul Rapoport's Diurnal 1); time of day is written in moments, always three digits (E91;7, was E;917); months stay numbered from 1</li>
 </ul>
 </div>
 </section>

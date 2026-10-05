@@ -6,7 +6,8 @@
 -- 2. Every format: unit symbols. HTML gets <abbr> tooltips naming the unit; every format shows a
 --    prefix with Primel's arrows (tqop -> t↑op). LaTeX gets table column widths sized from content.
 --    Mermaid diagrams are drawn in HTML, kept as [mermaid] blocks in AsciiDoc, and included in
---    LaTeX as the PDFs mermaid-cli drew for the Makefile.
+--    LaTeX as the PDFs mermaid-cli drew for the Makefile. SVG figures (figures/*.svg) are
+--    inlined in HTML so they follow the page's colours, and in LaTeX use the PDFs rsvg-convert drew.
 -- 3. HTML only: build the nav from the sections into the `nav` variable for the template.
 
 local stringify = pandoc.utils.stringify
@@ -23,6 +24,21 @@ end
 ----------------------------------------------------------------------------------------------
 -- Pass 1: sections and blocks
 
+-- A paragraph holding only an image of an SVG figure: ![caption](figures/clock.svg)
+local function svg_figure(b)
+  if b.t ~= "Para" or #b.content ~= 1 or b.content[1].t ~= "Image" then return nil end
+  local img = b.content[1]
+  if img.src:match("%.svg$") then return img end
+end
+
+local function inline_svg(img)
+  local f = assert(io.open(img.src))
+  local svg = f:read("a"):gsub("^<%?xml.-%?>%s*", ""):gsub("%s+$", "")
+  f:close()
+  return pandoc.RawBlock("html", ('<figure class="figure">\n%s\n<figcaption>%s</figcaption>\n</figure>')
+                                   :format(svg, render(img.caption)))
+end
+
 local function slug(text)
   return (text:lower():gsub("[^a-z0-9]+", "-"):gsub("^%-+", ""):gsub("%-+$", ""))
 end
@@ -31,6 +47,7 @@ local function kind(b)
   if b.t == "Table" then return "table" end
   if b.t == "BulletList" or b.t == "OrderedList" then return "list" end
   if b.t == "CodeBlock" then return b.classes:includes("mermaid") and "diagram" or "code" end
+  if svg_figure(b) then return "figure" end
   if b.t == "Para" then
     local first = b.content[1]
     if first and first.t == "Strong" and stringify(first) == "Why:" then return "why" end
@@ -40,7 +57,7 @@ local function kind(b)
   return "para"
 end
 
-local MARKS_TABLE = { table = true, diagram = true, decided = true, why = true }
+local MARKS_TABLE = { table = true, diagram = true, figure = true, decided = true, why = true }
 
 local function wrap(b)
   local k = kind(b)
@@ -48,6 +65,8 @@ local function wrap(b)
     b = pandoc.Div({ b }, { class = "table-wrap" })
   elseif k == "diagram" then
     b = pandoc.RawBlock("html", '<pre class="mermaid">' .. escape(b.text) .. "</pre>")
+  elseif k == "figure" then
+    b = inline_svg(svg_figure(b))
   elseif k == "code" then
     b = pandoc.RawBlock("html", "<pre><code>" .. escape(b.text) .. "</code></pre>")
   end
@@ -277,6 +296,21 @@ local function latex_diagrams(doc)
   })
 end
 
+-- LaTeX: an SVG figure becomes the PDF the Makefile had rsvg-convert draw (out/figures/NAME.pdf),
+-- or, without one, a note saying where to see it.
+local function latex_figures(b)
+  local img = svg_figure(b)
+  if not img then return nil end
+  local path = "out/" .. img.src:gsub("%.svg$", ".pdf")
+  local f = io.open(path)
+  if f then
+    f:close()
+    img.src = path
+    return pandoc.Figure({ pandoc.Plain({ img }) }, { img.caption })
+  end
+  return pandoc.Para({ pandoc.Emph({ pandoc.Str("(Figure - see index.html for the drawing.)") }) })
+end
+
 -- <br> inside a table cell (the prefix matrix) is a line break in every output format
 local function RawInline(el)
   if el.format == "html" and el.text:match("^<br%s*/?>$") then return pandoc.LineBreak() end
@@ -319,5 +353,5 @@ if is_html then
 end
 return {
   { Inlines = Inlines, Table = Table, CodeBlock = CodeBlock, RawInline = RawInline },
-  FORMAT:match("latex") and { Pandoc = latex_diagrams } or {},
+  FORMAT:match("latex") and { Pandoc = latex_diagrams, Para = latex_figures } or {},
 }

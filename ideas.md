@@ -2,6 +2,8 @@
 
 Numbers are dozenal unless marked "(dec)".
 
+**Version 0.1**, 5 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.
+
 Paludal is a dozenal (base-12) system of units, built the way SI is built but counted in twelves.
 Time comes from a 24-hour day of 86,400 s (dec): the blink is 1/100,000 of a day (twelve to the fifth
 power, 25/72 s exactly), and every time unit up to the day is a power of twelve of it. Length comes from
@@ -151,7 +153,7 @@ to the spoken names dek and el.
 
 **Decided:** long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec).
 Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6859 DH), dates, times of day
-(E;X053), and digits after the point.
+(EX0;53), and digits after the point.
 
 **Why:** groups of three are the easiest for people to read, and they match how numbers are spoken
 (thousand / million, mo / bimo). The comma is free in both bases, since decimal uses a dot as the point and
@@ -243,7 +245,7 @@ the era is already written with years (CE / DH), so it costs nothing extra.
 
 **Decided:** the dozenal point (the semicolon) is said **"dit"**: π ≈ 3;18 = "three dit one eight", 0;6 = "zero dit
 six". The decimal point stays "point" (or "dot"). Times of day are said without it, like clock times today
-(E;91 = "el, nine-one").
+(E91 = "el, nine-one").
 
 **Why:** adopt prior art: "dit" is the established way to say the semicolon used as a dozenal point (the
 "Humphrey point"), and SDN uses it, in contrast to "dot" for a decimal point.
@@ -449,7 +451,7 @@ flowchart LR
 ### Rules of thumb
 
 - A cub of water weighs a lib (0.9994 at 20 °C). A dig-cube of water ≈ 1/1,000 lib ≈ 1 g.
-- Time of day = chime;moments (d;dd), like hours:minutes: 0;00 midnight, 3;00 dawn, 6;00 noon, 9;00 dusk.
+- Time of day = three digits of moments since midnight, like 24-hour time: 000 midnight, 300 dawn, 600 noon, 900 dusk.
 - A moment (50 s) is about a minute; a beat (1.04 s) is about a second.
 - 100 km/h ≈ 68 paces/breath; motorway limit 70 (105 km/h).
 - Water freezes at 0 tep, boils at ≈ 100 tep. Body ≈ 45;3 tep.
@@ -672,38 +674,49 @@ hour). Rejected: bell (sounds like the bel, B; ship's bells are half-hours), hor
 **Decided:** the **moment** (symbol **mt**) = 0;01 chime = 10 breaths = 50 s exactly - the dozenal minute.
 
 **Why:** time of day works like hours, minutes and seconds: three named parts. The chime is the hour, the
-moment the minute (two digits, read by the long hand against fine marks), the breath the second. The
+moment the minute (two digits, read from hands 2 and 3), the breath the second. The
 10-minute digit (0;1 chime) needs no name, just as "ten minutes" doesn't. "Wait a moment" already means about
 a minute, and the medieval moment was a unit of time (90 s).
 
 **Advantage:** the clock reads like hours, minutes and seconds, with a word people already use for about a minute.
 
-**Decided:** time of day is written **d;dd** (chime; moments) or **d;ddd** with breaths - like 21:45 and 21:45:30.
+**Decided:** time of day is written as **moments since midnight, always three digits**, with breaths after
+the dozenal point: **E91** (about 23:30), or **E91;7** to the breath. Leading zeros are required: midnight is
+000, and 051 is about 00:51.
 
-**Why:** people handle 3-digit groups more easily than 4, the first digit matches the clock dial, and the
-groups match the clock's three hands.
+**Why:** adopt prior art: Paul Rapoport's dozenal clocks (clocks.dozenal.ca) already read this way (E51.E4),
+with a dot where Paludal uses the semicolon. Everyday times then need no punctuation, like the 24-hour "2330"
+on timetables, and three digits is the easy group size. A time is a count of a named unit, the moment, and
+each digit is one hand on the clock: hands 1 to 3 before the point, hand 4 after it. The first digit is
+still the chime. Leading zeros, as in 24-hour "0051", keep every time three digits long, so the first digit
+is always the chime and times line up in tables. Replaces the earlier chime;moments form (E;91), which put the
+point after the first digit.
 
-**Advantage:** times are short to write, and read straight off the clock's hands.
+**Advantage:** times are three digits with no punctuation, read straight off the clock's hands, and match
+existing dozenal clocks.
 
 | Time   | Chime | Moments | Breath | Reads                          |
 |--------|-------|---------|--------|--------------------------------|
-| E;917  | E     | 91      | 7      | el chimes, 91 moments, 7 breaths |
-| 6;00   | 6     | 00      |        | noon                           |
+| E91;7  | E     | 91      | 7      | el chimes, 91 moments, 7 breaths |
+| 600    | 6     | 00      |        | noon                           |
+| 051    | 0     | 51      |        | about 00:51                    |
 
-- 0;00 = midnight, 6;00 = noon
-- the number is in chimes: the time 9;3X0 is the fraction 0;93X day
-- durations use the same form: +1;30
+- 000 = midnight, 600 = noon
+- the number is in moments: the time 93X is the fraction 0;93X day, and the same three digits are the angle
+  of hand 1 and the compass bearing in thousandths of a turn (see Angle)
+- durations are in moments too: 130 mt is an hour and a half (or 1;3 ch)
 
-**Decided:** times more precise than a breath just add digits, with no separator: E;X053 (3 blinks past
-E;X05). On screens, the extra digits are shown smaller or dimmer, like the hundredths on a stopwatch.
+**Decided:** times more precise than a breath just add digits after it: EX0;53 (3 blinks past EX0;5). On
+screens, the extra digits are shown smaller or dimmer, like the hundredths on a stopwatch.
 
-**Why:** a time of day is a single number - chimes since midnight - so times can be subtracted and compared
-directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X05;3) would break that, and a space
-(E;X05 3) makes the digits look unrelated. Decimal times do the same: 9.58 s, 1:23.45 on a stopwatch.
+**Why:** a time of day is a single number - moments since midnight - so times can be subtracted and compared
+directly (EX0;5 - 930 = 270;5 moments ≈ 5 h 10 min). A second semicolon (EX0;5;3) would break that, and a space
+(EX0;5 3) makes the digits look unrelated. Decimal times do the same: 9.58 s, 1:23.45 on a stopwatch.
 
 **Advantage:** any two times can be subtracted or compared as ordinary numbers, at any precision.
 
-- spoken like "nine forty-five": E;91 = "el, nine-one"; 6;00 = "six"; with breaths, "el, nine-one, seven"
+- spoken like "nine forty-five": E91 = "el, nine-one"; 600 = "six"; 051 = "zero, five-one"; with breaths,
+  "el, nine-one, seven"
 
 ### Definition of time
 
@@ -1191,7 +1204,7 @@ also still proposed), and that's the same number as libs of water per square pac
 
 **Decided:** angles are measured in **turns**, written as dozenal fractions.
 
-**Why:** it matches the clock: the chime hand turns once a day, so the time of day in days *is* the angle of
+**Why:** it matches the clock: hand 1 turns once a day, so the time of day in days *is* the angle of
 the hand (0;1 turn = one chime on the dial). The common angles become round: right angle 0;3, 30° is 0;1,
 60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward
 (90° = 76°, 45° = 39°), because 360 is a decimal-era choice.
@@ -1217,11 +1230,18 @@ symbol may clash with an SI one.
 | 0;001  | 0.208         | finest everyday step |
 
 - Compass bearings as three digits of a turn: 000 north, 300 east, 600 south, 900 west
+  - between them: 160 north-east, 460 south-east, 760 south-west, X60 north-west
+  - a bearing and a time of day are the same three digits: the time is in thousandths of a day, the
+    bearing in thousandths of a turn, so at 600 hand 1 points at 600 on the dial
+  - in the northern hemisphere the sun's bearing is roughly the time of day: 000 at midnight, 600 at noon
+    (so a clock can find north - see Analogue clocks)
 - Latitude and longitude in turns: one navis (930 p) along a meridian is about 0;0001 turn of latitude
 - Three digits act as "more degrees": 1,000; steps per turn (1,728 dec, 0.208° each), and every common angle
   is a round whole number: right angle 300, 60° 200, 45° 160, 30° 100. A right angle of 1,000; adds nothing
   over this, since 4 already divides 100;.
 - 1 turn = 2π radians = 6;34941697 radians
+
+![Compass points as bearings in turns: the cardinal points are 000, 300, 600, 900 and the points between them 160, 460, 760, X60. Each of the twelve marks is 0;1 turn (100).](figures/compass.svg)
 
 ## Constants
 
@@ -1312,24 +1332,24 @@ How the units meet everyday life: clocks and calendars, money, changeover, stand
 ## A day in Paludal
 
 **Draft (not decided):** a walk through one ordinary day, for someone seeing the system for the first time.
-Times are chime;moments (6;00 is noon). Values are rounded the way a label or sign would be.
+Times are moments since midnight (600 is noon). Values are rounded the way a label or sign would be.
 
 | Time | What happens | Paludal | Today |
 |---|---|---|---|
-| 3;30 | The alarm goes off. The forecast says 18° now, top of 28° | 18 °t, 28 °t | 6:30 am, 14 °C, 22 °C |
-| 3;76 | A regular coffee and two eggs | 250 tccu (357 mL), 50 tcli each | 7:15 am, 12 oz coffee (355 mL), 60 g eggs |
-| 4;20 | Drive to work: 4;9 iters, about 26 moments door to door, 40 on the signs | 4;9 ir, 26 mt, 40 p/br | 8:20 am, 12 km, 25 min, 60 km/h |
-| 6;30 | Lunch break | 30 mt (0;3 ch) | 12:30 pm, 30 min |
-| 6;60 | Back to work | | 1:00 pm |
-| 8;76 | Fill up on the way home: 1X;7 cubs at $3;56 a cub. The family car uses 14;4 cu/100 ir, so the drive to work took 0;66 cu, about $1;X6 | 1X;7 cu for $66, 0;66 cu for $1;X6 | 5:15 pm, 40 L at $1.95/L = $78; 1 L, $1.87, at 8 L/100 km |
-| 8;90 | An after-work run: 2 iters in 30 moments | 2 ir, 30 mt | 5:30 pm, 5 km in 30 min |
-| 9;46 | Shopping: mince, milk and flour | 0;3 li, 1;2 cu, 0;7 li | 6:45 pm, 450 g, 2 L, 1 kg |
-| 9;46 | A roast goes in for 0;9 chime | 1X0 °t for 0;9 ch (90 mt) | 180 °C for 1½ hours |
-| E;30 | Bed, for 4 chimes of sleep | 4 ch | 10:30 pm, 8 hours |
+| 330 | The alarm goes off. The forecast says 18° now, top of 28° | 18 °t, 28 °t | 6:30 am, 14 °C, 22 °C |
+| 376 | A regular coffee and two eggs | 250 tccu (357 mL), 50 tcli each | 7:15 am, 12 oz coffee (355 mL), 60 g eggs |
+| 420 | Drive to work: 4;9 iters, about 26 moments door to door, 40 on the signs | 4;9 ir, 26 mt, 40 p/br | 8:20 am, 12 km, 25 min, 60 km/h |
+| 630 | Lunch break | 30 mt (0;3 ch) | 12:30 pm, 30 min |
+| 660 | Back to work | | 1:00 pm |
+| 876 | Fill up on the way home: 1X;7 cubs at $3;56 a cub. The family car uses 14;4 cu/100 ir, so the drive to work took 0;66 cu, about $1;X6 | 1X;7 cu for $66, 0;66 cu for $1;X6 | 5:15 pm, 40 L at $1.95/L = $78; 1 L, $1.87, at 8 L/100 km |
+| 890 | An after-work run: 2 iters in 30 moments | 2 ir, 30 mt | 5:30 pm, 5 km in 30 min |
+| 946 | Shopping: mince, milk and flour | 0;3 li, 1;2 cu, 0;7 li | 6:45 pm, 450 g, 2 L, 1 kg |
+| 946 | A roast goes in for 0;9 chime | 1X0 °t for 0;9 ch (90 mt) | 180 °C for 1½ hours |
+| E30 | Bed, for 4 chimes of sleep | 4 ch | 10:30 pm, 8 hours |
 
 - Prices use the proposed dozenal dollar: $1 stays $1, split into 100; (144 dec) parts, so $3;56 is $3.46
   (see Money)
-- The clock reads like a 24-hour clock halved: 3;30 is a quarter past the third chime (6:30 am)
+- The clock reads like a 24-hour clock halved: 330 is a quarter past the third chime (6:30 am)
 - Every step is twelve, so the common fractions are single digits: 30 moments is 0;3 chime (a quarter),
   0;6 is a half, 0;4 a third
 
@@ -1344,38 +1364,70 @@ The time units themselves are in Part 2 (Time).
 **Why:** one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest,
 and clockwise keeps the convention people already know.
 The design, and the idea of splitting the day by twelve, then twelve, then twelve as the basis of Paludal time,
-came from Paul Rapoport's Diurnal clock (https://clocks.dozenal.ca).
+came from Paul Rapoport's Diurnal 1 clock (https://clocks.dozenal.ca).
 
 **Advantage:** the whole day is visible at once, and the hand follows the sun.
 
-Four hands - hour, minute and second, plus a light beat hand:
+**Decided:** four hands, each turning twelve times faster than the one before, so each hand shows one digit
+of the time: at E91;7 they point at E, 9, 1 and 7. The hands are named after the digit they show: **hand 1**
+to **hand 4** (said "hand two", not "second hand").
 
-| Hand    | Turns once per | Reads         | Dial                                   | Like        |
-|---------|----------------|---------------|----------------------------------------|-------------|
-| Chime   | day            | chime (0-E)   | 12 marks                               | hour hand   |
-| Moment  | chime (2 h)    | moments 00-EE | 12 marks + 144 (dec) fine marks        | minute hand |
-| Breath  | moment (50 s)  | breath (0-E)  | 12 marks; steps once per breath (onto each mark) | second hand |
-| Beat    | moment (50 s)  | beat (4 per breath) | steps once per beat; thin and light grey, like the dial | ticking second hand |
+**Why:** with one hand per digit the time reads straight off the hands, every hand reads the same twelve
+marks, and the clock is the same as Paul Rapoport's Diurnal 1 (prior art adopted). The earlier design had a
+chime, moment and breath hand plus a beat hand: the moment hand showed two digits against 144 fine marks, and
+the breath hand turned 144 times faster than it, not twelve. Hour, minute and second hand don't fit four
+dozenal hands, and "second hand" already means something else. The beat hand was dropped: it shows no digit
+and adds clutter (clocks.dozenal.ca leaves out a fifth hand for the same reason).
 
-- The breath hand steps once per breath, landing on each mark, so it always points at the breath digit.
-  It used to step once per beat (4 steps per mark), but then it looked like a beat hand while labelled breath
-- **Noon (6;00) points straight up, midnight (0;00) straight down**
-  - dawn ≈ 3;00 on the left, dusk ≈ 9;00 on the right (at the equinoxes)
+**Advantage:** the time is read off the hands digit by digit, on the same dial as an existing dozenal clock.
+
+| Hand   | Turns once per        | Shows                   | At E91;7 | Like        |
+|--------|-----------------------|-------------------------|----------|-------------|
+| Hand 1 | day                   | chime                   | E        | hour hand   |
+| Hand 2 | chime (2 h)           | dozens of moments       | 9        |             |
+| Hand 3 | 10 moments (10 min)   | moments                 | 1        | minute hand |
+| Hand 4 | moment (50 s)         | breath                  | 7        | second hand |
+
+![The clock at E91;7 (about 23:31): hand 1 just before 0, hand 2 just past 9, hand 3 half way from 1 to 2, hand 4 on 7.](figures/clock.svg)
+
+- Hand 1 is short and wide, hands 2 and 3 longer and thinner, hand 4 thin and coloured, like a second hand
+- Hand 4 steps once per breath, landing on each mark, so it always points at the breath digit.
+  It once stepped once per beat (4 steps per mark), but then it looked like a beat hand
+- 144 (dec) fine marks between the twelve are optional (clocks.dozenal.ca calls them bicia-marks)
+- **Noon (600) points straight up, midnight (000) straight down**
+  - dawn ≈ 300 on the left, dusk ≈ 900 on the right (at the equinoxes)
   - **Clockwise everywhere** (bottom → left → top → right), both hemispheres - matches convention,
     and clocks are clockwise because they copied northern sundials
   - matches the sun's path when facing south in the northern hemisphere, so a correctly
     oriented clock roughly agrees with a sundial
-- Compared with the clocks at https://clocks.dozenal.ca (Paul Rapoport; reviewed 2026 CE): their "Diurnal 1"
-  is the same design - one turn a day, 0 (midnight) at the bottom, 6 (noon) at the top, each hand twelve
-  times faster than the next. They also offer a **semidiurnal** clock (the slow hand turns twice a day, like
-  am / pm, with dozenal hands below it), and "signed" versions that count down to the next mark after
-  half way (as "twenty to eight" does). Their readout is the same number as ours: noon is 600
+- **The clock as a compass** (rough): the sun's bearing in turns is about the time of day - north (000) at
+  midnight, east (300) at dawn, south (600) at noon, west (900) at dusk. So:
+  - northern hemisphere: lay the clock face up and point hand 1 at the sun; 0 points north and 6 south
+  - southern hemisphere (where the sun moves the other way, through the north): point 6 at the sun; hand 1
+    points north
+  - it is only rough: clocks keep zone time, not sun time (up to 30 moments, half an hour, apart in most
+    zones, another 60 with daylight saving), and the sun's bearing doesn't change evenly, least of all in the tropics near noon.
+    The 12-hour watch trick (south is half way between the hour hand and 12) has the same limits
+- Compared with the clocks at https://clocks.dozenal.ca (Paul Rapoport; reviewed 2026 CE): Paludal's clock
+  is their **Diurnal 1** - one turn a day ("diurnal", Latin *diurnus*, daily), 0 (midnight) at the bottom,
+  6 (noon) at the top, each hand twelve times faster than the next. Their readout (E51.E4) is the time
+  format adopted, with a semicolon. Their other dials:
+  - **Diurnal 2**: 0 (midnight) at the top, noon at the bottom - the same way up as a compass
+  - **Diurnal 3**: 0 at the top, but the day counted from noon, so 0 is noon (as astronomers counted days
+    until 1925 CE, and Julian Day numbers still do)
+  - **Semidiurnal**: the slow hand turns twice a day, like am / pm, with dozenal hands below it
+  - **Signed** versions of each, which count down to the next mark after half way (as "twenty to eight" does)
+  - Their hand names are SDN place values on a hidden unit of 0;001 day, which is our moment:
+    **unqua-hand** (×10 moments, our hand 2), **nilqua-hand** (×1 moment, hand 3) and **uncia-hand**
+    (÷10 moment = a breath, hand 4); the slowest hand has no name. Nilqua could as well be nilcia, since
+    10^0 is 1 either way. Not adopted: they only work once the moment is taken as the unit, and uncia is
+    close to our unc
 
 ### Daylight saving and time zones
 
 **Decided:** no daylight saving, for now.
 
-**Why:** a 1-hour shift is half a chime (0;6), which changes the moment digits (6;45 becomes 6;X5).
+**Why:** a 1-hour shift is half a chime (60 moments), which changes the moment digits (645 becomes 6X5).
 Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and
 Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.
 
@@ -1391,31 +1443,31 @@ To review later.
 
 Standard time (no daylight saving):
 
-| City | UTC now (standard time) | Paludal (chimes) | Local time when London is 6;00 (noon) |
+| City | UTC now (standard time) | Paludal (moments) | Local time when London is 600 (noon) |
 |---|---|---|---|
-| Honolulu | UTC-10 | UTC-5;00 | 1;00 |
-| Anchorage | UTC-9 | UTC-4;60 | 1;60 |
-| Los Angeles, Vancouver | UTC-8 | UTC-4;00 | 2;00 |
-| Denver | UTC-7 | UTC-3;60 | 2;60 |
-| Chicago, Mexico City | UTC-6 | UTC-3;00 | 3;00 |
-| New York, Toronto | UTC-5 | UTC-2;60 | 3;60 |
-| Santiago | UTC-4 | UTC-2;00 | 4;00 |
-| São Paulo, Buenos Aires | UTC-3 | UTC-1;60 | 4;60 |
-| London, Reykjavik | UTC | UTC | 6;00 |
-| Paris, Berlin, Rome | UTC+1 | UTC+0;60 | 6;60 |
-| Cairo, Johannesburg | UTC+2 | UTC+1;00 | 7;00 |
-| Moscow, Istanbul | UTC+3 | UTC+1;60 | 7;60 |
-| Dubai | UTC+4 | UTC+2;00 | 8;00 |
-| Karachi | UTC+5 | UTC+2;60 | 8;60 |
-| Delhi, Mumbai | UTC+5:30 | UTC+2;90 | 8;90 |
-| Kathmandu | UTC+5:45 | UTC+2;X6 | 8;X6 |
-| Dhaka | UTC+6 | UTC+3;00 | 9;00 |
-| Bangkok, Jakarta | UTC+7 | UTC+3;60 | 9;60 |
-| Beijing, Singapore, Perth | UTC+8 | UTC+4;00 | X;00 |
-| Tokyo, Seoul | UTC+9 | UTC+4;60 | X;60 |
-| Adelaide, Darwin | UTC+9:30 | UTC+4;90 | X;90 |
-| Sydney, Melbourne, Brisbane | UTC+10 | UTC+5;00 | E;00 |
-| Auckland | UTC+12 | UTC+6;00 | 0;00 (next day) |
+| Honolulu | UTC-10 | UTC-500 | 100 |
+| Anchorage | UTC-9 | UTC-460 | 160 |
+| Los Angeles, Vancouver | UTC-8 | UTC-400 | 200 |
+| Denver | UTC-7 | UTC-360 | 260 |
+| Chicago, Mexico City | UTC-6 | UTC-300 | 300 |
+| New York, Toronto | UTC-5 | UTC-260 | 360 |
+| Santiago | UTC-4 | UTC-200 | 400 |
+| São Paulo, Buenos Aires | UTC-3 | UTC-160 | 460 |
+| London, Reykjavik | UTC | UTC | 600 |
+| Paris, Berlin, Rome | UTC+1 | UTC+060 | 660 |
+| Cairo, Johannesburg | UTC+2 | UTC+100 | 700 |
+| Moscow, Istanbul | UTC+3 | UTC+160 | 760 |
+| Dubai | UTC+4 | UTC+200 | 800 |
+| Karachi | UTC+5 | UTC+260 | 860 |
+| Delhi, Mumbai | UTC+5:30 | UTC+290 | 890 |
+| Kathmandu | UTC+5:45 | UTC+2X6 | 8X6 |
+| Dhaka | UTC+6 | UTC+300 | 900 |
+| Bangkok, Jakarta | UTC+7 | UTC+360 | 960 |
+| Beijing, Singapore, Perth | UTC+8 | UTC+400 | X00 |
+| Tokyo, Seoul | UTC+9 | UTC+460 | X60 |
+| Adelaide, Darwin | UTC+9:30 | UTC+490 | X90 |
+| Sydney, Melbourne, Brisbane | UTC+10 | UTC+500 | E00 |
+| Auckland | UTC+12 | UTC+600 | 000 (next day) |
 
 ### Years
 
@@ -1463,6 +1515,17 @@ tetra ... octa, ennea, deca), which shorten to Oct and Dec and clash the same wa
 mensis), which reads as English "men" (Hexmen, Septmen).
 
 **Advantage:** no month name can be mistaken for another, and dates read as they do today.
+
+**Decided:** months are numbered from 1 (January 1 to December 10), not from 0.
+
+**Why:** numbering from 0 (January 0, December E) would fit every month in one digit, but it is confusing:
+month 3 would be April. Dates name a day or month (the 3rd, the tenth month), so they count from 1; a time
+of day measures how much of the day has passed, so it counts from 0. Days of the month would otherwise have to
+start at 0 too, and computing already shows the trap: JavaScript numbers months 0 to 11, a well-known source
+of bugs. Fixed-width dates use two digits for the month anyway (6859-0X-03, as 2026-01-03 today), so
+nothing is lost.
+
+**Advantage:** month numbers mean what they always have; only December's is written differently (10).
 
 **Day of month (decided):** written in dozenal, 1 to 27 (31 dec).
 
@@ -1706,8 +1769,8 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 | Short meeting, lunch break | 30 min | 0;3 ch (30 mt) |  |
 | Lesson, meeting | 45 min | 0;46 ch (46 mt) | 0;4 ch (40 min) or 0;5 ch (50 min) |
 | Long meeting, lecture | 60 min | 0;6 ch (60 mt) |  |
-| School day | 9:00-15:00 (6 h) | 4;60-7;60 (3 ch) |  |
-| Working day | 9:00-17:00 (8 h) | 4;60-8;60 (4 ch) |  |
+| School day | 9:00-15:00 (6 h) | 460-760 (3 ch) |  |
+| Working day | 9:00-17:00 (8 h) | 460-860 (4 ch) |  |
 | Working week (AU) | 38 h | 17 ch |  |
 | Working week (US) | 40 h | 18 ch |  |
 | Night's sleep | 8 h | 4 ch |  |
@@ -2053,6 +2116,25 @@ Where the ideas came from, and what's still to decide.
 - **Swatch Internet Time** (1998 CE): the day in 1,000 (dec) ".beats" of 86.4 s. Its "beat" is a different
   size from the Paludal beat (1.04 s).
 - **Do-Gro-Mo** (early DSA): do = 12, gro = 144, mo = 1,728 (dec). Adopted for spoken numbers, extended with bimo / trimo.
+
+## Versions
+
+**Decided:** the spec carries a version number, like a software release: **major.minor**, starting at 0.1.
+The minor number goes up when decisions are added or changed. 1.0 is the first version shared with the
+Dozenal Society and Dozensonline, once the core open items are settled; after that the major number goes up
+for any change to a unit's size or definition. Version numbers are dozenal (0.9, 0.X, 0.E, 0.10), with a
+dot, not a semicolon, because 0.10 is the tenth (dec twelfth) version, not a fraction. Each version is
+tagged in git (v0.1).
+
+**Why:** asked for (2026 CE) so the spec can be released like software: feedback can name the version it
+read, and the list below shows what changed between versions. Dozenal numbers follow the rule that every
+number in the system is dozenal.
+
+**Advantage:** anyone can say which version they mean, and see what changed since.
+
+- **0.1** (5 Oct 6859 DH, 2026 CE): the first numbered version. New since the last draft: clock and compass
+  diagrams; the clock has four hands, hand 1 to hand 4, one per digit (Paul Rapoport's Diurnal 1); time of
+  day is written in moments, always three digits (E91;7, was E;917); months stay numbered from 1
 
 ## Open items / next steps
 
