@@ -1278,7 +1278,7 @@ people, adults or children. Turns are given in thousandths, the bearing digits.
 - The sky turns once a day, so it turns 0;001 turn (one bearing step) per moment: the sun and stars move
   about one fist every 40 moments (0;4 chime). Exact on the celestial equator, slower near the poles
 - The same digits come out in today's minutes only by coincidence: a dozen moments is 10 minutes, so 40
-  moments is 40 minutes and 60 moments an hour - but 45 moments is 45;8 (dec) minutes, not 45
+  moments is 40 minutes and 60 moments an hour - but 45 moments is about 44 minutes, not 45
 
 ## Constants
 
