@@ -1271,12 +1271,14 @@ people, adults or children. Turns are given in thousandths, the bearing digits.
 | Thumb, width                         | 2             | 0;00X (X)        | X moments          |
 | Three middle fingers                 | 5             | 0;02 (20)        | 20 moments         |
 | Fist, across the knuckles            | 10            | 0;04 (40)        | 40 moments         |
-| Index to little finger, spread       | 15            | 0;06 (60)        | 60 moments (an hour) |
+| Index to little finger, spread       | 15            | 0;06 (60)        | 60 moments (0;6 ch) |
 | Thumb to little finger, spread       | 20-25         | 0;08-0;0X (80-X0) | 80-X0 moments     |
 
 - Fist and spread hand are round numbers of turns: 0;04 and 0;06 are exactly 10° and 15°
 - The sky turns once a day, so it turns 0;001 turn (one bearing step) per moment: the sun and stars move
-  about one fist every 40 moments (40 minutes). Exact on the celestial equator, slower near the poles
+  about one fist every 40 moments (0;4 chime). Exact on the celestial equator, slower near the poles
+- The same digits come out in today's minutes only by coincidence: a dozen moments is 10 minutes, so 40
+  moments is 40 minutes and 60 moments an hour - but 45 moments is 45;8 (dec) minutes, not 45
 
 ## Constants
 
