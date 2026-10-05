@@ -96,6 +96,7 @@ remember. The rule used to say "no clash with existing everyday words", which co
 | 1/100 pace             | dig   | di     | ≈ 1.01 cm           | Latin digitus, finger (Roman digit ≈ 1.85 cm)     | digit                        |
 | 0;2 pace               | span  | sp     | ≈ 24.2 cm           | English span, a hand's spread                     | span                         |
 | 0;4 pace               | ulna  | ul     | ≈ 48.4 cm           | Latin ulna, forearm (elbow to fingertip)          | ell                          |
+| 0;6 pace (a step)      | gress | gs     | ≈ 72.6 cm           | Latin gressus, a step (Roman gradus = ½ passus)   | progress, egress             |
 | 1,000 paces (distance)  | iter  | ir     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
 | 930 paces (sea, air)   | navis | na     | ≈ 1.935 km          | Latin navis, ship                                 | navy, navigate               |
 | Star distances         | parax | px     | 2.30 pc, 7.5 ly     | parallaxis, astronomers' Latin (from Greek)       | parallax                     |
@@ -120,7 +121,7 @@ remember. The rule used to say "no clash with existing everyday words", which co
 
 # Part 1: Dozenal numbers
 
-How dozenal numbers are written, said and typed: the digits, the dozenal point, the spoken names, phone numbers and keypads.
+How dozenal numbers are written, said and typed: the digits, the dozenal point, the spoken names, hexadecimal, phone numbers and keypads.
 
 ## Digits
 
@@ -248,6 +249,60 @@ six". The decimal point stays "point" (or "dot"). Times of day are said without 
 **Advantage:** a spoken number carries its base, the way the written semicolon does, so "three dit one eight"
 can't be heard as 3.18.
 
+## Hexadecimal
+
+Conversions between hexadecimal (base 16, used in computing) and dozenal, with decimal alongside. In prose,
+hex values are marked 0x: hex E is fourteen, but dozenal E is el (eleven).
+
+Hex to dozenal:
+
+| Hex         | Dozenal         | Decimal       |
+|-------------|-----------------|---------------|
+| A           | X               | 10            |
+| B           | E               | 11            |
+| C           | 10              | 12            |
+| F           | 13              | 15            |
+| 10          | 14              | 16            |
+| 20          | 28              | 32            |
+| 40          | 54              | 64            |
+| 64          | 84              | 100           |
+| 80          | X8              | 128           |
+| FF          | 193             | 255           |
+| 100         | 194             | 256           |
+| 400         | 714             | 1,024         |
+| 1000        | 2,454           | 4,096         |
+| 10000       | 31,E14          | 65,536        |
+| 100000      | 426,994         | 1,048,576     |
+| 40000000    | 25E,716,454     | 1,073,741,824 |
+| 100000000   | 9EX,461,594     | 4,294,967,296 |
+| 0.8         | 0;6             | 0.5           |
+| 0.4         | 0;3             | 0.25          |
+| 0.C         | 0;9             | 0.75          |
+| 0.2         | 0;16            | 0.125         |
+| 0.1         | 0;09            | 0.0625        |
+
+Dozenal to hex:
+
+| Dozenal           | Hex             | Decimal           |
+|-------------------|-----------------|-------------------|
+| 10                | C               | 12                |
+| 100               | 90              | 144               |
+| 1,000             | 6C0             | 1,728             |
+| 10,000            | 5100            | 20,736            |
+| 100,000           | 3CC00           | 248,832           |
+| 1,000,000         | 2D9000          | 2,985,984         |
+| 0;6               | 0.8             | 0.5               |
+| 0;4               | 0.555… (repeats) | 0.333…           |
+| 0;3               | 0.4             | 0.25              |
+| 0;2               | 0.2AAA… (repeats) | 0.1666…         |
+| 0;1               | 0.1555… (repeats) | 0.0833…         |
+
+- Every hex (and binary) fraction ends in dozenal: 100 (144 dec) is 0x90, a multiple of 0x10 (16 dec), so
+  each hex place needs at most two dozenal places (0x0.1 = 0;09)
+- Not the other way: thirds repeat in hex, as they do in binary and decimal. Quarters are the common ground:
+  0x0.4 = 0;3 = 0.25 (dec)
+- Memory sizes: 1 KiB = 714 bytes, 1 MiB = 426,994, 1 GiB = 25E,716,454, 4 GiB (2^32 dec) = 9EX,461,594
+
 ## Phone numbers and keypads
 
 **Decided:** phone numbers stay as they are, and phone keypads get a dozenal layout (below).
@@ -359,6 +414,7 @@ numbers; written as SI fractions most of them would be long:
 | 1/100 pace        | dig  | 1.01 cm          | Latin digitus, finger |
 | 0;2 pace          | span | 24.2 cm          | English span, a hand's spread |
 | 0;4 pace          | ulna | 48.4 cm          | Latin ulna, forearm |
+| 0;6 pace          | gress | 72.6 cm         | Latin gressus, a step |
 | 1,000 paces        | iter | 2.51 km          | Latin iter, road, journey |
 | 930 paces (sea, air) | navis | 1.935 km      | Latin navis, ship |
 | Area (1,000 p²)   | ager | 3,646 m²         | Latin ager, field |
@@ -484,7 +540,7 @@ time. Sizes that have their own name are in bold; use the name rather than the p
 | tcim<br>4.21 mV | bcim<br>50.5 mV | ucim<br>606 mV | **imp** im<br>7.27 V | uqim<br>87.2 V | bqim<br>1.05 kV | tqim<br>12.6 kV |
 
 - Named sizes that aren't a single prefix step: **beat** = 3 bl; **chime** = 10,000 bl (qqbl, 2 h); the day =
-  100,000 bl (pqbl); **span** = 0;2 p; **ulna** = 0;4 p; **navis** = 930 p; **parax** (star distances);
+  100,000 bl (pqbl); **span** = 0;2 p; **ulna** = 0;4 p; **gress** = 0;6 p; **navis** = 930 p; **parax** (star distances);
   **ager** = 1,000 p² (tqp² would be read as (tqp)², so it gets a name)
 - Prefixed temperatures use the plain-text symbol te (tcte), as °C is rarely prefixed; they're for science only
 - tqbl is 0;1 chime (10 minutes), which needs no name, as "ten minutes" doesn't
@@ -519,6 +575,7 @@ its first and last letters (os) would be the onus, and "op" isn't a common word 
 | dig    | di     | length |
 | span   | sp     | length |
 | ulna   | ul     | length |
+| gress  | gs     | length |
 | iter   | ir     | length |
 | navis  | na     | length (sea and air) |
 | parax  | px     | length (stars) |
@@ -735,6 +792,21 @@ came from it. Rejected: cubit (Latin cubitum, elbow), which was liked, but its s
 
 **Advantage:** fills the 30-90 cm gap with a body measure, and suits a board ruler.
 
+**Decided:** the **gress** (symbol **gs**) = 0;6 pace = 6 uncs ≈ 72.6 cm, a single step (half a pace).
+
+**Why:** the pace is the Roman *passus*, a double step (from one heel striking to the same heel striking
+again), but in English today "pace" usually means a single step, so someone pacing out a room would count
+twice as many paces as there are. The gress names the single step. Prior art: the Roman *gradus* (step) was
+exactly half a passus, about 74 cm. Latin *gressus* is also a step (as in progress, egress). Rejected:
+gradus (six letters, and its short form grad is the gradian), step (its symbols clash: st is the stone,
+sp the span), and halving the pace itself (c = 4 × 10^7 in the table above), which shrinks every unit built
+on it.
+
+**Advantage:** distances can be paced out the way people walk them - one gress per step, two per pace - and
+the 60-90 cm range gets a body measure.
+
+- Two gresses make a pace, so 1,000 paces (an iter) is 2,000 steps
+
 **Decided:** the **iter** (symbol **ir**) = 1,000 paces (1,728 dec) ≈ 2.51 km, the unit for distances.
 
 **Why:** a thousand paces is the Roman mile (mille passus), so it's the natural distance unit. Latin
@@ -756,6 +828,8 @@ and it's the sound people already know from itinerary.
   - (equivalently 2 × 10^10 paces per day)
 - Light travels 2 × 10^8 paces in one breath ≈ 1,249,135 km (dec), about 3.25× the Earth-Moon distance
 - 1 iter = 1,000 paces = 2.51 km is literally a "thousand paces" (Latin mille passus = Roman mile)
+- Half an iter, 0;6 ir (600 paces, 864 dec) ≈ 1.26 km, about a 15-minute walk, will be common. It needs no
+  name of its own: halves are a single digit, and people already say "half a k" or "half a mile"
 - 15 iters ≈ 42.67 km ≈ a marathon (marathon = 14;99 iters)
 
 **Decided:** the **navis** (symbol **na**) = 930 paces (1,332 dec) ≈ 1.935 km, the sea and air mile, replacing
@@ -1920,7 +1994,7 @@ Where the ideas came from, and what's still to decide.
 - Same-name units within a few percent: say "paludal cup" in full where ambiguous (like UK pint / US
   pint), rather than a subscript p you can't hear
 - Rulers: the pencil-case 0;2 p and desk 0;3 p are in Everyday reference. Still open: board ruler (an ulna,
-  0;4 p, or 0;6 p) and the metre stick's replacement (1 p?)
+  0;4 p, or a gress, 0;6 p) and the metre stick's replacement (1 p?)
 - Music: 12 semitones per octave is already dozenal. To investigate: tempo (a moment holds 40 beats;
   60 bpm = 42 per moment, 120 bpm = 84 per moment), pitch (A = 440 Hz ≈ 108;9 per blink, 152.8 dec),
   frequency units, and note lengths
