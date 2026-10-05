@@ -108,11 +108,13 @@ local ROOT_NAMES = { n = "nil", u = "un", b = "bi", t = "tri", q = "quad", p = "
 local ROOT_DIGITS = { n = "0", u = "1", b = "2", t = "3", q = "4", p = "5", h = "6",
                       s = "7", o = "8", e = "9", d = "X", l = "E" }
 local DEGREE_T = "°t"
+-- Character classes are spelled out in ASCII: %w and %d follow the C locale, which on macOS
+-- counts some UTF-8 bytes as letters (so "p²" would lose its tooltip there).
 
 local function unit_at(s, i)
   for len = 2, 1, -1 do
     local u = s:sub(i, i + len - 1)
-    if #u == len and UNITS[u] and not s:sub(i + len, i + len):match("[%w_]") then return u end
+    if #u == len and UNITS[u] and not s:sub(i + len, i + len):match("[A-Za-z0-9_]") then return u end
   end
 end
 
@@ -136,7 +138,7 @@ end
 -- a bare one (p, op) only straight after a number or / or ·, so ordinary words are left alone.
 local function symbol_at(s, i, after_digit, after_dxe)
   local prev = s:sub(i - 1, i - 1)
-  if i == 1 or not prev:match("[%w_]") then
+  if i == 1 or not prev:match("[A-Za-z0-9_]") then
     local run = s:match("^[nubtqphsoedl]+", i)
     if run then
       for k = #run + 1, 2, -1 do -- k is where the q / c sits; c isn't a root, so it may be one past the run
@@ -148,11 +150,11 @@ local function symbol_at(s, i, after_digit, after_dxe)
       end
     end
   end
-  if (i == 1 and after_digit) or prev:match("[%d/]") or s:sub(i - 2, i - 1) == "·" then
+  if (i == 1 and after_digit) or prev:match("[0-9/]") or s:sub(i - 2, i - 1) == "·" then
     local u = unit_at(s, i)
     if u then return { source = u, name = UNITS[u], shown = u } end
   end
-  if s:sub(i, i + #DEGREE_T - 1) == DEGREE_T and ((i == 1 and after_dxe) or prev:match("[%dXE]")) then
+  if s:sub(i, i + #DEGREE_T - 1) == DEGREE_T and ((i == 1 and after_dxe) or prev:match("[0-9XE]")) then
     return { source = DEGREE_T, name = "tep (degrees from freezing)", shown = DEGREE_T }
   end
 end
@@ -184,8 +186,8 @@ local function Inlines(inlines)
     if el.t == "Str" then
       local before, gap = inlines[i - 2], inlines[i - 1]
       local spaced = gap and (gap.t == "Space" or gap.t == "SoftBreak") and before and before.t == "Str"
-      new = symbols(el.text, spaced and before.text:match("%d$") ~= nil,
-                    spaced and before.text:match("[%dXE]$") ~= nil)
+      new = symbols(el.text, spaced and before.text:match("[0-9]$") ~= nil,
+                    spaced and before.text:match("[0-9XE]$") ~= nil)
     end
     if new then out:extend(new) else out:insert(el) end
   end
