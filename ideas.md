@@ -53,7 +53,7 @@ How each part of the system does on the universal test:
 
 | Unit or value | Rests on | Universal test |
 |---|---|---|
-| blink, beat, breath, moment, chime | caesium frequency (physics), count chosen to fit the day | allowed (time); ≈ 8 × 10^11 hydrogen 1S-2S periods for a universal explanation |
+| blink, beat, breath, moment, chime | the SI second (caesium today, optical clocks later), sized to fit the day | allowed (time); ≈ 8 × 10^11 hydrogen 1S-2S periods for a universal explanation |
 | pace | c (physics) and the blink | passes; its size follows from the day |
 | lib, cub | h (physics), chosen so a cub of water ≈ 1 lib | passes: water is the same everywhere |
 | riv, onus, imp | e (physics) | passes |
@@ -82,13 +82,28 @@ The units themselves: how numbers are written, the defining constants, the base 
 
 | Quantity    | Unit  | Size (SI)              | Defined by (exact)                            | Named after |
 |-------------|-------|------------------------|-----------------------------------------------|---|
-| Time        | blink | 0.347222 s (25/72 s)   | 1 breath (10 blinks) = 7,50E,583,273 caesium periods | English: the blink of an eye |
+| Time        | blink | 0.347222 s (25/72 s)   | 1 breath (10 blinks) = 25/6 SI seconds | English: the blink of an eye |
 | Length      | pace  | 1.452545 m             | c = 2 × 10^7 paces/blink                      | Latin passus, a pace |
 | Mass        | lib   | 1.771431 kg            | h = 2;13 × 10^-28                             | Latin libra, pound / scales |
 | Temperature | tep   | 0.694346 K             | k = 2;07 × 10^-1E, 0 tep = 273.15 K (freezing) | Latin tepor, warmth |
 | Current     | riv   | 12.2847 A              | e = 1 × 10^-16 onus                           | Latin rivus, stream |
 | Amount      | grex  | 6.17235 × 10^23 (dec) things | 1 grex = 1;15 × 10^1X things            | Latin grex, flock |
 | Light       | lam   | 0.980246 cd            | K_cd = 3 × 10^4 lam·sr/vg at 19,042,90X,764,540 per blink | Latin lampas, lamp |
+
+### Exact SI values
+
+Every unit converts to SI exactly. The definitions use Paludal's fixed constants, which give short round
+numbers; written as SI fractions most of them would be long:
+
+| Unit | Defined by | Exact SI value | Decimal (dec) |
+|---|---|---|---|
+| blink | 1 breath = 25/6 s | 25/72 s | 0.347 222 222 s |
+| pace | c = 2 × 10^7 p/bl | 3,747,405,725 / 2,579,890,176 m | 1.452 544 670 m |
+| lib | h = 2;13 × 10^-28 | a fraction of 96 digits | 1.771 431 179 kg |
+| tep | k = 2;07 × 10^-1E | a fraction of 36 digits | 0.694 345 838 K |
+| onus | e = 1 × 10^-16 | 1.602176634 × 10^-19 × 12^18 C (dec) | 4.265 528 250 C |
+| riv | onus per blink | a fraction of 44 digits | 12.284 721 361 A |
+| grex | 1;15 × 10^1X things | a fraction of 38 digits | 1.024 943 427 mol |
 
 ### Derived and everyday units
 
@@ -120,7 +135,7 @@ Each fixed constant defines one base unit; the derived units are built from the 
 ```mermaid
 flowchart LR
   subgraph K [Fixed constants]
-    cs(["caesium frequency"])
+    cs(["SI second: breath = 25/6 s"])
     c(["c = 2 × 10^7 p/bl"])
     h(["h = 2;13 × 10^-28"])
     e(["e = 1 × 10^-16 os"])
@@ -162,7 +177,8 @@ flowchart LR
 **Decided:** digits 0 1 2 3 4 5 6 7 8 9 X E (X = ten, E = eleven); print alternative ↊ ↋ (U+218A / U+218B).
 
 **Why:** X and E can be typed on any keyboard and work in plain text; ↊ ↋ are the Unicode standard glyphs for
-typeset documents. Kept after review, even though software reads E as an exponent (a spreadsheet turns
+typeset documents. Primel plans the same pair (Pitman's digits) and uses the lookalikes ᘔ Ɛ only until fonts
+catch up. Kept after review, even though software reads E as an exponent (a spreadsheet turns
 6E62 into 6 × 10^62) and hexadecimal uses E for fourteen. Rejected: lowercase x and e (software reads 6e62
 the same way); A and B as in hexadecimal (A = ten, B = eleven) - safe in software, but they lose the link
 to the spoken names dek and el.
@@ -545,16 +561,25 @@ directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X0
 
 - spoken like "nine forty-five": E;91 = "el, nine-one"; 6;00 = "six"; with breaths, "el, nine-one, seven"
 
-### Caesium definition
+### Definition of time
 
-**Decided:** 1 breath = 7,50E,583,273 caesium periods exactly (38,302,632,375 dec).
+**Decided:** **1 breath = 25/6 SI seconds exactly** (1 blink = 25/72 s). Today that is 7,50E,583,273 caesium
+periods (38,302,632,375 dec), since SI fixes the caesium frequency.
 
-**Why:** it makes the breath exactly 25/6 SI seconds, so conversion to SI is exact and the system inherits SI's precision and any future redefinition of the second (details below).
+**Why:** time is the one unit that has to fit the Earth, and SI already keeps the second for the whole world.
+Defining the breath by the SI second rather than by the caesium count means the two can never split: when SI
+redefines the second with optical clocks (planned for 2030 CE), caesium becomes a measured value, and a
+caesium-count definition would drift from SI by about 1 part in 10^16 (dec). Replaces the earlier
+definition by the caesium count (which Primel also uses). Every other base unit stays defined by a fixed
+constant (c, h, k, e, the grex count), because those are fixed in SI too, so they can't drift either, and their
+values are short round dozenal numbers where the same units written as SI fractions would be up to 96 digits
+long (see Exact SI values).
 
-**Advantage:** Paludal time never drifts from UTC, needs no leap breaths of its own, and converts to SI exactly.
+**Advantage:** Paludal time never drifts from UTC or SI, needs no leap breaths of its own, converts to SI
+exactly, and gets every future improvement to the second for free.
 
-- So 1 blink = 750,E58,327;3 periods (terminates in dozenal; 3,191,886,031.25 dec)
-- Equivalent to: 1 breath = 25/6 SI seconds exactly, so the day stays at exactly 86,400 SI seconds.
+- So 1 blink = 750,E58,327;3 caesium periods today (terminates in dozenal; 3,191,886,031.25 dec)
+- The day stays at exactly 86,400 SI seconds.
 - Converting between SI and dozenal time is exact (no drift, no leap breaths beyond what SI already needs).
 - Leap breaths: none of our own. The breath follows UTC, and leap seconds are being phased out
   (CGPM 2022 CE: UTC will be allowed to drift further from the Earth's rotation by 2035 CE), so whatever UTC
@@ -983,7 +1008,7 @@ definition; measured values carry the same uncertainty as in SI.
 
 | Constant | Paludal value | SI value (dec) |
 |---|---|---|
-| Caesium frequency Δν_Cs | 7,50E,583,273 per breath (750,E58,327;3 per blink) | 9,192,631,770 Hz |
+| Breath (defines time) | 25/6 SI seconds; today = 7,50E,583,273 caesium periods | 9,192,631,770 Hz caesium |
 | Speed of light c | 2 × 10^7 p/bl (2 × 10^8 p/br) | 299,792,458 m/s |
 | Planck constant h | 2;13 × 10^-28 li·p²/bl | 6.62607015 × 10^-34 J s |
 | Elementary charge e | 1 × 10^-16 os | 1.602176634 × 10^-19 C |
@@ -1739,7 +1764,11 @@ Where the ideas came from, and what's still to decide.
   (our moment), **lull** = 0;0001 day (our breath) and **vibe** (0;001 trice). Its beat (1/4 lull) is our beat,
   but its "blink" is half of ours (the TGM Tim).
   - Time lines up exactly: Primel's timel is defined by the same caesium count (75,0E5,832;73 periods), so
-    our blink is precisely Primel's unqua·timel, one power of twelve up
+    our blink is precisely Primel's unqua·timel, one power of twelve up (until SI redefines the second;
+    Paludal follows SI, Primel's wording follows caesium)
+  - No round c lines the pace up with Primel exactly: the matching value, 2;56232E32598E... × 10^7 p/bl,
+    never ends, because Primel's length is 31/96 inch and the inch is 127/50 cm (31 and 127 don't divide
+    into twelves). 2;56 × 10^7 would come within 0.05%, 2;562 × 10^7 within 0.006%
   - Length and mass don't: Primel fixes gravity at 9.79651584 m/s² (dec), which makes its length unit exactly
     31/96 inch (8.202 mm), and our pace is 129;11 (177.09 dec) of those. Lining the pace up with Primel's
     100 lengthels (1.1811 m, 46.5 in) was considered (2026 CE): it would give g ≈ 1 p/bl², a lib of 0.953 kg
