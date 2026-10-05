@@ -53,7 +53,7 @@ How each part of the system does on the universal test:
 
 | Unit or value | Rests on | Universal test |
 |---|---|---|
-| blink, beat, breath, moment, chime | caesium frequency (physics), count chosen to fit the day | allowed (time) |
+| blink, beat, breath, moment, chime | caesium frequency (physics), count chosen to fit the day | allowed (time); ≈ 8 × 10^11 hydrogen 1S-2S periods for a universal explanation |
 | pace | c (physics) and the blink | passes; its size follows from the day |
 | lib, cub | h (physics), chosen so a cub of water ≈ 1 lib | passes: water is the same everywhere |
 | riv, onus, imp | e (physics) | passes |
@@ -560,6 +560,17 @@ directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X0
   (CGPM 2022 CE: UTC will be allowed to drift further from the Earth's rotation by 2035 CE), so whatever UTC
   does, Paludal time does too.
 - Survives the planned SI redefinition of the second (optical clocks, ~2030 CE): the breath simply follows the SI second.
+  SI fixes the caesium-133 frequency at exactly 9,192,631,770 Hz (since 1967 CE); that count, like ours, was
+  chosen to fit the Earth (the 1900 CE year). The planned replacement will probably be a weighted mix of
+  several optical clock transitions rather than one atom, about 100 times more precise. Because the breath is
+  exactly 25/6 SI seconds, Paludal gets whatever SI chooses at no cost
+- **A universal approximation:** 1 blink ≈ **8 × 10^11 periods of the hydrogen 1S-2S transition** (0.038%
+  dec out). Hydrogen is the simplest atom and the most common element, and its frequencies can in
+  principle be calculated from fundamental constants, so it's the natural way to explain the blink to someone
+  with no Earth reference (the Pioneer plaque used hydrogen for the same reason)
+- Not used as the definition: the 1S-2S frequency is measured to 4.5 × 10^-15 (dec), about 45 times less
+  precisely than caesium fountain clocks, and the two best measurements differ by 17 Hz; defining time by it
+  would lose the exact SI conversion. A round count (8 × 10^11) would also put clocks 33 s a day off the day
 - Not based on the day itself (Earth's rotation is irregular) - must be as good as SI.
 - Rejected:
   - 7,500,000,000 (fully round): day 77 s too short, drifts ~8 h/year.
@@ -1725,7 +1736,20 @@ Where the ideas came from, and what's still to decide.
   unit ≈ 8.2 mm, uses an SDN variant. Built on the day, the Earth's gravity and the density of water, not on
   fixed constants, so like TGM it doesn't convert exactly to SI. Its time units already have names for the same
   sizes as ours: **dwell** = 0;1 day (our chime), **breather** = 0;01 day (10 minutes), **trice** = 0;001 day
-  (our moment), **lull** = 0;0001 day (our breath) and **vibe** (0;001 trice).
+  (our moment), **lull** = 0;0001 day (our breath) and **vibe** (0;001 trice). Its beat (1/4 lull) is our beat,
+  but its "blink" is half of ours (the TGM Tim).
+  - Time lines up exactly: Primel's timel is defined by the same caesium count (75,0E5,832;73 periods), so
+    our blink is precisely Primel's unqua·timel, one power of twelve up
+  - Length and mass don't: Primel fixes gravity at 9.79651584 m/s² (dec), which makes its length unit exactly
+    31/96 inch (8.202 mm), and our pace is 129;11 (177.09 dec) of those. Lining the pace up with Primel's
+    100 lengthels (1.1811 m, 46.5 in) was considered (2026 CE): it would give g ≈ 1 p/bl², a lib of 0.953 kg
+    and a cub of 0.953 L, but c would no longer be round. Not adopted: the round c was kept
+  - Temperature doesn't: Primel's degree comes from water's heat capacity (0.397 K), ours from freezing to
+    boiling in 100 (0.694 K)
+  - Prefixes use the same roots and the same letters; Primel ends them with arrows (t↑ ×1,000, t↓ ÷1,000; in
+    plain text t@ and t#) where Paludal uses q and c, so symbols convert letter for letter
+  - Notation: Primel writes the dozenal point as "." with a subscript z (1.6z), and ten and eleven as ᘔ and Ɛ
+    (lookalikes of ↊ ↋), and says "galore" for 1,000;
 - **clocks.dozenal.ca** (Paul Rapoport, clocks by Rodrigo Flores and Thomas Cassidy): working dozenal
   clocks (once- and twice-a-day dials), a dozenal wristwatch, a "signed" digit notation for times (counting
   down to the next mark after half way), UTC-only clocks with no time zones, and the Dozenal Holocene
@@ -1745,8 +1769,8 @@ Where the ideas came from, and what's still to decide.
 
 - Universal test: decide what to do about the parts that fail it - the tep's zero (273.15 K), the lam
   (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?
-- Primel (John Volan): compare in detail and adopt what it does better (sources blocked from the sandbox so
-  far: primelmetrology.atlassian.net, the Dozensonline thread)
+- Primel notation: adopt its arrows (t↑, t↓) as the typeset form of prefix symbols, keeping q / c for plain
+  text? (see Prior art)
 - Years: two dozenal "Holocene" counts now exist (see Years). Keep +10,000 (dec, Emiliani's Holocene Era,
   6E62 for 2026 CE) or follow the Dozenal Holocene calendar (6859)? Ties in with recording why HE was chosen
 - Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)
