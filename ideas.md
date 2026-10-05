@@ -2,7 +2,7 @@
 
 Numbers are dozenal unless marked "(dec)".
 
-**Version 0.1**, 5 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.
+**Version 0.2**, 5 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.
 
 Paludal is a dozenal (base-12) system of units, built the way SI is built but counted in twelves.
 Time comes from a 24-hour day of 86,400 s (dec): the blink is 1/100,000 of a day (twelve to the fifth
@@ -164,6 +164,15 @@ copied, and can split a number across two lines. Where the comma is the decimal 
 **Advantage:** long numbers are easy to read, copy and say, in either base.
 
 - eg 0;4 is 4/10; (a third), or 0.333... (dec)
+
+**Decided:** documents number their pages, parts, chapters, sections, tables and figures in dozenal, with X
+and E (page 2X, chapter 1E, section 1E.3, figure 15.1). The dot between levels is a separator, not a point,
+as in version numbers. The PDF of this spec does this.
+
+**Why:** asked for (2026 CE): every number in the system is dozenal, and a document about it shouldn't count
+its own pages in decimal. X and E rather than ↊ ↋, so page numbers match the spec's text.
+
+**Advantage:** a reader practises dozenal just by finding a page, and nothing in the document mixes bases.
 
 Halves, thirds, quarters and sixths all end after one digit. The catch: a quarter is 0;3 and a third is
 0;4, the opposite of what the digits suggest. Fifths and tenths recur, as thirds do in decimal.
@@ -2163,6 +2172,9 @@ number in the system is dozenal.
 
 **Advantage:** anyone can say which version they mean, and see what changed since.
 
+- **0.2** (5 Oct 6859 DH, 2026 CE): the first PDF edition (memoir), with dozenal page, chapter and section
+  numbers, published with each release on GitHub. Also: time unit names compared with Primel, Rapoport,
+  Beers and TGM (Prior art); licence (spec CC BY 4.0, code MIT); public repo and GitHub Pages
 - **0.1** (5 Oct 6859 DH, 2026 CE): the first numbered version. New since the last draft: clock and compass
   diagrams; the clock has four hands, hand 1 to hand 4, one per digit (Paul Rapoport's Diurnal 1); time of
   day is written in moments, always three digits (E91;7, was E;917); months stay numbered from 1

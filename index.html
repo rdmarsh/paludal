@@ -39,6 +39,7 @@ nav ul ul a { color: var(--muted); }
   border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
 .conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
 .toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
 h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
@@ -85,6 +86,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <div class="layout" id="top">
 <nav>
 <h1><a href="#top">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
 <label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
 <div class="conv">
 <label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
@@ -109,7 +111,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p>Numbers are dozenal unless marked "(dec)".</p>
 </div>
 <div class="block para">
-<p><strong>Version 0.1</strong>, 5 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.</p>
+<p><strong>Version 0.2</strong>, 5 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.</p>
 </div>
 <div class="block para">
 <p>Paludal is a dozenal (base-12) system of units, built the way SI is built but counted in twelves. Time comes from a 24-hour day of 86,400 s (dec): the blink is 1/100,000 of a day (twelve to the fifth power, 25/72 s exactly), and every time unit up to the day is a power of twelve of it. Length comes from the speed of light, fixed at 2 × 10^7 (20,000,000, or 71,663,616 in decimal) paces per blink, which makes the pace about 1.45 m - close to the Roman pace. Mass comes from the Planck constant, chosen so that a cub of water (a cube 0;1 pace on each side) weighs a lib. Temperature, charge, amount and light are each fixed by a constant, as in SI, so every unit converts exactly to SI. Multiples and fractions step by twelve, which divides evenly by 2, 3, 4 and 6.</p>
@@ -552,6 +554,15 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <ul>
 <li>eg 0;4 is 4/10; (a third), or 0.333... (dec)</li>
 </ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> documents number their pages, parts, chapters, sections, tables and figures in dozenal, with X and E (page 2X, chapter 1E, section 1E.3, figure 15.1). The dot between levels is a separator, not a point, as in version numbers. The PDF of this spec does this.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> asked for (2026 CE): every number in the system is dozenal, and a document about it shouldn't count its own pages in decimal. X and E rather than ↊ ↋, so page numbers match the spec's text.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a reader practises dozenal just by finding a page, and nothing in the document mixes bases.</p>
 </div>
 <div class="block para">
 <p>Halves, thirds, quarters and sixths all end after one digit. The catch: a quarter is 0;3 and a third is 0;4, the opposite of what the digits suggest. Fifths and tenths recur, as thirds do in decimal.</p>
@@ -6381,6 +6392,7 @@ twelve marks is 0;1 turn (100).</figcaption>
 </div>
 <div class="block list">
 <ul>
+<li><strong>0.2</strong> (5 Oct 6859 DH, 2026 CE): the first PDF edition (memoir), with dozenal page, chapter and section numbers, published with each release on GitHub. Also: time unit names compared with Primel, Rapoport, Beers and TGM (Prior art); licence (spec CC BY 4.0, code MIT); public repo and GitHub Pages</li>
 <li><strong>0.1</strong> (5 Oct 6859 DH, 2026 CE): the first numbered version. New since the last draft: clock and compass diagrams; the clock has four hands, hand 1 to hand 4, one per digit (Paul Rapoport's Diurnal 1); time of day is written in moments, always three digits (E91;7, was E;917); months stay numbered from 1</li>
 </ul>
 </div>

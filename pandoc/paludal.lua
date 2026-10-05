@@ -311,6 +311,21 @@ local function latex_figures(b)
   return pandoc.Para({ pandoc.Emph({ pandoc.Str("(Figure - see index.html for the drawing.)") }) })
 end
 
+-- LaTeX (memoir): top-level headings are parts. "Part 1: Dozenal numbers" becomes part 1, "Dozenal
+-- numbers" (memoir prints the number), and the opening "The Paludal system" is an unnumbered chapter.
+local function latex_parts(h)
+  if h.level ~= 1 then return nil end
+  local text = stringify(h)
+  local rest = text:match("^Part %d+: (.*)")
+  if rest then
+    h.content = { pandoc.Str(rest) }
+    return h
+  end
+  h.level = 2
+  h.classes:insert("unnumbered")
+  return { h, pandoc.RawBlock("latex", ("\\markboth{%s}{%s}"):format(text, text)) }
+end
+
 -- <br> inside a table cell (the prefix matrix) is a line break in every output format
 local function RawInline(el)
   if el.format == "html" and el.text:match("^<br%s*/?>$") then return pandoc.LineBreak() end
@@ -353,5 +368,5 @@ if is_html then
 end
 return {
   { Inlines = Inlines, Table = Table, CodeBlock = CodeBlock, RawInline = RawInline },
-  FORMAT:match("latex") and { Pandoc = latex_diagrams, Para = latex_figures } or {},
+  FORMAT:match("latex") and { Pandoc = latex_diagrams, Para = latex_figures, Header = latex_parts } or {},
 }

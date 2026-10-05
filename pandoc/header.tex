@@ -10,3 +10,38 @@
 \usepackage{fvextra}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 \emergencystretch=3em
+
+% Memoir layout: compact chapter heads (the spec has many short chapters), running heads
+\chapterstyle{hangnum}
+\setlength{\beforechapskip}{0pt}
+\renewcommand\clearforchapter{\par\vspace{3\baselineskip}}  % chapters run on; parts still start a page
+\let\memtoc\tableofcontents
+\renewcommand\tableofcontents{\memtoc*}  % leave "Contents" out of the contents
+\pagestyle{ruled}
+\setlength{\cftpartnumwidth}{2em}
+\setlength{\cftchapternumwidth}{2em}
+% Title page
+\pretitle{\vspace*{0.25\textheight}\begin{center}\fontsize{40}{48}\selectfont\bfseries}
+\posttitle{\par\end{center}\vskip 1em}
+\preauthor{\begin{center}\large}\postauthor{\par\end{center}}
+\predate{\begin{center}\large}\postdate{\par\end{center}}
+\renewcommand\maketitlehookd{\clearpage}
+\setsecnumdepth{subsection}
+% Dozenal numbering for pages, parts, chapters, sections, tables and figures: X = dek, E = el.
+% \dozenal{n} is expandable, so it works in page numbers, the contents and PDF bookmarks.
+\makeatletter
+\newcommand*\dozdigit[1]{\ifcase#1 0\or 1\or 2\or 3\or 4\or 5\or 6\or 7\or 8\or 9\or X\or E\fi}
+\newcommand*\dozenal[1]{%
+  \ifnum#1<12 \dozdigit{#1}%
+  \else\expandafter\dozenal\expandafter{\the\numexpr(#1-6)/12\relax}%
+    \expandafter\dozdigit\expandafter{\the\numexpr#1-12*((#1-6)/12)\relax}\fi}
+\newcommand*\dozcount[1]{\expandafter\dozenal\expandafter{\the\csname c@#1\endcsname}}
+\def\@dozen#1{\expandafter\dozenal\expandafter{\the#1}}  % \pagenumbering{dozen}
+\apptocmd{\mainmatter}{\pagenumbering{dozen}}{}{}
+\renewcommand\thepart{\dozcount{part}}
+\renewcommand\thechapter{\dozcount{chapter}}
+\renewcommand\thesection{\thechapter.\dozcount{section}}
+\renewcommand\thesubsection{\thesection.\dozcount{subsection}}
+\renewcommand\thetable{\dozcount{table}}
+\renewcommand\thefigure{\dozcount{figure}}
+\makeatother
