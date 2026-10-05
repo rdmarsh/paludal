@@ -791,7 +791,12 @@ on it.
 **Advantage:** distances can be paced out the way people walk them - one gress per step, two per pace - and
 the 60-90 cm range gets a body measure.
 
-- Two gresses make a pace, so 1,000 paces (an iter) is 2,000 steps
+- A gress is about an average adult walking step: men average ≈ 76 cm, women ≈ 67 cm (step length is
+  roughly 0.41 × height). So "steps" is the everyday word for gresses, as "a k" is for a kilometre; the
+  official name stays gress, because a step varies from person to person and the unit doesn't
+- Two gresses make a pace, so 1,000 paces (an iter) is 2,000 gresses (3,456 dec steps): a step counter
+  reads distance directly
+- Today's "10,000 steps" goal (dec) ≈ 6,000 gresses (10,368 dec) = 3 iters ≈ 7.5 km
 
 **Decided:** the **iter** (symbol **ir**) = 1,000 paces (1,728 dec) ≈ 2.51 km, the unit for distances.
 
