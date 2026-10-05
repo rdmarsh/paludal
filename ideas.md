@@ -72,9 +72,251 @@ How each part of the system does on the universal test:
   light looks to us, how loud sound is to us, and Earth navigation. None of them is needed to define another
   unit, except that the lam is one of the seven base units
 
-# Part 1: The system
+## Names
 
-The units themselves: how numbers are written, the defining constants, the base and derived units, prefixes, symbols and names.
+**Decided:** short names (3-4 letters preferred), Latin roots where possible, no clash with an existing unit,
+no everyday word whose meaning would mislead, and no object or container names.
+
+**Why:** short names are quick to say and write; Latin roots echo older measures (pace, uncia, libra) and work
+across languages; clashes cause confusion when both systems are in use. Everyday words are fine when their
+meaning fits the size (pace, span, dig, blink, beat, breath, moment, chime) - that's what makes them easy to
+remember. The rule used to say "no clash with existing everyday words", which contradicted those names.
+
+**Advantage:** units are quick to say, easy to remember, and never confused with SI or imperial ones.
+
+| Quantity               | Name  | Symbol | Size (SI)           | Named after                                       | English relatives            |
+|------------------------|-------|--------|---------------------|---------------------------------------------------|------------------------------|
+| Time (base)            | blink | bl     | 0.3472 s            | English: the blink of an eye                      |                              |
+| Time (≈ second)        | beat  | bt     | 1.0417 s            | English: a heartbeat                              |                              |
+| Time (clock)           | breath | br    | 4.1667 s            | English: one breath                               |                              |
+| Time (dozenal hour)    | chime | ch     | 2 h exactly         | English: clocks chime on the hour                 |                              |
+| Time (dozenal minute)  | moment | mt    | 50 s exactly        | Latin momentum, movement; medieval moment = 90 s  | moment, momentum             |
+| Length (base)          | pace  | p      | 1.4525 m            | Latin passus, a pace (Roman pace ≈ 1.48 m)        | pace, passage                |
+| 1/10 pace              | unc   | un     | ≈ 12.1 cm           | Latin uncia, a twelfth                            | inch, ounce                  |
+| 1/100 pace             | dig   | di     | ≈ 1.01 cm           | Latin digitus, finger (Roman digit ≈ 1.85 cm)     | digit                        |
+| 0;2 pace               | span  | sp     | ≈ 24.2 cm           | English span, a hand's spread                     | span                         |
+| 0;4 pace               | ulna  | ul     | ≈ 48.4 cm           | Latin ulna, forearm (elbow to fingertip)          | ell                          |
+| 1,000 paces (distance)  | iter  | ir     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
+| 930 paces (sea, air)   | navis | na     | ≈ 1.935 km          | Latin navis, ship                                 | navy, navigate               |
+| Star distances         | parax | px     | 2.30 pc, 7.5 ly     | parallaxis, astronomers' Latin (from Greek)       | parallax                     |
+| Area                   | ager  | ag     | ≈ 3,646 m²          | Latin ager, field                                 | agriculture                  |
+| Mass                   | lib   | li     | ≈ 1.7714 kg         | Latin libra, pound; also scales (Roman pound)     | lb (pound), Libra            |
+| Volume (unc cube)      | cub   | cu     | 1.7736 L            | Latin cubus, cube                                 | cube, cubic                  |
+| Temperature            | tep   | °t     | 0.694 K/°C          | Latin tepor, warmth                               | tepid                        |
+| Force                  | vis   | vi     | ≈ 21.3 N            | Latin vis, force, strength                        | vim                          |
+| Energy                 | opus  | op     | ≈ 31.0 J            | Latin opus, work                                  | opus, operate                |
+| Power                  | vig   | vg     | ≈ 89.3 W            | Latin vigor, liveliness, energy                   | vigour, vigorous             |
+| Pressure               | pres  | pr     | ≈ 10.1 Pa           | Latin pressus, pressed                            | press, pressure              |
+| Current                | riv   | ri     | ≈ 12.28 A           | Latin rivus, a stream                             | rivulet, derive              |
+| Charge                 | onus  | os     | ≈ 4.266 C           | Latin onus, load, burden                          | onus, onerous                |
+| Voltage                | imp   | im     | ≈ 7.268 V           | Latin impetus, push, rush                         | impetus, impetuous           |
+| Amount of substance    | grex  | gx     | 6.17 × 10^23 things | Latin grex, flock, herd                           | gregarious, congregate       |
+| Luminous intensity     | lam   | la     | 0.980 cd            | Latin lampas, lamp, torch                         | lamp                         |
+| Sound level            | vox   | vo     | ≈ 0.90 dB per vox   | Latin vox, voice                                  | voice, vocal                 |
+
+- Rejected: heft, jug (object names), pond (sounds like a lake), mass/vol (clash with quantity names / "% vol"),
+  hand (clashes with horse hand 10.16 cm), nail, inc (too close to "inch"), lux/lum (existing SI units),
+  cal (calorie), pot (container), erg (CGS unit), grad (gradian), mol (mole)
+
+# Part 1: Dozenal numbers
+
+How dozenal numbers are written, said and typed: the digits, the dozenal point, the spoken names, phone numbers and keypads.
+
+## Digits
+
+**Decided:** digits 0 1 2 3 4 5 6 7 8 9 X E (X = ten, E = eleven); print alternative ↊ ↋ (U+218A / U+218B).
+
+**Why:** X and E can be typed on any keyboard and work in plain text; ↊ ↋ are the Unicode standard glyphs for
+typeset documents. Primel plans the same pair (Pitman's digits) and uses the lookalikes ᘔ Ɛ only until fonts
+catch up. Kept after review, even though software reads E as an exponent (a spreadsheet turns
+6E62 into 6 × 10^62) and hexadecimal uses E for fourteen. Rejected: lowercase x and e (software reads 6e62
+the same way); A and B as in hexadecimal (A = ten, B = eleven) - safe in software, but they lose the link
+to the spoken names dek and el.
+
+**Advantage:** dozenal numbers can be written anywhere - keyboard, plain text, handwriting - and still match the spoken dek and el.
+
+- In data files, write ↊ ↋ or store dozenal numbers as text (quoted), so software can't misread them.
+  Quoting also protects the semicolon, which some files use to separate fields
+
+## Writing numbers
+
+**Decided:** decimal uses a dot (eg 3.14); dozenal uses a semicolon (3;18481).
+
+**Why:** the punctuation shows which base a number is in, so the two can't be confused.
+
+**Advantage:** the base of any number can be seen at a glance, even with no unit or marker.
+
+**Decided:** long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec).
+Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6859 DH), dates, times of day
+(E;X053), and digits after the point.
+
+**Why:** groups of three are the easiest for people to read, and they match how numbers are spoken
+(thousand / million, mo / bimo). The comma is free in both bases, since decimal uses a dot as the point and
+dozenal a semicolon. It replaces SI's thin space (86 400), which is easy to miss, gets lost when text is
+copied, and can split a number across two lines. Where the comma is the decimal point (much of Europe),
+86,400 could be misread; the dot-and-semicolon rule above already settles which mark is the point.
+
+**Advantage:** long numbers are easy to read, copy and say, in either base.
+
+- eg 0;4 is 4/10; (a third), or 0.333... (dec)
+
+Halves, thirds, quarters and sixths all end after one digit. The catch: a quarter is 0;3 and a third is
+0;4, the opposite of what the digits suggest. Fifths and tenths recur, as thirds do in decimal.
+
+| Fraction        | Dozenal      | Decimal   |
+|-----------------|--------------|-----------|
+| 1/2             | 0;6          | 0.5       |
+| 1/3             | 0;4          | 0.333...  |
+| 2/3             | 0;8          | 0.666...  |
+| 1/4             | 0;3          | 0.25      |
+| 3/4             | 0;9          | 0.75      |
+| 1/6             | 0;2          | 0.1666... |
+| 1/8             | 0;16         | 0.125     |
+| 3/8             | 0;46         | 0.375     |
+| 1/9             | 0;14         | 0.111...  |
+| 1/12 (dec)      | 0;1          | 0.0833... |
+| 1/16 (dec)      | 0;09         | 0.0625    |
+| 1/5             | 0;2497 2497... | 0.2     |
+| 1/10 (dec)      | 0;1 2497 2497... | 0.1   |
+| 1/7             | 0;186X35 186X35... | 0.142857... |
+
+**Decided:** the dozenal percent is **per gro** (per 144 dec), written **/gro**: 75% = 0;9 = 90 /gro; 65% ≈ 0;7X = 7X /gro.
+
+**Why:** it parallels "per cent" (Latin centum is the number word, as gro is ours). The two digits after
+the semicolon are already the per-gro figure, so nothing needs converting. "Per bicia" was rejected: bicia
+already means ÷100;, so "per bicia" would mean ×100;. % can't be reused - it would be read as decimal. No
+established dozenal symbol is known, so /gro is used for now.
+
+**Advantage:** a per-gro figure is read straight off a fraction, with no arithmetic.
+
+**Decided:** fractions (numbers below one) always have a leading zero: 0;6, never ;6.
+
+**Why:** a bare leading semicolon is easy to miss or mistake for punctuation, and it keeps a semicolon
+at the start of a number from ever being ambiguous.
+
+**Advantage:** a fraction can never lose its point in print or handwriting.
+
+**Decided:** how to tell dozenal and decimal numbers apart, when both are in use:
+
+1. A number with a unit needs no marker: the unit says which system (46 p is dozenal, 54 m is decimal).
+2. A number containing X or E is dozenal.
+3. Each document states its default base (this one: dozenal).
+4. A bare number in mixed text is marked: dozenal with a trailing semicolon (**46;**), decimal with
+   **(dec)**, or a subscript ᵈ in typeset documents. Small numbers that read the same in both (0-9)
+   and number words (twelve) need no marker.
+5. Years: CE years are decimal (2026 CE), DH years are dozenal (6859 DH).
+6. Colour can be added on screen, but never as the only signal.
+
+**Why:** most real numbers carry a unit, so they're already unambiguous; markers are only needed for bare
+numbers. The trailing semicolon is just the dozenal point with nothing after it (like "46." in decimal),
+so it works in plain text and handwriting without any new symbol. Colour fails in print, handwriting,
+plain text and for colour-blind readers. Numeric subscripts (46₁₂) were rejected: "12" is itself
+ambiguous - in dozenal it means fourteen. Years get their era instead of a marker because
+the era is already written with years (CE / DH), so it costs nothing extra.
+
+**Advantage:** mixed text stays unambiguous with almost no extra marks, in any medium and for any reader.
+
+## Spoken numbers
+
+**Decided:** digits X = **dek**, E = **el** (the DSA standard names). Powers use **do / gro / mo**:
+
+**Why:** dek and el are the established standard names, so we use them (and changed the prefix roots to match, not the other way round). Calling 10; "ten" would be heard as decimal. do / gro / mo are short, and bimo / trimo extend them the way million / billion extend thousand.
+
+**Advantage:** dozenal numbers can be said aloud without being heard as decimal, and large ones scale the way thousand and million do.
+
+| Number | Name  | (dec)    |
+|--------|-------|----------|
+| 10     | do    | 12       |
+| 100    | gro   | 144      |
+| 1,000   | mo    | 1,728     |
+| 10^6   | bimo  | 2,985,984  |
+| 10^9   | trimo | 5.16 × 10^9 |
+
+- Digits are grouped in threes, like thousand / million: 4,000,000 = four bimo
+- 46 = "four do six", 2X3 = "two gro dek do three", 6,E62 = "six mo el gro six do two"
+- Never say "ten" for 10; - it gets heard as decimal
+- Codes, phone numbers etc. are read digit by digit; after the semicolon, always digit by digit
+  (3;18 = "three dit one eight")
+
+**Decided:** the dozenal point (the semicolon) is said **"dit"**: π ≈ 3;18 = "three dit one eight", 0;6 = "zero dit
+six". The decimal point stays "point" (or "dot"). Times of day are said without it, like clock times today
+(E;91 = "el, nine-one").
+
+**Why:** adopt prior art: "dit" is the established way to say the semicolon used as a dozenal point (the
+"Humphrey point"), and SDN uses it, in contrast to "dot" for a decimal point.
+
+**Advantage:** a spoken number carries its base, the way the written semicolon does, so "three dit one eight"
+can't be heard as 3.18.
+
+## Phone numbers and keypads
+
+**Decided:** phone numbers stay as they are, and phone keypads get a dozenal layout (below).
+
+**Why:** phone numbers are names, not amounts, so dozenal gains them nothing; keypads still need X and E for
+amounts, and the 4 × 3 keypad has exactly twelve keys for the twelve digits. * and # can't be reused as
+digits because phone systems use them as menu keys.
+
+**Advantage:** no number changes, and the keypad gains the two digits without losing * and # or changing
+where 1-9 and 0 are.
+
+- Phone numbers are names, not amounts: nobody adds or divides them, so they gain nothing from dozenal, and
+  changing every number in the world would cost a great deal. They're read digit by digit as now (see Spoken
+  numbers), like postcodes, PINs and account numbers
+- Keypads still need X and E for typing dozenal amounts (prices, times, quantities). * and # can't stand in
+  for them: they're already used as menu and control keys by phone systems
+- The standard keypad already has twelve keys in a 4 × 3 grid, so a dozenal keypad puts exactly the twelve
+  digits there, and moves * and # to a row of their own:
+
+```
+ 1   2   3
+ 4   5   6
+ 7   8   9
+ X   0   E
+ *       #
+```
+
+- 0 stays in the middle of the bottom row, where it is on phones today; X and E take the corners * and # used
+  to have, in order (ten before eleven)
+
+**Decided:** the number pad on keyboards and calculators keeps its shape and its 7-8-9-on-top order, and makes
+room for X, E and the dozenal point (layout below).
+
+**Why:** the bottom row matches the phone keypad (X 0 E), the footprint stays the same so existing keyboards
+and cases still fit, and 7-8-9 stays on top so people keep the muscle memory they have.
+
+**Advantage:** every digit and the point get a key of their own without a bigger pad, and the same X 0 E row
+appears on phones, calculators and keyboards.
+
+```
+ Num   /    *    -
+  7    8    9    +
+  4    5    6    ;
+  1    2    3   Ent
+  X    0    E   Ent
+```
+
+- Today's wide 0 is split into X and 0, and the decimal point's key becomes E, so the bottom row reads X 0 E as
+  on the phone keypad
+- The tall + is split in two, + above and ; (the dozenal point) below; Enter stays tall
+- Same footprint and key spacing as today (19 keys instead of 17), so existing cases and keyboards fit
+- 7-8-9 stays on top, as on every calculator: changing it would break the muscle memory people already have,
+  even though phones count the other way
+
+**Decided:** main keyboards need no new keys.
+
+**Why:** X and E are typed as capital letters (the reason they were chosen; see Digits), and the semicolon is
+already on the home row, unshifted on most layouts. ↊ ↋ only need an input method, not new keys.
+
+**Advantage:** dozenal can be typed on every keyboard in use today.
+
+- X and E are typed as capital letters (see Digits), and ; is already on the home row, unshifted on most
+  layouts - one reason the semicolon makes a good dozenal point
+- For typeset ↊ ↋, a keyboard layout option types them with AltGr / Option + X and E; until then, text
+  replacement (eg "dek" → ↊) or the Unicode codes (U+218A, U+218B)
+
+# Part 2: Paludal units
+
+The units themselves: a summary, the prefixes and symbols, the seven base units in SI order (time, length, mass, current, temperature, amount of substance, light), the derived units of area, volume and angle, and the constants.
 
 ## Summary
 
@@ -172,23 +414,82 @@ flowchart LR
 - 240 V mains ≈ 29 imp, 230 V ≈ 27;8, 120 V ≈ 14;6, a 12 V car ≈ 1;8. A kettle draws ≈ 0;X riv.
 - A 6 ft person ≈ 1¼ paces. 1 inch ≈ 2;6 digs.
 
-## Symbols
+## Prefixes
 
-**Decided:** digits 0 1 2 3 4 5 6 7 8 9 X E (X = ten, E = eleven); print alternative ↊ ↋ (U+218A / U+218B).
+**Decided:** use SDN (Systematic Dozenal Nomenclature, Dozenal Society of America).
 
-**Why:** X and E can be typed on any keyboard and work in plain text; ↊ ↋ are the Unicode standard glyphs for
-typeset documents. Primel plans the same pair (Pitman's digits) and uses the lookalikes ᘔ Ɛ only until fonts
-catch up. Kept after review, even though software reads E as an exponent (a spreadsheet turns
-6E62 into 6 × 10^62) and hexadecimal uses E for fourteen. Rejected: lowercase x and e (software reads 6e62
-the same way); A and B as in hexadecimal (A = ten, B = eleven) - safe in software, but they lose the link
-to the spoken names dek and el.
+**Why:** it's an existing standard, it's systematic (prefixes are built from digit names, not memorised), and it extends to any power. Roots for X and E were changed to dek / el to match the spoken digits.
 
-**Advantage:** dozenal numbers can be written anywhere - keyboard, plain text, handwriting - and still match the spoken dek and el.
+**Advantage:** a prefix for any power can be built on the spot, and the system is already documented and in use.
 
-- In data files, write ↊ ↋ or store dozenal numbers as text (quoted), so software can't misread them.
-  Quoting also protects the semicolon, which some files use to separate fields
+Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 enn, X dek, E el
+(SDN's own roots for X and E are dec and lev; changed to match the spoken digit names)
 
-### Unit symbols
+- multiply by 10^n: root(s) + **-qua**  (unqua- ×10, biqua- ×100, triqua- ×1,000, ... unnilqua- ×10^10)
+- divide by 10^n:   root(s) + **-cia**  (uncia- ÷10, bicia- ÷100, tricia- ÷1,000, ...)
+- uncia = Latin "a twelfth" (origin of inch and ounce)
+- Common sizes also get short everyday names (unc = uncia-pace, dig = bicia-pace)
+- Prefix symbols: see Prefix symbols, below
+
+### Prefix symbols
+
+**Decided:** initials of the SDN digit roots, then **q** (multiply) or **c** (divide). The last letter is always
+q or c, so a symbol can always be read unambiguously.
+
+**Why:** built from the SDN roots we already use, so there's no separate table to memorise. Ending in q or c keeps them unambiguous even though some roots share initials (quad / qua).
+
+**Advantage:** nothing new to learn, and any prefix symbol can be read back without a table.
+
+**Decided:** in typeset text (print, web pages, PDFs) the q and c are shown as Primel's arrows: **↑** for
+multiply and **↓** for divide, so `tqop` is set as t↑op and `tcli` as t↓li. Plain text keeps q and c.
+
+**Why:** adopt prior art: Primel already writes the same prefixes with the same letters and arrows, so
+Paludal and Primel documents look alike. q and c stay for plain text, where arrows can't always be typed.
+
+**Advantage:** the direction of a prefix shows at a glance, Primel readers can read Paludal symbols as they
+stand, and the plain-text form still works on any keyboard.
+
+| Digit  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | X | E |
+|--------|---|---|---|---|---|---|---|---|---|---|---|---|
+| Root   | nil | un | bi | tri | quad | pent | hex | sept | oct | enn | dek | el |
+| Letter | n | u | b | t | q | p | h | s | o | e | d | l |
+
+- uq ×10, bq ×100, tq ×1,000, unq ×10^10; uc ÷10, bc ÷100, tc ÷1,000
+  (typeset: u↑ ×10, b↑ ×100, t↑ ×1,000, un↑ ×10^10; u↓ ÷10, b↓ ÷100, t↓ ÷1,000)
+- Prefix goes straight onto the unit symbol: 3 tqp = 3 triqua-paces, 5 bcli = 5 bicia-libs
+- The named sizes keep their own symbols: unc = un (= ucp), dig = di (= bcp)
+- el's letter is **l** ("el" is how L is said); e is taken by enn
+- Watch: enn's "e" (9) is easily confused with the digit E (el); bq looks like Bq (becquerel)
+
+### Prefix matrix
+
+Each unit in the middle, with its fractions to the left and multiples to the right, one step of twelve at a
+time. Sizes that have their own name are in bold; use the name rather than the prefix form (a dig, not a bcp).
+
+| tricia- ÷1,000 | bicia- ÷100 | uncia- ÷10 | **Unit** | unqua- ×10 | biqua- ×100 | triqua- ×1,000 |
+|---|---|---|---|---|---|---|
+| tcbl<br>201 µs | bcbl<br>2.41 ms | ucbl<br>28.9 ms | **blink** bl<br>0.347 s | **breath** br<br>4.17 s | **moment** mt<br>50 s | tqbl<br>10 min |
+| tcp (lin, proposed)<br>0.841 mm | **dig** di<br>1.01 cm | **unc** un<br>12.1 cm | **pace** p<br>1.45 m | uqp<br>17.4 m | bqp<br>209 m | **iter** ir<br>2.51 km |
+| tcli<br>1.03 g | bcli<br>12.3 g | ucli<br>148 g | **lib** li<br>1.77 kg | uqli<br>21.3 kg | bqli<br>255 kg | tqli<br>3.06 t |
+| tcte<br>402 µK | bcte<br>4.82 mK | ucte<br>57.9 mK | **tep** °t<br>0.694 K | uqte<br>8.33 K | bqte<br>100 K | tqte<br>1.2 kK |
+| tcri<br>7.11 mA | bcri<br>85.3 mA | ucri<br>1.02 A | **riv** ri<br>12.3 A | uqri<br>147 A | bqri<br>1.77 kA | tqri<br>21.2 kA |
+| tcgx<br>593 µmol | bcgx<br>7.12 mmol | ucgx<br>85.4 mmol | **grex** gx<br>1.02 mol | uqgx<br>12.3 mol | bqgx<br>148 mol | tqgx<br>1.77 kmol |
+| tcla<br>567 µcd | bcla<br>6.81 mcd | ucla<br>81.7 mcd | **lam** la<br>0.980 cd | uqla<br>11.8 cd | bqla<br>141 cd | tqla<br>1.69 kcd |
+| tccu<br>1.03 mL | bccu<br>12.3 mL | uccu<br>148 mL | **cub** cu<br>1.77 L | uqcu<br>21.3 L | bqcu<br>255 L | tqcu<br>3.06 m³ |
+| tcvi<br>12.4 mN | bcvi<br>148 mN | ucvi<br>1.78 N | **vis** vi<br>21.3 N | uqvi<br>256 N | bqvi<br>3.07 kN | tqvi<br>36.9 kN |
+| tcop<br>17.9 mJ | bcop<br>215 mJ | ucop<br>2.58 J | **opus** op<br>31 J | uqop<br>372 J | bqop<br>4.46 kJ | tqop<br>53.6 kJ |
+| tcvg<br>51.7 mW | bcvg<br>620 mW | ucvg<br>7.44 W | **vig** vg<br>89.3 W | uqvg<br>1.07 kW | bqvg<br>12.9 kW | tqvg<br>154 kW |
+| tcpr<br>5.85 mPa | bcpr<br>70.2 mPa | ucpr<br>843 mPa | **pres** pr<br>10.1 Pa | uqpr<br>121 Pa | bqpr<br>1.46 kPa | tqpr<br>17.5 kPa |
+| tcos<br>2.47 mC | bcos<br>29.6 mC | ucos<br>355 mC | **onus** os<br>4.27 C | uqos<br>51.2 C | bqos<br>614 C | tqos<br>7.37 kC |
+| tcim<br>4.21 mV | bcim<br>50.5 mV | ucim<br>606 mV | **imp** im<br>7.27 V | uqim<br>87.2 V | bqim<br>1.05 kV | tqim<br>12.6 kV |
+
+- Named sizes that aren't a single prefix step: **beat** = 3 bl; **chime** = 10,000 bl (qqbl, 2 h); the day =
+  100,000 bl (pqbl); **span** = 0;2 p; **ulna** = 0;4 p; **navis** = 930 p; **parax** (star distances);
+  **ager** = 1,000 p² (tqp² would be read as (tqp)², so it gets a name)
+- Prefixed temperatures use the plain-text symbol te (tcte), as °C is rarely prefixed; they're for science only
+- tqbl is 0;1 chime (10 minutes), which needs no name, as "ten minutes" doesn't
+
+## Unit symbols
 
 **Decided:** first two letters of the name, lowercase. Exceptions: pace = **p** (most used, and "pa" would
 clash with Pa), vig = **vg** (vi is vis), grex = **gx** (gr = grain). No symbol may clash with an SI or
@@ -263,237 +564,6 @@ prefix letters for powers of twelve (k = ×1,000;) was rejected: the same letter
 factor would cause errors where both systems are in use.
 
 **Advantage:** there's nothing to remember about case, and no symbol can be mistaken for a chemical element or an SI prefix.
-
-### Prefix symbols
-
-**Decided:** initials of the SDN digit roots, then **q** (multiply) or **c** (divide). The last letter is always
-q or c, so a symbol can always be read unambiguously.
-
-**Why:** built from the SDN roots we already use, so there's no separate table to memorise. Ending in q or c keeps them unambiguous even though some roots share initials (quad / qua).
-
-**Advantage:** nothing new to learn, and any prefix symbol can be read back without a table.
-
-**Decided:** in typeset text (print, web pages, PDFs) the q and c are shown as Primel's arrows: **↑** for
-multiply and **↓** for divide, so `tqop` is set as t↑op and `tcli` as t↓li. Plain text keeps q and c.
-
-**Why:** adopt prior art: Primel already writes the same prefixes with the same letters and arrows, so
-Paludal and Primel documents look alike. q and c stay for plain text, where arrows can't always be typed.
-
-**Advantage:** the direction of a prefix shows at a glance, Primel readers can read Paludal symbols as they
-stand, and the plain-text form still works on any keyboard.
-
-| Digit  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | X | E |
-|--------|---|---|---|---|---|---|---|---|---|---|---|---|
-| Root   | nil | un | bi | tri | quad | pent | hex | sept | oct | enn | dek | el |
-| Letter | n | u | b | t | q | p | h | s | o | e | d | l |
-
-- uq ×10, bq ×100, tq ×1,000, unq ×10^10; uc ÷10, bc ÷100, tc ÷1,000
-  (typeset: u↑ ×10, b↑ ×100, t↑ ×1,000, un↑ ×10^10; u↓ ÷10, b↓ ÷100, t↓ ÷1,000)
-- Prefix goes straight onto the unit symbol: 3 tqp = 3 triqua-paces, 5 bcli = 5 bicia-libs
-- The named sizes keep their own symbols: unc = un (= ucp), dig = di (= bcp)
-- el's letter is **l** ("el" is how L is said); e is taken by enn
-- Watch: enn's "e" (9) is easily confused with the digit E (el); bq looks like Bq (becquerel)
-
-### Spoken numbers
-
-**Decided:** digits X = **dek**, E = **el** (the DSA standard names). Powers use **do / gro / mo**:
-
-**Why:** dek and el are the established standard names, so we use them (and changed the prefix roots to match, not the other way round). Calling 10; "ten" would be heard as decimal. do / gro / mo are short, and bimo / trimo extend them the way million / billion extend thousand.
-
-**Advantage:** dozenal numbers can be said aloud without being heard as decimal, and large ones scale the way thousand and million do.
-
-| Number | Name  | (dec)    |
-|--------|-------|----------|
-| 10     | do    | 12       |
-| 100    | gro   | 144      |
-| 1,000   | mo    | 1,728     |
-| 10^6   | bimo  | 2,985,984  |
-| 10^9   | trimo | 5.16 × 10^9 |
-
-- Digits are grouped in threes, like thousand / million: 4,000,000 = four bimo
-- 46 = "four do six", 2X3 = "two gro dek do three", 6,E62 = "six mo el gro six do two"
-- Never say "ten" for 10; - it gets heard as decimal
-- Codes, phone numbers etc. are read digit by digit; after the semicolon, always digit by digit
-  (3;18 = "three dit one eight")
-
-**Decided:** the dozenal point (the semicolon) is said **"dit"**: π ≈ 3;18 = "three dit one eight", 0;6 = "zero dit
-six". The decimal point stays "point" (or "dot"). Times of day are said without it, like clock times today
-(E;91 = "el, nine-one").
-
-**Why:** adopt prior art: "dit" is the established way to say the semicolon used as a dozenal point (the
-"Humphrey point"), and SDN uses it, in contrast to "dot" for a decimal point.
-
-**Advantage:** a spoken number carries its base, the way the written semicolon does, so "three dit one eight"
-can't be heard as 3.18.
-
-## Writing numbers
-
-**Decided:** decimal uses a dot (eg 3.14); dozenal uses a semicolon (3;18481).
-
-**Why:** the punctuation shows which base a number is in, so the two can't be confused.
-
-**Advantage:** the base of any number can be seen at a glance, even with no unit or marker.
-
-**Decided:** long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec).
-Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6859 DH), dates, times of day
-(E;X053), and digits after the point.
-
-**Why:** groups of three are the easiest for people to read, and they match how numbers are spoken
-(thousand / million, mo / bimo). The comma is free in both bases, since decimal uses a dot as the point and
-dozenal a semicolon. It replaces SI's thin space (86 400), which is easy to miss, gets lost when text is
-copied, and can split a number across two lines. Where the comma is the decimal point (much of Europe),
-86,400 could be misread; the dot-and-semicolon rule above already settles which mark is the point.
-
-**Advantage:** long numbers are easy to read, copy and say, in either base.
-
-- eg 0;4 is 4/10; (a third), or 0.333... (dec)
-
-Halves, thirds, quarters and sixths all end after one digit. The catch: a quarter is 0;3 and a third is
-0;4, the opposite of what the digits suggest. Fifths and tenths recur, as thirds do in decimal.
-
-| Fraction        | Dozenal      | Decimal   |
-|-----------------|--------------|-----------|
-| 1/2             | 0;6          | 0.5       |
-| 1/3             | 0;4          | 0.333...  |
-| 2/3             | 0;8          | 0.666...  |
-| 1/4             | 0;3          | 0.25      |
-| 3/4             | 0;9          | 0.75      |
-| 1/6             | 0;2          | 0.1666... |
-| 1/8             | 0;16         | 0.125     |
-| 3/8             | 0;46         | 0.375     |
-| 1/9             | 0;14         | 0.111...  |
-| 1/12 (dec)      | 0;1          | 0.0833... |
-| 1/16 (dec)      | 0;09         | 0.0625    |
-| 1/5             | 0;2497 2497... | 0.2     |
-| 1/10 (dec)      | 0;1 2497 2497... | 0.1   |
-| 1/7             | 0;186X35 186X35... | 0.142857... |
-
-**Decided:** the dozenal percent is **per gro** (per 144 dec), written **/gro**: 75% = 0;9 = 90 /gro; 65% ≈ 0;7X = 7X /gro.
-
-**Why:** it parallels "per cent" (Latin centum is the number word, as gro is ours). The two digits after
-the semicolon are already the per-gro figure, so nothing needs converting. "Per bicia" was rejected: bicia
-already means ÷100;, so "per bicia" would mean ×100;. % can't be reused - it would be read as decimal. No
-established dozenal symbol is known, so /gro is used for now.
-
-**Advantage:** a per-gro figure is read straight off a fraction, with no arithmetic.
-
-**Decided:** fractions (numbers below one) always have a leading zero: 0;6, never ;6.
-
-**Why:** a bare leading semicolon is easy to miss or mistake for punctuation, and it keeps a semicolon
-at the start of a number from ever being ambiguous.
-
-**Advantage:** a fraction can never lose its point in print or handwriting.
-
-**Decided:** how to tell dozenal and decimal numbers apart, when both are in use:
-
-1. A number with a unit needs no marker: the unit says which system (46 p is dozenal, 54 m is decimal).
-2. A number containing X or E is dozenal.
-3. Each document states its default base (this one: dozenal).
-4. A bare number in mixed text is marked: dozenal with a trailing semicolon (**46;**), decimal with
-   **(dec)**, or a subscript ᵈ in typeset documents. Small numbers that read the same in both (0-9)
-   and number words (twelve) need no marker.
-5. Years: CE years are decimal (2026 CE), DH years are dozenal (6859 DH).
-6. Colour can be added on screen, but never as the only signal.
-
-**Why:** most real numbers carry a unit, so they're already unambiguous; markers are only needed for bare
-numbers. The trailing semicolon is just the dozenal point with nothing after it (like "46." in decimal),
-so it works in plain text and handwriting without any new symbol. Colour fails in print, handwriting,
-plain text and for colour-blind readers. Numeric subscripts (46₁₂) were rejected: "12" is itself
-ambiguous - in dozenal it means fourteen. Years get their era instead of a marker because
-the era is already written with years (CE / DH), so it costs nothing extra.
-
-**Advantage:** mixed text stays unambiguous with almost no extra marks, in any medium and for any reader.
-
-## Prefixes
-
-**Decided:** use SDN (Systematic Dozenal Nomenclature, Dozenal Society of America).
-
-**Why:** it's an existing standard, it's systematic (prefixes are built from digit names, not memorised), and it extends to any power. Roots for X and E were changed to dek / el to match the spoken digits.
-
-**Advantage:** a prefix for any power can be built on the spot, and the system is already documented and in use.
-
-Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 enn, X dek, E el
-(SDN's own roots for X and E are dec and lev; changed to match the spoken digit names)
-
-- multiply by 10^n: root(s) + **-qua**  (unqua- ×10, biqua- ×100, triqua- ×1,000, ... unnilqua- ×10^10)
-- divide by 10^n:   root(s) + **-cia**  (uncia- ÷10, bicia- ÷100, tricia- ÷1,000, ...)
-- uncia = Latin "a twelfth" (origin of inch and ounce)
-- Common sizes also get short everyday names (unc = uncia-pace, dig = bicia-pace)
-- Prefix symbols: see Symbols
-
-### Prefix matrix
-
-Each unit in the middle, with its fractions to the left and multiples to the right, one step of twelve at a
-time. Sizes that have their own name are in bold; use the name rather than the prefix form (a dig, not a bcp).
-
-| tricia- ÷1,000 | bicia- ÷100 | uncia- ÷10 | **Unit** | unqua- ×10 | biqua- ×100 | triqua- ×1,000 |
-|---|---|---|---|---|---|---|
-| tcbl<br>201 µs | bcbl<br>2.41 ms | ucbl<br>28.9 ms | **blink** bl<br>0.347 s | **breath** br<br>4.17 s | **moment** mt<br>50 s | tqbl<br>10 min |
-| tcp (lin, proposed)<br>0.841 mm | **dig** di<br>1.01 cm | **unc** un<br>12.1 cm | **pace** p<br>1.45 m | uqp<br>17.4 m | bqp<br>209 m | **iter** ir<br>2.51 km |
-| tcli<br>1.03 g | bcli<br>12.3 g | ucli<br>148 g | **lib** li<br>1.77 kg | uqli<br>21.3 kg | bqli<br>255 kg | tqli<br>3.06 t |
-| tcte<br>402 µK | bcte<br>4.82 mK | ucte<br>57.9 mK | **tep** °t<br>0.694 K | uqte<br>8.33 K | bqte<br>100 K | tqte<br>1.2 kK |
-| tcri<br>7.11 mA | bcri<br>85.3 mA | ucri<br>1.02 A | **riv** ri<br>12.3 A | uqri<br>147 A | bqri<br>1.77 kA | tqri<br>21.2 kA |
-| tcgx<br>593 µmol | bcgx<br>7.12 mmol | ucgx<br>85.4 mmol | **grex** gx<br>1.02 mol | uqgx<br>12.3 mol | bqgx<br>148 mol | tqgx<br>1.77 kmol |
-| tcla<br>567 µcd | bcla<br>6.81 mcd | ucla<br>81.7 mcd | **lam** la<br>0.980 cd | uqla<br>11.8 cd | bqla<br>141 cd | tqla<br>1.69 kcd |
-| tccu<br>1.03 mL | bccu<br>12.3 mL | uccu<br>148 mL | **cub** cu<br>1.77 L | uqcu<br>21.3 L | bqcu<br>255 L | tqcu<br>3.06 m³ |
-| tcvi<br>12.4 mN | bcvi<br>148 mN | ucvi<br>1.78 N | **vis** vi<br>21.3 N | uqvi<br>256 N | bqvi<br>3.07 kN | tqvi<br>36.9 kN |
-| tcop<br>17.9 mJ | bcop<br>215 mJ | ucop<br>2.58 J | **opus** op<br>31 J | uqop<br>372 J | bqop<br>4.46 kJ | tqop<br>53.6 kJ |
-| tcvg<br>51.7 mW | bcvg<br>620 mW | ucvg<br>7.44 W | **vig** vg<br>89.3 W | uqvg<br>1.07 kW | bqvg<br>12.9 kW | tqvg<br>154 kW |
-| tcpr<br>5.85 mPa | bcpr<br>70.2 mPa | ucpr<br>843 mPa | **pres** pr<br>10.1 Pa | uqpr<br>121 Pa | bqpr<br>1.46 kPa | tqpr<br>17.5 kPa |
-| tcos<br>2.47 mC | bcos<br>29.6 mC | ucos<br>355 mC | **onus** os<br>4.27 C | uqos<br>51.2 C | bqos<br>614 C | tqos<br>7.37 kC |
-| tcim<br>4.21 mV | bcim<br>50.5 mV | ucim<br>606 mV | **imp** im<br>7.27 V | uqim<br>87.2 V | bqim<br>1.05 kV | tqim<br>12.6 kV |
-
-- Named sizes that aren't a single prefix step: **beat** = 3 bl; **chime** = 10,000 bl (qqbl, 2 h); the day =
-  100,000 bl (pqbl); **span** = 0;2 p; **ulna** = 0;4 p; **navis** = 930 p; **parax** (star distances);
-  **ager** = 1,000 p² (tqp² would be read as (tqp)², so it gets a name)
-- Prefixed temperatures use the plain-text symbol te (tcte), as °C is rarely prefixed; they're for science only
-- tqbl is 0;1 chime (10 minutes), which needs no name, as "ten minutes" doesn't
-
-## Names
-
-**Decided:** short names (3-4 letters preferred), Latin roots where possible, no clash with an existing unit,
-no everyday word whose meaning would mislead, and no object or container names.
-
-**Why:** short names are quick to say and write; Latin roots echo older measures (pace, uncia, libra) and work
-across languages; clashes cause confusion when both systems are in use. Everyday words are fine when their
-meaning fits the size (pace, span, dig, blink, beat, breath, moment, chime) - that's what makes them easy to
-remember. The rule used to say "no clash with existing everyday words", which contradicted those names.
-
-**Advantage:** units are quick to say, easy to remember, and never confused with SI or imperial ones.
-
-| Quantity               | Name  | Symbol | Size (SI)           | Named after                                       | English relatives            |
-|------------------------|-------|--------|---------------------|---------------------------------------------------|------------------------------|
-| Time (base)            | blink | bl     | 0.3472 s            | English: the blink of an eye                      |                              |
-| Time (≈ second)        | beat  | bt     | 1.0417 s            | English: a heartbeat                              |                              |
-| Time (clock)           | breath | br    | 4.1667 s            | English: one breath                               |                              |
-| Time (dozenal hour)    | chime | ch     | 2 h exactly         | English: clocks chime on the hour                 |                              |
-| Time (dozenal minute)  | moment | mt    | 50 s exactly        | Latin momentum, movement; medieval moment = 90 s  | moment, momentum             |
-| Length (base)          | pace  | p      | 1.4525 m            | Latin passus, a pace (Roman pace ≈ 1.48 m)        | pace, passage                |
-| 1/10 pace              | unc   | un     | ≈ 12.1 cm           | Latin uncia, a twelfth                            | inch, ounce                  |
-| 1/100 pace             | dig   | di     | ≈ 1.01 cm           | Latin digitus, finger (Roman digit ≈ 1.85 cm)     | digit                        |
-| 0;2 pace               | span  | sp     | ≈ 24.2 cm           | English span, a hand's spread                     | span                         |
-| 0;4 pace               | ulna  | ul     | ≈ 48.4 cm           | Latin ulna, forearm (elbow to fingertip)          | ell                          |
-| 1,000 paces (distance)  | iter  | ir     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
-| 930 paces (sea, air)   | navis | na     | ≈ 1.935 km          | Latin navis, ship                                 | navy, navigate               |
-| Star distances         | parax | px     | 2.30 pc, 7.5 ly     | parallaxis, astronomers' Latin (from Greek)       | parallax                     |
-| Area                   | ager  | ag     | ≈ 3,646 m²          | Latin ager, field                                 | agriculture                  |
-| Mass                   | lib   | li     | ≈ 1.7714 kg         | Latin libra, pound; also scales (Roman pound)     | lb (pound), Libra            |
-| Volume (unc cube)      | cub   | cu     | 1.7736 L            | Latin cubus, cube                                 | cube, cubic                  |
-| Temperature            | tep   | °t     | 0.694 K/°C          | Latin tepor, warmth                               | tepid                        |
-| Force                  | vis   | vi     | ≈ 21.3 N            | Latin vis, force, strength                        | vim                          |
-| Energy                 | opus  | op     | ≈ 31.0 J            | Latin opus, work                                  | opus, operate                |
-| Power                  | vig   | vg     | ≈ 89.3 W            | Latin vigor, liveliness, energy                   | vigour, vigorous             |
-| Pressure               | pres  | pr     | ≈ 10.1 Pa           | Latin pressus, pressed                            | press, pressure              |
-| Current                | riv   | ri     | ≈ 12.28 A           | Latin rivus, a stream                             | rivulet, derive              |
-| Charge                 | onus  | os     | ≈ 4.266 C           | Latin onus, load, burden                          | onus, onerous                |
-| Voltage                | imp   | im     | ≈ 7.268 V           | Latin impetus, push, rush                         | impetus, impetuous           |
-| Amount of substance    | grex  | gx     | 6.17 × 10^23 things | Latin grex, flock, herd                           | gregarious, congregate       |
-| Luminous intensity     | lam   | la     | 0.980 cd            | Latin lampas, lamp, torch                         | lamp                         |
-| Sound level            | vox   | vo     | ≈ 0.90 dB per vox   | Latin vox, voice                                  | voice, vocal                 |
-
-- Rejected: heft, jug (object names), pond (sounds like a lake), mass/vol (clash with quantity names / "% vol"),
-  hand (clashes with horse hand 10.16 cm), nail, inc (too close to "inch"), lux/lum (existing SI units),
-  cal (calorie), pot (container), erg (CGS unit), grad (gradian), mol (mole)
 
 ## Time
 
@@ -785,6 +855,121 @@ an SI or imperial unit. Rejected: sidus (Latin, a star; "si" reads as SI), caelu
   - h = 2 × 10^-28 (1.864 kg): rounder h, but water cube only 0.95
 - Priority used: c round > water ≈ 1 > h round. Normal people use c-based length and water; almost nobody uses h directly.
 
+## Electricity
+
+**Decided:** fix the elementary charge **e = 1 × 10^-16 onus** exactly (12^-18 dec).
+
+**Why:** a round fixed constant, exactly like SI. imp × riv is always a vig (89.3 W), so e only decides how
+that is split between voltage and current. This split puts the imp at 7.27 V and the riv at 12.3 A, where
+the everyday numbers fall best: the voltages printed on batteries, chargers, cars and sockets need no
+prefix (car 1;8 im, mains 28 or 29 im), and household currents are about a riv (a kettle 0;X riv, a
+16 A circuit 1;4 riv). Replaces
+the earlier e = 1 × 10^-15 (riv 1.02 A, imp 87.2 V), which made currents neat but left every everyday
+voltage needing a prefix (AA 2;6 bcim, car 1;8 ucim).
+
+**Advantage:** the numbers people actually read - voltages on labels and sockets, currents on chargers and circuits - mostly need no prefix.
+
+```mermaid
+flowchart LR
+  e(["e = 1 × 10^-16 os"]) --> os["onus: charge<br>4.27 C"]
+  os -->|"per blink"| ri["riv: current<br>12.3 A"]
+  op["opus: energy<br>31.0 J"] -->|"per onus"| im["imp: voltage<br>7.27 V"]
+  os --> im
+  im -->|"× riv"| vg["vig: power<br>89.3 W"]
+  ri --> vg
+```
+
+- 1 onus (charge) ≈ 4.266 C
+- 1 riv (current, onus/blink) ≈ 12.285 A - about what a socket circuit carries (10-16 A)
+- 1 imp (voltage, opus/onus) ≈ 7.268 V
+- Common voltages aren't round (set by chemistry and history), but they're all plain imps. Small ones use
+  the uncia-imp (ucim, 0;1 imp ≈ 0.606 V), and small currents the tricia-riv (tcri ≈ 7.1 mA):
+
+| Voltage          | imp    | uncia-imp |
+|------------------|--------|-----------|
+| 1.5 V (AA)       | 0;258  | 2;58      |
+| 5 V (USB)        | 0;830  | 8;30      |
+| 12 V (car)       | 1;799  | 17;99     |
+| 24 V             | 3;376  | 33;76     |
+| 120 V mains      | 14;62  |           |
+| 230 V mains      | 27;79  |           |
+| 240 V mains      | 29;03  |           |
+
+| Current                    | riv   |
+|----------------------------|-------|
+| 20 mA (LED)                | 0;003 (2;9X tcri) |
+| 2 A (phone charger)        | 0;1E5 |
+| 10 A (AU socket, kettle)   | 0;992 (≈ 0;X) |
+| 16 A (EU socket circuit)   | 1;376 |
+| 20 A (US circuit)          | 1;765 |
+| 32 A (oven, EV charger)    | 2;731 |
+
+- Rejected: e = 1 × 10^-15 (riv 1.02 A, imp 87.2 V: every everyday voltage needs a prefix);
+  1 × 10^-17 (imp 0.61 V, riv 147 A: voltages are whole numbers, but a phone charger is 0;017 riv);
+  0;2 × 10^-15 (imp 14.5 V, riv 6.1 A: a car battery is about 1 imp, but mains and sockets come out no better).
+- No choice makes both close to SI: imp × riv = vig (89.3 W), fixed by the mechanical units, where
+  volt × amp = 1 W. The split can only trade one for the other.
+
+## Temperature
+
+**Decided:** the **tep**, defined by fixing the Boltzmann constant **k = 2;07 × 10^-1E** (opus/tep), exact.
+
+**Why:** 0 tep = freezing is what people actually need for weather and cooking (like Celsius). The size splits the gap between freezing and boiling into 100; equal steps (144 dec), so water
+freezes at 0°t and boils at 100°t - the dozenal version of Celsius's 0 and 100.
+
+**Advantage:** freezing is 0 and boiling 100, so weather and cooking temperatures read like Celsius.
+
+- 1 tep = 0.694346 K (within 0.014% of 0;01 of the freezing-boiling gap)
+- **0 tep = freezing** (273.15 K, same anchor as Celsius) - human focused; kelvin-style zero rejected
+- Triple point of water (273.16 K = 0.01°C) ≈ **0;021°t**, not 0. Anchoring 0°t at 273.15 K exactly, like
+  Celsius, keeps 0°t = 0°C; the triple point has been a measured value (not exact) since SI's 2019 redefinition,
+  so anchoring there would gain nothing
+- boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974°C)
+- 1 tep ≈ 0.694°C ≈ 1.25°F
+- body temperature ≈ 45;35 tep, room temperature (21°C) ≈ 26 tep
+- absolute zero ≈ -289;48 tep (no nice ratio between absolute zero, freezing and boiling - fine)
+
+**Decided:** absolute temperature (from absolute zero, for gas laws and physics) is written **ta**, spoken
+"tep absolute": 0 ta = absolute zero, freezing = 289;485 ta, so ta = °t + 289;485. Everyday temperatures stay
+°t (or te), from freezing.
+
+**Why:** most people will only ever use the everyday scale, so it keeps the plain names; the absolute scale
+just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square
+inch absolute / gauge). Rejected: "tabs" and "tea" (English words).
+
+**Advantage:** everyday temperatures keep the simple name, and physics still gets an absolute scale that can't be mistaken for it.
+
+## Amount of substance
+
+**Decided:** the **grex** = exactly **1;15 × 10^1X** entities (≈ 6.17235 × 10^23 dec).
+
+**Why:** molar masses then come out ≈ atomic masses in 1/1,000 lib, the same convenience chemists have with g/mol.
+
+**Advantage:** chemists' rule of thumb (molar mass ≈ atomic mass) carries over unchanged.
+
+- Chosen so molar masses ≈ atomic masses in 1/1,000 lib (like SI's g/mol): carbon-12 = 11.998, water = 18.01 (dec)
+- Rejected: exactly 10^1X (5.52 × 10^23 dec) - rounder, but molar masses come out ×0.894;
+  SI's Avogadro number - molar masses off by 2.5%
+
+## Light
+
+**Decided:** the **lam** is defined by fixing the luminous efficacy of green light at
+**K_cd = 3 × 10^4 lam·sr/vg** (exact), for light of frequency **19,042,90X,764,540 per blink** (exact; 540 THz).
+That makes 1 lam ≈ 0.980246 cd.
+
+**Why:** every other base unit is defined by a constant stated in Paludal units; the lam used to be the SI
+candela carried over, so it couldn't be defined without SI. A round K_cd per vig is the Paludal equivalent of
+SI's 683 lm/W. Replaces the earlier decision to keep lam = 1 cd ("rarely used, nothing to gain").
+
+**Advantage:** every base unit is now defined within Paludal, and still converts exactly to SI.
+
+- The frequency is SI's 540 THz exactly, expressed per blink. It isn't round (≈ 1;9043 × 10^11), for the same
+  reason the caesium count isn't: a round frequency (eg 1;9 × 10^11 per blink, 556 nm instead of 555 nm) would
+  mean converting to the candela through the eye's sensitivity curve, so the conversion would no longer be exact
+- 683 lm/W expressed per vig is 2E,357;1E (60,979 dec). 3 × 10^4 (62,208 dec) is the nearest one-digit round
+  number; 2E,000 would be closer (lam = 1.008 cd) but isn't as round
+- Lamp ratings change by 2%: an 800 lumen bulb is about 580 paludal lumens (lam·sr; 816 dec)
+
 ## Area
 
 **Decided:** the **ager** (symbol **ag**) = 1,000 square paces (1,728 dec), eg a strip 100 × 10 paces
@@ -868,121 +1053,6 @@ also still proposed), and that's the same number as libs of water per square pac
 | Heavy storm | 25 | 25;8 |
 | Flood rain | 100 | 9X;E |
 | Sydney, a year | 1,200 | 9XE |
-
-## Temperature
-
-**Decided:** the **tep**, defined by fixing the Boltzmann constant **k = 2;07 × 10^-1E** (opus/tep), exact.
-
-**Why:** 0 tep = freezing is what people actually need for weather and cooking (like Celsius). The size splits the gap between freezing and boiling into 100; equal steps (144 dec), so water
-freezes at 0°t and boils at 100°t - the dozenal version of Celsius's 0 and 100.
-
-**Advantage:** freezing is 0 and boiling 100, so weather and cooking temperatures read like Celsius.
-
-- 1 tep = 0.694346 K (within 0.014% of 0;01 of the freezing-boiling gap)
-- **0 tep = freezing** (273.15 K, same anchor as Celsius) - human focused; kelvin-style zero rejected
-- Triple point of water (273.16 K = 0.01°C) ≈ **0;021°t**, not 0. Anchoring 0°t at 273.15 K exactly, like
-  Celsius, keeps 0°t = 0°C; the triple point has been a measured value (not exact) since SI's 2019 redefinition,
-  so anchoring there would gain nothing
-- boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974°C)
-- 1 tep ≈ 0.694°C ≈ 1.25°F
-- body temperature ≈ 45;35 tep, room temperature (21°C) ≈ 26 tep
-- absolute zero ≈ -289;48 tep (no nice ratio between absolute zero, freezing and boiling - fine)
-
-**Decided:** absolute temperature (from absolute zero, for gas laws and physics) is written **ta**, spoken
-"tep absolute": 0 ta = absolute zero, freezing = 289;485 ta, so ta = °t + 289;485. Everyday temperatures stay
-°t (or te), from freezing.
-
-**Why:** most people will only ever use the everyday scale, so it keeps the plain names; the absolute scale
-just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square
-inch absolute / gauge). Rejected: "tabs" and "tea" (English words).
-
-**Advantage:** everyday temperatures keep the simple name, and physics still gets an absolute scale that can't be mistaken for it.
-
-## Electricity
-
-**Decided:** fix the elementary charge **e = 1 × 10^-16 onus** exactly (12^-18 dec).
-
-**Why:** a round fixed constant, exactly like SI. imp × riv is always a vig (89.3 W), so e only decides how
-that is split between voltage and current. This split puts the imp at 7.27 V and the riv at 12.3 A, where
-the everyday numbers fall best: the voltages printed on batteries, chargers, cars and sockets need no
-prefix (car 1;8 im, mains 28 or 29 im), and household currents are about a riv (a kettle 0;X riv, a
-16 A circuit 1;4 riv). Replaces
-the earlier e = 1 × 10^-15 (riv 1.02 A, imp 87.2 V), which made currents neat but left every everyday
-voltage needing a prefix (AA 2;6 bcim, car 1;8 ucim).
-
-**Advantage:** the numbers people actually read - voltages on labels and sockets, currents on chargers and circuits - mostly need no prefix.
-
-```mermaid
-flowchart LR
-  e(["e = 1 × 10^-16 os"]) --> os["onus: charge<br>4.27 C"]
-  os -->|"per blink"| ri["riv: current<br>12.3 A"]
-  op["opus: energy<br>31.0 J"] -->|"per onus"| im["imp: voltage<br>7.27 V"]
-  os --> im
-  im -->|"× riv"| vg["vig: power<br>89.3 W"]
-  ri --> vg
-```
-
-- 1 onus (charge) ≈ 4.266 C
-- 1 riv (current, onus/blink) ≈ 12.285 A - about what a socket circuit carries (10-16 A)
-- 1 imp (voltage, opus/onus) ≈ 7.268 V
-- Common voltages aren't round (set by chemistry and history), but they're all plain imps. Small ones use
-  the uncia-imp (ucim, 0;1 imp ≈ 0.606 V), and small currents the tricia-riv (tcri ≈ 7.1 mA):
-
-| Voltage          | imp    | uncia-imp |
-|------------------|--------|-----------|
-| 1.5 V (AA)       | 0;258  | 2;58      |
-| 5 V (USB)        | 0;830  | 8;30      |
-| 12 V (car)       | 1;799  | 17;99     |
-| 24 V             | 3;376  | 33;76     |
-| 120 V mains      | 14;62  |           |
-| 230 V mains      | 27;79  |           |
-| 240 V mains      | 29;03  |           |
-
-| Current                    | riv   |
-|----------------------------|-------|
-| 20 mA (LED)                | 0;003 (2;9X tcri) |
-| 2 A (phone charger)        | 0;1E5 |
-| 10 A (AU socket, kettle)   | 0;992 (≈ 0;X) |
-| 16 A (EU socket circuit)   | 1;376 |
-| 20 A (US circuit)          | 1;765 |
-| 32 A (oven, EV charger)    | 2;731 |
-
-- Rejected: e = 1 × 10^-15 (riv 1.02 A, imp 87.2 V: every everyday voltage needs a prefix);
-  1 × 10^-17 (imp 0.61 V, riv 147 A: voltages are whole numbers, but a phone charger is 0;017 riv);
-  0;2 × 10^-15 (imp 14.5 V, riv 6.1 A: a car battery is about 1 imp, but mains and sockets come out no better).
-- No choice makes both close to SI: imp × riv = vig (89.3 W), fixed by the mechanical units, where
-  volt × amp = 1 W. The split can only trade one for the other.
-
-## Amount of substance
-
-**Decided:** the **grex** = exactly **1;15 × 10^1X** entities (≈ 6.17235 × 10^23 dec).
-
-**Why:** molar masses then come out ≈ atomic masses in 1/1,000 lib, the same convenience chemists have with g/mol.
-
-**Advantage:** chemists' rule of thumb (molar mass ≈ atomic mass) carries over unchanged.
-
-- Chosen so molar masses ≈ atomic masses in 1/1,000 lib (like SI's g/mol): carbon-12 = 11.998, water = 18.01 (dec)
-- Rejected: exactly 10^1X (5.52 × 10^23 dec) - rounder, but molar masses come out ×0.894;
-  SI's Avogadro number - molar masses off by 2.5%
-
-## Light
-
-**Decided:** the **lam** is defined by fixing the luminous efficacy of green light at
-**K_cd = 3 × 10^4 lam·sr/vg** (exact), for light of frequency **19,042,90X,764,540 per blink** (exact; 540 THz).
-That makes 1 lam ≈ 0.980246 cd.
-
-**Why:** every other base unit is defined by a constant stated in Paludal units; the lam used to be the SI
-candela carried over, so it couldn't be defined without SI. A round K_cd per vig is the Paludal equivalent of
-SI's 683 lm/W. Replaces the earlier decision to keep lam = 1 cd ("rarely used, nothing to gain").
-
-**Advantage:** every base unit is now defined within Paludal, and still converts exactly to SI.
-
-- The frequency is SI's 540 THz exactly, expressed per blink. It isn't round (≈ 1;9043 × 10^11), for the same
-  reason the caesium count isn't: a round frequency (eg 1;9 × 10^11 per blink, 556 nm instead of 555 nm) would
-  mean converting to the candela through the eye's sensitivity curve, so the conversion would no longer be exact
-- 683 lm/W expressed per vig is 2E,357;1E (60,979 dec). 3 × 10^4 (62,208 dec) is the nearest one-digit round
-  number; 2E,000 would be closer (lam = 1.008 cd) but isn't as round
-- Lamp ratings change by 2%: an 800 lumen bulb is about 580 paludal lumens (lam·sr; 816 dec)
 
 ## Angle
 
@@ -1087,9 +1157,9 @@ definition; measured values carry the same uncertainty as in SI.
 - The Faraday constant comes out round because both e and the grex number are round
 - g isn't round: c is, and only one of them can be (see Gravity)
 
-# Part 2: Using it
+# Part 3: Everyday use
 
-How the units meet everyday life: clocks and calendars, changeover, money, standard sizes, everyday values and conversions.
+How the units meet everyday life: clocks and calendars, money, changeover, standard sizes, everyday values and conversions.
 
 ## A day in Paludal
 
@@ -1117,7 +1187,7 @@ Times are chime;moments (6;00 is noon). Values are rounded the way a label or si
 
 ## Clocks, time zones and calendar
 
-The time units themselves are in Part 1 (Time).
+The time units themselves are in Part 2 (Time).
 
 ### Analogue clocks
 
@@ -1264,6 +1334,18 @@ Cæruleus, Purpureus).
 - A 6-day week would mean a 4-day working week with the usual 2-day weekend
 - For now, the 7-day week stays: changing it is too big a change, and 365 (dec) days can't be split evenly anyway
 
+## Money
+
+**Proposed (not decided):** keep each currency's main unit (eg the dollar) at its current value, and divide it
+into 100; (144 dec) parts instead of 100 (dec) cents. One part ≈ 0.69 c.
+
+- No currency needs revaluing: $1 stays $1, and only the small change is new
+- Halves, thirds, quarters, sixths, eighths and ninths of a dollar are whole numbers of parts:
+  a third is $0;40, a quarter $0;30, an eighth $0;16
+- Fifths and tenths aren't (20 c = $0;2497...), so prices would be set to round dozenal values, as with any
+  changeover (see Speed limits and changeover)
+- The cent is from Latin *centum* (100). Name for the 1/100; part: to be decided
+
 ## Speed limits and changeover
 
 - 100 km/h ≈ 67;82 paces/breath. Same digits at every scale because units step by twelve
@@ -1309,84 +1391,6 @@ are set by international agreement or built into long-lived equipment:
   as long as it likes, which avoids dose errors
 - Inch sizes: screens, wheels and tyre rims, pipe threads
 - Traditional sport distances: the marathon and cricket pitch (see Races and sport)
-
-## Money
-
-**Proposed (not decided):** keep each currency's main unit (eg the dollar) at its current value, and divide it
-into 100; (144 dec) parts instead of 100 (dec) cents. One part ≈ 0.69 c.
-
-- No currency needs revaluing: $1 stays $1, and only the small change is new
-- Halves, thirds, quarters, sixths, eighths and ninths of a dollar are whole numbers of parts:
-  a third is $0;40, a quarter $0;30, an eighth $0;16
-- Fifths and tenths aren't (20 c = $0;2497...), so prices would be set to round dozenal values, as with any
-  changeover (see Speed limits and changeover)
-- The cent is from Latin *centum* (100). Name for the 1/100; part: to be decided
-
-## Phone numbers and keypads
-
-**Decided:** phone numbers stay as they are, and phone keypads get a dozenal layout (below).
-
-**Why:** phone numbers are names, not amounts, so dozenal gains them nothing; keypads still need X and E for
-amounts, and the 4 × 3 keypad has exactly twelve keys for the twelve digits. * and # can't be reused as
-digits because phone systems use them as menu keys.
-
-**Advantage:** no number changes, and the keypad gains the two digits without losing * and # or changing
-where 1-9 and 0 are.
-
-- Phone numbers are names, not amounts: nobody adds or divides them, so they gain nothing from dozenal, and
-  changing every number in the world would cost a great deal. They're read digit by digit as now (see Spoken
-  numbers), like postcodes, PINs and account numbers
-- Keypads still need X and E for typing dozenal amounts (prices, times, quantities). * and # can't stand in
-  for them: they're already used as menu and control keys by phone systems
-- The standard keypad already has twelve keys in a 4 × 3 grid, so a dozenal keypad puts exactly the twelve
-  digits there, and moves * and # to a row of their own:
-
-```
- 1   2   3
- 4   5   6
- 7   8   9
- X   0   E
- *       #
-```
-
-- 0 stays in the middle of the bottom row, where it is on phones today; X and E take the corners * and # used
-  to have, in order (ten before eleven)
-
-**Decided:** the number pad on keyboards and calculators keeps its shape and its 7-8-9-on-top order, and makes
-room for X, E and the dozenal point (layout below).
-
-**Why:** the bottom row matches the phone keypad (X 0 E), the footprint stays the same so existing keyboards
-and cases still fit, and 7-8-9 stays on top so people keep the muscle memory they have.
-
-**Advantage:** every digit and the point get a key of their own without a bigger pad, and the same X 0 E row
-appears on phones, calculators and keyboards.
-
-```
- Num   /    *    -
-  7    8    9    +
-  4    5    6    ;
-  1    2    3   Ent
-  X    0    E   Ent
-```
-
-- Today's wide 0 is split into X and 0, and the decimal point's key becomes E, so the bottom row reads X 0 E as
-  on the phone keypad
-- The tall + is split in two, + above and ; (the dozenal point) below; Enter stays tall
-- Same footprint and key spacing as today (19 keys instead of 17), so existing cases and keyboards fit
-- 7-8-9 stays on top, as on every calculator: changing it would break the muscle memory people already have,
-  even though phones count the other way
-
-**Decided:** main keyboards need no new keys.
-
-**Why:** X and E are typed as capital letters (the reason they were chosen; see Symbols), and the semicolon is
-already on the home row, unshifted on most layouts. ↊ ↋ only need an input method, not new keys.
-
-**Advantage:** dozenal can be typed on every keyboard in use today.
-
-- X and E are typed as capital letters (see Symbols), and ; is already on the home row, unshifted on most
-  layouts - one reason the semicolon makes a good dozenal point
-- For typeset ↊ ↋, a keyboard layout option types them with AltGr / Option + X and E; until then, text
-  replacement (eg "dek" → ↊) or the Unicode codes (U+218A, U+218B)
 
 ## Paper sizes
 
@@ -1842,7 +1846,7 @@ but that's not a serious clash. So
   conversion of old tables
 - Converting old pH readings needs the temperature, because neutral moves with it
 
-# Part 3: Background
+# Part 4: Background
 
 Where the ideas came from, and what's still to decide.
 
