@@ -16,12 +16,16 @@ Fallbacks if needed: **Uncial** (Latin uncia, a twelfth) or **Passic** (from pas
 **Why:** named after its creator, as Fahrenheit, Celsius and Kelvin are - but hidden: Latin *palus, paludis*
 means "a marsh". It matches the Latin naming style of the units, and works as an adjective like "metric".
 
+**Advantage:** a short name that works as an adjective ("paludal units") and fits the Latin unit names, without putting a person's name on show.
+
 **Decided:** **dozenal** is the number system (base twelve) and **Paludal** is the system of units built on
 it, as decimal is the number system and metric the units.
 
 **Why:** to keep the two separate. Base ten can be used without metric units, and base twelve without
 Paludal ones. Dozenal counting is long established (the Dozenal Society, SDN and the X / E digits all predate
 this), and Paludal doesn't claim to have invented it - only the units are new.
+
+**Advantage:** either half can be taught, adopted or argued about on its own - dozenal counting doesn't stand or fall with these units.
 
 Goals: as rigorous as SI (every unit defined by a fixed constant, exact conversion to SI),
 but human focused - everyday sizes and rules of thumb matter more than round constants.
@@ -40,7 +44,7 @@ The units themselves: how numbers are written, the defining constants, the base 
 | Length      | pace  | 1.452545 m             | c = 2 × 10^7 paces/blink                      | Latin passus, a pace |
 | Mass        | lib   | 1.771431 kg            | h = 2;13 × 10^-28                             | Latin libra, pound / scales |
 | Temperature | tep   | 0.694346 K             | k = 2;07 × 10^-1E, 0 tep = 273.15 K (freezing) | Latin tepor, warmth |
-| Current     | riv   | 1.0237 A               | e = 1 × 10^-15 onus                           | Latin rivus, stream |
+| Current     | riv   | 12.2847 A              | e = 1 × 10^-16 onus                           | Latin rivus, stream |
 | Amount      | grex  | 6.17235 × 10^23 (dec) things | 1 grex = 1;15 × 10^1X things            | Latin grex, flock |
 | Light       | lam   | 0.980246 cd            | K_cd = 3 × 10^4 lam·sr/vg at 19,042,90X,764,540 per blink | Latin lampas, lamp |
 
@@ -64,8 +68,8 @@ The units themselves: how numbers are written, the defining constants, the base 
 | Energy            | opus | ≈ 31.0 J         | Latin opus, work |
 | Power             | vig  | ≈ 89.3 W         | Latin vigor, liveliness |
 | Pressure          | pres | ≈ 10.1 Pa        | Latin pressus, pressed |
-| Charge            | onus | ≈ 0.3555 C       | Latin onus, load |
-| Voltage           | imp  | ≈ 87.21 V        | Latin impetus, push |
+| Charge            | onus | ≈ 4.266 C        | Latin onus, load |
+| Voltage           | imp  | ≈ 7.268 V        | Latin impetus, push |
 
 ### How the units connect
 
@@ -77,7 +81,7 @@ flowchart LR
     cs(["caesium frequency"])
     c(["c = 2 × 10^7 p/bl"])
     h(["h = 2;13 × 10^-28"])
-    e(["e = 1 × 10^-15 os"])
+    e(["e = 1 × 10^-16 os"])
     k(["k = 2;07 × 10^-1E op/°t"])
     n(["1;15 × 10^1X things"])
     kcd(["K_cd = 3 × 10^4 la·sr/vg"])
@@ -108,7 +112,7 @@ flowchart LR
 - A moment (50 s) is about a minute; a beat (1.04 s) is about a second.
 - 100 km/h ≈ 68 paces/breath; motorway limit 70 (105 km/h).
 - Water freezes at 0 tep, boils at ≈ 100 tep. Body ≈ 45;3 tep.
-- 240 V mains ≈ 2;9 imp, 120 V ≈ 1;46 imp.
+- 240 V mains ≈ 29 imp, 230 V ≈ 27;8, 120 V ≈ 14;6, a 12 V car ≈ 1;8. A kettle draws ≈ 0;X riv.
 - A 6 ft person ≈ 1¼ paces. 1 inch ≈ 2;6 digs.
 
 ## Symbols
@@ -121,6 +125,8 @@ typeset documents. Kept after review, even though software reads E as an exponen
 the same way); A and B as in hexadecimal (A = ten, B = eleven) - safe in software, but they lose the link
 to the spoken names dek and el.
 
+**Advantage:** dozenal numbers can be written anywhere - keyboard, plain text, handwriting - and still match the spoken dek and el.
+
 - In data files, write ↊ ↋ or store dozenal numbers as text (quoted), so software can't misread them.
   Quoting also protects the semicolon, which some files use to separate fields
 
@@ -132,11 +138,15 @@ imperial symbol, since both systems will be in use side by side.
 
 **Why:** one simple rule is easy to learn and guess. Symbols must not clash with SI or imperial ones because both systems will be in use side by side for a long time. Pace gets a single letter because it's used most.
 
+**Advantage:** a symbol can be guessed from its name (and the name from the symbol), and never means something else in SI or imperial.
+
 **Decided:** where the first two letters make a common English word, use the first and last letters instead,
 as the moment does (mt): beat = **bt** (not be), iter = **ir** (not it), onus = **os** (not on).
 
 **Why:** a review found that "add 3 it", "2 on of charge" and "1;3 be" read as English. opus keeps **op**:
 its first and last letters (os) would be the onus, and "op" isn't a common word on its own.
+
+**Advantage:** no symbol reads as an English word, so a quantity can't be mistaken for text.
 
 | Unit   | Symbol | Quantity |
 |--------|--------|----------|
@@ -180,8 +190,12 @@ fallback: **te**. A bare "25°" is fine where tep is the expected scale (eg weat
 **Why:** the degree sign means "a scale with a chosen zero", which is what the tep is (0 = freezing, like
 Celsius), and people already read 25°C / °F that way. Lowercase because tep isn't named after a person
 (°C and °F are), and it avoids T (tesla). It's still two characters, so it fits the spirit of the rule.
-Written without a space: TODO - reason not recorded.
-- Examples: 1;3 p tall, 2;6 li, 25°t, 68 p/br, 2;9 im
+Written without a space because the sign belongs to the number, the way 5ml is usually written on labels.
+
+**Advantage:** readings look like the °C and °F people already know, can't be confused with the tesla, and
+a temperature reads as one unit (25°t) that can't be split across a line.
+
+- Examples: 1;3 p tall, 2;6 li, 25°t, 68 p/br, 29 im
 
 **Decided:** all unit and prefix symbols are lowercase (tqop, not tqOP or TQop).
 
@@ -190,12 +204,16 @@ would clash with chemical elements (Cu, Be, Br, La), and all-capital units read 
 prefix letters for powers of twelve (k = ×1,000;) was rejected: the same letter meaning a 1.728× different
 factor would cause errors where both systems are in use.
 
+**Advantage:** there's nothing to remember about case, and no symbol can be mistaken for a chemical element or an SI prefix.
+
 ### Prefix symbols
 
 **Decided:** initials of the SDN digit roots, then **q** (multiply) or **c** (divide). The last letter is always
 q or c, so a symbol can always be read unambiguously.
 
 **Why:** built from the SDN roots we already use, so there's no separate table to memorise. Ending in q or c keeps them unambiguous even though some roots share initials (quad / qua).
+
+**Advantage:** nothing new to learn, and any prefix symbol can be read back without a table.
 
 | Digit  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | X | E |
 |--------|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -213,6 +231,8 @@ q or c, so a symbol can always be read unambiguously.
 **Decided:** digits X = **dek**, E = **el** (the DSA standard names). Powers use **do / gro / mo**:
 
 **Why:** dek and el are the established standard names, so we use them (and changed the prefix roots to match, not the other way round). Calling 10; "ten" would be heard as decimal. do / gro / mo are short, and bimo / trimo extend them the way million / billion extend thousand.
+
+**Advantage:** dozenal numbers can be said aloud without being heard as decimal, and large ones scale the way thousand and million do.
 
 | Number | Name  | (dec)    |
 |--------|-------|----------|
@@ -234,6 +254,8 @@ q or c, so a symbol can always be read unambiguously.
 
 **Why:** the punctuation shows which base a number is in, so the two can't be confused.
 
+**Advantage:** the base of any number can be seen at a glance, even with no unit or marker.
+
 **Decided:** long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec).
 Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6E62 HE), dates, times of day
 (E;X053), and digits after the point.
@@ -243,6 +265,8 @@ Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6E62 HE
 dozenal a semicolon. It replaces SI's thin space (86 400), which is easy to miss, gets lost when text is
 copied, and can split a number across two lines. Where the comma is the decimal point (much of Europe),
 86,400 could be misread; the dot-and-semicolon rule above already settles which mark is the point.
+
+**Advantage:** long numbers are easy to read, copy and say, in either base.
 
 - eg 0;4 is 4/10; (a third), or 0.333... (dec)
 
@@ -273,10 +297,14 @@ the semicolon are already the per-gro figure, so nothing needs converting. "Per 
 already means ÷100;, so "per bicia" would mean ×100;. % can't be reused - it would be read as decimal. No
 established dozenal symbol is known, so /gro is used for now.
 
+**Advantage:** a per-gro figure is read straight off a fraction, with no arithmetic.
+
 **Decided:** fractions (numbers below one) always have a leading zero: 0;6, never ;6.
 
 **Why:** a bare leading semicolon is easy to miss or mistake for punctuation, and it keeps a semicolon
 at the start of a number from ever being ambiguous.
+
+**Advantage:** a fraction can never lose its point in print or handwriting.
 
 **Decided:** how to tell dozenal and decimal numbers apart, when both are in use:
 
@@ -296,11 +324,15 @@ plain text and for colour-blind readers. Numeric subscripts (46₁₂) were reje
 ambiguous - in dozenal it means fourteen. Years get their era instead of a marker because
 the era is already written with years (CE / HE), so it costs nothing extra.
 
+**Advantage:** mixed text stays unambiguous with almost no extra marks, in any medium and for any reader.
+
 ## Prefixes
 
 **Decided:** use SDN (Systematic Dozenal Nomenclature, Dozenal Society of America).
 
 **Why:** it's an existing standard, it's systematic (prefixes are built from digit names, not memorised), and it extends to any power. Roots for X and E were changed to dek / el to match the spoken digits.
+
+**Advantage:** a prefix for any power can be built on the spot, and the system is already documented and in use.
 
 Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 enn, X dek, E el
 (SDN's own roots for X and E are dec and lev; changed to match the spoken digit names)
@@ -311,6 +343,34 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
 - Common sizes also get short everyday names (unc = uncia-pace, dig = bicia-pace)
 - Prefix symbols: see Symbols
 
+### Prefix matrix
+
+Each unit in the middle, with its fractions to the left and multiples to the right, one step of twelve at a
+time. Sizes that have their own name are in bold; use the name rather than the prefix form (a dig, not a bcp).
+
+| tc ÷1,000 | bc ÷100 | uc ÷10 | **Unit** | uq ×10 | bq ×100 | tq ×1,000 |
+|---|---|---|---|---|---|---|
+| tcbl, 201 µs | bcbl, 2.41 ms | ucbl, 28.9 ms | **blink** bl, 0.347 s | **breath** br, 4.17 s | **moment** mt, 50 s | tqbl, 10 min |
+| tcp (lin, proposed), 0.841 mm | **dig** di, 1.01 cm | **unc** un, 12.1 cm | **pace** p, 1.45 m | uqp, 17.4 m | bqp, 209 m | **iter** ir, 2.51 km |
+| tcli, 1.03 g | bcli, 12.3 g | ucli, 148 g | **lib** li, 1.77 kg | uqli, 21.3 kg | bqli, 255 kg | tqli, 3.06 t |
+| tcte, 402 µK | bcte, 4.82 mK | ucte, 57.9 mK | **tep** °t, 0.694 K | uqte, 8.33 K | bqte, 100 K | tqte, 1.2 kK |
+| tcri, 7.11 mA | bcri, 85.3 mA | ucri, 1.02 A | **riv** ri, 12.3 A | uqri, 147 A | bqri, 1.77 kA | tqri, 21.2 kA |
+| tcgx, 593 µmol | bcgx, 7.12 mmol | ucgx, 85.4 mmol | **grex** gx, 1.02 mol | uqgx, 12.3 mol | bqgx, 148 mol | tqgx, 1.77 kmol |
+| tcla, 567 µcd | bcla, 6.81 mcd | ucla, 81.7 mcd | **lam** la, 0.980 cd | uqla, 11.8 cd | bqla, 141 cd | tqla, 1.69 kcd |
+| tccu, 1.03 mL | bccu, 12.3 mL | uccu, 148 mL | **cub** cu, 1.77 L | uqcu, 21.3 L | bqcu, 255 L | tqcu, 3.06 m³ |
+| tcvi, 12.4 mN | bcvi, 148 mN | ucvi, 1.78 N | **vis** vi, 21.3 N | uqvi, 256 N | bqvi, 3.07 kN | tqvi, 36.9 kN |
+| tcop, 17.9 mJ | bcop, 215 mJ | ucop, 2.58 J | **opus** op, 31 J | uqop, 372 J | bqop, 4.46 kJ | tqop, 53.6 kJ |
+| tcvg, 51.7 mW | bcvg, 620 mW | ucvg, 7.44 W | **vig** vg, 89.3 W | uqvg, 1.07 kW | bqvg, 12.9 kW | tqvg, 154 kW |
+| tcpr, 5.85 mPa | bcpr, 70.2 mPa | ucpr, 843 mPa | **pres** pr, 10.1 Pa | uqpr, 121 Pa | bqpr, 1.46 kPa | tqpr, 17.5 kPa |
+| tcos, 2.47 mC | bcos, 29.6 mC | ucos, 355 mC | **onus** os, 4.27 C | uqos, 51.2 C | bqos, 614 C | tqos, 7.37 kC |
+| tcim, 4.21 mV | bcim, 50.5 mV | ucim, 606 mV | **imp** im, 7.27 V | uqim, 87.2 V | bqim, 1.05 kV | tqim, 12.6 kV |
+
+- Named sizes that aren't a single prefix step: **beat** = 3 bl; **chime** = 10,000 bl (qqbl, 2 h); the day =
+  100,000 bl (pqbl); **span** = 0;2 p; **ulna** = 0;4 p; **navis** = 930 p; **parax** (star distances);
+  **ager** = 1,000 p² (tqp² would be read as (tqp)², so it gets a name)
+- Prefixed temperatures use the plain-text symbol te (tcte), as °C is rarely prefixed; they're for science only
+- tqbl is 0;1 chime (10 minutes), which needs no name, as "ten minutes" doesn't
+
 ## Names
 
 **Decided:** short names (3-4 letters preferred), Latin roots where possible, no clash with an existing unit,
@@ -320,6 +380,8 @@ no everyday word whose meaning would mislead, and no object or container names.
 across languages; clashes cause confusion when both systems are in use. Everyday words are fine when their
 meaning fits the size (pace, span, dig, blink, beat, breath, moment, chime) - that's what makes them easy to
 remember. The rule used to say "no clash with existing everyday words", which contradicted those names.
+
+**Advantage:** units are quick to say, easy to remember, and never confused with SI or imperial ones.
 
 | Quantity               | Name  | Symbol | Size (SI)           | Named after                                       | English relatives            |
 |------------------------|-------|--------|---------------------|---------------------------------------------------|------------------------------|
@@ -344,9 +406,9 @@ remember. The rule used to say "no clash with existing everyday words", which co
 | Energy                 | opus  | op     | ≈ 31.0 J            | Latin opus, work                                  | opus, operate                |
 | Power                  | vig   | vg     | ≈ 89.3 W            | Latin vigor, liveliness, energy                   | vigour, vigorous             |
 | Pressure               | pres  | pr     | ≈ 10.1 Pa           | Latin pressus, pressed                            | press, pressure              |
-| Current                | riv   | ri     | ≈ 1.024 A           | Latin rivus, a stream                             | rivulet, derive              |
-| Charge                 | onus  | os     | ≈ 0.3555 C          | Latin onus, load, burden                          | onus, onerous                |
-| Voltage                | imp   | im     | ≈ 87.21 V           | Latin impetus, push, rush                         | impetus, impetuous           |
+| Current                | riv   | ri     | ≈ 12.28 A           | Latin rivus, a stream                             | rivulet, derive              |
+| Charge                 | onus  | os     | ≈ 4.266 C           | Latin onus, load, burden                          | onus, onerous                |
+| Voltage                | imp   | im     | ≈ 7.268 V           | Latin impetus, push, rush                         | impetus, impetuous           |
 | Amount of substance    | grex  | gx     | 6.17 × 10^23 things | Latin grex, flock, herd                           | gregarious, congregate       |
 | Luminous intensity     | lam   | la     | 0.980 cd            | Latin lampas, lamp, torch                         | lamp                         |
 | Sound level            | vox   | vo     | ≈ 0.90 dB per vox   | Latin vox, voice                                  | voice, vocal                 |
@@ -370,8 +432,12 @@ Rejected: tick for 0.35 s (a clock tick is ~1 s); tick / tock (clock words don't
 The old 4.17 s "tick" is now the breath. Clocks can still "tick" each beat informally. Removed: the wink (half a blink, 0.17 s) - too fast to be
 useful at human scale.
 
+**Advantage:** time units are easy to remember and to feel: beats and breaths can be counted without a clock.
+
 **Why:** with the breath as base, derived units are tiny (force 0.148 N, power 0.052 W).
 With the blink: force ≈ 21.3 N, energy ≈ 31 J, power ≈ 89 W, pressure ≈ 10.1 Pa - human-sized.
+
+**Advantage:** force, energy, power and pressure come out at everyday sizes (vis ≈ 21 N, vig ≈ 89 W), usable without prefixes.
 
 Steps are dozenal (× 10 = ×12 dec, × 100 = ×144 dec):
 
@@ -399,6 +465,8 @@ hour). Rejected: bell (sounds like the bel, B; ship's bells are half-hours), hor
 
 **Why:** people use hours constantly, so the dozenal system needs an hour-sized unit; 0;1 day is the 2-hour mark on the twelve-mark dial. "Chime" is what clocks do on the hour.
 
+**Advantage:** an hour-sized unit that is also a clean step of the day: one chime is one mark on the dial.
+
 **Decided:** the **moment** (symbol **mt**) = 0;01 chime = 10 breaths = 50 s exactly - the dozenal minute.
 
 **Why:** time of day works like hours, minutes and seconds: three named parts. The chime is the hour, the
@@ -406,10 +474,14 @@ moment the minute (two digits, read by the long hand against fine marks), the br
 10-minute digit (0;1 chime) needs no name, just as "ten minutes" doesn't. "Wait a moment" already means about
 a minute, and the medieval moment was a unit of time (90 s).
 
+**Advantage:** the clock reads like hours, minutes and seconds, with a word people already use for about a minute.
+
 **Decided:** time of day is written **d;dd** (chime; moments) or **d;ddd** with breaths - like 21:45 and 21:45:30.
 
 **Why:** people handle 3-digit groups more easily than 4, the first digit matches the clock dial, and the
 groups match the clock's three hands.
+
+**Advantage:** times are short to write, and read straight off the clock's hands.
 
 | Time   | Chime | Moments | Breath | Reads                          |
 |--------|-------|---------|--------|--------------------------------|
@@ -426,6 +498,9 @@ E;X05). On screens, the extra digits are shown smaller or dimmer, like the hundr
 **Why:** a time of day is a single number - chimes since midnight - so times can be subtracted and compared
 directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X05;3) would break that, and a space
 (E;X05 3) makes the digits look unrelated. Decimal times do the same: 9.58 s, 1:23.45 on a stopwatch.
+
+**Advantage:** any two times can be subtracted or compared as ordinary numbers, at any precision.
+
 - spoken like "nine forty-five": E;91 = "el, nine-one"; 6;00 = "six"; with breaths, "el, nine-one, seven"
 
 ### Caesium definition
@@ -433,6 +508,8 @@ directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X0
 **Decided:** 1 breath = 7,50E,583,273 caesium periods exactly (38,302,632,375 dec).
 
 **Why:** it makes the breath exactly 25/6 SI seconds, so conversion to SI is exact and the system inherits SI's precision and any future redefinition of the second (details below).
+
+**Advantage:** Paludal time never drifts from UTC, needs no leap breaths of its own, and converts to SI exactly.
 
 - So 1 blink = 750,E58,327;3 periods (terminates in dozenal; 3,191,886,031.25 dec)
 - Equivalent to: 1 breath = 25/6 SI seconds exactly, so the day stays at exactly 86,400 SI seconds.
@@ -457,6 +534,8 @@ directly (E;X05 - 9;300 = 2;705 chimes ≈ 5 h 10 min). A second semicolon (E;X0
 **Why:** a round speed of light gives an exact, SI-quality definition. The size is human: close to the
 Roman pace (Latin passus, ~1.48 m), and 1,000 paces ≈ a Roman mile.
 
+**Advantage:** length is exact in SI terms and still a comfortable body size.
+
 Other round values of c were checked. Fewer paces per blink means a longer pace, so:
 
 | c (paces/blink) | pace   | unc     | dig    | cub (≈ lib of water) | vis (force) | opus (energy) |
@@ -479,11 +558,15 @@ Named sub-units (named because they're everyday sizes, like the inch and centime
 **Why:** a body-measure name like pace and dig, for the gap between the unc (12 cm) and the pace (145 cm);
 the old English span (9 in, 22.9 cm) is close. "Hand" was rejected earlier (the horse hand is 10.16 cm).
 
+**Advantage:** a familiar body length for the 20-30 cm range, with no clash.
+
 **Decided:** the **ulna** (symbol **ul**) = 0;4 pace = 4 uncs ≈ 48.4 cm, elbow to fingertip (a third of a pace).
 
 **Why:** another body measure, filling the gap between the span (24 cm) and the pace (145 cm); it's also a
 handy length for a board ruler. Latin *ulna* is the forearm (and the forearm bone), and the old ell measure
 came from it. Rejected: cubit (Latin cubitum, elbow), which was liked, but its symbol would be "cu", the cub.
+
+**Advantage:** fills the 30-90 cm gap with a body measure, and suits a board ruler.
 
 **Decided:** the **iter** (symbol **ir**) = 1,000 paces (1,728 dec) ≈ 2.51 km, the unit for distances.
 
@@ -492,10 +575,14 @@ came from it. Rejected: cubit (Latin cubitum, elbow), which was liked, but its s
 Rejected: mille / mil (mi is the mile, mil is the thou), via (vi is the vis). League and stade were also
 considered; their clashes hardly matter since almost no one uses them now, but iter was preferred.
 
+**Advantage:** a round distance unit with a long history, whose name means "journey".
+
 **Decided:** iter is pronounced **"EYE-ter"**, as in itinerary.
 
 **Why:** a fixed pronunciation stops it being heard several ways ("IT-er", as in Latin, or "EE-ter"),
 and it's the sound people already know from itinerary.
+
+**Advantage:** everyone says it the same way, using a sound they already know.
 
 - Defined by the speed of light: **c = 2 × 10^7 paces per blink** (exact)
   - = 2 × 10^8 paces per breath = 859,963,392 (dec) per breath
@@ -510,6 +597,8 @@ the nautical mile (1,852 m).
 **Why:** the nautical mile exists because one nautical mile north or south is one minute of latitude
 (1/21,600 (dec) of a turn), so a navigator can measure distance off a chart's latitude scale. The dozenal
 version is 0;0001 turn of the Earth's meridian (1/20,736 (dec), four digits of a turn):
+
+**Advantage:** navigators can still read distances straight off a chart's latitude scale.
 
 - Meridian (pole to pole and back) = 40,007.86 km (dec)
 - 0;0001 turn = 40,007,860 m / 20,736 = 1,929.4 m = 1,328.3 (dec) paces = **928;34 paces**
@@ -545,6 +634,8 @@ spans **0;000001 turn** (1/2,985,984 dec of a turn, 0.434 arcseconds).
 the Milky Way about 2,000 - and the distance is simply 1 over the parallax in millionths of a turn.
 0;00001 turn was rejected because it makes star distances too large.
 
+**Advantage:** star distances are small, handy numbers, read straight from the measured parallax.
+
 The parsec is the same idea in degrees: the distance at which 1 AU spans 1 arcsecond (1/3,600 of a degree),
 so a star's distance follows straight from its parallax, the yearly shift in its position seen from either
 side of the Earth's orbit. The parsec is exact in SI (648,000/π AU), and this would be too:
@@ -570,6 +661,8 @@ Kepler); classical Latin had no word for it, and the medieval *diversitas aspect
 is too long to shorten well. Five letters, but the link to parallax is worth more than the rule. Symbol: "pa" is the pascal, so first and last letters; px is also the screen pixel, which isn't
 an SI or imperial unit. Rejected: sidus (Latin, a star; "si" reads as SI), caelum (Latin, the sky; too long).
 
+**Advantage:** astronomers recognise it at once, and the name says how the distance is measured.
+
 ## Mass
 
 **Decided:** the **lib** ≈ 1.7714 kg, defined by fixing Planck's constant:
@@ -577,6 +670,8 @@ an SI or imperial unit. Rejected: sidus (Latin, a star; "si" reads as SI), caelu
 (= 2;13 × 10^-27 in lib × pace² / breath - same unit, just expressed per breath)
 
 **Why:** fixing a constant is how SI defines mass since 2019 CE, so conversion is exact. The value of h was chosen so a cub of water ≈ 1 lib - the everyday rule of thumb matters more than a round constant.
+
+**Advantage:** mass converts exactly to SI, and a cub of water still weighs about a lib.
 
 - The value of h was chosen so a cube of water 1 unc per side (1 cub) ≈ 1 lib
   - water at 20°C: 0.9994 (better than SI's 1 L of water = 0.9982 kg at 20°C)
@@ -601,6 +696,8 @@ with nearly the same strip shape (the acre is a furlong × a chain, 10:1; this i
 field (as in agriculture). The symbol "ag" also reads as silver (Ag), but land sizes and silver rarely
 appear in the same sentence.
 
+**Advantage:** a land unit close to the acre people already picture, in a round number of square paces.
+
 | Ager  | m² (dec) | Close to |
 |-------|----------|----------|
 | 0;3   | 911      | quarter-acre house block (1,012 m²) |
@@ -614,6 +711,8 @@ appear in the same sentence.
 
 **Why:** volume follows directly from length (no separate definition), it makes the water rule of thumb
 work, and dozenal fractions of it land close to common drink sizes.
+
+**Advantage:** volume needs no definition of its own, a cub of water weighs about a lib, and drink sizes stay familiar.
 
 How length leads to area, volume and (through water) mass:
 
@@ -653,12 +752,32 @@ Small volumes (kitchen and drinks):
 | 0;004    | 4.1  | teaspoon (5 mL)                                                     |
 | 0;001    | 1.03 | a dig-cube, about 1 mL / 1 g of water                               |
 
+### Rainfall
+
+**Proposed (not decided):** rainfall is measured as a depth in **lin** (0;1 dig ≈ 0.84 mm; the name is
+also still proposed), and that's the same number as libs of water per square pace.
+
+- A cub is 0;001 cubic pace, so 1 cub spread over 1 square pace is 0;001 p = 1 lin deep, and a cub of water
+  weighs about a lib. So **1 lin of rain = 1 li of water per p²** - just as 1 mm of rain is 1 L (1 kg) per m²
+- Gauges keep measuring depth, as they do now; the lib figure is for tanks, roofs and gardens:
+  10 lin of rain on a 100 p² roof (304 m²) is 1,000 li, which fills 1,000 cu (1 tqcu, 3.06 m³) of tank
+
+| Rain | mm (dec) | lin |
+|---|---|---|
+| Light shower | 1 | 1;2 |
+| Rainy day | 10 | E;X |
+| Heavy storm | 25 | 25;8 |
+| Flood rain | 100 | 9X;E |
+| Sydney, a year | 1,200 | 9XE |
+
 ## Temperature
 
 **Decided:** the **tep**, defined by fixing the Boltzmann constant **k = 2;07 × 10^-1E** (opus/tep), exact.
 
 **Why:** 0 tep = freezing is what people actually need for weather and cooking (like Celsius). The size splits the gap between freezing and boiling into 100; equal steps (144 dec), so water
 freezes at 0°t and boils at 100°t - the dozenal version of Celsius's 0 and 100.
+
+**Advantage:** freezing is 0 and boiling 100, so weather and cooking temperatures read like Celsius.
 
 - 1 tep = 0.694346 K (within 0.014% of 0;01 of the freezing-boiling gap)
 - **0 tep = freezing** (273.15 K, same anchor as Celsius) - human focused; kelvin-style zero rejected
@@ -678,48 +797,70 @@ freezes at 0°t and boils at 100°t - the dozenal version of Celsius's 0 and 100
 just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square
 inch absolute / gauge). Rejected: "tabs" and "tea" (English words).
 
+**Advantage:** everyday temperatures keep the simple name, and physics still gets an absolute scale that can't be mistaken for it.
+
 ## Electricity
 
-**Decided:** fix the elementary charge **e = 1 × 10^-15 onus** exactly (12^-17 dec).
+**Decided:** fix the elementary charge **e = 1 × 10^-16 onus** exactly (12^-18 dec).
 
-**Why:** a round fixed constant, exactly like SI; it makes the riv almost exactly an amp, and the alternatives were no better for common voltages.
+**Why:** a round fixed constant, exactly like SI. imp × riv is always a vig (89.3 W), so e only decides how
+that is split between voltage and current. This split puts the imp at 7.27 V and the riv at 12.3 A, where
+the everyday numbers fall best: the voltages printed on batteries, chargers, cars and sockets need no
+prefix (car 1;8 im, mains 28 or 29 im), and household currents are about a riv (a kettle 0;X riv, a
+16 A circuit 1;4 riv). Replaces
+the earlier e = 1 × 10^-15 (riv 1.02 A, imp 87.2 V), which made currents neat but left every everyday
+voltage needing a prefix (AA 2;6 bcim, car 1;8 ucim).
+
+**Advantage:** the numbers people actually read - voltages on labels and sockets, currents on chargers and circuits - mostly need no prefix.
 
 ```mermaid
 flowchart LR
-  e(["e = 1 × 10^-15 os"]) --> os["onus: charge<br>0.3555 C"]
-  os -->|"per blink"| ri["riv: current<br>1.024 A"]
-  op["opus: energy<br>31.0 J"] -->|"per onus"| im["imp: voltage<br>87.21 V"]
+  e(["e = 1 × 10^-16 os"]) --> os["onus: charge<br>4.27 C"]
+  os -->|"per blink"| ri["riv: current<br>12.3 A"]
+  op["opus: energy<br>31.0 J"] -->|"per onus"| im["imp: voltage<br>7.27 V"]
   os --> im
   im -->|"× riv"| vg["vig: power<br>89.3 W"]
   ri --> vg
 ```
 
-- 1 onus (charge) ≈ 0.3555 C
-- 1 riv (current, onus/blink) ≈ 1.0237 A - almost exactly an amp
-- 1 imp (voltage, opus/onus) ≈ 87.21 V
-- Common voltages aren't round (set by chemistry/history), but mains lines up. An uncia-imp is 0;1 imp
-  ≈ 7.27 V (uncia- = ÷10, see [Prefixes](#prefixes)):
+- 1 onus (charge) ≈ 4.266 C
+- 1 riv (current, onus/blink) ≈ 12.285 A - about what a socket circuit carries (10-16 A)
+- 1 imp (voltage, opus/onus) ≈ 7.268 V
+- Common voltages aren't round (set by chemistry and history), but they're all plain imps. Small ones use
+  the uncia-imp (ucim, 0;1 imp ≈ 0.606 V), and small currents the tricia-riv (tcri ≈ 7.1 mA):
 
-| Voltage          | imp   | uncia-imp |
-|------------------|-------|-----------|
-| 1.5 V (AA)       | 0;026 | 0;26      |
-| 5 V (USB)        | 0;083 | 0;83      |
-| 12 V (car)       | 0;17X | 1;7X      |
-| 24 V             | 0;338 | 3;38      |
-| 120 V mains      | 1;462 | 14;62     |
-| 230 V mains      | 2;779 | 27;79     |
-| 240 V mains      | 2;903 | 29;03     |
+| Voltage          | imp    | uncia-imp |
+|------------------|--------|-----------|
+| 1.5 V (AA)       | 0;258  | 2;58      |
+| 5 V (USB)        | 0;830  | 8;30      |
+| 12 V (car)       | 1;799  | 17;99     |
+| 24 V             | 3;376  | 33;76     |
+| 120 V mains      | 14;62  |           |
+| 230 V mains      | 27;79  |           |
+| 240 V mains      | 29;03  |           |
 
-- Rejected: e = 2 × 10^-15 (2.05 A, 43.6 V) or 0;6 × 10^-15 (0.51 A, 174 V) - no better for common voltages.
-- The imp can't also be close to a volt: imp × riv = vig (89.3 W), and the vig is fixed by the mechanical
-  units. With the riv ≈ 1 A the imp must be ≈ 89 V; an imp near 1 V would need a riv near 89 A. Small
-  voltages use the uncia-imp (7.27 V) and bicia-imp (0;01 imp ≈ 0.606 V)
+| Current                    | riv   |
+|----------------------------|-------|
+| 20 mA (LED)                | 0;003 (2;9X tcri) |
+| 2 A (phone charger)        | 0;1E5 |
+| 10 A (AU socket, kettle)   | 0;992 (≈ 0;X) |
+| 16 A (EU socket circuit)   | 1;376 |
+| 20 A (US circuit)          | 1;765 |
+| 32 A (oven, EV charger)    | 2;731 |
+
+- Rejected: e = 1 × 10^-15 (riv 1.02 A, imp 87.2 V: every everyday voltage needs a prefix);
+  1 × 10^-17 (imp 0.61 V, riv 147 A: voltages are whole numbers, but a phone charger is 0;017 riv);
+  0;2 × 10^-15 (imp 14.5 V, riv 6.1 A: a car battery is about 1 imp, but mains and sockets come out no better).
+- No choice makes both close to SI: imp × riv = vig (89.3 W), fixed by the mechanical units, where
+  volt × amp = 1 W. The split can only trade one for the other.
 
 ## Amount of substance
 
 **Decided:** the **grex** = exactly **1;15 × 10^1X** entities (≈ 6.17235 × 10^23 dec).
 
 **Why:** molar masses then come out ≈ atomic masses in 1/1,000 lib, the same convenience chemists have with g/mol.
+
+**Advantage:** chemists' rule of thumb (molar mass ≈ atomic mass) carries over unchanged.
 
 - Chosen so molar masses ≈ atomic masses in 1/1,000 lib (like SI's g/mol): carbon-12 = 11.998, water = 18.01 (dec)
 - Rejected: exactly 10^1X (5.52 × 10^23 dec) - rounder, but molar masses come out ×0.894;
@@ -734,6 +875,8 @@ That makes 1 lam ≈ 0.980246 cd.
 **Why:** every other base unit is defined by a constant stated in Paludal units; the lam used to be the SI
 candela carried over, so it couldn't be defined without SI. A round K_cd per vig is the Paludal equivalent of
 SI's 683 lm/W. Replaces the earlier decision to keep lam = 1 cd ("rarely used, nothing to gain").
+
+**Advantage:** every base unit is now defined within Paludal, and still converts exactly to SI.
 
 - The frequency is SI's 540 THz exactly, expressed per blink. It isn't round (≈ 1;9043 × 10^11), for the same
   reason the caesium count isn't: a round frequency (eg 1;9 × 10^11 per blink, 556 nm instead of 555 nm) would
@@ -751,10 +894,14 @@ the hand (0;1 turn = one chime on the dial). The common angles become round: rig
 60° is 0;2, 45° is 0;16. Degrees written in dozenal digits work (360° = 260°) but stay awkward
 (90° = 76°, 45° = 39°), because 360 is a decimal-era choice.
 
+**Advantage:** common angles are single digits, and a clock hand's angle is the time of day.
+
 **Decided:** the turn's symbol is **tu** (eg a right angle is 0;3 tu).
 
 **Why:** it follows the first-two-letters rule. "t" alone was considered, but it's the tonne's symbol, and no
 symbol may clash with an SI one.
+
+**Advantage:** it follows the symbol rule and doesn't clash with the tonne.
 
 | Turn   | Degrees (dec) | Note |
 |--------|---------------|------|
@@ -786,7 +933,7 @@ definition; measured values carry the same uncertainty as in SI.
 | Caesium frequency Δν_Cs | 7,50E,583,273 per breath (750,E58,327;3 per blink) | 9,192,631,770 Hz |
 | Speed of light c | 2 × 10^7 p/bl (2 × 10^8 p/br) | 299,792,458 m/s |
 | Planck constant h | 2;13 × 10^-28 li·p²/bl | 6.62607015 × 10^-34 J s |
-| Elementary charge e | 1 × 10^-15 os | 1.602176634 × 10^-19 C |
+| Elementary charge e | 1 × 10^-16 os | 1.602176634 × 10^-19 C |
 | Boltzmann constant k | 2;07 × 10^-1E op/tep | 1.380649 × 10^-23 J/K |
 | Grex number | 1;15 × 10^1X per grex | 6.17235 × 10^23 (Avogadro: 6.022 × 10^23) |
 | Luminous efficacy K_cd | 3 × 10^4 lam·sr/vg, for light at 19,042,90X,764,540 per blink | 683 lm/W, at 540 THz |
@@ -797,7 +944,7 @@ definition; measured values carry the same uncertainty as in SI.
 |---|---|---|
 | Reduced Planck ħ = h/2π | 4;028 × 10^-29 li·p²/bl | 1.054572 × 10^-34 J s |
 | Gas constant R = k × grex number | 0;2359E op/(tep·gx) | 8.314 J/(mol K) |
-| Faraday constant F = e × grex number | **1;15 × 10^5 os/gx** | 96,485 C/mol |
+| Faraday constant F = e × grex number | **1;15 × 10^4 os/gx** | 96,485 C/mol |
 | Stefan-Boltzmann σ | 1;735 × 10^-9 vg/(p²·tep⁴) | 5.670 × 10^-8 W/(m² K⁴) |
 
 ### Measured
@@ -880,6 +1027,8 @@ The time units themselves are in Part 1 (Time).
 **Why:** one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest,
 and clockwise keeps the convention people already know.
 
+**Advantage:** the whole day is visible at once, and the hand follows the sun.
+
 Four hands - hour, minute and second, plus a light beat hand:
 
 | Hand    | Turns once per | Reads         | Dial                                   | Like        |
@@ -907,11 +1056,15 @@ Four hands - hour, minute and second, plus a light beat hand:
 Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and
 Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.
 
+**Advantage:** the clock never jumps, and neighbouring places stay on the same time all year.
+
 **Decided (for now):** keep today's 24 time zones, based on UTC (London is +0). Neighbouring zones are half a
 chime (1 hour) apart, so offsets are whole or half chimes; a few places keep their quarter-hour offsets.
 To review later.
 
 **Why:** twelve whole-chime zones would probably be too few.
+
+**Advantage:** today's zones and offsets carry over unchanged.
 
 Standard time (no daylight saving):
 
@@ -947,6 +1100,8 @@ Standard time (no daylight saving):
 
 **Why:** TODO - reason not recorded.
 
+**Advantage:** TODO - follows from the reason, once recorded.
+
 - 2026 CE = 12026 HE (dec) = **6E62 HE**
 - Spoken as two pairs, like "twenty twenty-six" (that's how years are said now): 6E62 = "six do el, six do two"
   - round years: 7000 = "seven mo", 6E00 = "six do el gro"
@@ -957,6 +1112,8 @@ Standard time (no daylight saving):
 **week numbers** (ISO weeks) are written in dozenal: week 1 to 44 (52 dec), 45 in long years (53 dec).
 
 **Why:** 365 (dec) days can't be split into dozenal-round months, and changing the 7-day week is too big a change. Writing the numbers in dozenal keeps the whole system consistent.
+
+**Advantage:** dates and weeks stay as people know them; only the digits change.
 
 - eg 3 Oct 2026 CE is week 34 (ISO week 40 dec)
 
@@ -970,9 +1127,13 @@ confusion, worse than the old misnumbering. Rejected: SDN roots (that clash); Gr
 tetra ... octa, ennea, deca), which shorten to Oct and Dec and clash the same way; a -men suffix (Latin
 mensis), which reads as English "men" (Hexmen, Septmen).
 
+**Advantage:** no month name can be mistaken for another, and dates read as they do today.
+
 **Day of month (decided):** written in dozenal, 1 to 27 (31 dec).
 
 **Why:** every number in the system is dozenal; a date shouldn't mix bases.
+
+**Advantage:** a date is written in one base, like every other number.
 
 - eg 3 Oct 2026 CE = 3 Oct 6E62; 31 (dec) Oct = 27 Oct; Christmas = 21 Dec
 
@@ -1016,12 +1177,15 @@ twelve months of 30 (dec) days, with the 5-6 leftover "S-days" outside any month
 
 **Why:** that's how every changeover works in practice (eg metric speed limits), and a whole number is easier to read.
 
+**Advantage:** values are easy to read and remember, as after metrication.
+
 Some fields would keep their current units for a long time, as they did through metrication, because the units
 are set by international agreement or built into long-lived equipment:
 
 - Aviation: feet for altitude, knots and nautical miles (set by ICAO, the UN aviation body)
 - Shipping: nautical miles and knots
-- Medicine: blood pressure in mmHg, and drug doses in mg until it's decided how doses are written
+- Medicine: blood pressure in mmHg, and drug doses in mg. Nobody is made to switch: medicine can keep mg for
+  as long as it likes, which avoids dose errors
 - Inch sizes: screens, wheels and tyre rims, pipe threads
 - Traditional sport distances: the marathon and cricket pitch (see Races and sport)
 
@@ -1044,6 +1208,8 @@ the ratio 1 : √2, and **P0 = 1 square pace** (as A0 = 1 m²).
 
 **Why:** halving keeps the shape, which is why the A series works; only the starting size needs changing.
 P5 lands almost exactly between A4 and US Letter (its width is Letter's 8.5 in), so one sheet can replace both.
+
+**Advantage:** one sheet replaces both A4 and Letter, and every size keeps the same shape.
 
 | Size | mm (dec)      | Close to            |
 |------|---------------|---------------------|
@@ -1239,6 +1405,8 @@ Europe use L/100 km. Rule of thumb: the value is about **double** the L/100 km f
 numbers stay whole-ish. Rejected: distance per fuel (iters per cub, like mpg or km/L), judged a poor
 measure. The US mpg column is kept only as a familiar comparison for people learning the system.
 
+**Advantage:** fuel for a trip is just the figure times the distance, and the numbers stay close to today's (about double L/100 km).
+
 | L/100 km (dec) | US mpg (dec) | cu/100 ir | Like |
 |---|---|---|---|
 | 4  | 58.8 | 8;2  | hybrid |
@@ -1293,11 +1461,24 @@ Electric cars, in tqop per iter (the energy to drive one iter):
 
 | Thing | SI | US | Dozenal | Round |
 |---|---|---|---|---|
-| AA battery | 1.5 V | 1.5 V | 2;59 bcim | 2;6 bcim |
-| USB | 5 V | 5 V | 8;31 bcim | 8;6 bcim |
-| Car battery | 12 V | 12 V | 17;X bcim | 18 bcim |
-| Mains (AU) | 230 V |  | 2;78 im | 2;8 im |
-| Mains (US) | 120 V | 120 V | 1;46 im | 1;5 im |
+| AA battery | 1.5 V | 1.5 V | 2;58 ucim | 2;6 ucim |
+| USB | 5 V | 5 V | 0;830 im |  |
+| Car battery | 12 V | 12 V | 1;799 im | 1;8 im |
+| Mains (AU) | 230 V |  | 27;79 im | 28 im |
+| Mains (UK, AU older) | 240 V |  | 29;03 im | 29 im |
+| Mains (US) | 120 V | 120 V | 14;62 im | 14;6 im |
+
+### Current
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| LED | 20 mA | 20 mA | 2;9X tcri | 2;9 tcri |
+| Phone charger | 2 A | 2 A | 0;1E5 ri | 0;2 ri |
+| Kettle (AU, UK) | 10 A |  | 0;992 ri | 0;X ri |
+| UK plug fuse | 13 A |  | 1;084 ri |  |
+| Socket circuit (EU, AU) | 16 A |  | 1;376 ri | 1;4 ri |
+| Socket circuit (US) | 20 A | 20 A | 1;765 ri | 1;8 ri |
+| Oven, EV charger | 32 A | 32 A | 2;731 ri | 2;8 ri |
 
 Notes:
 - Temperatures, heights, speeds and voltages come out in comfortable numbers
@@ -1374,8 +1555,20 @@ leftover. A base-12 scale keeps the rules of thumb people use: ~1 step is the sm
 **+10 vox is "twice as loud"** (10.8 dB; +10 dB today). Sound levels are everyday and regulated (noise limits,
 headphone warnings), so converting is worth it. Name: Latin vox, voice; "son" rejected (the sone is a loudness unit).
 
-- vox = 12 × log12(P / P0) for power; 24 × log12(p / p0) for sound pressure (p0 = 20 µPa) (decimal
-  arithmetic, as for Fahrenheit: 12 and 24 here are dec)
+**Advantage:** sound levels keep the rules of thumb people know (+10 is twice as loud), without a decimal log.
+
+All numbers here are dozenal, so a level can be worked out without going through decimal:
+
+- **vox = 10 × log₁₂(P / P₀)** for power or intensity, and **20 × log₁₂(p / p₀)** for sound pressure
+  (pressure is squared to give power, so its factor doubles, as dB uses 10 and 20)
+- References (the same physical levels as dB, so the scales line up exactly): p₀ = 20 µPa = 5;XX × 10^-6 pr,
+  and P₀ = 10^-12 W/m² (dec) = 2;64 × 10^-11 vg/p²
+- From a dB figure: vox = dB × 1;141 (first write the dB value in dozenal)
+- Rules of thumb:
+  - +1 vox is about the smallest change you can hear
+  - **+10 vox** is ten (twelve dec) times the power, and sounds about twice as loud
+  - two equal sources together: **+3;4 vox** (like +3 dB)
+  - twice as far from the source: **-6;8 vox** (like -6 dB)
 - Like dB values today, everyday figures are rounded to the nearest 10
 
 | Sound                       | dB now | Exact vox | Round vox |
@@ -1397,6 +1590,8 @@ headphone warnings), so converting is worth it. Name: Latin vox, voice; "son" re
 **Why:** it's a log scale (no units needed), almost nobody does arithmetic with it, and every historical
 record uses it. A base-12 version would change values by only ~7% - not worth breaking the records.
 
+**Advantage:** every historical record stays valid; only the digits change.
+
 ### Acidity (pH)
 
 **Decided:** replace pH with an acidity scale where **0 is neutral, acids are positive and bases negative**.
@@ -1404,6 +1599,8 @@ record uses it. A base-12 version would change values by only ~7% - not worth br
 **Why:** if the system is being changed anyway, it may as well be done right. pH runs backwards (lower =
 more acidic) and centres on 7, which is only neutral at 25°C. Replaces the earlier decision to keep pH
 unchanged in dozenal digits.
+
+**Advantage:** a higher number means more acidic, and 0 always means neutral.
 
 **Decided:** the scale is called **acidity** (eg lemon juice is acidity +4;5), and
 **acidity = log base 12 of ([H+] / [H+] in pure water at the same temperature)**.
@@ -1414,11 +1611,16 @@ log 12 of [H+]/[OH-] (the same information with every number doubled) and 7 - pH
 and 0 is only neutral at 25°C). The word acidity already means acid content in wine and food (in g/L),
 but that's not a serious clash. So
 
+**Advantage:** it needs no concentration unit, and neutral is 0 at every temperature.
+
 - 0 is neutral at **every** temperature (pH's neutral point is 7.47 at 0°C, 7 at 25°C, 6.8 at body
   temperature and 6.14 at 100°C)
 - each step of 1 is 10 (12 dec) times more acidic
 - it's a ratio of two concentrations, so it needs no concentration unit (no mol/L vs grex/cub problem)
-- at 25°C: acidity = (7 - pH) × 0;E15 (0.9266 dec). Everyday values run from about +6;6 to -6;6
+- From a pH reading (25°C): write the pH in dozenal, then **acidity = (7 - pH) × 0;E15** (0;E15 is log₁₂ 10,
+  so the whole sum is dozenal). Everyday values run from about +6;6 to -6;6
+- Measured directly: a glass-electrode meter (which every pH meter is) gives a voltage that changes by
+  **1;32 bcim per step of acidity** at 25°C, so a Paludal meter reads acidity with no pH in between
 
 | Substance | pH (dec) | Acidity (log 12) | log 12 of [H+]/[OH-] | 7 - pH (log 10) |
 |---|---|---|---|---|
@@ -1449,7 +1651,8 @@ but that's not a serious clash. So
 - No hard bounds: strong acids go above +6;6 and strong alkalis below -6;6, as pH goes below 0 and above
   14. Superacids are measured on other scales (Hammett, down to about -25 pH)
 - Chemists' buffer maths keeps its shape: pH = pKa + log(base/acid) becomes
-  acidity = Ka-acidity - log12(base/acid), where Ka-acidity = (7 - pKa) × 0;E15, a one-off conversion of old tables
+  acidity = Ka-acidity - log₁₂(base/acid), where Ka-acidity = (7 - pKa) × 0;E15 (pKa in dozenal), a one-off
+  conversion of old tables
 - Converting old pH readings needs the temperature, because neutral moves with it
 
 # Part 3: Background
@@ -1481,7 +1684,6 @@ Where the ideas came from, and what's still to decide.
 - Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)
 - Give short names to a few everyday multiples (food energy tqop, pressure tqpr) instead of changing the
   coherent derived units (proposed, not decided)
-- Holocene Era: record why it was chosen
 - A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)
 - Standard sizes: food energy labels (opus), clothing sizes; shoe sizes in digs (proposed, see Shoe sizes)
 - Review existing dozenal clock designs (https://clocks.dozenal.ca)
@@ -1505,11 +1707,11 @@ Where the ideas came from, and what's still to decide.
 - The wink (half a blink) was removed as too fast to be useful, though it equals TGM's Tim exactly. Check
   whether to reinstate it
 - Missing coherent units, to be named: frequency (per blink, 2.88 Hz; concert A = 108;9 per blink),
-  resistance (imp/riv, 85.2 Ω), capacitance (onus/imp, 4.08 mF), inductance (imp·blink/riv, 29.6 H),
-  magnetic flux (imp·blink, 30.3 Wb), flux density (flux/pace², 14.4 T), absorbed dose (opus/lib, 17.5 Gy)
+  resistance (imp/riv, 0.592 Ω), capacitance (onus/imp, 0.587 F), inductance (imp·blink/riv, 0.205 H),
+  magnetic flux (imp·blink, 2.52 Wb), flux density (flux/pace², 1.20 T), absorbed dose (opus/lib, 17.5 Gy)
 - Money: a name for the 1/100; part of a dollar (see Money)
 - A speed unit for ships and aircraft, to replace the knot (see the navis in Length)
-- Drug doses: how they're written (medicine keeps mg for now)
+- Drug doses: how they'd be written if medicine chose to switch (no one is forced to; mg stays meanwhile)
 - Rename the iter? It looks and sounds close to litre, and the US spelling **liter** is "l" + "iter", which will
   confuse things like fuel economy ("iters per liter"). Candidate: **lapis** (Latin, a stone: Roman milestones
   stood every 1,000 paces, and distances were given as "at the third stone"), so the meaning matches the size
