@@ -251,57 +251,33 @@ can't be heard as 3.18.
 
 ## Hexadecimal
 
-Conversions between hexadecimal (base 16, used in computing) and dozenal, with decimal alongside. In prose,
+The hexadecimal digits (base 16, used in computing) in dozenal, decimal and binary. In prose,
 hex values are marked 0x: hex E is fourteen, but dozenal E is el (eleven).
 
-Hex to dozenal:
-
-| Hex         | Dozenal         | Decimal       |
-|-------------|-----------------|---------------|
-| A           | X               | 10            |
-| B           | E               | 11            |
-| C           | 10              | 12            |
-| F           | 13              | 15            |
-| 10          | 14              | 16            |
-| 20          | 28              | 32            |
-| 40          | 54              | 64            |
-| 64          | 84              | 100           |
-| 80          | X8              | 128           |
-| FF          | 193             | 255           |
-| 100         | 194             | 256           |
-| 400         | 714             | 1,024         |
-| 1000        | 2,454           | 4,096         |
-| 10000       | 31,E14          | 65,536        |
-| 100000      | 426,994         | 1,048,576     |
-| 40000000    | 25E,716,454     | 1,073,741,824 |
-| 100000000   | 9EX,461,594     | 4,294,967,296 |
-| 0.8         | 0;6             | 0.5           |
-| 0.4         | 0;3             | 0.25          |
-| 0.C         | 0;9             | 0.75          |
-| 0.2         | 0;16            | 0.125         |
-| 0.1         | 0;09            | 0.0625        |
-
-Dozenal to hex:
-
-| Dozenal           | Hex             | Decimal           |
-|-------------------|-----------------|-------------------|
-| 10                | C               | 12                |
-| 100               | 90              | 144               |
-| 1,000             | 6C0             | 1,728             |
-| 10,000            | 5100            | 20,736            |
-| 100,000           | 3CC00           | 248,832           |
-| 1,000,000         | 2D9000          | 2,985,984         |
-| 0;6               | 0.8             | 0.5               |
-| 0;4               | 0.555… (repeats) | 0.333…           |
-| 0;3               | 0.4             | 0.25              |
-| 0;2               | 0.2AAA… (repeats) | 0.1666…         |
-| 0;1               | 0.1555… (repeats) | 0.0833…         |
+| Hex | Dozenal | Decimal | Binary |
+|-----|---------|---------|--------|
+| 0   | 0       | 0       | 0000   |
+| 1   | 1       | 1       | 0001   |
+| 2   | 2       | 2       | 0010   |
+| 3   | 3       | 3       | 0011   |
+| 4   | 4       | 4       | 0100   |
+| 5   | 5       | 5       | 0101   |
+| 6   | 6       | 6       | 0110   |
+| 7   | 7       | 7       | 0111   |
+| 8   | 8       | 8       | 1000   |
+| 9   | 9       | 9       | 1001   |
+| A   | X       | 10      | 1010   |
+| B   | E       | 11      | 1011   |
+| C   | 10      | 12      | 1100   |
+| D   | 11      | 13      | 1101   |
+| E   | 12      | 14      | 1110   |
+| F   | 13      | 15      | 1111   |
+| 10  | 14      | 16      | 1 0000 |
 
 - Every hex (and binary) fraction ends in dozenal: 100 (144 dec) is 0x90, a multiple of 0x10 (16 dec), so
   each hex place needs at most two dozenal places (0x0.1 = 0;09)
 - Not the other way: thirds repeat in hex, as they do in binary and decimal. Quarters are the common ground:
   0x0.4 = 0;3 = 0.25 (dec)
-- Memory sizes: 1 KiB = 714 bytes, 1 MiB = 426,994, 1 GiB = 25E,716,454, 4 GiB (2^32 dec) = 9EX,461,594
 
 ## Phone numbers and keypads
 
