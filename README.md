@@ -9,7 +9,7 @@ converting exactly to SI, but sized for everyday human use.
   through pandoc and one filter, `pandoc/paludal.lua`; see the `Makefile` for what each format needs
 - `blinker/` - a terminal Paludal clock that sounds the blink, beat and breath: `cd blinker && go run .`
 
-Read the spec online at https://rdmarsh.github.io/paludal/, or download the PDF from the latest release:
+Read the spec online at https://paludal.org, or download the PDF from the latest release:
 https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf
 
 GitHub Pages serves `index.html` from `main`, so run `make` and commit `index.html` with every change to
