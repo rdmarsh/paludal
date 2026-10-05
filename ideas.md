@@ -273,12 +273,22 @@ q or c, so a symbol can always be read unambiguously.
 
 **Advantage:** nothing new to learn, and any prefix symbol can be read back without a table.
 
+**Decided:** in typeset text (print, web pages, PDFs) the q and c are shown as Primel's arrows: **↑** for
+multiply and **↓** for divide, so `tqop` is set as t↑op and `tcli` as t↓li. Plain text keeps q and c.
+
+**Why:** adopt prior art: Primel already writes the same prefixes with the same letters and arrows, so
+Paludal and Primel documents look alike. q and c stay for plain text, where arrows can't always be typed.
+
+**Advantage:** the direction of a prefix shows at a glance, Primel readers can read Paludal symbols as they
+stand, and the plain-text form still works on any keyboard.
+
 | Digit  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | X | E |
 |--------|---|---|---|---|---|---|---|---|---|---|---|---|
 | Root   | nil | un | bi | tri | quad | pent | hex | sept | oct | enn | dek | el |
 | Letter | n | u | b | t | q | p | h | s | o | e | d | l |
 
 - uq ×10, bq ×100, tq ×1,000, unq ×10^10; uc ÷10, bc ÷100, tc ÷1,000
+  (typeset: u↑ ×10, b↑ ×100, t↑ ×1,000, un↑ ×10^10; u↓ ÷10, b↓ ÷100, t↓ ÷1,000)
 - Prefix goes straight onto the unit symbol: 3 tqp = 3 triqua-paces, 5 bcli = 5 bicia-libs
 - The named sizes keep their own symbols: unc = un (= ucp), dig = di (= bcp)
 - el's letter is **l** ("el" is how L is said); e is taken by enn
@@ -406,7 +416,7 @@ Digit roots: 0 nil, 1 un, 2 bi, 3 tri, 4 quad, 5 pent, 6 hex, 7 sept, 8 oct, 9 e
 Each unit in the middle, with its fractions to the left and multiples to the right, one step of twelve at a
 time. Sizes that have their own name are in bold; use the name rather than the prefix form (a dig, not a bcp).
 
-| tricia- (tc) ÷1,000 | bicia- (bc) ÷100 | uncia- (uc) ÷10 | **Unit** | unqua- (uq) ×10 | biqua- (bq) ×100 | triqua- (tq) ×1,000 |
+| tricia- ÷1,000 | bicia- ÷100 | uncia- ÷10 | **Unit** | unqua- ×10 | biqua- ×100 | triqua- ×1,000 |
 |---|---|---|---|---|---|---|
 | tcbl<br>201 µs | bcbl<br>2.41 ms | ucbl<br>28.9 ms | **blink** bl<br>0.347 s | **breath** br<br>4.17 s | **moment** mt<br>50 s | tqbl<br>10 min |
 | tcp (lin, proposed)<br>0.841 mm | **dig** di<br>1.01 cm | **unc** un<br>12.1 cm | **pace** p<br>1.45 m | uqp<br>17.4 m | bqp<br>209 m | **iter** ir<br>2.51 km |
@@ -1769,7 +1779,8 @@ Where the ideas came from, and what's still to decide.
   - No round c lines the pace up with Primel exactly: the matching value, 2;56232E32598E... × 10^7 p/bl,
     never ends, because Primel's length is 31/96 inch and the inch is 127/50 cm (31 and 127 don't divide
     into twelves). 2;56 × 10^7 would come within 0.05%, 2;562 × 10^7 within 0.006%
-  - Length and mass don't: Primel fixes gravity at 9.79651584 m/s² (dec), which makes its length unit exactly
+  - Length and mass don't: Primel fixes gravity at exactly 32.1408 ft/s² (9.79651584 m/s² dec), just below its
+    estimate of the Earth's median surface gravity (9.79757 m/s²), which makes its length unit exactly
     31/96 inch (8.202 mm), and our pace is 129;11 (177.09 dec) of those. Lining the pace up with Primel's
     100 lengthels (1.1811 m, 46.5 in) was considered (2026 CE): it would give g ≈ 1 p/bl², a lib of 0.953 kg
     and a cub of 0.953 L, but c would no longer be round. Not adopted: the round c was kept

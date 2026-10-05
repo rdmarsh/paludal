@@ -33,13 +33,16 @@ def expand(m):
         power = "".join("0123456789XE"["nubtqphsoedl".index(ch)] for ch in prefix[:-1])
         mul = prefix[-1] == "q"
         name = f"{roots}{'qua' if mul else 'cia'}-{name} ({'×' if mul else '÷'} 10^{power})"
-    return f'<abbr title="{name}">{m.group(0)}</abbr>'
+    # Typeset form: the q / c of a prefix is shown as Primel's arrow (tqop -> t↑op)
+    shown = f"{prefix[:-1]}{'↑' if mul else '↓'}{unit}" if prefix else m.group(0)
+    return f'<abbr title="{name}">{shown}</abbr>'
 
 
 def inline(text):
     text = html.escape(text, quote=False)
     text = text.replace("&lt;br&gt;", "<br>")  # line breaks inside table cells
-    text = SYMBOL.sub(expand, text)
+    # Expand unit symbols outside `code` only, so plain-text examples stay as written
+    text = "`".join(part if i % 2 else SYMBOL.sub(expand, part) for i, part in enumerate(text.split("`")))
     text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"(?<![*\w])\*([^*]+)\*(?![*\w])", r"<em>\1</em>", text)
