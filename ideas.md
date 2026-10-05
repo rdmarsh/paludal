@@ -1768,7 +1768,9 @@ Where the ideas came from, and what's still to decide.
 - **TGM** (Tom Pendlebury): Tim = 1/10^4 hour ≈ 0.1736 s (= half a blink exactly), Grafut ≈ 29.6 cm (from gravity),
   Maz ≈ 25.8 kg (water cube). Earth-based (hour + gravity), so less rigorous than this system;
   length and mass have no clean relation to ours.
-- **SDN** (DSA): the prefix system adopted above. Inspired by Pendlebury's TGM prefixes, which told
+- **SDN** (John Volan, forum name Kodegadulo; published by the DSA in the Duodecimal Bulletin, 2014 CE, and
+  worked out with other members of the Dozensonline forum - the same author as Primel): the prefix system
+  adopted above. Inspired by Pendlebury's TGM prefixes, which told
   multiply from divide by a vowel alone (-a / -i). In speech those vowels both fade to "uh", so SDN used
   endings that differ in their consonants instead: **-qua** (hard "kw") and **-cia** ("shuh"). -cia echoes Latin
   *uncia*, a twelfth, which is itself un + cia.
