@@ -30,6 +30,48 @@ this), and Paludal doesn't claim to have invented it - only the units are new.
 Goals: as rigorous as SI (every unit defined by a fixed constant, exact conversion to SI),
 but human focused - everyday sizes and rules of thumb matter more than round constants.
 
+**Decided:** the **universal test**: if people and another species had to agree units without access to the
+Earth, they could both arrive at Paludal's from physics, chemistry and maths alone. The only Earth-based
+inputs allowed are the day and the year (time of day and the calendar), which human life runs on.
+
+**Why:** units that rest only on physics and maths could be shared with anyone - in principle even an alien
+species - and rebuilt anywhere, without an Earth measurement or object. Time is the exception because people
+live by the day and the year.
+
+**Advantage:** every unit except time can be rebuilt from first principles, and anything that fails the test
+is easy to spot (see the table below).
+
+**Decided:** adopt prior art. Where someone has already done something as well or better, use it rather than
+invent something new, and credit it (see Prior art).
+
+**Why:** existing work has already been argued over and tested, and some people already use it. Paludal
+already adopts SDN, do / gro / mo, dek and el, and the dozenal clock.
+
+**Advantage:** less to invent and less to learn, and Paludal fits in with the dozenal work already out there.
+
+How each part of the system does on the universal test:
+
+| Unit or value | Rests on | Universal test |
+|---|---|---|
+| blink, beat, breath, moment, chime | caesium frequency (physics), count chosen to fit the day | allowed (time) |
+| pace | c (physics) and the blink | passes; its size follows from the day |
+| lib, cub | h (physics), chosen so a cub of water ≈ 1 lib | passes: water is the same everywhere |
+| riv, onus, imp | e (physics) | passes |
+| grex | a count, chosen so molar mass ≈ atomic mass | passes |
+| turn, prefixes, numbers | maths | passes |
+| acidity | pure water | passes |
+| tep (size) | k, chosen so freezing to boiling ≈ 100 | mostly: boiling depends on air pressure, which is the Earth's |
+| tep (zero, 273.15 K) | water freezing at the Earth's air pressure; 273.15 is an SI number | fails (a pure-physics zero would be absolute zero, ie ta) |
+| lam | the human eye's sensitivity, at 540 THz | fails (SI's candela has the same problem) |
+| vox (zero) | the threshold of human hearing | fails (human biology) |
+| navis | the Earth's meridian | fails (navigation on Earth only) |
+| parax | the Earth's orbit (AU) | fails (like the parsec) |
+| years, calendar | the Earth's orbit | allowed |
+
+- The failures are all **human conventions on top of the core**: an everyday temperature zero, how bright
+  light looks to us, how loud sound is to us, and Earth navigation. None of them is needed to define another
+  unit, except that the lam is one of the seven base units
+
 # Part 1: The system
 
 The units themselves: how numbers are written, the defining constants, the base and derived units, prefixes, symbols and names.
@@ -1026,6 +1068,8 @@ The time units themselves are in Part 1 (Time).
 
 **Why:** one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest,
 and clockwise keeps the convention people already know.
+The design, and the idea of splitting the day by twelve, then twelve, then twelve as the basis of Paludal time,
+came from Paul Rapoport's Diurnal clock (https://clocks.dozenal.ca).
 
 **Advantage:** the whole day is visible at once, and the hand follows the sun.
 
@@ -1699,6 +1743,10 @@ Where the ideas came from, and what's still to decide.
 
 ## Open items / next steps
 
+- Universal test: decide what to do about the parts that fail it - the tep's zero (273.15 K), the lam
+  (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?
+- Primel (John Volan): compare in detail and adopt what it does better (sources blocked from the sandbox so
+  far: primelmetrology.atlassian.net, the Dozensonline thread)
 - Years: two dozenal "Holocene" counts now exist (see Years). Keep +10,000 (dec, Emiliani's Holocene Era,
   6E62 for 2026 CE) or follow the Dozenal Holocene calendar (6859)? Ties in with recording why HE was chosen
 - Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)
