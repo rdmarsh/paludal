@@ -198,9 +198,9 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>mostly: boiling depends on air pressure, which is the Earth's</td>
 </tr>
 <tr>
-<td>tep (zero, 273.15 K)</td>
-<td>water freezing at the Earth's air pressure; 273.15 is an SI number</td>
-<td>fails (a pure-physics zero would be absolute zero, ie ta)</td>
+<td>tep (zero)</td>
+<td>a defined number, 0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta, chosen to match water freezing at the Earth's air pressure</td>
+<td>the number can be rebuilt from k; the reason for it is the Earth's water (see Open items)</td>
 </tr>
 <tr>
 <td>lam</td>
@@ -1004,7 +1004,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>Temperature</td>
 <td>tep</td>
 <td>0.694346 K</td>
-<td>k = 2;07 × 10^-1E, 0 tep = 273.15 K (freezing)</td>
+<td>k = 2;07 × 10^-1E, 0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta (≈ freezing)</td>
 <td>Latin tepor, warmth</td>
 </tr>
 <tr>
@@ -1073,6 +1073,12 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>k = 2;07 × 10^-1E</td>
 <td>a fraction of 36 digits</td>
 <td>0.694 345 838 K</td>
+</tr>
+<tr>
+<td>0 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta</td>
+<td>289;485 tep above absolute zero</td>
+<td>273.149 946 686 K</td>
 </tr>
 <tr>
 <td>onus</td>
@@ -1269,7 +1275,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <h4>Rules of thumb</h4>
 <div class="block list">
 <ul>
-<li>A cub of water weighs a lib (0.9994 at 20°C). A dig-cube of water ≈ 1/1,000 lib ≈ 1 g.</li>
+<li>A cub of water weighs a lib (0.9994 at 20 °C). A dig-cube of water ≈ 1/1,000 lib ≈ 1 g.</li>
 <li>Time of day = chime;moments (d;dd), like hours:minutes: 0;00 midnight, 3;00 dawn, 6;00 noon, 9;00 dusk.</li>
 <li>A moment (50 s) is about a minute; a beat (1.04 s) is about a second.</li>
 <li>100 km/h ≈ 68 paces/breath; motorway limit 70 (105 km/h).</li>
@@ -1837,17 +1843,17 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </ul>
 </div>
 <div class="block decided">
-<p><strong>Decided:</strong> temperature uses <strong>°t</strong> (eg 25<abbr title="tep (degrees from freezing)">°t</abbr>), for readings and differences alike, like °C. It's written with no space between the number and the degree sign: 25<abbr title="tep (degrees from freezing)">°t</abbr>, not 25 <abbr title="tep (degrees from freezing)">°t</abbr> (and 25°C, 77°F when those appear). Plain-ASCII fallback: <strong>te</strong>. A bare "25°" is fine where tep is the expected scale (eg weather).</p>
+<p><strong>Decided:</strong> temperature uses <strong>°t</strong> (eg 25 <abbr title="tep (degrees from freezing)">°t</abbr>), for readings and differences alike, like °C. It's written with a space between the number and the degree sign, as SI writes 25 °C: 25 <abbr title="tep (degrees from freezing)">°t</abbr> (and 25 °C, 77 °F when those appear). In typeset text the space is non-breaking, so a temperature can't be split across a line. Plain-ASCII fallback: <strong>te</strong>. A bare "25°" is fine where tep is the expected scale (eg weather).</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> the degree sign means "a scale with a chosen zero", which is what the tep is (0 = freezing, like Celsius), and people already read 25°C / °F that way. Lowercase because tep isn't named after a person (°C and °F are), and it avoids T (tesla). It's still two characters, so it fits the spirit of the rule. Written without a space because the sign belongs to the number, the way 5ml is usually written on labels.</p>
+<p><strong>Why:</strong> the degree sign means "a scale with a chosen zero", which is what the tep is (0 = freezing, like Celsius), and people already read 25 °C / °F that way. Lowercase because tep isn't named after a person (°C and °F are), and it avoids T (tesla). It's still two characters, so it fits the spirit of the rule. Written with a space like every other unit symbol (5;6 <abbr title="lib">li</abbr>, 29 <abbr title="imp">im</abbr>), and as SI and ISO 80000 write °C: the only SI symbols written straight after the number are the degree, minute and second of angle. Replaces the earlier rule of no space (25<abbr title="tep (degrees from freezing)">°t</abbr>), which broke that consistency; a non-breaking space keeps the number and its unit on one line.</p>
 </div>
 <div class="block para">
-<p><strong>Advantage:</strong> readings look like the °C and °F people already know, can't be confused with the tesla, and a temperature reads as one unit (25<abbr title="tep (degrees from freezing)">°t</abbr>) that can't be split across a line.</p>
+<p><strong>Advantage:</strong> readings look like the °C and °F people already know, can't be confused with the tesla, and temperatures follow the same spacing rule as every other unit.</p>
 </div>
 <div class="block list">
 <ul>
-<li>Examples: 1;3 <abbr title="pace">p</abbr> tall, 2;6 <abbr title="lib">li</abbr>, 25<abbr title="tep (degrees from freezing)">°t</abbr>, 68 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr>, 29 <abbr title="imp">im</abbr></li>
+<li>Examples: 1;3 <abbr title="pace">p</abbr> tall, 2;6 <abbr title="lib">li</abbr>, 25 <abbr title="tep (degrees from freezing)">°t</abbr>, 68 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr>, 29 <abbr title="imp">im</abbr></li>
 </ul>
 </div>
 <div class="block decided">
@@ -1858,6 +1864,15 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> there's nothing to remember about case, and no symbol can be mistaken for a chemical element or an SI prefix.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> no unit symbol may start with <strong>q</strong>.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> in a prefix symbol, q is both quad's letter (4) and the "multiply" ending. If a unit symbol started with q, a prefixed symbol could be read two ways: "uqq..." could be uq (×10) followed by the unit, or uqq (×10^14) followed by the rest. c is safe, because no digit root uses it, so cu and ch are fine.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> every prefixed symbol can be read only one way, without checking a list of units.</p>
 </div>
 </section>
 <section id="time" class="has-table">
@@ -1990,7 +2005,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Decided:</strong> <strong>1 breath = 25/6 SI seconds exactly</strong> (1 blink = 25/72 s). Today that is 7,50E,583,273 caesium periods (38,302,632,375 dec), since SI fixes the caesium frequency.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> time is the one unit that has to fit the Earth, and SI already keeps the second for the whole world. Defining the breath by the SI second rather than by the caesium count means the two can never split: when SI redefines the second with optical clocks (planned for 2030 CE), caesium becomes a measured value, and a caesium-count definition would drift from SI by about 1 part in 10^16 (dec). Replaces the earlier definition by the caesium count (which Primel also uses). Every other base unit stays defined by a fixed constant (c, h, k, e, the grex count), because those are fixed in SI too, so they can't drift either, and their values are short round dozenal numbers where the same units written as SI fractions would be up to 96 digits long (see Exact SI values).</p>
+<p><strong>Why:</strong> time is the one unit that has to fit the Earth, and SI already keeps the second for the whole world. Defining the breath by the SI second rather than by the caesium count means the two can never split: when SI redefines the second with optical clocks (planned for 2030 CE), caesium becomes a measured value, and a caesium-count definition would be off from SI by up to about 1 part in 10^16 (dec), the uncertainty of the measured caesium value. Replaces the earlier definition by the caesium count (which Primel also uses). Every other base unit stays defined by a fixed constant (c, h, k, e, the grex count), because those are fixed in SI too, so they can't drift either, and their values are short round dozenal numbers where the same units written as SI fractions would be up to 96 digits long (see Exact SI values).</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> Paludal time never drifts from UTC or SI, needs no leap breaths of its own, converts to SI exactly, and gets every future improvement to the second for free.</p>
@@ -2000,7 +2015,8 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <li>So 1 blink = 750,E58,327;3 caesium periods today (terminates in dozenal; 3,191,886,031.25 dec)</li>
 <li>The day stays at exactly 86,400 SI seconds.</li>
 <li>Converting between SI and dozenal time is exact (no drift, no leap breaths beyond what SI already needs).</li>
-<li>Leap breaths: none of our own. The breath follows UTC, and leap seconds are being phased out (CGPM 2022 CE: UTC will be allowed to drift further from the Earth's rotation by 2035 CE), so whatever UTC does, Paludal time does too.</li>
+<li>Leap breaths: none of our own. The breath follows UTC, and leap seconds are being phased out. None has been added since 2016 CE, and the CGPM decided in 2022 CE that by 2035 CE the gap allowed between UTC and the Earth's rotation (UT1) will be widened, so that leap seconds stop for at least a century. The new limit, and what happens when it's reached (a larger step, or none at all), are still to be decided</li>
+<li>Paludal won't be in use before 2035 CE, so a Paludal clock never has to show a leap second (one second is an awkward 2;X69 blinks). Whatever UTC does after that, Paludal time does too</li>
 <li>Survives the planned SI redefinition of the second (optical clocks, ~2030 CE): the breath simply follows the SI second. SI fixes the caesium-133 frequency at exactly 9,192,631,770 Hz (since 1967 CE); that count, like ours, was chosen to fit the Earth (the 1900 CE year). The planned replacement will probably be a weighted mix of several optical clock transitions rather than one atom, about 100 times more precise. Because the breath is exactly 25/6 SI seconds, Paludal gets whatever SI chooses at no cost</li>
 <li><strong>A universal approximation:</strong> 1 blink ≈ <strong>8 × 10^11 periods of the hydrogen 1S-2S transition</strong> (0.038% dec out). Hydrogen is the simplest atom and the most common element, and its frequencies can in principle be calculated from fundamental constants, so it's the natural way to explain the blink to someone with no Earth reference (the Pioneer plaque used hydrogen for the same reason)</li>
 <li>Not used as the definition: the 1S-2S frequency is measured to 4.5 × 10^-15 (dec), about 45 times less precisely than caesium fountain clocks, and the two best measurements differ by 17 Hz; defining time by it would lose the exact SI conversion. A round count (8 × 10^11) would also put clocks 33 s a day off the day</li>
@@ -2242,6 +2258,84 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </ul>
 </div>
 </section>
+<section id="length-light-distances" class="has-table">
+<h4>Light distances</h4>
+<div class="block para">
+<p>Light covers a round number of paces in every time unit, because c is fixed at 2 × 10^7 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>. So light times make handy yardsticks for big distances, as light-seconds and light-years do now:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Distance</th>
+<th>Paces</th>
+<th>Iters</th>
+<th>Light takes</th>
+<th>SI (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Light-blink</td>
+<td>2 × 10^7 <abbr title="pace">p</abbr> (exact)</td>
+<td>20,000 <abbr title="iter">ir</abbr></td>
+<td>1 <abbr title="blink">bl</abbr></td>
+<td>104,095 km</td>
+</tr>
+<tr>
+<td>Light-breath</td>
+<td>2 × 10^8 <abbr title="pace">p</abbr> (exact)</td>
+<td>200,000 <abbr title="iter">ir</abbr></td>
+<td>1 <abbr title="breath">br</abbr></td>
+<td>1,249,135 km</td>
+</tr>
+<tr>
+<td>Earth-Moon (mean)</td>
+<td>7;476 × 10^7 <abbr title="pace">p</abbr></td>
+<td>74,764 <abbr title="iter">ir</abbr></td>
+<td>3;84 <abbr title="blink">bl</abbr> (≈ 1;3 <abbr title="beat">bt</abbr>)</td>
+<td>384,400 km</td>
+</tr>
+<tr>
+<td>AU (Earth-Sun, exact in SI)</td>
+<td>1;7E63 × 10^X p</td>
+<td>17,E63,264 <abbr title="iter">ir</abbr></td>
+<td>9E;92 <abbr title="breath">br</abbr> (≈ X mt)</td>
+<td>149,597,870,700 m</td>
+</tr>
+<tr>
+<td>Light-day</td>
+<td>2 × 10^10 <abbr title="pace">p</abbr> (exact)</td>
+<td>2 × 10^7 <abbr title="iter">ir</abbr></td>
+<td>1 day</td>
+<td>25.90 × 10^9 km</td>
+</tr>
+<tr>
+<td>Light-year</td>
+<td>5;0X6 × 10^12 <abbr title="pace">p</abbr> (exact)</td>
+<td>5;0X6 × 10^E ir</td>
+<td>1 year</td>
+<td>9.461 × 10^12 km</td>
+</tr>
+<tr>
+<td>Parax (see below)</td>
+<td>3;2155 × 10^13 <abbr title="pace">p</abbr></td>
+<td>3;2155 × 10^10 <abbr title="iter">ir</abbr></td>
+<td>7;62 years</td>
+<td>7.515 light-years, 2.304 pc</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>The light-year comes out exact and short: like SI's, it uses the Julian year of 265;3 days (365.25 dec), and light covers exactly 2 × 10^10 <abbr title="pace">p</abbr> a day, so a light-year is 265;3 × 2 × 10^10 = 5;0X6 × 10^12 <abbr title="pace">p</abbr></li>
+<li>The AU doesn't: it's fixed in metres (since 2012 CE), and the pace isn't a round number of metres</li>
+</ul>
+</div>
+</section>
 <section id="length-star-distances" class="has-table">
 <h4>Star distances</h4>
 <div class="block decided">
@@ -2330,7 +2424,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <ul>
 <li>The value of h was chosen so a cube of water 1 unc per side (1 cub) ≈ 1 lib
 <ul>
-<li>water at 20°C: 0.9994 (better than SI's 1 L of water = 0.9982 kg at 20°C)</li>
+<li>water at 20 °C: 0.9994 (better than SI's 1 L of water = 0.9982 kg at 20 °C)</li>
 </ul></li>
 <li>Everyday rule of thumb works at every scale (1,728 (dec) = 1,000;):
 <ul>
@@ -2478,7 +2572,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Decided:</strong> the <strong>tep</strong>, defined by fixing the Boltzmann constant <strong>k = 2;07 × 10^-1E</strong> (opus/tep), exact.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> 0 tep = freezing is what people actually need for weather and cooking (like Celsius). The size splits the gap between freezing and boiling into 100; equal steps (144 dec), so water freezes at 0<abbr title="tep (degrees from freezing)">°t</abbr> and boils at 100<abbr title="tep (degrees from freezing)">°t</abbr> - the dozenal version of Celsius's 0 and 100.</p>
+<p><strong>Why:</strong> 0 tep = freezing is what people actually need for weather and cooking (like Celsius). The size splits the gap between freezing and boiling into 100; equal steps (144 dec), so water freezes at 0 <abbr title="tep (degrees from freezing)">°t</abbr> and boils at 100 <abbr title="tep (degrees from freezing)">°t</abbr> - the dozenal version of Celsius's 0 and 100.</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> freezing is 0 and boiling 100, so weather and cooking temperatures read like Celsius.</p>
@@ -2486,22 +2580,31 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <div class="block list">
 <ul>
 <li>1 tep = 0.694346 K (within 0.014% of 0;01 of the freezing-boiling gap)</li>
-<li><strong>0 tep = freezing</strong> (273.15 K, same anchor as Celsius) - human focused; kelvin-style zero rejected</li>
-<li>Triple point of water (273.16 K = 0.01°C) ≈ <strong>0;021<abbr title="tep (degrees from freezing)">°t</abbr></strong>, not 0. Anchoring 0<abbr title="tep (degrees from freezing)">°t</abbr> at 273.15 K exactly, like Celsius, keeps 0<abbr title="tep (degrees from freezing)">°t</abbr> = 0°C; the triple point has been a measured value (not exact) since SI's 2019 redefinition, so anchoring there would gain nothing</li>
-<li>boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974°C)</li>
-<li>1 tep ≈ 0.694°C ≈ 1.25°F</li>
-<li>body temperature ≈ 45;35 tep, room temperature (21°C) ≈ 26 tep</li>
-<li>absolute zero ≈ -289;48 tep (no nice ratio between absolute zero, freezing and boiling - fine)</li>
+<li><strong>0 tep = freezing</strong>: exactly 289;485 ta (≈ 273.149 947 K, 53 µK (dec) below 0 °C; see below) - human focused; kelvin-style zero rejected</li>
+<li>Triple point of water (273.16 K = 0.01 °C) ≈ <strong>0;021 <abbr title="tep (degrees from freezing)">°t</abbr></strong>, not 0. The triple point has been a measured value (not exact) since SI's 2019 redefinition, so anchoring there would gain nothing</li>
+<li>boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974 °C)</li>
+<li>1 tep ≈ 0.694 °C ≈ 1.25 °F</li>
+<li>body temperature ≈ 45;35 tep, room temperature (21 °C) ≈ 26 tep</li>
+<li>absolute zero = -289;485 <abbr title="tep (degrees from freezing)">°t</abbr> exactly (no nice ratio between absolute zero, freezing and boiling - fine)</li>
 </ul>
 </div>
 <div class="block decided">
-<p><strong>Decided:</strong> absolute temperature (from absolute zero, for gas laws and physics) is written <strong>ta</strong>, spoken "tep absolute": 0 ta = absolute zero, freezing = 289;485 ta, so ta = °t + 289;485. Everyday temperatures stay °t (or te), from freezing.</p>
+<p><strong>Decided:</strong> absolute temperature (from absolute zero, for gas laws and physics) is written <strong>ta</strong>, spoken "tep absolute": 0 ta = absolute zero, and 0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta, so ta = °t + 289;485 exactly (see the next decision). Everyday temperatures stay °t (or te), from freezing.</p>
 </div>
 <div class="block why">
 <p><strong>Why:</strong> most people will only ever use the everyday scale, so it keeps the plain names; the absolute scale just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square inch absolute / gauge). Rejected: "tabs" and "tea" (English words).</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> everyday temperatures keep the simple name, and physics still gets an absolute scale that can't be mistaken for it.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the zero of the everyday scale is a defined number: <strong>0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta exactly</strong> (≈ 273.149 947 K, 53 µK (dec) below 0 °C).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> this is how SI does it: 0 °C isn't defined as where water freezes, but as exactly 273.15 K, a number that is exact because it's written in SI's own unit, the kelvin. Written in ta, 273.15 K is 289;48517..., a fraction that never ends, so tying 0 <abbr title="tep (degrees from freezing)">°t</abbr> to 0 °C would leave the offset between °t and ta inexact. Fixing it at 289;485 instead makes it exact and short. The 53 µK (dec) difference is far smaller than the accuracy of any real freezing point: dissolved air alone moves it by about 2 mK (dec).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> °t and ta convert exactly with one short number, and the zero can be rebuilt from k alone, with no water or air pressure needed.</p>
 </div>
 </section>
 <section id="amount-of-substance" class="has-table">
@@ -2947,13 +3050,31 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>1;735 × 10^-9 <abbr title="vig">vg</abbr>/(p²·tep⁴)</td>
 <td>5.670 × 10^-8 W/(m² K⁴)</td>
 </tr>
+<tr>
+<td>Josephson constant K_J = 2e/h</td>
+<td>10^12 / 2;13 ≈ E;4X56 × 10^11 per (bl·<abbr title="imp">im</abbr>)</td>
+<td>483,597.848 × 10^9 Hz/V</td>
+</tr>
+<tr>
+<td>von Klitzing constant R_K = h/e²</td>
+<td><strong>2;13 × 10^4 <abbr title="imp">im</abbr>/<abbr title="riv">ri</abbr></strong></td>
+<td>25,812.807 Ω</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
+<div class="block list">
+<ul>
+<li>The von Klitzing constant comes out round because h and e are: it carries h's digits (2;13). Standards labs realise the volt with Josephson junctions and the ohm with the quantum Hall effect, through exactly these two constants, so Paludal's electrical units can be realised directly, without going through SI</li>
+</ul>
+</div>
 </section>
 <section id="constants-measured" class="has-table">
 <h4>Measured</h4>
+<div class="block para">
+<p>Values from CODATA 2022 CE. The relative uncertainty is a ratio, so it's the same in any units; the Paludal values are rounded to 3-4 dozenal digits.</p>
+</div>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -2962,32 +3083,54 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <th>Constant</th>
 <th>Paludal value</th>
 <th>SI value (dec)</th>
+<th>Relative uncertainty (dec)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Gravitational constant G</td>
 <td>3;558 × 10^-E p³/(li·<abbr title="blink">bl</abbr>²)</td>
-<td>6.674 × 10^-11 m³/(kg s²)</td>
+<td>6.67430 × 10^-11 m³/(kg s²)</td>
+<td>2.2 × 10^-5</td>
 </tr>
 <tr>
 <td>Electron mass</td>
 <td>X;21 × 10^-25 <abbr title="lib">li</abbr></td>
-<td>9.109 × 10^-31 kg</td>
+<td>9.1093837139 × 10^-31 kg</td>
+<td>3.1 × 10^-10</td>
 </tr>
 <tr>
 <td>Proton mass</td>
 <td>X;986 × 10^-22 <abbr title="lib">li</abbr></td>
-<td>1.673 × 10^-27 kg</td>
+<td>1.67262192595 × 10^-27 kg</td>
+<td>3.1 × 10^-10</td>
 </tr>
 <tr>
 <td>Fine-structure constant α (no units)</td>
-<td>1 / E5;0523</td>
-<td>1 / 137.036</td>
+<td>1 / E5;0522</td>
+<td>1 / 137.035999177</td>
+<td>1.5 × 10^-10</td>
+</tr>
+<tr>
+<td>Magnetic constant μ0</td>
+<td>2;265 × 10^-5 <abbr title="vis">vi</abbr>/<abbr title="riv">ri</abbr>²</td>
+<td>1.25663706127 × 10^-6 N/A²</td>
+<td>1.6 × 10^-10</td>
+</tr>
+<tr>
+<td>Electric constant ε0 = 1/(μ0 c²)</td>
+<td>1;435 × 10^-X os/(im·<abbr title="pace">p</abbr>)</td>
+<td>8.8541878188 × 10^-12 F/m</td>
+<td>1.6 × 10^-10</td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
+<div class="block list">
+<ul>
+<li>μ0 and ε0 are measured, as in SI since 2019 CE: with h and e fixed, μ0 = 2αh/(e²c), so it carries α's uncertainty. In Paludal the exact factor is short: <strong>μ0 = α × 2;13 × 10^-3 <abbr title="vis">vi</abbr>/<abbr title="riv">ri</abbr>²</strong> (2;13 × 10^-3 is 2R_K/c)</li>
+</ul>
 </div>
 </section>
 <section id="constants-earth-and-everyday" class="has-table">
@@ -3004,9 +3147,9 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </thead>
 <tbody>
 <tr>
-<td>Standard gravity g (conventional, exact)</td>
-<td>0;9926 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>² (99;26 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr>²)</td>
-<td>9.80665 m/s²</td>
+<td>Standard gravity g_n (exact in SI; Paludal value rounded)</td>
+<td>≈ 0;9926 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>² (99;26 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr>²)</td>
+<td>9.80665 m/s² (exact)</td>
 </tr>
 <tr>
 <td>Standard atmosphere</td>
@@ -3015,21 +3158,21 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </tr>
 <tr>
 <td>Absolute zero</td>
-<td>-289;485<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>-273.15°C</td>
+<td>-289;485 <abbr title="tep (degrees from freezing)">°t</abbr> (exact)</td>
+<td>-273.15 °C</td>
 </tr>
 <tr>
 <td>Water freezes / boils (sea level)</td>
-<td>0<abbr title="tep (degrees from freezing)">°t</abbr> / ≈ EE;E9<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>0°C / 99.974°C</td>
+<td>0 <abbr title="tep (degrees from freezing)">°t</abbr> / ≈ EE;E9 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>0 °C / 99.974 °C</td>
 </tr>
 <tr>
 <td>Water density</td>
-<td>1;002 <abbr title="lib">li</abbr>/<abbr title="cub">cu</abbr> at 4°C, 0;EEE at 20°C</td>
+<td>1;002 <abbr title="lib">li</abbr>/<abbr title="cub">cu</abbr> at 4 °C, 0;EEE at 20 °C</td>
 <td>999.97 / 998.2 kg/m³</td>
 </tr>
 <tr>
-<td>Speed of sound (20°C)</td>
+<td>Speed of sound (20 °C)</td>
 <td>≈ 6X p/<abbr title="blink">bl</abbr></td>
 <td>343 m/s</td>
 </tr>
@@ -3069,7 +3212,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <td>1.282 s</td>
 </tr>
 <tr>
-<td>Light-year</td>
+<td>Light-year (exact)</td>
 <td>5;0X6 × 10^12 <abbr title="pace">p</abbr></td>
 <td>9.461 × 10^15 m</td>
 </tr>
@@ -3154,8 +3297,8 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <tr>
 <td>3;30</td>
 <td>The alarm goes off. The forecast says 18° now, top of 28°</td>
-<td>18<abbr title="tep (degrees from freezing)">°t</abbr>, 28<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>6:30 am, 14°C, 22°C</td>
+<td>18 <abbr title="tep (degrees from freezing)">°t</abbr>, 28 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>6:30 am, 14 °C, 22 °C</td>
 </tr>
 <tr>
 <td>3;76</td>
@@ -3202,8 +3345,8 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <tr>
 <td>9;46</td>
 <td>A roast goes in for 0;9 chime</td>
-<td>1X0<abbr title="tep (degrees from freezing)">°t</abbr> for 0;9 <abbr title="chime">ch</abbr> (90 <abbr title="moment">mt</abbr>)</td>
-<td>180°C for 1½ hours</td>
+<td>1X0 <abbr title="tep (degrees from freezing)">°t</abbr> for 0;9 <abbr title="chime">ch</abbr> (90 <abbr title="moment">mt</abbr>)</td>
+<td>180 °C for 1½ hours</td>
 </tr>
 <tr>
 <td>E;30</td>
@@ -4232,66 +4375,66 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <tbody>
 <tr>
 <td>Freezer</td>
-<td>-18°C</td>
-<td>0°F</td>
-<td>-21;E<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>-22<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>-18 °C</td>
+<td>0 °F</td>
+<td>-21;E <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>-22 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 </tr>
 <tr>
 <td>Fridge</td>
-<td>4°C</td>
-<td>39°F</td>
-<td>5;92<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>5;8<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>4 °C</td>
+<td>39 °F</td>
+<td>5;92 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>5;8 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 </tr>
 <tr>
 <td>Cool day</td>
-<td>15°C</td>
-<td>59°F</td>
-<td>19;7<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>1X<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>15 °C</td>
+<td>59 °F</td>
+<td>19;7 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>1X <abbr title="tep (degrees from freezing)">°t</abbr></td>
 </tr>
 <tr>
 <td>Room</td>
-<td>21°C</td>
-<td>70°F</td>
-<td>26;3<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>26<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>21 °C</td>
+<td>70 °F</td>
+<td>26;3 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>26 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 </tr>
 <tr>
 <td>Warm day</td>
-<td>30°C</td>
-<td>86°F</td>
-<td>37;2<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>36<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>30 °C</td>
+<td>86 °F</td>
+<td>37;2 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>36 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 </tr>
 <tr>
 <td>Body</td>
-<td>37°C</td>
-<td>98.6°F</td>
-<td>45;3<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>37 °C</td>
+<td>98.6 °F</td>
+<td>45;3 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 <td></td>
 </tr>
 <tr>
 <td>Heatwave</td>
-<td>45°C</td>
-<td>113°F</td>
-<td>54;X<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>56<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>45 °C</td>
+<td>113 °F</td>
+<td>54;X <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>56 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 </tr>
 <tr>
 <td>Boiling water</td>
-<td>100°C</td>
-<td>212°F</td>
-<td>100<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>100 °C</td>
+<td>212 °F</td>
+<td>100 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 <td></td>
 </tr>
 <tr>
 <td>Oven (moderate)</td>
-<td>180°C</td>
-<td>350°F</td>
-<td>197<abbr title="tep (degrees from freezing)">°t</abbr></td>
-<td>1X0<abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>180 °C</td>
+<td>350 °F</td>
+<td>197 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>1X0 <abbr title="tep (degrees from freezing)">°t</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -5449,7 +5592,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Decided:</strong> replace pH with an acidity scale where <strong>0 is neutral, acids are positive and bases negative</strong>.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> if the system is being changed anyway, it may as well be done right. pH runs backwards (lower = more acidic) and centres on 7, which is only neutral at 25°C. Replaces the earlier decision to keep pH unchanged in dozenal digits.</p>
+<p><strong>Why:</strong> if the system is being changed anyway, it may as well be done right. pH runs backwards (lower = more acidic) and centres on 7, which is only neutral at 25 °C. Replaces the earlier decision to keep pH unchanged in dozenal digits.</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> a higher number means more acidic, and 0 always means neutral.</p>
@@ -5458,18 +5601,18 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <p><strong>Decided:</strong> the scale is called <strong>acidity</strong> (eg lemon juice is acidity +4;5), and <strong>acidity = log base 12 of ([H+] / [H+] in pure water at the same temperature)</strong>.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> it's the simplest formula that gets it right: nothing needs converting (more H+ than pure water gives a positive number, less a negative one, pure water 0), and each step is twelve times. Rejected: log 12 of [H+]/[OH-] (the same information with every number doubled) and 7 - pH (keeps base-ten steps, and 0 is only neutral at 25°C). The word acidity already means acid content in wine and food (in g/L), but that's not a serious clash. So</p>
+<p><strong>Why:</strong> it's the simplest formula that gets it right: nothing needs converting (more H+ than pure water gives a positive number, less a negative one, pure water 0), and each step is twelve times. Rejected: log 12 of [H+]/[OH-] (the same information with every number doubled) and 7 - pH (keeps base-ten steps, and 0 is only neutral at 25 °C). The word acidity already means acid content in wine and food (in g/L), but that's not a serious clash. So</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> it needs no concentration unit, and neutral is 0 at every temperature.</p>
 </div>
 <div class="block list">
 <ul>
-<li>0 is neutral at <strong>every</strong> temperature (pH's neutral point is 7.47 at 0°C, 7 at 25°C, 6.8 at body temperature and 6.14 at 100°C)</li>
+<li>0 is neutral at <strong>every</strong> temperature (pH's neutral point is 7.47 at 0 °C, 7 at 25 °C, 6.8 at body temperature and 6.14 at 100 °C)</li>
 <li>each step of 1 is 10 (12 dec) times more acidic</li>
 <li>it's a ratio of two concentrations, so it needs no concentration unit (no mol/L vs grex/cub problem)</li>
-<li>From a pH reading (25°C): write the pH in dozenal, then <strong>acidity = (7 - pH) × 0;E15</strong> (0;E15 is log₁₂ 10, so the whole sum is dozenal). Everyday values run from about +6;6 to -6;6</li>
-<li>Measured directly: a glass-electrode meter (which every pH meter is) gives a voltage that changes by <strong>1;32 <abbr title="bicia-imp (÷ 10^2)">b↓im</abbr> per step of acidity</strong> at 25°C, so a Paludal meter reads acidity with no pH in between</li>
+<li>From a pH reading (25 °C): write the pH in dozenal, then <strong>acidity = (7 - pH) × 0;E15</strong> (0;E15 is log₁₂ 10, so the whole sum is dozenal). Everyday values run from about +6;6 to -6;6</li>
+<li>Measured directly: a glass-electrode meter (which every pH meter is) gives a voltage that changes by <strong>1;32 <abbr title="bicia-imp (÷ 10^2)">b↓im</abbr> per step of acidity</strong> at 25 °C, so a Paludal meter reads acidity with no pH in between</li>
 </ul>
 </div>
 <div class="block table">
@@ -5617,11 +5760,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <div class="block list">
 <ul>
-<li>Values at 25°C, in dozenal digits. The three columns are three ways to build the scale:
+<li>Values at 25 °C, in dozenal digits. The three columns are three ways to build the scale:
 <ul>
 <li><strong>Acidity (log 12)</strong>, chosen: compares H+ with pure water. Each step is 12 times more acidic</li>
 <li><strong>log 12 of [H+]/[OH-]</strong>: compares acid (H+) with base (OH-). As one rises the other falls, so the ratio moves twice as fast and every number is doubled. Same information, bigger numbers</li>
-<li><strong>7 - pH</strong>: today's pH flipped and shifted. Steps are still ×10 (dec), and 0 is only neutral at 25°C</li>
+<li><strong>7 - pH</strong>: today's pH flipped and shifted. Steps are still ×10 (dec), and 0 is only neutral at 25 °C</li>
 </ul></li>
 <li>No hard bounds: strong acids go above +6;6 and strong alkalis below -6;6, as pH goes below 0 and above 14. Superacids are measured on other scales (Hammett, down to about -25 pH)</li>
 <li>Chemists' buffer maths keeps its shape: pH = pKa + log(base/acid) becomes acidity = Ka-acidity - log₁₂(base/acid), where Ka-acidity = (7 - pKa) × 0;E15 (pKa in dozenal), a one-off conversion of old tables</li>
@@ -5663,7 +5806,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <h3>Open items / next steps</h3>
 <div class="block list">
 <ul>
-<li>Universal test: decide what to do about the parts that fail it - the tep's zero (273.15 K), the lam (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?</li>
+<li>Universal test: decide what to do about the parts that fail it - the tep's zero (now a defined number, 289;485 ta, but chosen from water), the lam (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?</li>
 <li>Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)</li>
 <li>Give short names to a few everyday multiples (food energy <abbr title="triqua-opus (× 10^3)">t↑op</abbr>, pressure <abbr title="triqua-pres (× 10^3)">t↑pr</abbr>) instead of changing the coherent derived units (proposed, not decided)</li>
 <li>A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)</li>
@@ -5677,7 +5820,8 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <li>Typesetting points: 1 pt (1/72 in, 0.353 mm) ≈ 0;5 lin (0.350 mm), so a pica (12 pt) ≈ 5 lin. Keep a "paludal point" of 0;5 lin, or give type sizes in lin directly (12 pt ≈ 5 lin)?</li>
 <li>Shortening gro: "gr" is the grain's symbol, and "go" is an everyday word ("per go" = per attempt). gro is the established DSA name, so keeping it is suggested. "Bigro" would also clash with the rule that big numbers group in threes (bimo = 10^6).</li>
 <li>The wink (half a blink) was removed as too fast to be useful, though it equals TGM's Tim exactly. Check whether to reinstate it</li>
-<li>Missing coherent units, to be named: frequency (per blink, 2.88 Hz; concert A = 108;9 per blink), resistance (imp/riv, 0.592 Ω), capacitance (onus/imp, 0.587 F), inductance (imp·blink/riv, 0.205 H), magnetic flux (imp·blink, 2.52 Wb), flux density (flux/pace², 1.20 T), absorbed dose (opus/lib, 17.5 Gy)</li>
+<li>Missing coherent units, to be named: frequency (per blink, 2.88 Hz; concert A = 108;9 per blink), resistance (imp/riv, 0.592 Ω), capacitance (onus/imp, 0.587 F), inductance (imp·blink/riv, 0.205 H), magnetic flux (imp·blink, 2.52 Wb), flux density (flux/pace², 1.20 T), absorbed dose (opus/lib, 17.5 Gy). Frequency first (music, mains, radio). Until the magnetic units have names, use SI's (tesla, weber, henry). Dose needs care: opus/lib is several times a lethal dose, so everyday doses need deep prefixes, and (as SI keeps the gray and the sievert apart) absorbed and equivalent dose need separate names so they can't be mixed up</li>
+<li>Angles: plane angles are in turns, but K_cd still uses the steradian. Decide a unit of solid angle (the steradian, or a whole sphere as the turn's counterpart), name the unit of luminous flux (lam·sr, the lumen's counterpart), and say that the radian stays the coherent angle unit in physics formulas (E = ħω, arc length = radius × angle), with turns for everyday use</li>
 <li>Money: a name for the 1/100; part of a dollar (see Money)</li>
 <li>A speed unit for ships and aircraft, to replace the knot (see the navis in Length)</li>
 <li>Drug doses: how they'd be written if medicine chose to switch (no one is forced to; mg stays meanwhile)</li>

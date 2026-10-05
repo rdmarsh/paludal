@@ -188,6 +188,13 @@ local function Inlines(inlines)
       local spaced = gap and (gap.t == "Space" or gap.t == "SoftBreak") and before and before.t == "Str"
       new = symbols(el.text, spaced and before.text:match("[0-9]$") ~= nil,
                     spaced and before.text:match("[0-9XE]$") ~= nil)
+    elseif el.t == "Space" then
+      -- Keep a temperature on one line: the space in 25 °t (or °C, °F) becomes non-breaking
+      local before, after = inlines[i - 1], inlines[i + 1]
+      if before and after and before.t == "Str" and after.t == "Str"
+          and before.text:match("[0-9XE]$") and after.text:sub(1, #"°") == "°" then
+        new = { pandoc.Str("\u{A0}") }
+      end
     end
     if new then out:extend(new) else out:insert(el) end
   end

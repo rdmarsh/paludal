@@ -63,7 +63,7 @@ How each part of the system does on the universal test:
 | turn, prefixes, numbers | maths | passes |
 | acidity | pure water | passes |
 | tep (size) | k, chosen so freezing to boiling ≈ 100 | mostly: boiling depends on air pressure, which is the Earth's |
-| tep (zero, 273.15 K) | water freezing at the Earth's air pressure; 273.15 is an SI number | fails (a pure-physics zero would be absolute zero, ie ta) |
+| tep (zero) | a defined number, 0 °t = 289;485 ta, chosen to match water freezing at the Earth's air pressure | the number can be rebuilt from k; the reason for it is the Earth's water (see Open items) |
 | lam | the human eye's sensitivity, at 540 THz | fails (SI's candela has the same problem) |
 | vox (zero) | the threshold of human hearing | fails (human biology) |
 | navis | the Earth's meridian | fails (navigation on Earth only) |
@@ -367,7 +367,7 @@ The units themselves: a summary, the prefixes and symbols, the seven base units 
 | Time        | blink | 0.347222 s (25/72 s)   | 1 breath (10 blinks) = 25/6 SI seconds | English: the blink of an eye |
 | Length      | pace  | 1.452545 m             | c = 2 × 10^7 paces/blink                      | Latin passus, a pace |
 | Mass        | lib   | 1.771431 kg            | h = 2;13 × 10^-28                             | Latin libra, pound / scales |
-| Temperature | tep   | 0.694346 K             | k = 2;07 × 10^-1E, 0 tep = 273.15 K (freezing) | Latin tepor, warmth |
+| Temperature | tep   | 0.694346 K             | k = 2;07 × 10^-1E, 0 °t = 289;485 ta (≈ freezing) | Latin tepor, warmth |
 | Current     | riv   | 12.2847 A              | e = 1 × 10^-16 onus                           | Latin rivus, stream |
 | Amount      | grex  | 6.17235 × 10^23 (dec) things | 1 grex = 1;15 × 10^1X things            | Latin grex, flock |
 | Light       | lam   | 0.980246 cd            | K_cd = 3 × 10^4 lam·sr/vg at 19,042,90X,764,540 per blink | Latin lampas, lamp |
@@ -383,6 +383,7 @@ numbers; written as SI fractions most of them would be long:
 | pace | c = 2 × 10^7 p/bl | 3,747,405,725 / 2,579,890,176 m | 1.452 544 670 m |
 | lib | h = 2;13 × 10^-28 | a fraction of 96 digits | 1.771 431 179 kg |
 | tep | k = 2;07 × 10^-1E | a fraction of 36 digits | 0.694 345 838 K |
+| 0 °t | 0 °t = 289;485 ta | 289;485 tep above absolute zero | 273.149 946 686 K |
 | onus | e = 1 × 10^-16 | 1.602176634 × 10^-19 × 12^18 C (dec) | 4.265 528 250 C |
 | riv | onus per blink | a fraction of 44 digits | 12.284 721 361 A |
 | grex | 1;15 × 10^1X things | a fraction of 38 digits | 1.024 943 427 mol |
@@ -447,7 +448,7 @@ flowchart LR
 
 ### Rules of thumb
 
-- A cub of water weighs a lib (0.9994 at 20°C). A dig-cube of water ≈ 1/1,000 lib ≈ 1 g.
+- A cub of water weighs a lib (0.9994 at 20 °C). A dig-cube of water ≈ 1/1,000 lib ≈ 1 g.
 - Time of day = chime;moments (d;dd), like hours:minutes: 0;00 midnight, 3;00 dawn, 6;00 noon, 9;00 dusk.
 - A moment (50 s) is about a minute; a beat (1.04 s) is about a second.
 - 100 km/h ≈ 68 paces/breath; motorway limit 70 (105 km/h).
@@ -584,19 +585,23 @@ its first and last letters (os) would be the onus, and "op" isn't a common word 
 - chime: **ch** (the imperial chain is no longer used, so no real clash)
 - moment: **mt** (first and last letters: "mo" is the spoken word for 1,000, and mm is the millimetre)
 
-**Decided:** temperature uses **°t** (eg 25°t), for readings and differences alike, like °C. It's written
-with no space between the number and the degree sign: 25°t, not 25 °t (and 25°C, 77°F when those appear). Plain-ASCII
-fallback: **te**. A bare "25°" is fine where tep is the expected scale (eg weather).
+**Decided:** temperature uses **°t** (eg 25 °t), for readings and differences alike, like °C. It's written
+with a space between the number and the degree sign, as SI writes 25 °C: 25 °t (and 25 °C, 77 °F when those
+appear). In typeset text the space is non-breaking, so a temperature can't be split across a line.
+Plain-ASCII fallback: **te**. A bare "25°" is fine where tep is the expected scale (eg weather).
 
 **Why:** the degree sign means "a scale with a chosen zero", which is what the tep is (0 = freezing, like
-Celsius), and people already read 25°C / °F that way. Lowercase because tep isn't named after a person
+Celsius), and people already read 25 °C / °F that way. Lowercase because tep isn't named after a person
 (°C and °F are), and it avoids T (tesla). It's still two characters, so it fits the spirit of the rule.
-Written without a space because the sign belongs to the number, the way 5ml is usually written on labels.
+Written with a space like every other unit symbol (5;6 li, 29 im), and as SI and ISO 80000 write °C: the
+only SI symbols written straight after the number are the degree, minute and second of angle. Replaces the
+earlier rule of no space (25°t), which broke that consistency; a non-breaking space keeps the number and
+its unit on one line.
 
 **Advantage:** readings look like the °C and °F people already know, can't be confused with the tesla, and
-a temperature reads as one unit (25°t) that can't be split across a line.
+temperatures follow the same spacing rule as every other unit.
 
-- Examples: 1;3 p tall, 2;6 li, 25°t, 68 p/br, 29 im
+- Examples: 1;3 p tall, 2;6 li, 25 °t, 68 p/br, 29 im
 
 **Decided:** all unit and prefix symbols are lowercase (tqop, not tqOP or TQop).
 
@@ -606,6 +611,14 @@ prefix letters for powers of twelve (k = ×1,000;) was rejected: the same letter
 factor would cause errors where both systems are in use.
 
 **Advantage:** there's nothing to remember about case, and no symbol can be mistaken for a chemical element or an SI prefix.
+
+**Decided:** no unit symbol may start with **q**.
+
+**Why:** in a prefix symbol, q is both quad's letter (4) and the "multiply" ending. If a unit symbol started
+with q, a prefixed symbol could be read two ways: "uqq..." could be uq (×10) followed by the unit, or uqq
+(×10^14) followed by the rest. c is safe, because no digit root uses it, so cu and ch are fine.
+
+**Advantage:** every prefixed symbol can be read only one way, without checking a list of units.
 
 ## Time
 
@@ -700,7 +713,8 @@ periods (38,302,632,375 dec), since SI fixes the caesium frequency.
 **Why:** time is the one unit that has to fit the Earth, and SI already keeps the second for the whole world.
 Defining the breath by the SI second rather than by the caesium count means the two can never split: when SI
 redefines the second with optical clocks (planned for 2030 CE), caesium becomes a measured value, and a
-caesium-count definition would drift from SI by about 1 part in 10^16 (dec). Replaces the earlier
+caesium-count definition would be off from SI by up to about 1 part in 10^16 (dec), the uncertainty of the
+measured caesium value. Replaces the earlier
 definition by the caesium count (which Primel also uses). Every other base unit stays defined by a fixed
 constant (c, h, k, e, the grex count), because those are fixed in SI too, so they can't drift either, and their
 values are short round dozenal numbers where the same units written as SI fractions would be up to 96 digits
@@ -712,9 +726,12 @@ exactly, and gets every future improvement to the second for free.
 - So 1 blink = 750,E58,327;3 caesium periods today (terminates in dozenal; 3,191,886,031.25 dec)
 - The day stays at exactly 86,400 SI seconds.
 - Converting between SI and dozenal time is exact (no drift, no leap breaths beyond what SI already needs).
-- Leap breaths: none of our own. The breath follows UTC, and leap seconds are being phased out
-  (CGPM 2022 CE: UTC will be allowed to drift further from the Earth's rotation by 2035 CE), so whatever UTC
-  does, Paludal time does too.
+- Leap breaths: none of our own. The breath follows UTC, and leap seconds are being phased out. None has
+  been added since 2016 CE, and the CGPM decided in 2022 CE that by 2035 CE the gap allowed between UTC and
+  the Earth's rotation (UT1) will be widened, so that leap seconds stop for at least a century. The new limit,
+  and what happens when it's reached (a larger step, or none at all), are still to be decided
+- Paludal won't be in use before 2035 CE, so a Paludal clock never has to show a leap second (one second is
+  an awkward 2;X69 blinks). Whatever UTC does after that, Paludal time does too
 - Survives the planned SI redefinition of the second (optical clocks, ~2030 CE): the breath simply follows the SI second.
   SI fixes the caesium-133 frequency at exactly 9,192,631,770 Hz (since 1967 CE); that count, like ours, was
   chosen to fit the Earth (the 1900 CE year). The planned replacement will probably be a weighted mix of
@@ -877,6 +894,25 @@ Imperial comparisons:
 - With c exact: g ≈ 0;9926 paces/blink² (≈ 99;26 paces/breath², 117.2 dec)
 - g varies ~0.5% over Earth's surface anyway, so it's a poor basis for a definition.
 
+### Light distances
+
+Light covers a round number of paces in every time unit, because c is fixed at 2 × 10^7 p/bl. So light
+times make handy yardsticks for big distances, as light-seconds and light-years do now:
+
+| Distance | Paces | Iters | Light takes | SI (dec) |
+|---|---|---|---|---|
+| Light-blink | 2 × 10^7 p (exact) | 20,000 ir | 1 bl | 104,095 km |
+| Light-breath | 2 × 10^8 p (exact) | 200,000 ir | 1 br | 1,249,135 km |
+| Earth-Moon (mean) | 7;476 × 10^7 p | 74,764 ir | 3;84 bl (≈ 1;3 bt) | 384,400 km |
+| AU (Earth-Sun, exact in SI) | 1;7E63 × 10^X p | 17,E63,264 ir | 9E;92 br (≈ X mt) | 149,597,870,700 m |
+| Light-day | 2 × 10^10 p (exact) | 2 × 10^7 ir | 1 day | 25.90 × 10^9 km |
+| Light-year | 5;0X6 × 10^12 p (exact) | 5;0X6 × 10^E ir | 1 year | 9.461 × 10^12 km |
+| Parax (see below) | 3;2155 × 10^13 p | 3;2155 × 10^10 ir | 7;62 years | 7.515 light-years, 2.304 pc |
+
+- The light-year comes out exact and short: like SI's, it uses the Julian year of 265;3 days (365.25 dec),
+  and light covers exactly 2 × 10^10 p a day, so a light-year is 265;3 × 2 × 10^10 = 5;0X6 × 10^12 p
+- The AU doesn't: it's fixed in metres (since 2012 CE), and the pace isn't a round number of metres
+
 ### Star distances
 
 **Decided:** the **parax** (symbol **px**), a dozenal parsec: the distance at which the Earth's orbit (1 AU, the Earth-Sun distance)
@@ -928,7 +964,7 @@ an SI or imperial unit. Rejected: sidus (Latin, a star; "si" reads as SI), caelu
 **Advantage:** mass converts exactly to SI, and a cub of water still weighs about a lib.
 
 - The value of h was chosen so a cube of water 1 unc per side (1 cub) ≈ 1 lib
-  - water at 20°C: 0.9994 (better than SI's 1 L of water = 0.9982 kg at 20°C)
+  - water at 20 °C: 0.9994 (better than SI's 1 L of water = 0.9982 kg at 20 °C)
 - Everyday rule of thumb works at every scale (1,728 (dec) = 1,000;):
   - 1 cub of water (12.1 cm side) ≈ 1 lib (1.77 kg)
   - 1 dig-cube of water (1.01 cm side) ≈ 1/1,000 lib (≈ 1.03 g)
@@ -1000,29 +1036,41 @@ flowchart LR
 **Decided:** the **tep**, defined by fixing the Boltzmann constant **k = 2;07 × 10^-1E** (opus/tep), exact.
 
 **Why:** 0 tep = freezing is what people actually need for weather and cooking (like Celsius). The size splits the gap between freezing and boiling into 100; equal steps (144 dec), so water
-freezes at 0°t and boils at 100°t - the dozenal version of Celsius's 0 and 100.
+freezes at 0 °t and boils at 100 °t - the dozenal version of Celsius's 0 and 100.
 
 **Advantage:** freezing is 0 and boiling 100, so weather and cooking temperatures read like Celsius.
 
 - 1 tep = 0.694346 K (within 0.014% of 0;01 of the freezing-boiling gap)
-- **0 tep = freezing** (273.15 K, same anchor as Celsius) - human focused; kelvin-style zero rejected
-- Triple point of water (273.16 K = 0.01°C) ≈ **0;021°t**, not 0. Anchoring 0°t at 273.15 K exactly, like
-  Celsius, keeps 0°t = 0°C; the triple point has been a measured value (not exact) since SI's 2019 redefinition,
-  so anchoring there would gain nothing
-- boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974°C)
-- 1 tep ≈ 0.694°C ≈ 1.25°F
-- body temperature ≈ 45;35 tep, room temperature (21°C) ≈ 26 tep
-- absolute zero ≈ -289;48 tep (no nice ratio between absolute zero, freezing and boiling - fine)
+- **0 tep = freezing**: exactly 289;485 ta (≈ 273.149 947 K, 53 µK (dec) below 0 °C; see below) - human
+  focused; kelvin-style zero rejected
+- Triple point of water (273.16 K = 0.01 °C) ≈ **0;021 °t**, not 0. The triple point has been a measured value
+  (not exact) since SI's 2019 redefinition, so anchoring there would gain nothing
+- boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974 °C)
+- 1 tep ≈ 0.694 °C ≈ 1.25 °F
+- body temperature ≈ 45;35 tep, room temperature (21 °C) ≈ 26 tep
+- absolute zero = -289;485 °t exactly (no nice ratio between absolute zero, freezing and boiling - fine)
 
 **Decided:** absolute temperature (from absolute zero, for gas laws and physics) is written **ta**, spoken
-"tep absolute": 0 ta = absolute zero, freezing = 289;485 ta, so ta = °t + 289;485. Everyday temperatures stay
-°t (or te), from freezing.
+"tep absolute": 0 ta = absolute zero, and 0 °t = 289;485 ta, so ta = °t + 289;485 exactly (see the next
+decision). Everyday temperatures stay °t (or te), from freezing.
 
 **Why:** most people will only ever use the everyday scale, so it keeps the plain names; the absolute scale
 just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square
 inch absolute / gauge). Rejected: "tabs" and "tea" (English words).
 
 **Advantage:** everyday temperatures keep the simple name, and physics still gets an absolute scale that can't be mistaken for it.
+
+**Decided:** the zero of the everyday scale is a defined number: **0 °t = 289;485 ta exactly**
+(≈ 273.149 947 K, 53 µK (dec) below 0 °C).
+
+**Why:** this is how SI does it: 0 °C isn't defined as where water freezes, but as exactly 273.15 K, a number
+that is exact because it's written in SI's own unit, the kelvin. Written in ta, 273.15 K is 289;48517...,
+a fraction that never ends, so tying 0 °t to 0 °C would leave the offset between °t and ta inexact. Fixing it
+at 289;485 instead makes it exact and short. The 53 µK (dec) difference is far smaller than the accuracy of
+any real freezing point: dissolved air alone moves it by about 2 mK (dec).
+
+**Advantage:** °t and ta convert exactly with one short number, and the zero can be rebuilt from k alone,
+with no water or air pressure needed.
 
 ## Amount of substance
 
@@ -1200,26 +1248,41 @@ definition; measured values carry the same uncertainty as in SI.
 | Gas constant R = k × grex number | 0;2359E op/(tep·gx) | 8.314 J/(mol K) |
 | Faraday constant F = e × grex number | **1;15 × 10^4 os/gx** | 96,485 C/mol |
 | Stefan-Boltzmann σ | 1;735 × 10^-9 vg/(p²·tep⁴) | 5.670 × 10^-8 W/(m² K⁴) |
+| Josephson constant K_J = 2e/h | 10^12 / 2;13 ≈ E;4X56 × 10^11 per (bl·im) | 483,597.848 × 10^9 Hz/V |
+| von Klitzing constant R_K = h/e² | **2;13 × 10^4 im/ri** | 25,812.807 Ω |
+
+- The von Klitzing constant comes out round because h and e are: it carries h's digits (2;13). Standards
+  labs realise the volt with Josephson junctions and the ohm with the quantum Hall effect, through exactly
+  these two constants, so Paludal's electrical units can be realised directly, without going through SI
 
 ### Measured
 
-| Constant | Paludal value | SI value (dec) |
-|---|---|---|
-| Gravitational constant G | 3;558 × 10^-E p³/(li·bl²) | 6.674 × 10^-11 m³/(kg s²) |
-| Electron mass | X;21 × 10^-25 li | 9.109 × 10^-31 kg |
-| Proton mass | X;986 × 10^-22 li | 1.673 × 10^-27 kg |
-| Fine-structure constant α (no units) | 1 / E5;0523 | 1 / 137.036 |
+Values from CODATA 2022 CE. The relative uncertainty is a ratio, so it's the same in any units; the Paludal
+values are rounded to 3-4 dozenal digits.
+
+| Constant | Paludal value | SI value (dec) | Relative uncertainty (dec) |
+|---|---|---|---|
+| Gravitational constant G | 3;558 × 10^-E p³/(li·bl²) | 6.67430 × 10^-11 m³/(kg s²) | 2.2 × 10^-5 |
+| Electron mass | X;21 × 10^-25 li | 9.1093837139 × 10^-31 kg | 3.1 × 10^-10 |
+| Proton mass | X;986 × 10^-22 li | 1.67262192595 × 10^-27 kg | 3.1 × 10^-10 |
+| Fine-structure constant α (no units) | 1 / E5;0522 | 1 / 137.035999177 | 1.5 × 10^-10 |
+| Magnetic constant μ0 | 2;265 × 10^-5 vi/ri² | 1.25663706127 × 10^-6 N/A² | 1.6 × 10^-10 |
+| Electric constant ε0 = 1/(μ0 c²) | 1;435 × 10^-X os/(im·p) | 8.8541878188 × 10^-12 F/m | 1.6 × 10^-10 |
+
+- μ0 and ε0 are measured, as in SI since 2019 CE: with h and e fixed, μ0 = 2αh/(e²c), so it carries α's
+  uncertainty. In Paludal the exact factor is short: **μ0 = α × 2;13 × 10^-3 vi/ri²** (2;13 × 10^-3 is
+  2R_K/c)
 
 ### Earth and everyday
 
 | Value | Paludal | SI (dec) |
 |---|---|---|
-| Standard gravity g (conventional, exact) | 0;9926 p/bl² (99;26 p/br²) | 9.80665 m/s² |
+| Standard gravity g_n (exact in SI; Paludal value rounded) | ≈ 0;9926 p/bl² (99;26 p/br²) | 9.80665 m/s² (exact) |
 | Standard atmosphere | 5;969 tqpr | 101,325 Pa |
-| Absolute zero | -289;485°t | -273.15°C |
-| Water freezes / boils (sea level) | 0°t / ≈ EE;E9°t | 0°C / 99.974°C |
-| Water density | 1;002 li/cu at 4°C, 0;EEE at 20°C | 999.97 / 998.2 kg/m³ |
-| Speed of sound (20°C) | ≈ 6X p/bl | 343 m/s |
+| Absolute zero | -289;485 °t (exact) | -273.15 °C |
+| Water freezes / boils (sea level) | 0 °t / ≈ EE;E9 °t | 0 °C / 99.974 °C |
+| Water density | 1;002 li/cu at 4 °C, 0;EEE at 20 °C | 999.97 / 998.2 kg/m³ |
+| Speed of sound (20 °C) | ≈ 6X p/bl | 343 m/s |
 | Day | 10^5 bl = 10^4 br (exact) | 86,400 s |
 | Tropical year | 265;2XX days | 365.2422 days |
 | Earth radius (mean) | 1,576 ir | 6,371 km |
@@ -1227,7 +1290,7 @@ definition; measured values carry the same uncertainty as in SI.
 | Astronomical unit (Earth-Sun, exact) | 1;7E63 × 10^X p = 1;7E63 × 10^7 ir | 149,597,870,700 m |
 | Light from the Sun to Earth | 9E;9 br ≈ X moments | 499.0 s (8 min 19 s) |
 | Light from the Moon to Earth | 3;84 bl ≈ 1;3 bt | 1.282 s |
-| Light-year | 5;0X6 × 10^12 p | 9.461 × 10^15 m |
+| Light-year (exact) | 5;0X6 × 10^12 p | 9.461 × 10^15 m |
 
 ### Pure numbers (the same in any base, dozenal digits)
 
@@ -1253,7 +1316,7 @@ Times are chime;moments (6;00 is noon). Values are rounded the way a label or si
 
 | Time | What happens | Paludal | Today |
 |---|---|---|---|
-| 3;30 | The alarm goes off. The forecast says 18° now, top of 28° | 18°t, 28°t | 6:30 am, 14°C, 22°C |
+| 3;30 | The alarm goes off. The forecast says 18° now, top of 28° | 18 °t, 28 °t | 6:30 am, 14 °C, 22 °C |
 | 3;76 | A regular coffee and two eggs | 250 tccu (357 mL), 50 tcli each | 7:15 am, 12 oz coffee (355 mL), 60 g eggs |
 | 4;20 | Drive to work: 4;9 iters, about 26 moments door to door, 40 on the signs | 4;9 ir, 26 mt, 40 p/br | 8:20 am, 12 km, 25 min, 60 km/h |
 | 6;30 | Lunch break | 30 mt (0;3 ch) | 12:30 pm, 30 min |
@@ -1261,7 +1324,7 @@ Times are chime;moments (6;00 is noon). Values are rounded the way a label or si
 | 8;76 | Fill up on the way home: 1X;7 cubs at $3;56 a cub. The family car uses 14;4 cu/100 ir, so the drive to work took 0;66 cu, about $1;X6 | 1X;7 cu for $66, 0;66 cu for $1;X6 | 5:15 pm, 40 L at $1.95/L = $78; 1 L, $1.87, at 8 L/100 km |
 | 8;90 | An after-work run: 2 iters in 30 moments | 2 ir, 30 mt | 5:30 pm, 5 km in 30 min |
 | 9;46 | Shopping: mince, milk and flour | 0;3 li, 1;2 cu, 0;7 li | 6:45 pm, 450 g, 2 L, 1 kg |
-| 9;46 | A roast goes in for 0;9 chime | 1X0°t for 0;9 ch (90 mt) | 180°C for 1½ hours |
+| 9;46 | A roast goes in for 0;9 chime | 1X0 °t for 0;9 ch (90 mt) | 180 °C for 1½ hours |
 | E;30 | Bed, for 4 chimes of sleep | 4 ch | 10:30 pm, 8 hours |
 
 - Prices use the proposed dozenal dollar: $1 stays $1, split into 100; (144 dec) parts, so $3;56 is $3.46
@@ -1601,15 +1664,15 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 
 | Thing | SI | US | Dozenal | Round |
 |---|---|---|---|---|
-| Freezer | -18°C | 0°F | -21;E°t | -22°t |
-| Fridge | 4°C | 39°F | 5;92°t | 5;8°t |
-| Cool day | 15°C | 59°F | 19;7°t | 1X°t |
-| Room | 21°C | 70°F | 26;3°t | 26°t |
-| Warm day | 30°C | 86°F | 37;2°t | 36°t |
-| Body | 37°C | 98.6°F | 45;3°t |  |
-| Heatwave | 45°C | 113°F | 54;X°t | 56°t |
-| Boiling water | 100°C | 212°F | 100°t |  |
-| Oven (moderate) | 180°C | 350°F | 197°t | 1X0°t |
+| Freezer | -18 °C | 0 °F | -21;E °t | -22 °t |
+| Fridge | 4 °C | 39 °F | 5;92 °t | 5;8 °t |
+| Cool day | 15 °C | 59 °F | 19;7 °t | 1X °t |
+| Room | 21 °C | 70 °F | 26;3 °t | 26 °t |
+| Warm day | 30 °C | 86 °F | 37;2 °t | 36 °t |
+| Body | 37 °C | 98.6 °F | 45;3 °t |  |
+| Heatwave | 45 °C | 113 °F | 54;X °t | 56 °t |
+| Boiling water | 100 °C | 212 °F | 100 °t |  |
+| Oven (moderate) | 180 °C | 350 °F | 197 °t | 1X0 °t |
 
 ### Volume
 
@@ -1875,7 +1938,7 @@ record uses it. A base-12 version would change values by only ~7% - not worth br
 **Decided:** replace pH with an acidity scale where **0 is neutral, acids are positive and bases negative**.
 
 **Why:** if the system is being changed anyway, it may as well be done right. pH runs backwards (lower =
-more acidic) and centres on 7, which is only neutral at 25°C. Replaces the earlier decision to keep pH
+more acidic) and centres on 7, which is only neutral at 25 °C. Replaces the earlier decision to keep pH
 unchanged in dozenal digits.
 
 **Advantage:** a higher number means more acidic, and 0 always means neutral.
@@ -1886,19 +1949,19 @@ unchanged in dozenal digits.
 **Why:** it's the simplest formula that gets it right: nothing needs converting (more H+ than pure water
 gives a positive number, less a negative one, pure water 0), and each step is twelve times. Rejected:
 log 12 of [H+]/[OH-] (the same information with every number doubled) and 7 - pH (keeps base-ten steps,
-and 0 is only neutral at 25°C). The word acidity already means acid content in wine and food (in g/L),
+and 0 is only neutral at 25 °C). The word acidity already means acid content in wine and food (in g/L),
 but that's not a serious clash. So
 
 **Advantage:** it needs no concentration unit, and neutral is 0 at every temperature.
 
-- 0 is neutral at **every** temperature (pH's neutral point is 7.47 at 0°C, 7 at 25°C, 6.8 at body
-  temperature and 6.14 at 100°C)
+- 0 is neutral at **every** temperature (pH's neutral point is 7.47 at 0 °C, 7 at 25 °C, 6.8 at body
+  temperature and 6.14 at 100 °C)
 - each step of 1 is 10 (12 dec) times more acidic
 - it's a ratio of two concentrations, so it needs no concentration unit (no mol/L vs grex/cub problem)
-- From a pH reading (25°C): write the pH in dozenal, then **acidity = (7 - pH) × 0;E15** (0;E15 is log₁₂ 10,
+- From a pH reading (25 °C): write the pH in dozenal, then **acidity = (7 - pH) × 0;E15** (0;E15 is log₁₂ 10,
   so the whole sum is dozenal). Everyday values run from about +6;6 to -6;6
 - Measured directly: a glass-electrode meter (which every pH meter is) gives a voltage that changes by
-  **1;32 bcim per step of acidity** at 25°C, so a Paludal meter reads acidity with no pH in between
+  **1;32 bcim per step of acidity** at 25 °C, so a Paludal meter reads acidity with no pH in between
 
 | Substance | pH (dec) | Acidity (log 12) | log 12 of [H+]/[OH-] | 7 - pH (log 10) |
 |---|---|---|---|---|
@@ -1921,11 +1984,11 @@ but that's not a serious clash. So
 | Bleach | 12.5 | -5;1 | -X;2 | -5;6 |
 | Drain cleaner (lye) | 14.0 | -6;6 | -11;0 | -7;0 |
 
-- Values at 25°C, in dozenal digits. The three columns are three ways to build the scale:
+- Values at 25 °C, in dozenal digits. The three columns are three ways to build the scale:
   - **Acidity (log 12)**, chosen: compares H+ with pure water. Each step is 12 times more acidic
   - **log 12 of [H+]/[OH-]**: compares acid (H+) with base (OH-). As one rises the other falls, so the
     ratio moves twice as fast and every number is doubled. Same information, bigger numbers
-  - **7 - pH**: today's pH flipped and shifted. Steps are still ×10 (dec), and 0 is only neutral at 25°C
+  - **7 - pH**: today's pH flipped and shifted. Steps are still ×10 (dec), and 0 is only neutral at 25 °C
 - No hard bounds: strong acids go above +6;6 and strong alkalis below -6;6, as pH goes below 0 and above
   14. Superacids are measured on other scales (Hammett, down to about -25 pH)
 - Chemists' buffer maths keeps its shape: pH = pKa + log(base/acid) becomes
@@ -1993,7 +2056,7 @@ Where the ideas came from, and what's still to decide.
 
 ## Open items / next steps
 
-- Universal test: decide what to do about the parts that fail it - the tep's zero (273.15 K), the lam
+- Universal test: decide what to do about the parts that fail it - the tep's zero (now a defined number, 289;485 ta, but chosen from water), the lam
   (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?
 - Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)
 - Give short names to a few everyday multiples (food energy tqop, pressure tqpr) instead of changing the
@@ -2023,7 +2086,14 @@ Where the ideas came from, and what's still to decide.
   whether to reinstate it
 - Missing coherent units, to be named: frequency (per blink, 2.88 Hz; concert A = 108;9 per blink),
   resistance (imp/riv, 0.592 Ω), capacitance (onus/imp, 0.587 F), inductance (imp·blink/riv, 0.205 H),
-  magnetic flux (imp·blink, 2.52 Wb), flux density (flux/pace², 1.20 T), absorbed dose (opus/lib, 17.5 Gy)
+  magnetic flux (imp·blink, 2.52 Wb), flux density (flux/pace², 1.20 T), absorbed dose (opus/lib, 17.5 Gy).
+  Frequency first (music, mains, radio). Until the magnetic units have names, use SI's (tesla, weber, henry).
+  Dose needs care: opus/lib is several times a lethal dose, so everyday doses need deep prefixes, and (as SI
+  keeps the gray and the sievert apart) absorbed and equivalent dose need separate names so they can't be mixed up
+- Angles: plane angles are in turns, but K_cd still uses the steradian. Decide a unit of solid angle (the
+  steradian, or a whole sphere as the turn's counterpart), name the unit of luminous flux (lam·sr, the
+  lumen's counterpart), and say that the radian stays the coherent angle unit in physics formulas (E = ħω,
+  arc length = radius × angle), with turns for everyday use
 - Money: a name for the 1/100; part of a dollar (see Money)
 - A speed unit for ships and aircraft, to replace the knot (see the navis in Length)
 - Drug doses: how they'd be written if medicine chose to switch (no one is forced to; mg stays meanwhile)
