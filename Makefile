@@ -8,7 +8,7 @@
 #
 # Needs pandoc 3.8+ (brew install pandoc, or make PANDOC=/path/to/pandoc). The PDF also needs
 # XeLaTeX and memoir (brew install --cask basictex; sudo tlmgr install memoir newunicodechar etoolbox fvextra)
-# and the fonts DejaVu Sans and Noto Sans Symbols (for ↊ ↋). Diagrams in the PDF need
+# and the fonts DejaVu Sans, Noto Sans Symbols (for ↊ ↋) and Noto Sans Canadian Aboriginal (for ᘔ). Diagrams in the PDF need
 # mermaid-cli (npm install -g @mermaid-js/mermaid-cli, or make MMDC=/path/to/mmdc); without it
 # the PDF says to see index.html instead. The SVG figures (figures/) need rsvg-convert
 # (brew install librsvg, or make RSVG=/path/to/rsvg-convert), with the same fallback.
@@ -78,6 +78,7 @@ $(OUT)/paludal.pdf: $(OUT)/paludal.tex
 	for i in 1 2 3; do $(XELATEX) -interaction=nonstopmode -output-directory=$(OUT) $< >/dev/null || true; done
 	test -s $@
 	@echo "overfull boxes: $$(grep -c Overfull $(OUT)/paludal.log || true)"
+	@echo "missing glyphs: $$(grep -c 'Missing character' $(OUT)/paludal.log || true)"
 
 $(OUT)/diagrams/ideas.md: $(SRC) pandoc/mermaid.json | $(OUT)/diagrams
 	$(MMDC) -q -i $< -o $@ -e pdf -c pandoc/mermaid.json
