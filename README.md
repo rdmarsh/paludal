@@ -8,3 +8,12 @@ converting exactly to SI, but sized for everyday human use.
 - `make all` also builds DocBook, LaTeX, PDF and AsciiDoc into `out/`. Everything comes from `ideas.md`
   through pandoc and one filter, `pandoc/paludal.lua`; see the `Makefile` for what each format needs
 - `blinker/` - a terminal Paludal clock that sounds the blink, beat and breath: `cd blinker && go run .`
+
+Read the spec online: https://rdmarsh.github.io/paludal/ (GitHub Pages serves `index.html` from `main`,
+so run `make` and commit `index.html` with every change to `ideas.md`).
+
+## Licence
+
+The spec (`ideas.md`, `index.html`, `figures/`) is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/);
+the code (`blinker/`, `pandoc/`, the `Makefile`, `figures/draw.py`) is MIT. See `LICENSE`. Ideas adopted from
+others stay theirs and are credited in the spec under Prior art.
