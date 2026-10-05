@@ -49,6 +49,7 @@ section { scroll-margin-top: 16px; }
 p, ul { margin: 6px 0 10px; }
 ul { padding-left: 20px; }
 code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
 a { color: var(--accent); }
 abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
 .intro { color: var(--muted); }
@@ -81,7 +82,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <div class="conv">
 <label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
 <label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
-<span class="hint" id="conv-hint">Type in either box. X = ten, E = eleven. Rounded to 3 places.</span>
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
 <li class="has-table"><a href="#the-paludal-system">The Paludal system</a><ul><li><a href="#the-paludal-system-names">Names</a></li></ul></li>
@@ -495,10 +496,10 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <section id="digits" class="has-table">
 <h3>Digits</h3>
 <div class="block decided">
-<p><strong>Decided:</strong> digits 0 1 2 3 4 5 6 7 8 9 X E (X = ten, E = eleven); print alternative ↊ ↋ (U+218A / U+218B).</p>
+<p><strong>Decided:</strong> digits 0 1 2 3 4 5 6 7 8 9 X E (X = dek, ten; E = el, eleven); print alternative ↊ ↋ (U+218A / U+218B).</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> X and E can be typed on any keyboard and work in plain text; ↊ ↋ are the Unicode standard glyphs for typeset documents. Primel plans the same pair (Pitman's digits) and uses the lookalikes ᘔ Ɛ only until fonts catch up. Kept after review, even though software reads E as an exponent (a spreadsheet turns 6E62 into 6 × 10^62) and hexadecimal uses E for fourteen. Rejected: lowercase x and e (software reads 6e62 the same way); A and B as in hexadecimal (A = ten, B = eleven) - safe in software, but they lose the link to the spoken names dek and el.</p>
+<p><strong>Why:</strong> X and E can be typed on any keyboard and work in plain text; ↊ ↋ are the Unicode standard glyphs for typeset documents. Primel plans the same pair (Pitman's digits) and uses the lookalikes ᘔ Ɛ only until fonts catch up. Kept after review, even though software reads E as an exponent (a spreadsheet turns 6E62 into 6 × 10^62) and hexadecimal uses E for fourteen. Rejected: lowercase x and e (software reads 6e62 the same way); A and B as in hexadecimal (A = dek, B = el) - safe in software, but they lose the link to the spoken names dek and el.</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> dozenal numbers can be written anywhere - keyboard, plain text, handwriting - and still match the spoken dek and el.</p>
@@ -756,7 +757,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <div class="block list">
 <ul>
-<li>0 stays in the middle of the bottom row, where it is on phones today; X and E take the corners * and # used to have, in order (ten before eleven)</li>
+<li>0 stays in the middle of the bottom row, where it is on phones today; X and E take the corners * and # used to have, in order (dek before el)</li>
 </ul>
 </div>
 <div class="block decided">
@@ -5447,7 +5448,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <li>Length and mass don't: Primel fixes gravity at exactly 32.1408 ft/s² (9.79651584 m/s² dec), just below its estimate of the Earth's median surface gravity (9.79757 m/s²), which makes its length unit exactly 31/96 inch (8.202 mm), and our pace is 129;11 (177.09 dec) of those. Lining the pace up with Primel's 100 lengthels (1.1811 m, 46.5 in) was considered (2026 CE): it would give g ≈ 1 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>², a lib of 0.953 kg and a cub of 0.953 L, but c would no longer be round. Not adopted: the round c was kept</li>
 <li>Temperature doesn't: Primel's degree comes from water's heat capacity (0.397 K), ours from freezing to boiling in 100 (0.694 K)</li>
 <li>Prefixes use the same roots and the same letters; Primel ends them with arrows (t↑ ×1,000, t↓ ÷1,000; in plain text t@ and t#) where Paludal uses q and c, so symbols convert letter for letter</li>
-<li>Notation: Primel writes the dozenal point as "." with a subscript z (1.6z), and ten and eleven as ᘔ and Ɛ (lookalikes of ↊ ↋), and says "galore" for 1,000;</li>
+<li>Notation: Primel writes the dozenal point as "." with a subscript z (1.6z), and dek and el as ᘔ and Ɛ (lookalikes of ↊ ↋), and says "galore" for 1,000;</li>
 </ul></li>
 <li><strong>clocks.dozenal.ca</strong> (Paul Rapoport, clocks by Rodrigo Flores and Thomas Cassidy): working dozenal clocks (once- and twice-a-day dials), a dozenal wristwatch, a "signed" digit notation for times (counting down to the next mark after half way), UTC-only clocks with no time zones, and the Dozenal Holocene calendar (see Calendar).</li>
 <li><strong>Twelve double-hours a day</strong> (the chime) is the oldest clock division there is: the Babylonian <em>bēru</em> (Sumerian <em>danna</em>, from about 2400 BCE) and the Chinese <em>shíchen</em> (named after the twelve Earthly Branches) were both 2-hour units, twelve to a day. The DSA's dozenal clock uses the same split: the short hand turns once a day, midnight is 0 and noon is 600.</li>
@@ -5497,7 +5498,7 @@ box.addEventListener("change", () => document.body.classList.toggle("tables-only
 (() => {
   const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
     doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
-  const HELP = "Type in either box. X = ten, E = eleven. Rounded to 3 places.";
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
   function toDoz(x) {
     const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
     let i = Math.floor(n / 1728), f = n % 1728, s = "";
