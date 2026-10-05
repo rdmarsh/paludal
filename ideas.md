@@ -335,7 +335,7 @@ can't be heard as 3.18.
 **Advantage:** the base of any number can be seen at a glance, even with no unit or marker.
 
 **Decided:** long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec).
-Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6E62 HE), dates, times of day
+Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6859 DH), dates, times of day
 (E;X053), and digits after the point.
 
 **Why:** groups of three are the easiest for people to read, and they match how numbers are spoken
@@ -392,7 +392,7 @@ at the start of a number from ever being ambiguous.
 4. A bare number in mixed text is marked: dozenal with a trailing semicolon (**46;**), decimal with
    **(dec)**, or a subscript ᵈ in typeset documents. Small numbers that read the same in both (0-9)
    and number words (twelve) need no marker.
-5. Years: CE years are decimal (2026 CE), HE years are dozenal (6E62 HE).
+5. Years: CE years are decimal (2026 CE), DH years are dozenal (6859 DH).
 6. Colour can be added on screen, but never as the only signal.
 
 **Why:** most real numbers carry a unit, so they're already unambiguous; markers are only needed for bare
@@ -400,7 +400,7 @@ numbers. The trailing semicolon is just the dozenal point with nothing after it 
 so it works in plain text and handwriting without any new symbol. Colour fails in print, handwriting,
 plain text and for colour-blind readers. Numeric subscripts (46₁₂) were rejected: "12" is itself
 ambiguous - in dozenal it means fourteen. Years get their era instead of a marker because
-the era is already written with years (CE / HE), so it costs nothing extra.
+the era is already written with years (CE / DH), so it costs nothing extra.
 
 **Advantage:** mixed text stays unambiguous with almost no extra marks, in any medium and for any reader.
 
@@ -1202,19 +1202,27 @@ Standard time (no daylight saving):
 
 ### Years
 
-**Decided:** year numbering follows the **Human (Holocene) Era**: 1 HE = 10,000 BCE, so add 10,000 (dec) to the CE year.
+**Decided:** years are counted in the **Dozenal Holocene** (DH) era of the Dozenal Holocene calendar: year 0
+began in 9565 BCE, so for dates from 1 January on, **DH year = CE year + 9563 (dec)**. 2026 CE = **6859 DH**.
+The year still starts on 1 January.
 
-**Why:** TODO - reason not recorded.
+**Why:** a dozenal system shouldn't start its count at 10,000 BCE: that's only a round number in decimal
+(5,954 in dozenal). Adopt prior art instead: the Dozenal Holocene calendar (Paul Rapoport and Sanketh Kolhar)
+already counts years in dozenal from the start of the Holocene, and its start has an astronomical reason -
+around 9564 BCE the Earth was last nearest the Sun on the northern summer solstice. Replaces the earlier
+Human (Holocene) Era (Emiliani's, 1 HE = 10,000 BCE, which made 2026 CE 6E62 HE). "DH" rather than "HE",
+because HE already means Emiliani's count.
 
-**Advantage:** TODO - follows from the reason, once recorded.
+**Advantage:** the year count shares an origin with existing dozenal calendars, has a reason other than a
+decimal round number, and keeps every year of recorded history positive.
 
-- 2026 CE = 12026 HE (dec) = **6E62 HE**
-- Note: the Dozenal Holocene calendar (clocks.dozenal.ca) also says "Holocene" but counts from a different
-  start - year 0 begins at the December solstice of 9565 BCE (the last time the Earth was nearest the Sun on
-  the northern summer solstice) - so 2026 CE is **6859** there and 6E62 here. Two dozenal "Holocene" year
-  counts 305 (437 dec) years apart would be confusing
-- Spoken as two pairs, like "twenty twenty-six" (that's how years are said now): 6E62 = "six do el, six do two"
-  - round years: 7000 = "seven mo", 6E00 = "six do el gro"
+- 2026 CE = 11,589 (dec) = **6859 DH**. A BCE year n is 9564 - n (dec) DH
+- New Year stays on 1 January (the Gregorian months are kept, see Calendar). The Dozenal Holocene calendar
+  itself starts its year at the December solstice (about 21 December UTC), so between the solstice and
+  31 December its year number is already one higher. If that calendar is ever adopted, New Year moves with it
+- Spoken as two pairs, like "twenty twenty-six" (that's how years are said now): 6859 = "six do eight, five do
+  nine"
+  - round years: 7000 = "seven mo", 6900 = "six do nine gro"
 
 ### Calendar
 
@@ -1228,7 +1236,7 @@ Standard time (no daylight saving):
 - eg 3 Oct 2026 CE is week 34 (ISO week 40 dec)
 
 **Decided:** keep the month names January to December (Jan to Dec). In all-number dates the month is its
-dozenal number: October is X, November E, December 10 (eg 6E62-X-03).
+dozenal number: October is X, November E, December 10 (eg 6859-X-03).
 
 **Why:** the names were briefly replaced by the SDN digit roots (Un, Bi, Tri ... Sept, Oct, Enn, Dek, El, Do),
 which fixed the Roman misnumbering (September to December were the seventh to tenth months when the year began
@@ -1245,7 +1253,7 @@ mensis), which reads as English "men" (Hexmen, Septmen).
 
 **Advantage:** a date is written in one base, like every other number.
 
-- eg 3 Oct 2026 CE = 3 Oct 6E62; 31 (dec) Oct = 27 Oct; Christmas = 21 Dec
+- eg 3 Oct 2026 CE = 3 Oct 6859; 31 (dec) Oct = 27 Oct; Christmas = 21 Dec
 
 **Possibility (not decided):** the Dozenal Holocene calendar (Paul Rapoport, with Sanketh Kolhar;
 https://clocks.dozenal.ca/pdf/dozenal-calendar.pdf): twelve months of 30 (dec) days, each of five 6-day weeks
@@ -1897,10 +1905,6 @@ Where the ideas came from, and what's still to decide.
 
 - Universal test: decide what to do about the parts that fail it - the tep's zero (273.15 K), the lam
   (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?
-- Primel notation: adopt its arrows (t↑, t↓) as the typeset form of prefix symbols, keeping q / c for plain
-  text? (see Prior art)
-- Years: two dozenal "Holocene" counts now exist (see Years). Keep +10,000 (dec, Emiliani's Holocene Era,
-  6E62 for 2026 CE) or follow the Dozenal Holocene calendar (6859)? Ties in with recording why HE was chosen
 - Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)
 - Give short names to a few everyday multiples (food energy tqop, pressure tqpr) instead of changing the
   coherent derived units (proposed, not decided)
