@@ -44,7 +44,6 @@ nav details.contents > summary { display: none; }
 .conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .conv .hint { grid-column: 1 / -1; font-size: 12px; }
 .pdf { margin: 0 0 12px; font-size: 13px; }
-.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
 h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
 h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
@@ -79,9 +78,6 @@ td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg
 .decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
 .why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
 .why strong { color: var(--fg); }
-body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
-body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
-body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
@@ -97,7 +93,6 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <nav>
 <h1><a href="index.html">Paludal units</a></h1>
 <p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
-<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
 <details class="contents" open>
 <summary>Contents and tools</summary>
 <div class="conv">
@@ -122,12 +117,6 @@ $pager$
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
 </div>
-<script>
-// Not remembered: the page always opens with everything showing.
-const box = document.getElementById("tables-only");
-box.checked = false;  // browsers can restore a checkbox's state on reload
-box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
-</script>
 $if(redirects)$
 <script>
 // The spec used to be one page: send old links (paludal.org/#time) to the page that holds the id

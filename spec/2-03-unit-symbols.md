@@ -22,6 +22,7 @@ its first and last letters (os) would be the onus, and "op" isn't a common word 
 | *beat*   | bt     | time |
 | breath | br     | time |
 | moment | mt     | time |
+| spell  | sl     | time |
 | chime  | ch     | time |
 | pace   | p      | length |
 | unc    | un     | length |

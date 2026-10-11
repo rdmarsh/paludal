@@ -44,7 +44,6 @@ nav details.contents > summary { display: none; }
 .conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .conv .hint { grid-column: 1 / -1; font-size: 12px; }
 .pdf { margin: 0 0 12px; font-size: 13px; }
-.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
 h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
 h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
@@ -79,9 +78,6 @@ td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg
 .decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
 .why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
 .why strong { color: var(--fg); }
-body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
-body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
-body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
@@ -97,7 +93,6 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <nav>
 <h1><a href="index.html">Paludal units</a></h1>
 <p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
-<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
 <details class="contents" open>
 <summary>Contents and tools</summary>
 <div class="conv">
@@ -106,11 +101,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="principles.html">Principles</a></li><li class="has-table"><a href="names.html">Names</a></li></ul></li>
-<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
-<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
-<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
-<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html" aria-current="page">Open items / next steps</a></li></ul></li>
+<li><a href="index.html">The Paludal system</a><ul><li><a href="principles.html">Principles</a></li><li><a href="names.html">Names</a></li></ul></li>
+<li><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li><a href="digits.html">Digits</a></li><li><a href="writing-numbers.html">Writing numbers</a></li><li><a href="spoken-numbers.html">Spoken numbers</a></li><li><a href="hexadecimal.html">Hexadecimal</a></li><li><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li><a href="summary.html">Summary</a></li><li><a href="prefixes.html">Prefixes</a></li><li><a href="unit-symbols.html">Unit symbols</a></li><li><a href="time.html">Time</a></li><li><a href="length.html">Length</a></li><li><a href="mass.html">Mass</a></li><li><a href="electricity.html">Electricity</a></li><li><a href="temperature.html">Temperature</a></li><li><a href="amount-of-substance.html">Amount of substance</a></li><li><a href="light.html">Light</a></li><li><a href="area.html">Area</a></li><li><a href="volume.html">Volume</a></li><li><a href="angle.html">Angle</a></li><li><a href="constants.html">Constants</a></li></ul></li>
+<li><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li><a href="thinking-in-paludal.html">Thinking in Paludal</a></li><li><a href="a-day-in-paludal.html">A day in Paludal</a></li><li><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li><a href="money.html">Money</a></li><li><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li><a href="paper-sizes.html">Paper sizes</a></li><li><a href="shoe-sizes.html">Shoe sizes</a></li><li><a href="everyday-reference.html">Everyday reference</a></li><li><a href="imperial-conversions.html">Imperial conversions</a></li><li><a href="log-scales.html">Log scales</a></li></ul></li>
+<li><a href="part-4-background.html">Part 4: Background</a><ul><li><a href="prior-art.html">Prior art</a></li><li><a href="versions.html">Versions</a></li><li><a href="open-items-next-steps.html" aria-current="page">Open items / next steps</a><ul><li><a href="#open-items-next-steps-time-names">Time names</a></li></ul></li></ul></li>
 </ul>
 </details>
 <script>
@@ -120,15 +115,13 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </script>
 </nav>
 <main>
-<section id="open-items-next-steps" class="no-table">
-<h2>Open items / next steps</h2>
+<h2 id="open-items-next-steps">Open items / next steps</h2>
 <div class="block list">
 <ul>
 <li>Universal test: decide what to do about the parts that fail it - the tep's zero (now a defined number, 289;485 ta, but chosen from water), the lam (human eye), the vox's zero (human hearing). Keep them as human conventions, or redefine them?</li>
 <li>Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)</li>
 <li>Give short names to a few everyday multiples (food energy <abbr title="triqua-opus (× 10^3)">t↑op</abbr>, pressure <abbr title="triqua-pres (× 10^3)">t↑pr</abbr>) instead of changing the coherent derived units (proposed, not decided)</li>
-<li>A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)</li>
-<li>A name for 0;01 day (10 minutes, 10 moments), the one digit of the time without one (hand 2 shows it). Rejected so far: breather (Primel; too close to breath), spell (Beers), dwell, twinkling. See Prior art</li>
+<li>Time names that follow one theme: see Time names below. Spell (10 minutes) is kept for now but disliked</li>
 <li>The blink clash with Primel (its blink is half ours): ask John Volan before 1.0, then keep, rename, or note it</li>
 <li>Seven-segment digits (proposed, see Digits): Ramieri's dek with E for el, or his whole set (an arch for el)?</li>
 <li>Standard sizes: food energy labels (opus), clothing sizes; shoe sizes in digs (proposed, see Shoe sizes)</li>
@@ -149,18 +142,106 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>Rename the iter? It looks and sounds close to litre, and the US spelling <strong>liter</strong> is "l" + "iter", which will confuse things like fuel economy ("iters per liter"). Candidate: <strong>lapis</strong> (Latin, a stone: Roman milestones stood every 1,000 paces, and distances were given as "at the third stone"), so the meaning matches the size exactly. Against: "la" is the lam, so it would need <strong>ls</strong> (first and last letters); five letters; an awkward plural (lapides); people may shorten it to "lap", which clashes with a lap of a track; and "lapis" alone often means lapis lazuli. Rejected: trek (sounds hard going, and too Star Trek)</li>
 </ul>
 </div>
-</section>
+<h3 id="open-items-next-steps-time-names">Time names</h3>
+<div class="block para">
+<p>Blink, beat and breath are the body's rhythms, but the body has nothing 50 seconds, 10 minutes or 2 hours long, so moment, spell and chime don't follow them. Most of the names do share a looser theme: they are words for how long something takes (in the blink of an eye, wait a beat, catch your breath, just a moment, a short spell). Only chime, a clock sound, breaks it. Candidates, by theme:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Size</th>
+<th>Now</th>
+<th>"How long" words</th>
+<th>Body</th>
+<th>Medieval reckoning</th>
+<th>Clock and bells</th>
+<th>Prior art</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0;00001 day</td>
+<td>0.35 s</td>
+<td>blink</td>
+<td>blink, flash, instant</td>
+<td>blink, wink</td>
+<td>atom (clashes with physics)</td>
+<td></td>
+<td>blink (Primel's is half ours)</td>
+</tr>
+<tr>
+<td>3 blinks</td>
+<td>1.04 s</td>
+<td><em>beat</em></td>
+<td>beat, tick</td>
+<td>beat, pulse</td>
+<td>ostent (Bede: about 1.5 s)</td>
+<td>tick (rejected before)</td>
+<td>beat (Primel)</td>
+</tr>
+<tr>
+<td>0;0001 day</td>
+<td>4.17 s</td>
+<td>breath</td>
+<td>breath, breather</td>
+<td>breath, sigh</td>
+<td></td>
+<td>tock</td>
+<td>lull (Primel, Rapoport)</td>
+</tr>
+<tr>
+<td>0;001 day</td>
+<td>50 s</td>
+<td>moment</td>
+<td>moment, trice ("in a trice")</td>
+<td></td>
+<td>moment (Bede: 90 s)</td>
+<td></td>
+<td>trice (Primel); "minute" (Beers)</td>
+</tr>
+<tr>
+<td>0;01 day</td>
+<td>10 min</td>
+<td>spell</td>
+<td>spell, break, pause, rest</td>
+<td>nap (a power nap)</td>
+<td>punct (Bede: 15 min)</td>
+<td></td>
+<td>breather (Primel); spell (Beers)</td>
+</tr>
+<tr>
+<td>0;1 day</td>
+<td>2 h</td>
+<td>chime</td>
+<td>sitting, stint, session, stretch</td>
+<td></td>
+<td></td>
+<td>chime, peal</td>
+<td>dwell (Primel); phase (Beers)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>The body runs out after the breath; only "how long" words fill every row</li>
+<li>Bede's hour held 4 puncts, 10 minutes, 15 parts or 40 moments (our moment comes from there), but his sizes don't match ours and the names are unfamiliar</li>
+<li>A quarter peal of bells takes about 45 minutes and a full peal about 3 hours, so peal is near the chime but not on it</li>
+<li>Primel's set (lull, trice, breather, dwell) is the only complete one, but clashes with our breath and blink</li>
+<li>Already rejected: breather (too close to breath), dwell, twinkling, tick (a clock tick is about 1 s)</li>
+<li>Suggested (not decided): keep blink, beat, breath and moment; <strong>break</strong> for 10 minutes ("a ten-minute break"; half an hour is 3 breaks, though "after the break" is ambiguous) or <strong>rest</strong> (pairs with breath, but music has rests); <strong>sitting</strong> for 2 hours (a film in one sitting; two syllables) or <strong>stint</strong>, or keep <strong>chime</strong></li>
+<li>Word length as a guide (short words for short times) was considered and dropped: day and year are short, and the words people use most are short whatever their size</li>
+</ul>
+</div>
 <div class="pager"><a class="prev" href="versions.html">← Versions</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
 </div>
-<script>
-// Not remembered: the page always opens with everything showing.
-const box = document.getElementById("tables-only");
-box.checked = false;  // browsers can restore a checkbox's state on reload
-box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
-</script>
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {

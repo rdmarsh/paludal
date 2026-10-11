@@ -64,7 +64,7 @@ to a convention, since Rapoport uses them too.
 | Size (dozenal day) | About | Paludal | Primel (Volan) | Rapoport | Beers | TGM |
 |--------------------|-------|---------|----------------|----------|-------|-----|
 | 0;1                | 2 h   | chime   | dwell          | dwell    | phase |     |
-| 0;01               | 10 min | (none) | breather       | breather | spell |     |
+| 0;01               | 10 min | spell  | breather       | breather | spell |     |
 | 0;001              | 50 s  | moment  | trice          | trice    | "minute" |  |
 | 0;0001             | 4.2 s | breath  | lull           | lull     |       |     |
 | 0;00003 (¼ lull)   | 1.04 s | beat   | beat           |          |       |     |

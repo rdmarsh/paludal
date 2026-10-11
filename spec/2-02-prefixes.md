@@ -71,4 +71,4 @@ time. Sizes that have their own name are in bold; use the name rather than the p
   100,000 bl (pqbl); **span** = 0;2 p; **ulna** = 0;4 p; **gress** = 0;6 p; **navis** = 930 p; **parax** (star distances);
   **ager** = 1,000 p² (tqp² would be read as (tqp)², so it gets a name)
 - Prefixed temperatures use the plain-text symbol te (tcte), as °C is rarely prefixed; they're for science only
-- tqbl is 0;1 chime (10 minutes), which has no name yet (see Open items)
+- tqbl is the spell (0;1 chime, 10 minutes)

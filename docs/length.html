@@ -44,7 +44,6 @@ nav details.contents > summary { display: none; }
 .conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .conv .hint { grid-column: 1 / -1; font-size: 12px; }
 .pdf { margin: 0 0 12px; font-size: 13px; }
-.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
 h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
 h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
@@ -79,9 +78,6 @@ td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg
 .decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
 .why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
 .why strong { color: var(--fg); }
-body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
-body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
-body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
@@ -97,7 +93,6 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <nav>
 <h1><a href="index.html">Paludal units</a></h1>
 <p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
-<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
 <details class="contents" open>
 <summary>Contents and tools</summary>
 <div class="conv">
@@ -106,11 +101,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="principles.html">Principles</a></li><li class="has-table"><a href="names.html">Names</a></li></ul></li>
-<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
-<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html" aria-current="page">Length</a><ul><li class="no-table"><a href="#length-gravity">Gravity</a></li><li class="has-table"><a href="#length-light-distances">Light distances</a></li><li class="has-table"><a href="#length-star-distances">Star distances</a></li></ul></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
-<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
-<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+<li><a href="index.html">The Paludal system</a><ul><li><a href="principles.html">Principles</a></li><li><a href="names.html">Names</a></li></ul></li>
+<li><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li><a href="digits.html">Digits</a></li><li><a href="writing-numbers.html">Writing numbers</a></li><li><a href="spoken-numbers.html">Spoken numbers</a></li><li><a href="hexadecimal.html">Hexadecimal</a></li><li><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li><a href="summary.html">Summary</a></li><li><a href="prefixes.html">Prefixes</a></li><li><a href="unit-symbols.html">Unit symbols</a></li><li><a href="time.html">Time</a></li><li><a href="length.html" aria-current="page">Length</a><ul><li><a href="#length-gravity">Gravity</a></li><li><a href="#length-light-distances">Light distances</a></li><li><a href="#length-star-distances">Star distances</a></li></ul></li><li><a href="mass.html">Mass</a></li><li><a href="electricity.html">Electricity</a></li><li><a href="temperature.html">Temperature</a></li><li><a href="amount-of-substance.html">Amount of substance</a></li><li><a href="light.html">Light</a></li><li><a href="area.html">Area</a></li><li><a href="volume.html">Volume</a></li><li><a href="angle.html">Angle</a></li><li><a href="constants.html">Constants</a></li></ul></li>
+<li><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li><a href="thinking-in-paludal.html">Thinking in Paludal</a></li><li><a href="a-day-in-paludal.html">A day in Paludal</a></li><li><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li><a href="money.html">Money</a></li><li><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li><a href="paper-sizes.html">Paper sizes</a></li><li><a href="shoe-sizes.html">Shoe sizes</a></li><li><a href="everyday-reference.html">Everyday reference</a></li><li><a href="imperial-conversions.html">Imperial conversions</a></li><li><a href="log-scales.html">Log scales</a></li></ul></li>
+<li><a href="part-4-background.html">Part 4: Background</a><ul><li><a href="prior-art.html">Prior art</a></li><li><a href="versions.html">Versions</a></li><li><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </details>
 <script>
@@ -120,8 +115,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </script>
 </nav>
 <main>
-<section id="length" class="has-table">
-<h2>Length</h2>
+<h2 id="length">Length</h2>
 <div class="block decided">
 <p><strong>Decided:</strong> the <strong>pace</strong> ≈ 1.4525 m, defined by <strong>c = 2 × 10^7 paces per blink</strong> (exact).</p>
 </div>
@@ -438,8 +432,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-<section id="length-gravity" class="no-table">
-<h3>Gravity</h3>
+<h3 id="length-gravity">Gravity</h3>
 <div class="block list">
 <ul>
 <li>Would like g to be a nice dozenal number, but c and g have a fixed ratio (~2,559,X65 breaths), so only one can be exact.</li>
@@ -447,9 +440,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>g varies ~0.5% over Earth's surface anyway, so it's a poor basis for a definition.</li>
 </ul>
 </div>
-</section>
-<section id="length-light-distances" class="has-table">
-<h3>Light distances</h3>
+<h3 id="length-light-distances">Light distances</h3>
 <div class="block para">
 <p>Light covers a round number of paces in every time unit, because c is fixed at 2 × 10^7 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>. So light times make handy yardsticks for big distances, as light-seconds and light-years do now:</p>
 </div>
@@ -525,9 +516,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>The AU doesn't: it's fixed in metres (since 2012 CE), and the pace isn't a round number of metres</li>
 </ul>
 </div>
-</section>
-<section id="length-star-distances" class="has-table">
-<h3>Star distances</h3>
+<h3 id="length-star-distances">Star distances</h3>
 <div class="block decided">
 <p><strong>Decided:</strong> the <strong>parax</strong> (symbol <strong>px</strong>), a dozenal parsec: the distance at which the Earth's orbit (1 AU, the Earth-Sun distance) spans <strong>1 × 10^-6 turn</strong> (1/2,985,984 dec of a turn, 0.434 arcseconds).</p>
 </div>
@@ -597,19 +586,11 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <div class="block para">
 <p><strong>Advantage:</strong> astronomers recognise it at once, and the name says how the distance is measured.</p>
 </div>
-</section>
-</section>
 <div class="pager"><a class="prev" href="time.html">← Time</a><a class="next" href="mass.html">Mass →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
 </div>
-<script>
-// Not remembered: the page always opens with everything showing.
-const box = document.getElementById("tables-only");
-box.checked = false;  // browsers can restore a checkbox's state on reload
-box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
-</script>
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {

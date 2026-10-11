@@ -44,7 +44,6 @@ nav details.contents > summary { display: none; }
 .conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .conv .hint { grid-column: 1 / -1; font-size: 12px; }
 .pdf { margin: 0 0 12px; font-size: 13px; }
-.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
 h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
 h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
@@ -79,9 +78,6 @@ td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg
 .decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
 .why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
 .why strong { color: var(--fg); }
-body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
-body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
-body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
@@ -97,7 +93,6 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <nav>
 <h1><a href="index.html">Paludal units</a></h1>
 <p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
-<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
 <details class="contents" open>
 <summary>Contents and tools</summary>
 <div class="conv">
@@ -106,11 +101,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-<li class="has-table"><a href="index.html" aria-current="page">The Paludal system</a><ul><li class="has-table"><a href="principles.html">Principles</a></li><li class="has-table"><a href="names.html">Names</a></li></ul></li>
-<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
-<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
-<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
-<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+<li><a href="index.html" aria-current="page">The Paludal system</a><ul><li><a href="principles.html">Principles</a></li><li><a href="names.html">Names</a></li></ul></li>
+<li><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li><a href="digits.html">Digits</a></li><li><a href="writing-numbers.html">Writing numbers</a></li><li><a href="spoken-numbers.html">Spoken numbers</a></li><li><a href="hexadecimal.html">Hexadecimal</a></li><li><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li><a href="summary.html">Summary</a></li><li><a href="prefixes.html">Prefixes</a></li><li><a href="unit-symbols.html">Unit symbols</a></li><li><a href="time.html">Time</a></li><li><a href="length.html">Length</a></li><li><a href="mass.html">Mass</a></li><li><a href="electricity.html">Electricity</a></li><li><a href="temperature.html">Temperature</a></li><li><a href="amount-of-substance.html">Amount of substance</a></li><li><a href="light.html">Light</a></li><li><a href="area.html">Area</a></li><li><a href="volume.html">Volume</a></li><li><a href="angle.html">Angle</a></li><li><a href="constants.html">Constants</a></li></ul></li>
+<li><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li><a href="thinking-in-paludal.html">Thinking in Paludal</a></li><li><a href="a-day-in-paludal.html">A day in Paludal</a></li><li><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li><a href="money.html">Money</a></li><li><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li><a href="paper-sizes.html">Paper sizes</a></li><li><a href="shoe-sizes.html">Shoe sizes</a></li><li><a href="everyday-reference.html">Everyday reference</a></li><li><a href="imperial-conversions.html">Imperial conversions</a></li><li><a href="log-scales.html">Log scales</a></li></ul></li>
+<li><a href="part-4-background.html">Part 4: Background</a><ul><li><a href="prior-art.html">Prior art</a></li><li><a href="versions.html">Versions</a></li><li><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </details>
 <script>
@@ -123,8 +118,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <div class="intro">
 
 </div>
-<section id="the-paludal-system" class="lead has-table">
-<h2>The Paludal system</h2>
+<h2 id="the-paludal-system">The Paludal system</h2>
 <div class="block para">
 <p>Numbers are dozenal unless marked "(dec)".</p>
 </div>
@@ -134,10 +128,104 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <div class="block para">
 <p>Paludal is a set of units, like metric, but counted in twelves instead of tens. This page is the short version: how to count, the handful of units you'd use every day, and how to tell the time. Everything else - the reasons behind each choice, and the less common units - is in the chapters that follow.</p>
 </div>
-<section id="the-paludal-system-counting-in-twelves" class="has-table">
-<h3>Counting in twelves</h3>
+<h3 id="the-paludal-system-counting-in-twelves">Counting in twelves</h3>
 <div class="block para">
-<p>Dozenal counting needs two more digits: <strong>X</strong> (said "dek") for ten and <strong>E</strong> ("el") for eleven. After E comes 10, which means twelve, said "do". The semicolon is the dozenal point, said "dit".</p>
+<p>You already count in twelves more than you might think: twelve hours on a clock, twelve months in a year, twelve eggs in a carton, twelve inches in a foot. Dozenal writes these numbers with digits of their own.</p>
+</div>
+<div class="block para">
+<p>It needs two more digits: <strong>X</strong> (said "dek") for ten and <strong>E</strong> ("el") for eleven. On a clock face, only the top three numbers change. Twelve, at the top, is written <strong>10</strong> and said "do": one full turn and nothing over.</p>
+</div>
+<div class="block figure">
+<figure class="figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-130 -130 260 260" width="320" role="img" color="#1f1d1a" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<title>A clock face in dozenal</title>
+<desc>An ordinary twelve-hour clock face. The numbers 1 to 9 are unchanged. Ten o'clock is written X (dek), eleven o'clock E (el), and twelve at the top is written 10 (do): one full turn and nothing over. The old numbers 10, 11 and 12 are shown small outside the dial.</desc>
+<circle class="panel" color="#f3f0ea" r="104" fill="currentColor"/>
+<circle class="line" color="#e4e0d8" r="104" fill="none" stroke="currentColor" stroke-width="2"/>
+<g class="muted" color="#6b665e" stroke="currentColor" stroke-width="0.8" stroke-linecap="round">
+<line x1="10.03" y1="-95.47" x2="10.45" y2="-99.45"/>
+<line x1="19.96" y1="-93.9" x2="20.79" y2="-97.81"/>
+<line x1="29.67" y1="-91.3" x2="30.9" y2="-95.11"/>
+<line x1="39.05" y1="-87.7" x2="40.67" y2="-91.35"/>
+<line x1="56.43" y1="-77.67" x2="58.78" y2="-80.9"/>
+<line x1="64.24" y1="-71.34" x2="66.91" y2="-74.31"/>
+<line x1="71.34" y1="-64.24" x2="74.31" y2="-66.91"/>
+<line x1="77.67" y1="-56.43" x2="80.9" y2="-58.78"/>
+<line x1="87.7" y1="-39.05" x2="91.35" y2="-40.67"/>
+<line x1="91.3" y1="-29.67" x2="95.11" y2="-30.9"/>
+<line x1="93.9" y1="-19.96" x2="97.81" y2="-20.79"/>
+<line x1="95.47" y1="-10.03" x2="99.45" y2="-10.45"/>
+<line x1="95.47" y1="10.03" x2="99.45" y2="10.45"/>
+<line x1="93.9" y1="19.96" x2="97.81" y2="20.79"/>
+<line x1="91.3" y1="29.67" x2="95.11" y2="30.9"/>
+<line x1="87.7" y1="39.05" x2="91.35" y2="40.67"/>
+<line x1="77.67" y1="56.43" x2="80.9" y2="58.78"/>
+<line x1="71.34" y1="64.24" x2="74.31" y2="66.91"/>
+<line x1="64.24" y1="71.34" x2="66.91" y2="74.31"/>
+<line x1="56.43" y1="77.67" x2="58.78" y2="80.9"/>
+<line x1="39.05" y1="87.7" x2="40.67" y2="91.35"/>
+<line x1="29.67" y1="91.3" x2="30.9" y2="95.11"/>
+<line x1="19.96" y1="93.9" x2="20.79" y2="97.81"/>
+<line x1="10.03" y1="95.47" x2="10.45" y2="99.45"/>
+<line x1="-10.03" y1="95.47" x2="-10.45" y2="99.45"/>
+<line x1="-19.96" y1="93.9" x2="-20.79" y2="97.81"/>
+<line x1="-29.67" y1="91.3" x2="-30.9" y2="95.11"/>
+<line x1="-39.05" y1="87.7" x2="-40.67" y2="91.35"/>
+<line x1="-56.43" y1="77.67" x2="-58.78" y2="80.9"/>
+<line x1="-64.24" y1="71.34" x2="-66.91" y2="74.31"/>
+<line x1="-71.34" y1="64.24" x2="-74.31" y2="66.91"/>
+<line x1="-77.67" y1="56.43" x2="-80.9" y2="58.78"/>
+<line x1="-87.7" y1="39.05" x2="-91.35" y2="40.67"/>
+<line x1="-91.3" y1="29.67" x2="-95.11" y2="30.9"/>
+<line x1="-93.9" y1="19.96" x2="-97.81" y2="20.79"/>
+<line x1="-95.47" y1="10.03" x2="-99.45" y2="10.45"/>
+<line x1="-95.47" y1="-10.03" x2="-99.45" y2="-10.45"/>
+<line x1="-93.9" y1="-19.96" x2="-97.81" y2="-20.79"/>
+<line x1="-91.3" y1="-29.67" x2="-95.11" y2="-30.9"/>
+<line x1="-87.7" y1="-39.05" x2="-91.35" y2="-40.67"/>
+<line x1="-77.67" y1="-56.43" x2="-80.9" y2="-58.78"/>
+<line x1="-71.34" y1="-64.24" x2="-74.31" y2="-66.91"/>
+<line x1="-64.24" y1="-71.34" x2="-66.91" y2="-74.31"/>
+<line x1="-56.43" y1="-77.67" x2="-58.78" y2="-80.9"/>
+<line x1="-39.05" y1="-87.7" x2="-40.67" y2="-91.35"/>
+<line x1="-29.67" y1="-91.3" x2="-30.9" y2="-95.11"/>
+<line x1="-19.96" y1="-93.9" x2="-20.79" y2="-97.81"/>
+<line x1="-10.03" y1="-95.47" x2="-10.45" y2="-99.45"/>
+</g>
+<g class="fg" color="#1f1d1a" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+<line x1="0.0" y1="-90.0" x2="0.0" y2="-100.0"/>
+<line x1="45.0" y1="-77.94" x2="50.0" y2="-86.6"/>
+<line x1="77.94" y1="-45.0" x2="86.6" y2="-50.0"/>
+<line x1="90.0" y1="-0.0" x2="100.0" y2="-0.0"/>
+<line x1="77.94" y1="45.0" x2="86.6" y2="50.0"/>
+<line x1="45.0" y1="77.94" x2="50.0" y2="86.6"/>
+<line x1="0.0" y1="90.0" x2="0.0" y2="100.0"/>
+<line x1="-45.0" y1="77.94" x2="-50.0" y2="86.6"/>
+<line x1="-77.94" y1="45.0" x2="-86.6" y2="50.0"/>
+<line x1="-90.0" y1="0.0" x2="-100.0" y2="0.0"/>
+<line x1="-77.94" y1="-45.0" x2="-86.6" y2="-50.0"/>
+<line x1="-45.0" y1="-77.94" x2="-50.0" y2="-86.6"/>
+</g>
+<text x="37.0" y="-64.09" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">1</text>
+<text x="64.09" y="-37.0" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">2</text>
+<text x="74.0" y="-0.0" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">3</text>
+<text x="64.09" y="37.0" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">4</text>
+<text x="37.0" y="64.09" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">5</text>
+<text x="0.0" y="74.0" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">6</text>
+<text x="-37.0" y="64.09" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">7</text>
+<text x="-64.09" y="37.0" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">8</text>
+<text x="-74.0" y="0.0" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">9</text>
+<text class="accent" color="#9a4d1f" x="-64.09" y="-37.0" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">X</text>
+<text class="muted" color="#6b665e" x="-102.19" y="-59.0" font-size="9" text-anchor="middle" dominant-baseline="central" fill="currentColor">10</text>
+<text class="accent" color="#9a4d1f" x="-37.0" y="-64.09" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">E</text>
+<text class="muted" color="#6b665e" x="-59.0" y="-102.19" font-size="9" text-anchor="middle" dominant-baseline="central" fill="currentColor">11</text>
+<text class="accent" color="#9a4d1f" x="-0.0" y="-74.0" font-size="19" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="currentColor">10</text>
+<text class="muted" color="#6b665e" x="-0.0" y="-118.0" font-size="9" text-anchor="middle" dominant-baseline="central" fill="currentColor">12</text>
+<circle r="3.5" fill="currentColor"/>
+</svg>
+<figcaption>A clock face in dozenal: 1 to 9 stay the same, ten and eleven become X
+and E, and twelve becomes 10.</figcaption>
+</figure>
 </div>
 <div class="block table">
 <div class="table-wrap">
@@ -146,44 +234,77 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <tr>
 <th>Dozenal</th>
 <th>Said</th>
-<th>Decimal</th>
+<th>You know it as</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>X, E</td>
 <td>dek, el</td>
-<td>10, 11</td>
+<td>ten, eleven o'clock</td>
 </tr>
 <tr>
 <td>10</td>
 <td>do</td>
-<td>12</td>
+<td>a dozen: a carton of eggs, a foot of inches, a year of months</td>
+</tr>
+<tr>
+<td>16</td>
+<td>do six</td>
+<td>a dozen and a half</td>
 </tr>
 <tr>
 <td>20</td>
 <td>two do</td>
-<td>24</td>
+<td>two dozen: the hours in a day</td>
 </tr>
 <tr>
 <td>100</td>
 <td>gro</td>
-<td>144</td>
+<td>a gross: a dozen dozen</td>
 </tr>
 <tr>
 <td>1,000</td>
 <td>mo</td>
-<td>1,728</td>
+<td>a dozen gross (1,728 dec)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block para">
+<p>The semicolon is the dozenal point, said "dit". After it come twelfths, the marks around a clock face:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Dozenal</th>
+<th>Said</th>
+<th>You know it as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0;1</td>
+<td>zero dit one</td>
+<td>a twelfth: one month of a year, five minutes of an hour</td>
+</tr>
+<tr>
+<td>0;3</td>
+<td>zero dit three</td>
+<td>a quarter: quarter past is the minute hand at 3</td>
+</tr>
+<tr>
+<td>0;4</td>
+<td>zero dit four</td>
+<td>a third: four months of a year</td>
 </tr>
 <tr>
 <td>0;6</td>
 <td>zero dit six</td>
-<td>a half</td>
-</tr>
-<tr>
-<td>0;4 / 0;3</td>
-<td></td>
-<td>a third / a quarter</td>
+<td>a half: six inches of a foot, half past</td>
 </tr>
 </tbody>
 </table>
@@ -192,9 +313,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <div class="block para">
 <p>Twelve splits evenly into halves, thirds, quarters and sixths, so those are all short, exact numbers.</p>
 </div>
-</section>
-<section id="the-paludal-system-the-everyday-units" class="has-table">
-<h3>The everyday units</h3>
+<h3 id="the-paludal-system-the-everyday-units">The everyday units</h3>
 <div class="block para">
 <p>Each one is close to something you already know.</p>
 </div>
@@ -263,9 +382,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>Water freezes at 0 <abbr title="tep (degrees from freezing)">°t</abbr> and boils at 100 <abbr title="tep (degrees from freezing)">°t</abbr></li>
 </ul>
 </div>
-</section>
-<section id="the-paludal-system-bigger-and-smaller" class="has-table">
-<h3>Bigger and smaller</h3>
+<h3 id="the-paludal-system-bigger-and-smaller">Bigger and smaller</h3>
 <div class="block para">
 <p>Like metric's milli-, centi- and kilo-, Paludal has prefixes for smaller and bigger sizes, but each step is twelve instead of ten:</p>
 </div>
@@ -335,9 +452,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>Length and Time (Part 2) have tables for converting between all the named units</li>
 </ul>
 </div>
-</section>
-<section id="the-paludal-system-telling-the-time" class="has-table">
-<h3>Telling the time</h3>
+<h3 id="the-paludal-system-telling-the-time">Telling the time</h3>
 <div class="block para">
 <p>The day is cut into twelves, and each cut is one digit of the time.</p>
 </div>
@@ -360,10 +475,16 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <td>10 (12 dec) in a day</td>
 </tr>
 <tr>
+<td>spell</td>
+<td>sl</td>
+<td>10 minutes</td>
+<td>10 (12 dec) in a chime</td>
+</tr>
+<tr>
 <td>moment</td>
 <td>mt</td>
 <td>50 seconds</td>
-<td>100 (144 dec) in a chime</td>
+<td>10 (12 dec) in a spell</td>
 </tr>
 <tr>
 <td>breath</td>
@@ -428,11 +549,9 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </div>
 </div>
 <div class="block para">
-<p>An hour is half a chime (60 moments), and a film is about one chime.</p>
+<p>Half an hour is 3 spells, an hour is 6 spells (half a chime), and a film is about one chime.</p>
 </div>
-</section>
-<section id="the-paludal-system-how-it-fits-together" class="has-table">
-<h3>How it fits together</h3>
+<h3 id="the-paludal-system-how-it-fits-together">How it fits together</h3>
 <div class="block figure">
 <figure class="figure">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 486" width="320" role="img" color="#1f1d1a" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
@@ -485,26 +604,18 @@ a cube of water gives the lib - counted in twelves at every step.</figcaption>
 </figure>
 </div>
 <div class="block para">
-<p>Like SI, every unit is fixed to a constant of nature, so each one converts exactly to metric. The chapters below explain how: Principles covers the ideas behind the system, Names lists every unit, and Part 3 (Everyday use) has many more examples.</p>
+<p>Like SI, every unit is fixed to a constant of nature, so each one converts exactly to metric. The chapters below explain how: Principles covers the ideas behind the system, and Names lists every unit. To get a feel for the sizes, start with Thinking in Paludal in Part 3 (Everyday use).</p>
 </div>
-</section>
 <ul class="chapters"><li><a href="principles.html">Principles</a></li><li><a href="names.html">Names</a></li></ul>
-</section>
 <div class="pager"><a class="next" href="principles.html">Principles →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
 </div>
 <script>
-// Not remembered: the page always opens with everything showing.
-const box = document.getElementById("tables-only");
-box.checked = false;  // browsers can restore a checkbox's state on reload
-box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
-</script>
-<script>
 // The spec used to be one page: send old links (paludal.org/#time) to the page that holds the id
 (() => {
-  const map = {"a-day-in-paludal":"a-day-in-paludal.html","amount-of-substance":"amount-of-substance.html","angle":"angle.html","area":"area.html","clocks-time-zones-and-calendar":"clocks-time-zones-and-calendar.html","clocks-time-zones-and-calendar-analogue-clocks":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-analogue-clocks","clocks-time-zones-and-calendar-calendar":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-calendar","clocks-time-zones-and-calendar-daylight-saving-and-time-zones":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-daylight-saving-and-time-zones","clocks-time-zones-and-calendar-years":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-years","constants":"constants.html","constants-defining-constants-exact":"constants.html#constants-defining-constants-exact","constants-derived-from-them-also-exact":"constants.html#constants-derived-from-them-also-exact","constants-earth-and-everyday":"constants.html#constants-earth-and-everyday","constants-measured":"constants.html#constants-measured","constants-pure-numbers-the-same-in-any-base-dozenal-digits":"constants.html#constants-pure-numbers-the-same-in-any-base-dozenal-digits","digits":"digits.html","digits-seven-segment-displays":"digits.html#digits-seven-segment-displays","electricity":"electricity.html","everyday-reference":"everyday-reference.html","everyday-reference-current":"everyday-reference.html#everyday-reference-current","everyday-reference-energy":"everyday-reference.html#everyday-reference-energy","everyday-reference-fuel-use":"everyday-reference.html#everyday-reference-fuel-use","everyday-reference-length":"everyday-reference.html#everyday-reference-length","everyday-reference-mass":"everyday-reference.html#everyday-reference-mass","everyday-reference-playing-fields":"everyday-reference.html#everyday-reference-playing-fields","everyday-reference-power":"everyday-reference.html#everyday-reference-power","everyday-reference-pressure":"everyday-reference.html#everyday-reference-pressure","everyday-reference-races-and-sport":"everyday-reference.html#everyday-reference-races-and-sport","everyday-reference-speed":"everyday-reference.html#everyday-reference-speed","everyday-reference-temperature":"everyday-reference.html#everyday-reference-temperature","everyday-reference-time":"everyday-reference.html#everyday-reference-time","everyday-reference-voltage":"everyday-reference.html#everyday-reference-voltage","everyday-reference-volume":"everyday-reference.html#everyday-reference-volume","hexadecimal":"hexadecimal.html","imperial-conversions":"imperial-conversions.html","imperial-conversions-fahrenheit":"imperial-conversions.html#imperial-conversions-fahrenheit","length":"length.html","length-gravity":"length.html#length-gravity","length-light-distances":"length.html#length-light-distances","length-star-distances":"length.html#length-star-distances","light":"light.html","log-scales":"log-scales.html","log-scales-acidity-ph":"log-scales.html#log-scales-acidity-ph","log-scales-earthquakes":"log-scales.html#log-scales-earthquakes","log-scales-sound":"log-scales.html#log-scales-sound","mass":"mass.html","money":"money.html","names":"names.html","open-items-next-steps":"open-items-next-steps.html","paper-sizes":"paper-sizes.html","part-1-dozenal-numbers":"part-1-dozenal-numbers.html","part-2-paludal-units":"part-2-paludal-units.html","part-3-everyday-use":"part-3-everyday-use.html","part-4-background":"part-4-background.html","phone-numbers-and-keypads":"phone-numbers-and-keypads.html","prefixes":"prefixes.html","prefixes-prefix-matrix":"prefixes.html#prefixes-prefix-matrix","prefixes-prefix-symbols":"prefixes.html#prefixes-prefix-symbols","principles":"principles.html","prior-art":"prior-art.html","shoe-sizes":"shoe-sizes.html","speed-limits-and-changeover":"speed-limits-and-changeover.html","spoken-numbers":"spoken-numbers.html","summary":"summary.html","summary-base-units-and-defining-constants":"summary.html#summary-base-units-and-defining-constants","summary-derived-and-everyday-units":"summary.html#summary-derived-and-everyday-units","summary-exact-si-values":"summary.html#summary-exact-si-values","summary-how-the-units-connect":"summary.html#summary-how-the-units-connect","summary-rules-of-thumb":"summary.html#summary-rules-of-thumb","temperature":"temperature.html","the-paludal-system-bigger-and-smaller":"index.html#the-paludal-system-bigger-and-smaller","the-paludal-system-counting-in-twelves":"index.html#the-paludal-system-counting-in-twelves","the-paludal-system-how-it-fits-together":"index.html#the-paludal-system-how-it-fits-together","the-paludal-system-names":"names.html","the-paludal-system-principles":"principles.html","the-paludal-system-telling-the-time":"index.html#the-paludal-system-telling-the-time","the-paludal-system-the-everyday-units":"index.html#the-paludal-system-the-everyday-units","time":"time.html","time-definition-of-time":"time.html#time-definition-of-time","unit-symbols":"unit-symbols.html","versions":"versions.html","volume":"volume.html","volume-rainfall":"volume.html#volume-rainfall","writing-numbers":"writing-numbers.html"}, id = decodeURIComponent(location.hash.slice(1));
+  const map = {"a-day-in-paludal":"a-day-in-paludal.html","amount-of-substance":"amount-of-substance.html","angle":"angle.html","area":"area.html","clocks-time-zones-and-calendar":"clocks-time-zones-and-calendar.html","clocks-time-zones-and-calendar-analogue-clocks":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-analogue-clocks","clocks-time-zones-and-calendar-calendar":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-calendar","clocks-time-zones-and-calendar-daylight-saving-and-time-zones":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-daylight-saving-and-time-zones","clocks-time-zones-and-calendar-years":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-years","constants":"constants.html","constants-defining-constants-exact":"constants.html#constants-defining-constants-exact","constants-derived-from-them-also-exact":"constants.html#constants-derived-from-them-also-exact","constants-earth-and-everyday":"constants.html#constants-earth-and-everyday","constants-measured":"constants.html#constants-measured","constants-pure-numbers-the-same-in-any-base-dozenal-digits":"constants.html#constants-pure-numbers-the-same-in-any-base-dozenal-digits","digits":"digits.html","digits-seven-segment-displays":"digits.html#digits-seven-segment-displays","electricity":"electricity.html","everyday-reference":"everyday-reference.html","everyday-reference-current":"everyday-reference.html#everyday-reference-current","everyday-reference-energy":"everyday-reference.html#everyday-reference-energy","everyday-reference-fuel-use":"everyday-reference.html#everyday-reference-fuel-use","everyday-reference-length":"everyday-reference.html#everyday-reference-length","everyday-reference-mass":"everyday-reference.html#everyday-reference-mass","everyday-reference-playing-fields":"everyday-reference.html#everyday-reference-playing-fields","everyday-reference-power":"everyday-reference.html#everyday-reference-power","everyday-reference-pressure":"everyday-reference.html#everyday-reference-pressure","everyday-reference-races-and-sport":"everyday-reference.html#everyday-reference-races-and-sport","everyday-reference-speed":"everyday-reference.html#everyday-reference-speed","everyday-reference-temperature":"everyday-reference.html#everyday-reference-temperature","everyday-reference-time":"everyday-reference.html#everyday-reference-time","everyday-reference-voltage":"everyday-reference.html#everyday-reference-voltage","everyday-reference-volume":"everyday-reference.html#everyday-reference-volume","hexadecimal":"hexadecimal.html","imperial-conversions":"imperial-conversions.html","imperial-conversions-fahrenheit":"imperial-conversions.html#imperial-conversions-fahrenheit","length":"length.html","length-gravity":"length.html#length-gravity","length-light-distances":"length.html#length-light-distances","length-star-distances":"length.html#length-star-distances","light":"light.html","log-scales":"log-scales.html","log-scales-acidity-ph":"log-scales.html#log-scales-acidity-ph","log-scales-earthquakes":"log-scales.html#log-scales-earthquakes","log-scales-sound":"log-scales.html#log-scales-sound","mass":"mass.html","money":"money.html","names":"names.html","open-items-next-steps":"open-items-next-steps.html","open-items-next-steps-time-names":"open-items-next-steps.html#open-items-next-steps-time-names","paper-sizes":"paper-sizes.html","part-1-dozenal-numbers":"part-1-dozenal-numbers.html","part-2-paludal-units":"part-2-paludal-units.html","part-3-everyday-use":"part-3-everyday-use.html","part-4-background":"part-4-background.html","phone-numbers-and-keypads":"phone-numbers-and-keypads.html","prefixes":"prefixes.html","prefixes-prefix-matrix":"prefixes.html#prefixes-prefix-matrix","prefixes-prefix-symbols":"prefixes.html#prefixes-prefix-symbols","principles":"principles.html","prior-art":"prior-art.html","shoe-sizes":"shoe-sizes.html","speed-limits-and-changeover":"speed-limits-and-changeover.html","spoken-numbers":"spoken-numbers.html","summary":"summary.html","summary-base-units-and-defining-constants":"summary.html#summary-base-units-and-defining-constants","summary-derived-and-everyday-units":"summary.html#summary-derived-and-everyday-units","summary-exact-si-values":"summary.html#summary-exact-si-values","summary-how-the-units-connect":"summary.html#summary-how-the-units-connect","summary-rules-of-thumb":"summary.html#summary-rules-of-thumb","temperature":"temperature.html","the-paludal-system-bigger-and-smaller":"index.html#the-paludal-system-bigger-and-smaller","the-paludal-system-counting-in-twelves":"index.html#the-paludal-system-counting-in-twelves","the-paludal-system-how-it-fits-together":"index.html#the-paludal-system-how-it-fits-together","the-paludal-system-names":"names.html","the-paludal-system-principles":"principles.html","the-paludal-system-telling-the-time":"index.html#the-paludal-system-telling-the-time","the-paludal-system-the-everyday-units":"index.html#the-paludal-system-the-everyday-units","thinking-in-paludal":"thinking-in-paludal.html","thinking-in-paludal-length":"thinking-in-paludal.html#thinking-in-paludal-length","thinking-in-paludal-mass":"thinking-in-paludal.html#thinking-in-paludal-mass","thinking-in-paludal-speed":"thinking-in-paludal.html#thinking-in-paludal-speed","thinking-in-paludal-temperature":"thinking-in-paludal.html#thinking-in-paludal-temperature","thinking-in-paludal-time":"thinking-in-paludal.html#thinking-in-paludal-time","thinking-in-paludal-volume":"thinking-in-paludal.html#thinking-in-paludal-volume","time":"time.html","time-definition-of-time":"time.html#time-definition-of-time","unit-symbols":"unit-symbols.html","versions":"versions.html","volume":"volume.html","volume-rainfall":"volume.html#volume-rainfall","writing-numbers":"writing-numbers.html"}, id = decodeURIComponent(location.hash.slice(1));
   if (id && !document.getElementById(id) && map[id]) location.replace(map[id]);
 })();
 </script>

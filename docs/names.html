@@ -44,7 +44,6 @@ nav details.contents > summary { display: none; }
 .conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .conv .hint { grid-column: 1 / -1; font-size: 12px; }
 .pdf { margin: 0 0 12px; font-size: 13px; }
-.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
 h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
 h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
@@ -79,9 +78,6 @@ td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg
 .decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
 .why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
 .why strong { color: var(--fg); }
-body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
-body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
-body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
@@ -97,7 +93,6 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <nav>
 <h1><a href="index.html">Paludal units</a></h1>
 <p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
-<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
 <details class="contents" open>
 <summary>Contents and tools</summary>
 <div class="conv">
@@ -106,11 +101,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="principles.html">Principles</a></li><li class="has-table"><a href="names.html" aria-current="page">Names</a></li></ul></li>
-<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
-<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
-<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
-<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+<li><a href="index.html">The Paludal system</a><ul><li><a href="principles.html">Principles</a></li><li><a href="names.html" aria-current="page">Names</a></li></ul></li>
+<li><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li><a href="digits.html">Digits</a></li><li><a href="writing-numbers.html">Writing numbers</a></li><li><a href="spoken-numbers.html">Spoken numbers</a></li><li><a href="hexadecimal.html">Hexadecimal</a></li><li><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li><a href="summary.html">Summary</a></li><li><a href="prefixes.html">Prefixes</a></li><li><a href="unit-symbols.html">Unit symbols</a></li><li><a href="time.html">Time</a></li><li><a href="length.html">Length</a></li><li><a href="mass.html">Mass</a></li><li><a href="electricity.html">Electricity</a></li><li><a href="temperature.html">Temperature</a></li><li><a href="amount-of-substance.html">Amount of substance</a></li><li><a href="light.html">Light</a></li><li><a href="area.html">Area</a></li><li><a href="volume.html">Volume</a></li><li><a href="angle.html">Angle</a></li><li><a href="constants.html">Constants</a></li></ul></li>
+<li><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li><a href="thinking-in-paludal.html">Thinking in Paludal</a></li><li><a href="a-day-in-paludal.html">A day in Paludal</a></li><li><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li><a href="money.html">Money</a></li><li><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li><a href="paper-sizes.html">Paper sizes</a></li><li><a href="shoe-sizes.html">Shoe sizes</a></li><li><a href="everyday-reference.html">Everyday reference</a></li><li><a href="imperial-conversions.html">Imperial conversions</a></li><li><a href="log-scales.html">Log scales</a></li></ul></li>
+<li><a href="part-4-background.html">Part 4: Background</a><ul><li><a href="prior-art.html">Prior art</a></li><li><a href="versions.html">Versions</a></li><li><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </details>
 <script>
@@ -120,19 +115,18 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </script>
 </nav>
 <main>
-<section id="names" class="has-table">
-<h2>Names</h2>
+<h2 id="names">Names</h2>
 <div class="block decided">
 <p><strong>Decided:</strong> short names (3-4 letters preferred), Latin roots where possible, no clash with an existing unit, no everyday word whose meaning would mislead, and no object or container names.</p>
 </div>
 <div class="block why">
-<p><strong>Why:</strong> short names are quick to say and write; Latin roots echo older measures (pace, uncia, libra) and work across languages; clashes cause confusion when both systems are in use. Everyday words are fine when their meaning fits the size (pace, span, dig, blink, beat, breath, moment, chime) - that's what makes them easy to remember. The rule used to say "no clash with existing everyday words", which contradicted those names.</p>
+<p><strong>Why:</strong> short names are quick to say and write; Latin roots echo older measures (pace, uncia, libra) and work across languages; clashes cause confusion when both systems are in use. Everyday words are fine when their meaning fits the size (pace, span, dig, blink, beat, breath, moment, spell, chime) - that's what makes them easy to remember. The rule used to say "no clash with existing everyday words", which contradicted those names.</p>
 </div>
 <div class="block para">
 <p><strong>Advantage:</strong> units are quick to say, easy to remember, and never confused with SI or imperial ones.</p>
 </div>
 <div class="block decided">
-<p><strong>Decided:</strong> in tables, a unit that isn't a power of twelve of its base unit is set in <em>italics</em>: <em>beat</em> (3 blinks), <em>span</em> (0;2 pace), <em>ulna</em> (0;4 pace), <em>gress</em> (0;6 pace), <em>navis</em> (930 paces) and <em>parax</em> (star distances). All the others - dig, unc, iter, breath, moment, chime, cub, ager - are a power of twelve.</p>
+<p><strong>Decided:</strong> in tables, a unit that isn't a power of twelve of its base unit is set in <em>italics</em>: <em>beat</em> (3 blinks), <em>span</em> (0;2 pace), <em>ulna</em> (0;4 pace), <em>gress</em> (0;6 pace), <em>navis</em> (930 paces) and <em>parax</em> (star distances). All the others - dig, unc, iter, breath, moment, spell, chime, cub, ager - are a power of twelve.</p>
 </div>
 <div class="block why">
 <p><strong>Why:</strong> asked for (2026 CE) so a reader can tell at a glance which units sit on the twelve-fold ladder and which are handy sizes between its steps. Converting a ladder unit only moves the dozenal point; converting an italic one also needs a multiplication (× 2, × 3, × 4 or × 6).</p>
@@ -185,6 +179,14 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <td>50 s exactly</td>
 <td>Latin momentum, movement; medieval moment = 90 s</td>
 <td>moment, momentum</td>
+</tr>
+<tr>
+<td>Time (10 minutes)</td>
+<td>spell</td>
+<td>sl</td>
+<td>600 s exactly</td>
+<td>English: a short spell (Theo Beers' name for it)</td>
+<td></td>
 </tr>
 <tr>
 <td>Time (dozenal hour)</td>
@@ -387,18 +389,11 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>Rejected: heft, jug (object names), pond (sounds like a lake), mass/vol (clash with quantity names / "% vol"), hand (clashes with horse hand 10.16 cm), nail, inc (too close to "inch"), lux/lum (existing SI units), cal (calorie), pot (container), erg (CGS unit), grad (gradian), mol (mole)</li>
 </ul>
 </div>
-</section>
 <div class="pager"><a class="prev" href="principles.html">← Principles</a><a class="next" href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
 </div>
-<script>
-// Not remembered: the page always opens with everything showing.
-const box = document.getElementById("tables-only");
-box.checked = false;  // browsers can restore a checkbox's state on reload
-box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
-</script>
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {

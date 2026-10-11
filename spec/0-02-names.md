@@ -5,14 +5,14 @@ no everyday word whose meaning would mislead, and no object or container names.
 
 **Why:** short names are quick to say and write; Latin roots echo older measures (pace, uncia, libra) and work
 across languages; clashes cause confusion when both systems are in use. Everyday words are fine when their
-meaning fits the size (pace, span, dig, blink, beat, breath, moment, chime) - that's what makes them easy to
+meaning fits the size (pace, span, dig, blink, beat, breath, moment, spell, chime) - that's what makes them easy to
 remember. The rule used to say "no clash with existing everyday words", which contradicted those names.
 
 **Advantage:** units are quick to say, easy to remember, and never confused with SI or imperial ones.
 
 **Decided:** in tables, a unit that isn't a power of twelve of its base unit is set in *italics*: *beat*
 (3 blinks), *span* (0;2 pace), *ulna* (0;4 pace), *gress* (0;6 pace), *navis* (930 paces) and *parax* (star
-distances). All the others - dig, unc, iter, breath, moment, chime, cub, ager - are a power of twelve.
+distances). All the others - dig, unc, iter, breath, moment, spell, chime, cub, ager - are a power of twelve.
 
 **Why:** asked for (2026 CE) so a reader can tell at a glance which units sit on the twelve-fold ladder and
 which are handy sizes between its steps. Converting a ladder unit only moves the dozenal point; converting an
@@ -26,6 +26,7 @@ italic one also needs a multiplication (× 2, × 3, × 4 or × 6).
 | Time (≈ second)        | *beat*  | bt     | 1.0417 s            | English: a heartbeat                              |                              |
 | Time (clock)           | breath | br    | 4.1667 s            | English: one breath                               |                              |
 | Time (dozenal minute)  | moment | mt    | 50 s exactly        | Latin momentum, movement; medieval moment = 90 s  | moment, momentum             |
+| Time (10 minutes)      | spell | sl     | 600 s exactly       | English: a short spell (Theo Beers' name for it)  |                              |
 | Time (dozenal hour)    | chime | ch     | 2 h exactly         | English: clocks chime on the hour                 |                              |
 | Length (base)          | pace  | p      | 1.4525 m            | Latin passus, a pace (Roman pace ≈ 1.48 m)        | pace, passage                |
 | 1/10 pace              | unc   | un     | ≈ 12.1 cm           | Latin uncia, a twelfth                            | inch, ounce                  |

@@ -2,8 +2,7 @@
 -- per chapter, in file-name order. The filter runs in three passes:
 --
 -- 1. HTML only: nest the flat headings into <section>s with stable ids, and wrap each block in
---    <div class="block KIND"> so the "hide notes" toggle can tell tables, decisions and reasons
---    from notes. Sections holding any of those are marked has-table, the rest no-table.
+--    <div class="block KIND"> so decisions and reasons can be styled apart from notes.
 -- 2. Every format: unit symbols. HTML gets <abbr> tooltips naming the unit; every format shows a
 --    prefix with Primel's arrows (tqop -> t↑op). LaTeX gets table column widths sized from content.
 --    Mermaid diagrams are drawn in HTML, kept as [mermaid] blocks in AsciiDoc, and included in
@@ -60,8 +59,6 @@ local function kind(b)
   return "para"
 end
 
-local MARKS_TABLE = { table = true, diagram = true, figure = true, decided = true, why = true }
-
 local function wrap(b)
   local k = kind(b)
   if k == "table" then
@@ -73,7 +70,7 @@ local function wrap(b)
   elseif k == "code" then
     b = pandoc.RawBlock("html", "<pre><code>" .. escape(b.text) .. "</code></pre>")
   end
-  return pandoc.Div({ b }, { class = "block " .. k }), MARKS_TABLE[k]
+  return pandoc.Div({ b }, { class = "block " .. k })
 end
 
 local function to_div(sec)
@@ -81,9 +78,7 @@ local function to_div(sec)
   local content = { pandoc.Header(math.max(sec.level, 2), sec.header.content) }
   for _, b in ipairs(sec.blocks) do content[#content + 1] = b end
   for _, c in ipairs(sec.children) do content[#content + 1] = to_div(c) end
-  local classes = { "section", sec.has_table and "has-table" or "no-table" }
-  if sec.lead then table.insert(classes, 2, "lead") end
-  return pandoc.Div(content, pandoc.Attr(sec.id, classes))
+  return pandoc.Div(content, pandoc.Attr(sec.id, { "section" }))
 end
 
 local function sections(doc)
@@ -95,17 +90,13 @@ local function sections(doc)
       local parent = stack[#stack]
       -- A part or chapter gets a short id (#prefixes), which names its page; deeper ones carry their parent's
       local prefix = b.level <= 2 and "" or parent.id .. " "
-      local sec = { level = b.level, header = b, blocks = {}, children = {}, has_table = false,
-                    id = slug(prefix .. stringify(b)) }
+      local sec = { level = b.level, header = b, blocks = {}, children = {}, id = slug(prefix .. stringify(b)) }
       table.insert(parent.children, sec)
       table.insert(stack, sec)
     else
-      local div, marks = wrap(b)
-      table.insert(stack[#stack].blocks, div)
-      if marks then for _, s in ipairs(stack) do s.has_table = true end end
+      table.insert(stack[#stack].blocks, wrap(b))
     end
   end
-  if root.children[1] then root.children[1].lead = true end -- the opening section is the intro
   local blocks = { pandoc.Div(root.blocks, { class = "intro" }) }
   for _, s in ipairs(root.children) do blocks[#blocks + 1] = to_div(s) end
   doc.blocks = blocks
@@ -116,7 +107,7 @@ end
 -- Pass 2: unit symbols, tables, diagrams
 
 local UNITS = {
-  bl = "blink", bt = "beat", br = "breath", ch = "chime", mt = "moment",
+  bl = "blink", bt = "beat", br = "breath", ch = "chime", mt = "moment", sl = "spell",
   p = "pace", un = "unc", di = "dig", sp = "span", ul = "ulna", gs = "gress", ir = "iter", na = "navis", px = "parax",
   li = "lib", cu = "cub", te = "tep",
   vi = "vis", op = "opus", vg = "vig", pr = "pres", ri = "riv", os = "onus",
@@ -338,10 +329,6 @@ local function is_section(b)
   return b.t == "Div" and b.classes:includes("section")
 end
 
-local function class_of(div)
-  return div.classes:includes("has-table") and "has-table" or "no-table"
-end
-
 local function child_sections(div)
   local subs = {}
   for _, c in ipairs(div.content) do
@@ -365,14 +352,14 @@ local function nav(tops, current)
       if ch == current then
         local anchors = {}
         for _, s in ipairs(child_sections(ch.div)) do
-          anchors[#anchors + 1] = ('<li class="%s"><a href="#%s">%s</a></li>'):format(
-            class_of(s), s.identifier, render(s.content[1].content))
+          anchors[#anchors + 1] = ('<li><a href="#%s">%s</a></li>'):format(
+            s.identifier, render(s.content[1].content))
         end
         if #anchors > 0 then inner = "<ul>" .. table.concat(anchors) .. "</ul>" end
       end
-      subs[#subs + 1] = ('<li class="%s">%s%s</li>'):format(class_of(ch.div), link(ch, current), inner)
+      subs[#subs + 1] = ('<li>%s%s</li>'):format(link(ch, current), inner)
     end
-    items[#items + 1] = ('<li class="%s">%s%s</li>'):format(class_of(top.div), link(top, current),
+    items[#items + 1] = ('<li>%s%s</li>'):format(link(top, current),
       #subs > 0 and "<ul>" .. table.concat(subs) .. "</ul>" or "")
   end
   return table.concat(items, "\n")

@@ -44,7 +44,6 @@ nav details.contents > summary { display: none; }
 .conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .conv .hint { grid-column: 1 / -1; font-size: 12px; }
 .pdf { margin: 0 0 12px; font-size: 13px; }
-.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
 main { padding: 24px 32px 80px; min-width: 0; }
 h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
 h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
@@ -79,9 +78,6 @@ td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg
 .decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
 .why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
 .why strong { color: var(--fg); }
-body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
-body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
-body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
@@ -97,7 +93,6 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <nav>
 <h1><a href="index.html">Paludal units</a></h1>
 <p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
-<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
 <details class="contents" open>
 <summary>Contents and tools</summary>
 <div class="conv">
@@ -106,11 +101,11 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="principles.html">Principles</a></li><li class="has-table"><a href="names.html">Names</a></li></ul></li>
-<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
-<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
-<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html" aria-current="page">Everyday reference</a><ul><li class="has-table"><a href="#everyday-reference-length">Length</a></li><li class="has-table"><a href="#everyday-reference-races-and-sport">Races and sport</a></li><li class="has-table"><a href="#everyday-reference-playing-fields">Playing fields</a></li><li class="has-table"><a href="#everyday-reference-mass">Mass</a></li><li class="has-table"><a href="#everyday-reference-temperature">Temperature</a></li><li class="has-table"><a href="#everyday-reference-volume">Volume</a></li><li class="has-table"><a href="#everyday-reference-time">Time</a></li><li class="has-table"><a href="#everyday-reference-speed">Speed</a></li><li class="has-table"><a href="#everyday-reference-fuel-use">Fuel use</a></li><li class="has-table"><a href="#everyday-reference-energy">Energy</a></li><li class="has-table"><a href="#everyday-reference-power">Power</a></li><li class="has-table"><a href="#everyday-reference-pressure">Pressure</a></li><li class="has-table"><a href="#everyday-reference-voltage">Voltage</a></li><li class="has-table"><a href="#everyday-reference-current">Current</a></li></ul></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
-<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+<li><a href="index.html">The Paludal system</a><ul><li><a href="principles.html">Principles</a></li><li><a href="names.html">Names</a></li></ul></li>
+<li><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li><a href="digits.html">Digits</a></li><li><a href="writing-numbers.html">Writing numbers</a></li><li><a href="spoken-numbers.html">Spoken numbers</a></li><li><a href="hexadecimal.html">Hexadecimal</a></li><li><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li><a href="summary.html">Summary</a></li><li><a href="prefixes.html">Prefixes</a></li><li><a href="unit-symbols.html">Unit symbols</a></li><li><a href="time.html">Time</a></li><li><a href="length.html">Length</a></li><li><a href="mass.html">Mass</a></li><li><a href="electricity.html">Electricity</a></li><li><a href="temperature.html">Temperature</a></li><li><a href="amount-of-substance.html">Amount of substance</a></li><li><a href="light.html">Light</a></li><li><a href="area.html">Area</a></li><li><a href="volume.html">Volume</a></li><li><a href="angle.html">Angle</a></li><li><a href="constants.html">Constants</a></li></ul></li>
+<li><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li><a href="thinking-in-paludal.html">Thinking in Paludal</a></li><li><a href="a-day-in-paludal.html">A day in Paludal</a></li><li><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li><a href="money.html">Money</a></li><li><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li><a href="paper-sizes.html">Paper sizes</a></li><li><a href="shoe-sizes.html">Shoe sizes</a></li><li><a href="everyday-reference.html" aria-current="page">Everyday reference</a><ul><li><a href="#everyday-reference-length">Length</a></li><li><a href="#everyday-reference-races-and-sport">Races and sport</a></li><li><a href="#everyday-reference-playing-fields">Playing fields</a></li><li><a href="#everyday-reference-mass">Mass</a></li><li><a href="#everyday-reference-temperature">Temperature</a></li><li><a href="#everyday-reference-volume">Volume</a></li><li><a href="#everyday-reference-time">Time</a></li><li><a href="#everyday-reference-speed">Speed</a></li><li><a href="#everyday-reference-fuel-use">Fuel use</a></li><li><a href="#everyday-reference-energy">Energy</a></li><li><a href="#everyday-reference-power">Power</a></li><li><a href="#everyday-reference-pressure">Pressure</a></li><li><a href="#everyday-reference-voltage">Voltage</a></li><li><a href="#everyday-reference-current">Current</a></li></ul></li><li><a href="imperial-conversions.html">Imperial conversions</a></li><li><a href="log-scales.html">Log scales</a></li></ul></li>
+<li><a href="part-4-background.html">Part 4: Background</a><ul><li><a href="prior-art.html">Prior art</a></li><li><a href="versions.html">Versions</a></li><li><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </details>
 <script>
@@ -120,8 +115,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </script>
 </nav>
 <main>
-<section id="everyday-reference" class="has-table">
-<h2>Everyday reference</h2>
+<h2 id="everyday-reference">Everyday reference</h2>
 <div class="block para">
 <p>What things come to in the new units (3 significant digits). <strong>Round</strong> is what a product, limit or setting would probably become: small values go to the nearest whole number, half, third or quarter (within 3%); large values (30 and over) go to a number ending in 0 or 6 - a multiple of six - at whatever scale suits (36, 56, 1X0, 800). Speed limits are the exception: they take the nearest whole number (see Speed limits and changeover). Left blank for natural values (body temperature, speed of sound) and where the value is already round. <strong>US</strong> gives the size in US customary units, for things measured that way in the US. Prefixes are used where the plain unit gives awkward numbers: tc ÷1,000, bc ÷100, uc ÷10, tq ×1,000.</p>
 </div>
@@ -131,8 +125,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>ir (iter, 1,000 paces = <abbr title="triqua-pace (× 10^3)">t↑p</abbr>) ≈ 2.51 km; <abbr title="triqua-opus (× 10^3)">t↑op</abbr> (1,000 opus) ≈ 53.6 kJ; <abbr title="triqua-pres (× 10^3)">t↑pr</abbr> (1,000 pres) ≈ 17.5 kPa</li>
 </ul>
 </div>
-<section id="everyday-reference-length" class="has-table">
-<h3>Length</h3>
+<h3 id="everyday-reference-length">Length</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -290,9 +283,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-races-and-sport" class="has-table">
-<h3>Races and sport</h3>
+<h3 id="everyday-reference-races-and-sport">Races and sport</h3>
 <div class="block para">
 <p>Exact conversions, and the round distance that would likely replace each one (rounded, not converted - see Speed limits and changeover). Traditional distances tied to history (marathon, cricket pitch) keep their length.</p>
 </div>
@@ -389,9 +380,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>The 100 m becomes the <strong>60-pace sprint</strong>; the 5 km and 10 km land almost exactly on 2 and 4 iters</li>
 </ul>
 </div>
-</section>
-<section id="everyday-reference-playing-fields" class="has-table">
-<h3>Playing fields</h3>
+<h3 id="everyday-reference-playing-fields">Playing fields</h3>
 <div class="block para">
 <p>Sizes from the Laws of each game. Markings fixed by those laws keep their size, as the cricket pitch does: changing them changes the game, and every ground in the world would have to be re-marked at once. Only the soccer pitch, which already varies from ground to ground, gets a round size.</p>
 </div>
@@ -536,9 +525,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>The round soccer pitch, 60 × 40 paces, is exactly 2 agers, and its length is the 60-pace sprint</li>
 </ul>
 </div>
-</section>
-<section id="everyday-reference-mass" class="has-table">
-<h3>Mass</h3>
+<h3 id="everyday-reference-mass">Mass</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -633,9 +620,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-temperature" class="has-table">
-<h3>Temperature</h3>
+<h3 id="everyday-reference-temperature">Temperature</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -716,9 +701,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-volume" class="has-table">
-<h3>Volume</h3>
+<h3 id="everyday-reference-volume">Volume</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -848,9 +831,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-time" class="has-table">
-<h3>Time</h3>
+<h3 id="everyday-reference-time">Time</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -993,9 +974,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-speed" class="has-table">
-<h3>Speed</h3>
+<h3 id="everyday-reference-speed">Speed</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -1076,9 +1055,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-fuel-use" class="has-table">
-<h3>Fuel use</h3>
+<h3 id="everyday-reference-fuel-use">Fuel use</h3>
 <div class="block decided">
 <p><strong>Decided:</strong> fuel use is given in <strong>cubs per 100 iters</strong> (cu/100 <abbr title="iter">ir</abbr>, per 361 km dec), the way Australia and Europe use L/100 km. Rule of thumb: the value is about <strong>double</strong> the L/100 km figure (×2.04 dec).</p>
 </div>
@@ -1196,9 +1173,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-energy" class="has-table">
-<h3>Energy</h3>
+<h3 id="everyday-reference-energy">Energy</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -1258,9 +1233,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-power" class="has-table">
-<h3>Power</h3>
+<h3 id="everyday-reference-power">Power</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -1313,9 +1286,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-pressure" class="has-table">
-<h3>Pressure</h3>
+<h3 id="everyday-reference-pressure">Pressure</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -1354,9 +1325,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-voltage" class="has-table">
-<h3>Voltage</h3>
+<h3 id="everyday-reference-voltage">Voltage</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -1416,9 +1385,7 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 </table>
 </div>
 </div>
-</section>
-<section id="everyday-reference-current" class="has-table">
-<h3>Current</h3>
+<h3 id="everyday-reference-current">Current</h3>
 <div class="block table">
 <div class="table-wrap">
 <table>
@@ -1497,19 +1464,11 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>A 0;X p building sheet spans two 0;5 <abbr title="pace">p</abbr> stud gaps, as a 1,200 mm sheet spans two 600 mm gaps. The close spacing (450 mm, 16 in) has no round value nearby: 0;4 <abbr title="pace">p</abbr> is 484 mm</li>
 </ul>
 </div>
-</section>
-</section>
 <div class="pager"><a class="prev" href="shoe-sizes.html">← Shoe sizes</a><a class="next" href="imperial-conversions.html">Imperial conversions →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
 </div>
-<script>
-// Not remembered: the page always opens with everything showing.
-const box = document.getElementById("tables-only");
-box.checked = false;  // browsers can restore a checkbox's state on reload
-box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
-</script>
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {

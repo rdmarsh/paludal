@@ -28,7 +28,8 @@ flowchart LR
   be -->|"× 4"| br["breath<br>4.17 s"]
   bl -->|"× 10"| br
   br -->|"× 10"| mt["moment<br>50 s"]
-  mt -->|"× 100"| ch["chime<br>2 h"]
+  mt -->|"× 10"| sl["spell<br>10 min"]
+  sl -->|"× 10"| ch["chime<br>2 h"]
   ch -->|"× 10"| day["day<br>24 h"]
 ```
 
@@ -42,7 +43,7 @@ The day divides by twelve at every step, and each step is one digit of the time:
 |---------------|----------------|-------------------|----------------------------|--------|
 | 1             | day            | 24 hours          |                            |        |
 | 0;1           | chime          | 2 hours           | E                          | hand 1 |
-| 0;01          | (not yet named) | 10 minutes       | 9                          | hand 2 |
+| 0;01          | spell          | 10 minutes        | 9                          | hand 2 |
 | 0;001         | moment         | 50 seconds        | 1                          | hand 3 |
 | 0;0001        | breath         | 4.1667 seconds    | 7                          | hand 4 |
 | 0;00001       | blink          | 0.3472 seconds    | 4                          |        |
@@ -52,14 +53,15 @@ The day divides by twelve at every step, and each step is one digit of the time:
 Converting between the named times: read across, so one breath is 10 blinks, 4 beats or 0;1 moment.
 The beat is in italics because it isn't a power of twelve of the blink (see Names).
 
-| One ... is | blink | *beat* | breath | moment | chime | day | SI |
-|---|---|---|---|---|---|---|---|
-| **blink** | **1** | 0;4 | 0;1 | 0;01 | 0;0001 | 0;00001 | 0.347 s |
-| ***beat*** | 3 | **1** | 0;3 | 0;03 | 0;0003 | 0;00003 | 1.04 s |
-| **breath** | 10 | 4 | **1** | 0;1 | 0;001 | 0;0001 | 4.17 s |
-| **moment** | 100 | 40 | 10 | **1** | 0;01 | 0;001 | 50 s |
-| **chime** | 10,000 | 4,000 | 1,000 | 100 | **1** | 0;1 | 2 h |
-| **day** | 100,000 | 40,000 | 10,000 | 1,000 | 10 | **1** | 24 h |
+| One ... is | blink | *beat* | breath | moment | spell | chime | day | SI |
+|---|---|---|---|---|---|---|---|---|
+| **blink** | **1** | 0;4 | 0;1 | 0;01 | 0;001 | 0;0001 | 0;00001 | 0.347 s |
+| ***beat*** | 3 | **1** | 0;3 | 0;03 | 0;003 | 0;0003 | 0;00003 | 1.04 s |
+| **breath** | 10 | 4 | **1** | 0;1 | 0;01 | 0;001 | 0;0001 | 4.17 s |
+| **moment** | 100 | 40 | 10 | **1** | 0;1 | 0;01 | 0;001 | 50 s |
+| **spell** | 1,000 | 400 | 100 | 10 | **1** | 0;1 | 0;01 | 10 min |
+| **chime** | 10,000 | 4,000 | 1,000 | 100 | 10 | **1** | 0;1 | 2 h |
+| **day** | 100,000 | 40,000 | 10,000 | 1,000 | 100 | 10 | **1** | 24 h |
 
 **Decided:** the **chime** = 0;1 day = 1,000 breaths = 2 hours exactly, the dozenal hour (clocks chime on the
 hour). Rejected: bell (sounds like the bel, B; ship's bells are half-hours), hora, mark.
@@ -71,11 +73,21 @@ hour). Rejected: bell (sounds like the bel, B; ship's bells are half-hours), hor
 **Decided:** the **moment** (symbol **mt**) = 0;01 chime = 10 breaths = 50 s exactly - the dozenal minute.
 
 **Why:** time of day works like hours, minutes and seconds: three named parts. The chime is the hour, the
-moment the minute (two digits, read from hands 2 and 3), the breath the second. The
-10-minute digit (0;1 chime) has no name yet (see Open items). "Wait a moment" already means about
-a minute, and the medieval moment was a unit of time (90 s).
+moment the minute (two digits, read from hands 2 and 3), the breath the second. "Wait a moment" already
+means about a minute, and the medieval moment was a unit of time (90 s).
 
 **Advantage:** the clock reads like hours, minutes and seconds, with a word people already use for about a minute.
+
+**Decided (for now):** the **spell** (symbol **sl**) = 0;1 chime = 10 moments = 10 minutes exactly, the
+digit read from hand 2. Kept until the names review finds something better (see Open items).
+
+**Why:** people time things in sizes between a minute and an hour - ten minutes, half an hour, three
+quarters of an hour - and without a name every one of them had to be said in moments or fractions of a
+chime. With it, half an hour is 3 spells, three quarters of an hour 4;6 spells and an hour 6 spells. Spell
+is Theo Beers' name for the same size (see Prior art), and "a short spell" is an everyday stretch of time.
+Rejected: breather (Primel; too close to breath). The symbol is sl because sp is the span.
+
+**Advantage:** every digit of the time now has a name, and the half hour and hour are whole numbers of it.
 
 **Decided:** time of day is written as **moments since midnight, always three digits**, with breaths after
 the dozenal point: **E91** (about 23:30), or **E91;7** to the breath. Leading zeros are required: midnight is

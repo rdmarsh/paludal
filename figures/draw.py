@@ -1,4 +1,4 @@
-# Draws the figures in figures/ (clock, compass, idea, seven-segment). Run from the repo root: python3 figures/draw.py
+# Draws the figures in figures/ (clock, compass, idea, seven-segment, clock-face). Run from the repo root: python3 figures/draw.py
 # Colours are the light theme; the classes (fg, muted, accent, line, panel) let the web pages recolour them.
 import math
 FG, MUTED, LINE, ACCENT, PANEL = "#1f1d1a", "#6b665e", "#e4e0d8", "#9a4d1f", "#f3f0ea"
@@ -175,3 +175,26 @@ for i, (label, on) in enumerate(digits7):
              f'text-anchor="middle" fill="currentColor">{name}</text>')
 s.append('</svg>')
 open("figures/seven-segment.svg", "w").write("\n".join(s) + "\n")
+
+# ---- An ordinary 12-hour clock face, numbered in dozenal: only 10, 11 and 12 change (to X, E and 10)
+s = head("A clock face in dozenal",
+         "An ordinary twelve-hour clock face. The numbers 1 to 9 are unchanged. Ten o'clock is written X (dek), "
+         "eleven o'clock E (el), and twelve at the top is written 10 (do): one full turn and nothing over. "
+         "The old numbers 10, 11 and 12 are shown small outside the dial.", "-130 -130 260 260")
+s.append(f'<circle class="panel" color="{PANEL}" r="104" fill="currentColor"/>')
+s.append(f'<circle class="line" color="{LINE}" r="104" fill="none" stroke="currentColor" stroke-width="2"/>')
+s += ticks(60, 96, 100, 0.8, "muted", MUTED, skip=5)
+s += ticks(12, 90, 100, 2.5, "fg", FG)
+for k in range(1, 13):
+    x, y = pt(k * 30, 74)
+    label = DIG[k] if k < 12 else "10"
+    cls = ' class="accent" color="' + ACCENT + '"' if k >= 10 else ""
+    s.append(f'<text{cls} x="{x}" y="{y}" font-size="19" font-weight="600" text-anchor="middle" '
+             f'dominant-baseline="central" fill="currentColor">{label}</text>')
+    if k >= 10:
+        x, y = pt(k * 30, 118)
+        s.append(f'<text class="muted" color="{MUTED}" x="{x}" y="{y}" font-size="9" text-anchor="middle" '
+                 f'dominant-baseline="central" fill="currentColor">{k}</text>')
+s.append(f'<circle r="3.5" fill="currentColor"/>')
+s.append('</svg>')
+open("figures/clock-face.svg", "w").write("\n".join(s) + "\n")

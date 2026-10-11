@@ -5,9 +5,7 @@
 - Write the spec up as a proper document (LaTeX, Markdown or AsciiDoc)
 - Give short names to a few everyday multiples (food energy tqop, pressure tqpr) instead of changing the
   coherent derived units (proposed, not decided)
-- A body-rhythm name for the chime (2 h) to match blink / beat / breath? (sleep cycle is ~1.5-2 h)
-- A name for 0;01 day (10 minutes, 10 moments), the one digit of the time without one (hand 2 shows it).
-  Rejected so far: breather (Primel; too close to breath), spell (Beers), dwell, twinkling. See Prior art
+- Time names that follow one theme: see Time names below. Spell (10 minutes) is kept for now but disliked
 - The blink clash with Primel (its blink is half ours): ask John Volan before 1.0, then keep, rename, or note it
 - Seven-segment digits (proposed, see Digits): Ramieri's dek with E for el, or his whole set (an arch for el)?
 - Standard sizes: food energy labels (opus), clothing sizes; shoe sizes in digs (proposed, see Shoe sizes)
@@ -51,3 +49,33 @@
   exactly. Against: "la" is the lam, so it would need **ls** (first and last letters); five letters; an awkward
   plural (lapides); people may shorten it to "lap", which clashes with a lap of a track; and "lapis" alone
   often means lapis lazuli. Rejected: trek (sounds hard going, and too Star Trek)
+
+### Time names
+
+Blink, beat and breath are the body's rhythms, but the body has nothing 50 seconds, 10 minutes or 2 hours
+long, so moment, spell and chime don't follow them. Most of the names do share a looser theme: they are
+words for how long something takes (in the blink of an eye, wait a beat, catch your breath, just a moment,
+a short spell). Only chime, a clock sound, breaks it. Candidates, by theme:
+
+| Unit | Size | Now | "How long" words | Body | Medieval reckoning | Clock and bells | Prior art |
+|---|---|---|---|---|---|---|---|
+| 0;00001 day | 0.35 s | blink | blink, flash, instant | blink, wink | atom (clashes with physics) | | blink (Primel's is half ours) |
+| 3 blinks | 1.04 s | *beat* | beat, tick | beat, pulse | ostent (Bede: about 1.5 s) | tick (rejected before) | beat (Primel) |
+| 0;0001 day | 4.17 s | breath | breath, breather | breath, sigh | | tock | lull (Primel, Rapoport) |
+| 0;001 day | 50 s | moment | moment, trice ("in a trice") | | moment (Bede: 90 s) | | trice (Primel); "minute" (Beers) |
+| 0;01 day | 10 min | spell | spell, break, pause, rest | nap (a power nap) | punct (Bede: 15 min) | | breather (Primel); spell (Beers) |
+| 0;1 day | 2 h | chime | sitting, stint, session, stretch | | | chime, peal | dwell (Primel); phase (Beers) |
+
+- The body runs out after the breath; only "how long" words fill every row
+- Bede's hour held 4 puncts, 10 minutes, 15 parts or 40 moments (our moment comes from there), but his
+  sizes don't match ours and the names are unfamiliar
+- A quarter peal of bells takes about 45 minutes and a full peal about 3 hours, so peal is near the chime
+  but not on it
+- Primel's set (lull, trice, breather, dwell) is the only complete one, but clashes with our breath and blink
+- Already rejected: breather (too close to breath), dwell, twinkling, tick (a clock tick is about 1 s)
+- Suggested (not decided): keep blink, beat, breath and moment; **break** for 10 minutes ("a ten-minute
+  break"; half an hour is 3 breaks, though "after the break" is ambiguous) or **rest** (pairs with breath,
+  but music has rests); **sitting** for 2 hours (a film in one sitting; two syllables) or **stint**, or keep
+  **chime**
+- Word length as a guide (short words for short times) was considered and dropped: day and year are short,
+  and the words people use most are short whatever their size

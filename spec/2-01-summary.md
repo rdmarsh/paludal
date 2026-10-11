@@ -36,6 +36,7 @@ numbers; written as SI fractions most of them would be long:
 | Clock unit        | breath | 4.16667 s (10 blinks = 4 beats) | English: one breath |
 | Dozenal hour      | chime | 2 hours exactly (1,000 breaths, 0;1 day) | English: clocks chime on the hour |
 | Dozenal minute    | moment | 50 s exactly (0;01 chime, 10 breaths) | English moment, from Latin momentum |
+| Ten minutes       | spell | 10 min exactly (0;1 chime, 10 moments) | English: a short spell |
 | 1/10 pace         | unc  | 12.1 cm          | Latin uncia, a twelfth |
 | 1/100 pace        | dig  | 1.01 cm          | Latin digitus, finger |
 | 0;2 pace          | *span* | 24.2 cm          | English span, a hand's spread |

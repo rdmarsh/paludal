@@ -10,18 +10,32 @@ else - the reasons behind each choice, and the less common units - is in the cha
 
 ### Counting in twelves
 
-Dozenal counting needs two more digits: **X** (said "dek") for ten and **E** ("el") for eleven. After E
-comes 10, which means twelve, said "do". The semicolon is the dozenal point, said "dit".
+You already count in twelves more than you might think: twelve hours on a clock, twelve months in a year,
+twelve eggs in a carton, twelve inches in a foot. Dozenal writes these numbers with digits of their own.
 
-| Dozenal | Said | Decimal |
+It needs two more digits: **X** (said "dek") for ten and **E** ("el") for eleven. On a clock face, only the
+top three numbers change. Twelve, at the top, is written **10** and said "do": one full turn and nothing
+over.
+
+![A clock face in dozenal: 1 to 9 stay the same, ten and eleven become X and E, and twelve becomes 10.](figures/clock-face.svg)
+
+| Dozenal | Said | You know it as |
 |---|---|---|
-| X, E | dek, el | 10, 11 |
-| 10 | do | 12 |
-| 20 | two do | 24 |
-| 100 | gro | 144 |
-| 1,000 | mo | 1,728 |
-| 0;6 | zero dit six | a half |
-| 0;4 / 0;3 | | a third / a quarter |
+| X, E | dek, el | ten, eleven o'clock |
+| 10 | do | a dozen: a carton of eggs, a foot of inches, a year of months |
+| 16 | do six | a dozen and a half |
+| 20 | two do | two dozen: the hours in a day |
+| 100 | gro | a gross: a dozen dozen |
+| 1,000 | mo | a dozen gross (1,728 dec) |
+
+The semicolon is the dozenal point, said "dit". After it come twelfths, the marks around a clock face:
+
+| Dozenal | Said | You know it as |
+|---|---|---|
+| 0;1 | zero dit one | a twelfth: one month of a year, five minutes of an hour |
+| 0;3 | zero dit three | a quarter: quarter past is the minute hand at 3 |
+| 0;4 | zero dit four | a third: four months of a year |
+| 0;6 | zero dit six | a half: six inches of a foot, half past |
 
 Twelve splits evenly into halves, thirds, quarters and sixths, so those are all short, exact numbers.
 
@@ -66,7 +80,8 @@ The day is cut into twelves, and each cut is one digit of the time.
 | Unit | Symbol | Size | How many |
 |---|---|---|---|
 | chime | ch | 2 hours | 10 (12 dec) in a day |
-| moment | mt | 50 seconds | 100 (144 dec) in a chime |
+| spell | sl | 10 minutes | 10 (12 dec) in a chime |
+| moment | mt | 50 seconds | 10 (12 dec) in a spell |
 | breath | br | 4.17 seconds | 10 (12 dec) in a moment |
 | *beat* | bt | 1.04 seconds - about a second | 4 in a breath |
 
@@ -82,12 +97,12 @@ The time is written as three digits, counting moments since midnight:
 | Dusk | 900 | 18:00 |
 | Late evening | E91 | 23:31 |
 
-An hour is half a chime (60 moments), and a film is about one chime.
+Half an hour is 3 spells, an hour is 6 spells (half a chime), and a film is about one chime.
 
 ### How it fits together
 
 ![How Paludal is built: the day gives the blink, light gives the pace, and a cube of water gives the lib - counted in twelves at every step.](figures/idea.svg)
 
 Like SI, every unit is fixed to a constant of nature, so each one converts exactly to metric. The
-chapters below explain how: Principles covers the ideas behind the system, Names lists every unit, and
-Part 3 (Everyday use) has many more examples.
+chapters below explain how: Principles covers the ideas behind the system, and Names lists every unit.
+To get a feel for the sizes, start with Thinking in Paludal in Part 3 (Everyday use).

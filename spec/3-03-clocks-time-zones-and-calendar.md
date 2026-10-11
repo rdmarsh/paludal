@@ -29,8 +29,8 @@ and adds clutter (clocks.dozenal.ca leaves out a fifth hand for the same reason)
 | Hand   | Turns once per        | Shows                   | At E91;7 | Like        |
 |--------|-----------------------|-------------------------|----------|-------------|
 | Hand 1 | day                   | chime                   | E        | hour hand   |
-| Hand 2 | chime (2 h)           | dozens of moments       | 9        |             |
-| Hand 3 | 10 moments (10 min)   | moments                 | 1        | minute hand |
+| Hand 2 | chime (2 h)           | spells                  | 9        |             |
+| Hand 3 | spell (10 min)        | moments                 | 1        | minute hand |
 | Hand 4 | moment (50 s)         | breath                  | 7        | second hand |
 
 ![The clock at E91;7 (about 23:31): hand 1 just before 0, hand 2 just past 9, hand 3 half way from 1 to 2, hand 4 on 7.](figures/clock.svg)
