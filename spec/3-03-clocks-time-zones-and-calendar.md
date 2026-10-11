@@ -189,3 +189,10 @@ named after the zodiac in Greek), and the six days are named after colours (Rube
 Cæruleus, Purpureus).
 - A 6-day week would mean a 4-day working week with the usual 2-day weekend
 - For now, the 7-day week stays: changing it is too big a change, and 365 (dec) days can't be split evenly anyway
+- Against: the S-days. Twelve months of 30 (dec) days leave 5 days over (6 in a leap year), and days that
+  belong to no month or week break the things a calendar is for: the weekday cycle has gaps, counting the
+  days between two dates means remembering where the S-days fall, and a birthday or pay day on an S-day has
+  no obvious place in other years. Spreading them through the year puts those gaps in several places; all
+  at the year's end (as a holiday, as the French Republican calendar did) would be easier to remember.
+  Every calendar with equal months has this problem; the Gregorian calendar hides the extra days inside
+  uneven months instead
