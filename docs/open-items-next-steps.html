@@ -35,6 +35,8 @@ nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0;
 nav a:hover { color: var(--accent); }
 nav ul ul a { color: var(--muted); }
 nav a[aria-current] { color: var(--accent); font-weight: 600; }
+/* On wide screens the contents are always open; on phones they fold away behind the summary */
+nav details.contents > summary { display: none; }
 .conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
   margin: 0 0 16px; font-size: 13px; color: var(--muted); }
 .conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
@@ -83,6 +85,9 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  nav h1 { margin: 0 0 8px; }
+  nav details.contents > summary { display: list-item; cursor: pointer; color: var(--accent); font-weight: 600; }
+  nav details.contents[open] > summary { margin-bottom: 12px; }
   main { padding: 8px 16px 60px; }
 }
 </style>
@@ -93,6 +98,8 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <h1><a href="index.html">Paludal units</a></h1>
 <p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
 <label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<details class="contents" open>
+<summary>Contents and tools</summary>
 <div class="conv">
 <label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
 <label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
@@ -105,6 +112,12 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
 <li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html" aria-current="page">Open items / next steps</a></li></ul></li>
 </ul>
+</details>
+<script>
+// Fold the contents away on phones (the layout's breakpoint); wide screens keep them open.
+// It runs here, before the page paints, so phones never flash the open list.
+if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav details.contents").open = false;
+</script>
 </nav>
 <main>
 <section id="open-items-next-steps" class="no-table">

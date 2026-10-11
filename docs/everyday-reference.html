@@ -35,6 +35,8 @@ nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0;
 nav a:hover { color: var(--accent); }
 nav ul ul a { color: var(--muted); }
 nav a[aria-current] { color: var(--accent); font-weight: 600; }
+/* On wide screens the contents are always open; on phones they fold away behind the summary */
+nav details.contents > summary { display: none; }
 .conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
   margin: 0 0 16px; font-size: 13px; color: var(--muted); }
 .conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
@@ -83,6 +85,9 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 @media (max-width: 760px) {
   .layout { display: block; }
   nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  nav h1 { margin: 0 0 8px; }
+  nav details.contents > summary { display: list-item; cursor: pointer; color: var(--accent); font-weight: 600; }
+  nav details.contents[open] > summary { margin-bottom: 12px; }
   main { padding: 8px 16px 60px; }
 }
 </style>
@@ -93,6 +98,8 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <h1><a href="index.html">Paludal units</a></h1>
 <p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
 <label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<details class="contents" open>
+<summary>Contents and tools</summary>
 <div class="conv">
 <label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
 <label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
@@ -102,9 +109,15 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
 <li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
 <li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
-<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html" aria-current="page">Everyday reference</a><ul><li class="has-table"><a href="#everyday-reference-length">Length</a></li><li class="has-table"><a href="#everyday-reference-races-and-sport">Races and sport</a></li><li class="has-table"><a href="#everyday-reference-mass">Mass</a></li><li class="has-table"><a href="#everyday-reference-temperature">Temperature</a></li><li class="has-table"><a href="#everyday-reference-volume">Volume</a></li><li class="has-table"><a href="#everyday-reference-time">Time</a></li><li class="has-table"><a href="#everyday-reference-speed">Speed</a></li><li class="has-table"><a href="#everyday-reference-fuel-use">Fuel use</a></li><li class="has-table"><a href="#everyday-reference-energy">Energy</a></li><li class="has-table"><a href="#everyday-reference-power">Power</a></li><li class="has-table"><a href="#everyday-reference-pressure">Pressure</a></li><li class="has-table"><a href="#everyday-reference-voltage">Voltage</a></li><li class="has-table"><a href="#everyday-reference-current">Current</a></li></ul></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html" aria-current="page">Everyday reference</a><ul><li class="has-table"><a href="#everyday-reference-length">Length</a></li><li class="has-table"><a href="#everyday-reference-races-and-sport">Races and sport</a></li><li class="has-table"><a href="#everyday-reference-playing-fields">Playing fields</a></li><li class="has-table"><a href="#everyday-reference-mass">Mass</a></li><li class="has-table"><a href="#everyday-reference-temperature">Temperature</a></li><li class="has-table"><a href="#everyday-reference-volume">Volume</a></li><li class="has-table"><a href="#everyday-reference-time">Time</a></li><li class="has-table"><a href="#everyday-reference-speed">Speed</a></li><li class="has-table"><a href="#everyday-reference-fuel-use">Fuel use</a></li><li class="has-table"><a href="#everyday-reference-energy">Energy</a></li><li class="has-table"><a href="#everyday-reference-power">Power</a></li><li class="has-table"><a href="#everyday-reference-pressure">Pressure</a></li><li class="has-table"><a href="#everyday-reference-voltage">Voltage</a></li><li class="has-table"><a href="#everyday-reference-current">Current</a></li></ul></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
 <li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
+</details>
+<script>
+// Fold the contents away on phones (the layout's breakpoint); wide screens keep them open.
+// It runs here, before the page paints, so phones never flash the open list.
+if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav details.contents").open = false;
+</script>
 </nav>
 <main>
 <section id="everyday-reference" class="has-table">
@@ -374,6 +387,153 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <div class="block list">
 <ul>
 <li>The 100 m becomes the <strong>60-pace sprint</strong>; the 5 km and 10 km land almost exactly on 2 and 4 iters</li>
+</ul>
+</div>
+</section>
+<section id="everyday-reference-playing-fields" class="has-table">
+<h3>Playing fields</h3>
+<div class="block para">
+<p>Sizes from the Laws of each game. Markings fixed by those laws keep their size, as the cricket pitch does: changing them changes the game, and every ground in the world would have to be re-marked at once. Only the soccer pitch, which already varies from ground to ground, gets a round size.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Soccer pitch (FIFA size)</td>
+<td>105 × 68 m</td>
+<td>115 × 74 yd</td>
+<td>60;3 × 3X;X p</td>
+<td>60 × 40 <abbr title="pace">p</abbr> (104.6 × 69.7 m)</td>
+</tr>
+<tr>
+<td>Soccer pitch (area)</td>
+<td>7,140 m²</td>
+<td>1.76 acres</td>
+<td>1;E6 <abbr title="ager">ag</abbr></td>
+<td>2 <abbr title="ager">ag</abbr> (60 × 40 <abbr title="pace">p</abbr>, exact)</td>
+</tr>
+<tr>
+<td>Soccer pitch (allowed range)</td>
+<td>90-120 × 45-90 m</td>
+<td>100-130 × 50-100 yd</td>
+<td>52-6X;7 × 27-52 <abbr title="pace">p</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Penalty area</td>
+<td>16.5 × 40.3 m</td>
+<td>18 × 44 yd</td>
+<td>E;44 × 23;9 <abbr title="pace">p</abbr></td>
+<td>(keeps 18 × 44 yd)</td>
+</tr>
+<tr>
+<td>Goal area</td>
+<td>5.5 × 18.3 m</td>
+<td>6 × 20 yd</td>
+<td>3;95 × 10;7 <abbr title="pace">p</abbr></td>
+<td>(keeps 6 × 20 yd)</td>
+</tr>
+<tr>
+<td>Penalty spot (from goal line)</td>
+<td>11 m</td>
+<td>12 yd</td>
+<td>7;6E p</td>
+<td>(keeps 12 yd)</td>
+</tr>
+<tr>
+<td>Centre circle (radius)</td>
+<td>9.15 m</td>
+<td>10 yd</td>
+<td>6;37 <abbr title="pace">p</abbr></td>
+<td>(keeps 10 yd)</td>
+</tr>
+<tr>
+<td>Soccer goal</td>
+<td>7.32 × 2.44 m</td>
+<td>8 yd × 8 ft</td>
+<td>5;06 × 1;82 <abbr title="pace">p</abbr></td>
+<td>(keeps 8 yd × 8 ft)</td>
+</tr>
+<tr>
+<td>Tennis court (doubles)</td>
+<td>23.77 × 10.97 m</td>
+<td>78 × 36 ft</td>
+<td>14;4 × 7;68 <abbr title="pace">p</abbr></td>
+<td>(keeps 78 × 36 ft)</td>
+</tr>
+<tr>
+<td>Tennis court (singles width)</td>
+<td>8.23 m</td>
+<td>27 ft</td>
+<td>5;80 <abbr title="pace">p</abbr></td>
+<td>(keeps 27 ft)</td>
+</tr>
+<tr>
+<td>Tennis service line (from net)</td>
+<td>6.40 m</td>
+<td>21 ft</td>
+<td>4;4X p</td>
+<td>(keeps 21 ft)</td>
+</tr>
+<tr>
+<td>Tennis net (centre / posts)</td>
+<td>0.914 / 1.07 m</td>
+<td>3 ft / 3 ft 6 in</td>
+<td>7;67 / 8;X1 <abbr title="unc">un</abbr></td>
+<td>(keeps 3 ft / 3 ft 6 in)</td>
+</tr>
+<tr>
+<td>Cricket pitch (stumps to stumps)</td>
+<td>20.12 m</td>
+<td>22 yd</td>
+<td>11;X p</td>
+<td>(keeps 22 yd)</td>
+</tr>
+<tr>
+<td>Cricket pitch (width)</td>
+<td>3.05 m</td>
+<td>10 ft</td>
+<td>2;12 <abbr title="pace">p</abbr></td>
+<td>(keeps 10 ft)</td>
+</tr>
+<tr>
+<td>Popping crease (in front of the stumps)</td>
+<td>1.22 m</td>
+<td>4 ft</td>
+<td>X;0E un</td>
+<td>(keeps 4 ft)</td>
+</tr>
+<tr>
+<td>Stumps (height × width)</td>
+<td>71.1 × 22.9 cm</td>
+<td>28 × 9 in</td>
+<td>5;X6 × 1;X8 <abbr title="unc">un</abbr></td>
+<td>(keeps 28 × 9 in)</td>
+</tr>
+<tr>
+<td>Cricket boundary (from the pitch centre, men's internationals)</td>
+<td>59.4-82.3 m</td>
+<td>65-90 yd</td>
+<td>34;E-48;8 <abbr title="pace">p</abbr></td>
+<td>(set by each ground)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>The round soccer pitch, 60 × 40 paces, is exactly 2 agers, and its length is the 60-pace sprint</li>
 </ul>
 </div>
 </section>

@@ -59,6 +59,34 @@ see Speed limits and changeover). Traditional distances tied to history (maratho
 
 - The 100 m becomes the **60-pace sprint**; the 5 km and 10 km land almost exactly on 2 and 4 iters
 
+### Playing fields
+
+Sizes from the Laws of each game. Markings fixed by those laws keep their size, as the cricket pitch does:
+changing them changes the game, and every ground in the world would have to be re-marked at once. Only the
+soccer pitch, which already varies from ground to ground, gets a round size.
+
+| Thing | SI | US | Dozenal | Round |
+|---|---|---|---|---|
+| Soccer pitch (FIFA size) | 105 × 68 m | 115 × 74 yd | 60;3 × 3X;X p | 60 × 40 p (104.6 × 69.7 m) |
+| Soccer pitch (area) | 7,140 m² | 1.76 acres | 1;E6 ag | 2 ag (60 × 40 p, exact) |
+| Soccer pitch (allowed range) | 90-120 × 45-90 m | 100-130 × 50-100 yd | 52-6X;7 × 27-52 p |  |
+| Penalty area | 16.5 × 40.3 m | 18 × 44 yd | E;44 × 23;9 p | (keeps 18 × 44 yd) |
+| Goal area | 5.5 × 18.3 m | 6 × 20 yd | 3;95 × 10;7 p | (keeps 6 × 20 yd) |
+| Penalty spot (from goal line) | 11 m | 12 yd | 7;6E p | (keeps 12 yd) |
+| Centre circle (radius) | 9.15 m | 10 yd | 6;37 p | (keeps 10 yd) |
+| Soccer goal | 7.32 × 2.44 m | 8 yd × 8 ft | 5;06 × 1;82 p | (keeps 8 yd × 8 ft) |
+| Tennis court (doubles) | 23.77 × 10.97 m | 78 × 36 ft | 14;4 × 7;68 p | (keeps 78 × 36 ft) |
+| Tennis court (singles width) | 8.23 m | 27 ft | 5;80 p | (keeps 27 ft) |
+| Tennis service line (from net) | 6.40 m | 21 ft | 4;4X p | (keeps 21 ft) |
+| Tennis net (centre / posts) | 0.914 / 1.07 m | 3 ft / 3 ft 6 in | 7;67 / 8;X1 un | (keeps 3 ft / 3 ft 6 in) |
+| Cricket pitch (stumps to stumps) | 20.12 m | 22 yd | 11;X p | (keeps 22 yd) |
+| Cricket pitch (width) | 3.05 m | 10 ft | 2;12 p | (keeps 10 ft) |
+| Popping crease (in front of the stumps) | 1.22 m | 4 ft | X;0E un | (keeps 4 ft) |
+| Stumps (height × width) | 71.1 × 22.9 cm | 28 × 9 in | 5;X6 × 1;X8 un | (keeps 28 × 9 in) |
+| Cricket boundary (from the pitch centre, men's internationals) | 59.4-82.3 m | 65-90 yd | 34;E-48;8 p | (set by each ground) |
+
+- The round soccer pitch, 60 × 40 paces, is exactly 2 agers, and its length is the 60-pace sprint
+
 ### Mass
 
 | Thing | SI | US | Dozenal | Round |
