@@ -176,7 +176,7 @@ times make handy yardsticks for big distances, as light-seconds and light-years 
 ### Star distances
 
 **Decided:** the **parax** (symbol **px**), a dozenal parsec: the distance at which the Earth's orbit (1 AU, the Earth-Sun distance)
-spans **0;000001 turn** (1/2,985,984 dec of a turn, 0.434 arcseconds).
+spans **1 × 10^-6 turn** (1/2,985,984 dec of a turn, 0.434 arcseconds).
 
 **Why:** star distances come out as handy numbers - the nearest star is just under 1 (0;694), the centre of
 the Milky Way about 2,000 - and the distance is simply 1 over the parallax in millionths of a turn.
@@ -192,7 +192,7 @@ light-year is mostly for the public. The parsec is exact in SI (648,000/π AU), 
 
 - 1 parax = 1,000,000 / 2π AU = 1X,E02;14 AU (475,234 dec) = 3;2155 × 10^13 p
 - = 2.304 parsecs = 7.515 light-years (dec)
-- Parallax in millionths of a turn gives the distance directly: a star that shifts 0;000004 turn is 0;3 px away
+- Parallax in millionths of a turn gives the distance directly: a star that shifts 4 × 10^-6 turn is 0;3 px away
 - 0;00001 turn (5.2 arcseconds) would give 0.192 parsecs
 
 | Object | Parsecs (dec) | Parax |

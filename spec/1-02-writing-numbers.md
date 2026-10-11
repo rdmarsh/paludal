@@ -8,13 +8,17 @@
 
 **Decided:** long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec).
 Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6859 DH), dates, times of day
-(EX0;53), and digits after the point.
+(EX0;53), and digits after the point. A number with more than four zeros after the point is written as a
+power instead (1 × 10^-6, not 0;000001), or given a prefixed unit, except in a table column of fractions
+lined up for comparison.
 
 **Why:** groups of three are the easiest for people to read, and they match how numbers are spoken
 (thousand / million, mo / bimo). The comma is free in both bases, since decimal uses a dot as the point and
 dozenal a semicolon. It replaces SI's thin space (86 400), which is easy to miss, gets lost when text is
 copied, and can split a number across two lines. Where the comma is the decimal point (much of Europe),
-86,400 could be misread; the dot-and-semicolon rule above already settles which mark is the point.
+86,400 could be misread; the dot-and-semicolon rule above already settles which mark is the point. After the
+point a comma would be misread there outright, and grouping doesn't help people count a run of zeros, so a
+long run is avoided instead (asked about, 2026 CE).
 
 **Advantage:** long numbers are easy to read, copy and say, in either base.
 
