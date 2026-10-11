@@ -12,6 +12,8 @@ Roman pace. Mass comes from the Planck constant, chosen so that a cub of water (
 weighs a lib. Temperature, charge, amount and light are each fixed by a constant, as in SI, so every unit
 converts exactly to SI. Multiples and fractions step by twelve, which divides evenly by 2, 3, 4 and 6.
 
+![How Paludal is built: the day gives the blink, light gives the pace, and a cube of water gives the lib - counted in twelves at every step.](figures/idea.svg)
+
 **Decided:** the system is called **Paludal** ("paludal units", "is that metric or paludal?").
 Fallbacks if needed: **Uncial** (Latin uncia, a twelfth) or **Passic** (from passus, the pace - as metric is from the metre).
 

@@ -1,4 +1,4 @@
-# Draws figures/clock.svg and figures/compass.svg. Run from the repo root: python3 figures/draw.py
+# Draws figures/clock.svg, figures/compass.svg and figures/idea.svg. Run from the repo root: python3 figures/draw.py
 # Colours are the light theme; the classes (fg, muted, accent, line, panel) let the web pages recolour them.
 import math
 FG, MUTED, LINE, ACCENT, PANEL = "#1f1d1a", "#6b665e", "#e4e0d8", "#9a4d1f", "#f3f0ea"
@@ -92,3 +92,61 @@ for name, b, m in pts:
 s.append('</g>')
 s.append('</svg>')
 open("figures/compass.svg", "w").write("\n".join(s) + "\n")
+
+# ---- The idea: the day gives the blink, light gives the pace, a cube of water gives the lib; every step is twelve
+s = head("How Paludal is built",
+         "A chain of five boxes from top to bottom. The day (24 hours) divided by 100,000 (twelve to the fifth) "
+         "gives the blink, 0.347 s. Light travels 2 × 10^7 paces a blink, which gives the pace, 1.45 m. A cube "
+         "0;1 pace on each side is the cub, 1.77 L. A cub of water weighs about a lib, 1.77 kg. Below, a bar "
+         "one pace long is split into twelve uncs, and the first unc is drawn larger, split into twelve digs.",
+         "0 0 320 486")
+boxes = [("day", "24 hours", "the Earth", "fg", FG),
+         ("blink", "time · 0.347 s", "base unit", "accent", ACCENT),
+         ("pace", "length · 1.45 m", "base unit", "accent", ACCENT),
+         ("cub", "volume · 1.77 L", "", "fg", FG),
+         ("lib", "mass · 1.77 kg", "base unit", "accent", ACCENT)]
+steps = [("÷ 100,000", "(twelve to the fifth)"), ("light travels", "2 × 10⁷ paces a blink"),
+         ("a cube 0;1 pace", "on each side"), ("filled with water,", "weighs ≈ 1 lib")]
+X, W, H, GAP = 12, 140, 46, 30
+for i, (name, size, note, cls, colour) in enumerate(boxes):
+    y = 8 + i * (H + GAP)
+    s.append(f'<rect class="panel" color="{PANEL}" x="{X}" y="{y}" width="{W}" height="{H}" rx="8" fill="currentColor"/>')
+    s.append(f'<rect class="{cls}" color="{colour}" x="{X}" y="{y}" width="{W}" height="{H}" rx="8" fill="none" '
+             f'stroke="currentColor" stroke-width="{2 if cls == "accent" else 1.2}"/>')
+    s.append(f'<text x="{X + 12}" y="{y + 20}" font-size="15" font-weight="700" fill="currentColor">{name}</text>')
+    s.append(f'<text class="muted" color="{MUTED}" x="{X + 12}" y="{y + 37}" font-size="11" fill="currentColor">{size}</text>')
+    if note:
+        s.append(f'<text class="muted" color="{MUTED}" x="{X + W - 10}" y="{y + 20}" font-size="9" '
+                 f'text-anchor="end" fill="currentColor">{note}</text>')
+    if i < len(steps):
+        ax, y1, y2 = X + 28, y + H + 2, y + H + GAP - 3
+        s.append(f'<g class="muted" color="{MUTED}" stroke="currentColor" fill="none" stroke-width="1.5" '
+                 f'stroke-linecap="round" stroke-linejoin="round"><line x1="{ax}" y1="{y1}" x2="{ax}" y2="{y2}"/>'
+                 f'<path d="M{ax - 4} {y2 - 5} L{ax} {y2} L{ax + 4} {y2 - 5}"/></g>')
+        a, b = steps[i]
+        s.append(f'<text x="{X + W + 14}" y="{y + H + 9}" font-size="11" fill="currentColor">{a}'
+                 f'<tspan class="muted" color="{MUTED}" x="{X + W + 14}" dy="14">{b}</tspan></text>')
+# The ruler: one pace in twelve uncs, the first unc in twelve digs
+top = 8 + 5 * (H + GAP) + 6
+L0, L1 = 12, 308
+u = (L1 - L0) / 12
+s.append(f'<text x="{L0}" y="{top}" font-size="12" font-weight="600" fill="currentColor">Every step is twelve</text>')
+y = top + 14
+s.append(f'<rect class="panel" color="{PANEL}" x="{L0}" y="{y}" width="{L1 - L0}" height="14" fill="currentColor"/>')
+s.append(f'<rect class="accent" color="{ACCENT}" x="{L0}" y="{y}" width="{u:.2f}" height="14" fill="currentColor" opacity="0.35"/>')
+s.append(f'<g class="fg" color="{FG}" stroke="currentColor" stroke-width="1">'
+         f'<rect x="{L0}" y="{y}" width="{L1 - L0}" height="14" fill="none"/>' +
+         "".join(f'<line x1="{L0 + k * u:.2f}" y1="{y}" x2="{L0 + k * u:.2f}" y2="{y + 14}"/>' for k in range(1, 12)) + '</g>')
+s.append(f'<text class="muted" color="{MUTED}" x="{L1}" y="{y - 4}" font-size="10" text-anchor="end" fill="currentColor">'
+         '1 pace = 10 unc (12 dec)</text>')
+z = y + 40
+s.append(f'<g class="muted" color="{MUTED}" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 2">'
+         f'<line x1="{L0}" y1="{y + 14}" x2="{L0}" y2="{z}"/><line x1="{L0 + u:.2f}" y1="{y + 14}" x2="{L1}" y2="{z}"/></g>')
+s.append(f'<rect class="panel" color="{PANEL}" x="{L0}" y="{z}" width="{L1 - L0}" height="14" fill="currentColor"/>')
+s.append(f'<g class="accent" color="{ACCENT}" stroke="currentColor" stroke-width="1">'
+         f'<rect x="{L0}" y="{z}" width="{L1 - L0}" height="14" fill="none"/>' +
+         "".join(f'<line x1="{L0 + k * u:.2f}" y1="{z}" x2="{L0 + k * u:.2f}" y2="{z + 14}"/>' for k in range(1, 12)) + '</g>')
+s.append(f'<text class="muted" color="{MUTED}" x="{L1}" y="{z + 27}" font-size="10" text-anchor="end" fill="currentColor">'
+         '1 unc (12.1 cm) = 10 dig (≈ 1 cm each)</text>')
+s.append('</svg>')
+open("figures/idea.svg", "w").write("\n".join(s) + "\n")

@@ -15,8 +15,8 @@ remember. The rule used to say "no clash with existing everyday words", which co
 | Time (base)            | blink | bl     | 0.3472 s            | English: the blink of an eye                      |                              |
 | Time (≈ second)        | beat  | bt     | 1.0417 s            | English: a heartbeat                              |                              |
 | Time (clock)           | breath | br    | 4.1667 s            | English: one breath                               |                              |
-| Time (dozenal hour)    | chime | ch     | 2 h exactly         | English: clocks chime on the hour                 |                              |
 | Time (dozenal minute)  | moment | mt    | 50 s exactly        | Latin momentum, movement; medieval moment = 90 s  | moment, momentum             |
+| Time (dozenal hour)    | chime | ch     | 2 h exactly         | English: clocks chime on the hour                 |                              |
 | Length (base)          | pace  | p      | 1.4525 m            | Latin passus, a pace (Roman pace ≈ 1.48 m)        | pace, passage                |
 | 1/10 pace              | unc   | un     | ≈ 12.1 cm           | Latin uncia, a twelfth                            | inch, ounce                  |
 | 1/100 pace             | dig   | di     | ≈ 1.01 cm           | Latin digitus, finger (Roman digit ≈ 1.85 cm)     | digit                        |
