@@ -1,4 +1,4 @@
-# Draws figures/clock.svg, figures/compass.svg and figures/idea.svg. Run from the repo root: python3 figures/draw.py
+# Draws the figures in figures/ (clock, compass, idea, seven-segment). Run from the repo root: python3 figures/draw.py
 # Colours are the light theme; the classes (fg, muted, accent, line, panel) let the web pages recolour them.
 import math
 FG, MUTED, LINE, ACCENT, PANEL = "#1f1d1a", "#6b665e", "#e4e0d8", "#9a4d1f", "#f3f0ea"
@@ -150,3 +150,28 @@ s.append(f'<text class="muted" color="{MUTED}" x="{L1}" y="{z + 27}" font-size="
          '1 unc (12.1 cm) = 10 dig (≈ 1 cm each)</text>')
 s.append('</svg>')
 open("figures/idea.svg", "w").write("\n".join(s) + "\n")
+
+# ---- Seven-segment digits: 0-9 as usual, dek as Antonio Ramieri's glyph, el as E (and Ramieri's arch, for comparison)
+# Segments: a top, b top right, c bottom right, d bottom, e bottom left, f top left, g middle
+SEG = {"a": (3, 0, 17, 0), "b": (20, 3, 20, 19), "c": (20, 25, 20, 41), "d": (3, 44, 17, 44),
+       "e": (0, 25, 0, 41), "f": (0, 3, 0, 19), "g": (3, 22, 17, 22)}
+digits7 = [("0", "abcdef"), ("1", "bc"), ("2", "abged"), ("3", "abgcd"), ("4", "fgbc"), ("5", "afgcd"),
+           ("6", "afgedc"), ("7", "abc"), ("8", "abcdefg"), ("9", "abcdfg"), ("X", "bceg"), ("E", "adefg"),
+           ("E?", "abcef")]
+s = head("Dozenal digits on a seven-segment display",
+         "Thirteen seven-segment digits in two rows. 0 to 9 are the usual shapes. Dek (X) lights the top right, "
+         "bottom right, bottom left and middle segments, like an upside-down h. El (E) is the letter E. The last "
+         "digit, set apart, is Antonio Ramieri's el: every segment except the middle and bottom, an arch.",
+         "0 0 320 160")
+for i, (label, on) in enumerate(digits7):
+    row, col = divmod(i, 7)
+    x = 18 + col * 42 + (14 if label == "E?" else 0); y = 10 + row * 78
+    for k, (x1, y1, x2, y2) in SEG.items():
+        cls, colour = ("accent", ACCENT) if k in on else ("line", LINE)
+        s.append(f'<line class="{cls}" color="{colour}" x1="{x + x1}" y1="{y + y1}" x2="{x + x2}" y2="{y + y2}" '
+                 f'stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>')
+    name = {"X": "dek", "E": "el", "E?": "el (Ramieri)"}.get(label, label)
+    s.append(f'<text class="muted" color="{MUTED}" x="{x + 10}" y="{y + 60}" font-size="{9 if len(name) > 3 else 11}" '
+             f'text-anchor="middle" fill="currentColor">{name}</text>')
+s.append('</svg>')
+open("figures/seven-segment.svg", "w").write("\n".join(s) + "\n")

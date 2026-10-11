@@ -9,6 +9,7 @@
 - A name for 0;01 day (10 minutes, 10 moments), the one digit of the time without one (hand 2 shows it).
   Rejected so far: breather (Primel; too close to breath), spell (Beers), dwell, twinkling. See Prior art
 - The blink clash with Primel (its blink is half ours): ask John Volan before 1.0, then keep, rename, or note it
+- Seven-segment digits (proposed, see Digits): Ramieri's dek with E for el, or his whole set (an arch for el)?
 - Standard sizes: food energy labels (opus), clothing sizes; shoe sizes in digs (proposed, see Shoe sizes)
 - Name for 0;1 dig (≈ 0.84 mm, the new millimetre): **lin**, from Latin linea (a linen thread, a line); the
   old line was 1/12 inch, and watch and button sizes still use the French ligne. Needs a symbol exception:

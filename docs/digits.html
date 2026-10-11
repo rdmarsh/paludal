@@ -107,7 +107,7 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 </div>
 <ul>
 <li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="principles.html">Principles</a></li><li class="has-table"><a href="names.html">Names</a></li></ul></li>
-<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html" aria-current="page">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html" aria-current="page">Digits</a><ul><li class="has-table"><a href="#digits-seven-segment-displays">Seven-segment displays</a></li></ul></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
 <li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
 <li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
 <li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
@@ -136,6 +136,139 @@ if (matchMedia("(max-width: 760px)").matches) document.querySelector("nav detail
 <li>In data files, write ↊ ↋ or store dozenal numbers as text (quoted), so software can't misread them. Quoting also protects the semicolon, which some files use to separate fields</li>
 </ul>
 </div>
+<section id="digits-seven-segment-displays" class="has-table">
+<h3>Seven-segment displays</h3>
+<div class="block decided">
+<p><strong>Proposed (not decided):</strong> on seven-segment displays (clocks, calculators, meters), dek is shown as Antonio Ramieri's glyph - the top right, bottom right, bottom left and middle segments, like an upside-down h - and el as E.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> a seven-segment display has no diagonals, so X can't be shown, and neither can Pitman's ↊ (on the display, a 2 turned upside down is still a 2). Ramieri suggested his digits in Facebook's Dozenal (Base 12) Advocacy group, and they were recorded on rdm.sh in 2009. His dek isn't a letter, so it doesn't clash with hex or dozenal hex, and no other digit turns into it through one dead segment. El stays E: it matches the written el, and it's also the shape Pitman's ↋ (a turned 3) takes on the display.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a dozenal clock or calculator can be built from ordinary display parts, and reads the same as printed dozenal.</p>
+</div>
+<div class="block figure">
+<figure class="figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" role="img" color="#1f1d1a" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<title>Dozenal digits on a seven-segment display</title>
+<desc>Thirteen seven-segment digits in two rows. 0 to 9 are the usual shapes. Dek (X) lights the top right, bottom right, bottom left and middle segments, like an upside-down h. El (E) is the letter E. The last digit, set apart, is Antonio Ramieri's el: every segment except the middle and bottom, an arch.</desc>
+<line class="accent" color="#9a4d1f" x1="21" y1="10" x2="35" y2="10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="38" y1="13" x2="38" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="38" y1="35" x2="38" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="21" y1="54" x2="35" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="18" y1="35" x2="18" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="18" y1="13" x2="18" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="21" y1="32" x2="35" y2="32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="28" y="70" font-size="11" text-anchor="middle" fill="currentColor">0</text>
+<line class="line" color="#e4e0d8" x1="63" y1="10" x2="77" y2="10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="80" y1="13" x2="80" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="80" y1="35" x2="80" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="63" y1="54" x2="77" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="60" y1="35" x2="60" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="60" y1="13" x2="60" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="63" y1="32" x2="77" y2="32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="70" y="70" font-size="11" text-anchor="middle" fill="currentColor">1</text>
+<line class="accent" color="#9a4d1f" x1="105" y1="10" x2="119" y2="10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="122" y1="13" x2="122" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="122" y1="35" x2="122" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="105" y1="54" x2="119" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="102" y1="35" x2="102" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="102" y1="13" x2="102" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="105" y1="32" x2="119" y2="32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="112" y="70" font-size="11" text-anchor="middle" fill="currentColor">2</text>
+<line class="accent" color="#9a4d1f" x1="147" y1="10" x2="161" y2="10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="164" y1="13" x2="164" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="164" y1="35" x2="164" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="147" y1="54" x2="161" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="144" y1="35" x2="144" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="144" y1="13" x2="144" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="147" y1="32" x2="161" y2="32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="154" y="70" font-size="11" text-anchor="middle" fill="currentColor">3</text>
+<line class="line" color="#e4e0d8" x1="189" y1="10" x2="203" y2="10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="206" y1="13" x2="206" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="206" y1="35" x2="206" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="189" y1="54" x2="203" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="186" y1="35" x2="186" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="186" y1="13" x2="186" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="189" y1="32" x2="203" y2="32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="196" y="70" font-size="11" text-anchor="middle" fill="currentColor">4</text>
+<line class="accent" color="#9a4d1f" x1="231" y1="10" x2="245" y2="10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="248" y1="13" x2="248" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="248" y1="35" x2="248" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="231" y1="54" x2="245" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="228" y1="35" x2="228" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="228" y1="13" x2="228" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="231" y1="32" x2="245" y2="32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="238" y="70" font-size="11" text-anchor="middle" fill="currentColor">5</text>
+<line class="accent" color="#9a4d1f" x1="273" y1="10" x2="287" y2="10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="290" y1="13" x2="290" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="290" y1="35" x2="290" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="273" y1="54" x2="287" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="270" y1="35" x2="270" y2="51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="270" y1="13" x2="270" y2="29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="273" y1="32" x2="287" y2="32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="280" y="70" font-size="11" text-anchor="middle" fill="currentColor">6</text>
+<line class="accent" color="#9a4d1f" x1="21" y1="88" x2="35" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="38" y1="91" x2="38" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="38" y1="113" x2="38" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="21" y1="132" x2="35" y2="132" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="18" y1="113" x2="18" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="18" y1="91" x2="18" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="21" y1="110" x2="35" y2="110" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="28" y="148" font-size="11" text-anchor="middle" fill="currentColor">7</text>
+<line class="accent" color="#9a4d1f" x1="63" y1="88" x2="77" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="80" y1="91" x2="80" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="80" y1="113" x2="80" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="63" y1="132" x2="77" y2="132" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="60" y1="113" x2="60" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="60" y1="91" x2="60" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="63" y1="110" x2="77" y2="110" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="70" y="148" font-size="11" text-anchor="middle" fill="currentColor">8</text>
+<line class="accent" color="#9a4d1f" x1="105" y1="88" x2="119" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="122" y1="91" x2="122" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="122" y1="113" x2="122" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="105" y1="132" x2="119" y2="132" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="102" y1="113" x2="102" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="102" y1="91" x2="102" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="105" y1="110" x2="119" y2="110" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="112" y="148" font-size="11" text-anchor="middle" fill="currentColor">9</text>
+<line class="line" color="#e4e0d8" x1="147" y1="88" x2="161" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="164" y1="91" x2="164" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="164" y1="113" x2="164" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="147" y1="132" x2="161" y2="132" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="144" y1="113" x2="144" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="144" y1="91" x2="144" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="147" y1="110" x2="161" y2="110" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="154" y="148" font-size="11" text-anchor="middle" fill="currentColor">dek</text>
+<line class="accent" color="#9a4d1f" x1="189" y1="88" x2="203" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="206" y1="91" x2="206" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="206" y1="113" x2="206" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="189" y1="132" x2="203" y2="132" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="186" y1="113" x2="186" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="186" y1="91" x2="186" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="189" y1="110" x2="203" y2="110" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="196" y="148" font-size="11" text-anchor="middle" fill="currentColor">el</text>
+<line class="accent" color="#9a4d1f" x1="245" y1="88" x2="259" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="262" y1="91" x2="262" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="262" y1="113" x2="262" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="245" y1="132" x2="259" y2="132" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="242" y1="113" x2="242" y2="129" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="242" y1="91" x2="242" y2="107" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line class="line" color="#e4e0d8" x1="245" y1="110" x2="259" y2="110" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<text class="muted" color="#6b665e" x="252" y="148" font-size="9" text-anchor="middle" fill="currentColor">el (Ramieri)</text>
+</svg>
+<figcaption>Dozenal digits on a seven-segment display: 0 to 9 as usual, Ramieri's
+dek, el as E, and Ramieri's own el (an arch) for comparison.</figcaption>
+</figure>
+</div>
+<div class="block list">
+<ul>
+<li>Still to decide: Ramieri's own el is an arch (every segment but the middle and bottom). It avoids hex's E (fourteen), but dozenal hex keeps E as eleven anyway, and the arch is a 0 with its bottom segment missing, so one dead segment would turn a 0 into an el</li>
+<li>Also considered for dek: H (clashes with nothing, but nobody uses it yet) and A (hex's ten, so existing displays already show it, but dozenal hex uses A for twelve)</li>
+<li>Fourteen- and sixteen-segment displays, dot matrices and screens can show X and E as written</li>
+</ul>
+</div>
+</section>
 </section>
 <div class="pager"><a class="prev" href="part-1-dozenal-numbers.html">← Part 1: Dozenal numbers</a><a class="next" href="writing-numbers.html">Writing numbers →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
