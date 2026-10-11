@@ -95,6 +95,21 @@ and it's the sound people already know from itinerary.
 
 **Advantage:** everyone says it the same way, using a sound they already know.
 
+Converting between the named lengths: read across, so one pace is 100 digs, 10 uncs, 6 spans, 3 ulnas or
+2 gresses.
+
+| One ... is | dig | unc | span | ulna | gress | pace | iter | SI |
+|---|---|---|---|---|---|---|---|---|
+| **dig** | **1** | 0;1 | 0;06 | 0;03 | 0;02 | 0;01 | 0;00001 | 1.01 cm |
+| **unc** | 10 | **1** | 0;6 | 0;3 | 0;2 | 0;1 | 0;0001 | 12.1 cm |
+| **span** | 20 | 2 | **1** | 0;6 | 0;4 | 0;2 | 0;0002 | 24.2 cm |
+| **ulna** | 40 | 4 | 2 | **1** | 0;8 | 0;4 | 0;0004 | 48.4 cm |
+| **gress** | 60 | 6 | 3 | 1;6 | **1** | 0;6 | 0;0006 | 72.6 cm |
+| **pace** | 100 | 10 | 6 | 3 | 2 | **1** | 0;001 | 1.45 m |
+| **iter** | 100,000 | 10,000 | 6,000 | 3,000 | 2,000 | 1,000 | **1** | 2.51 km |
+
+- The navis (930 paces) and parax (star distances) are left out: they're for navigation and astronomy
+
 - Defined by the speed of light: **c = 2 × 10^7 paces per blink** (exact)
   - = 2 × 10^8 paces per breath = 859,963,392 (dec) per breath
   - (equivalently 2 × 10^10 paces per day)

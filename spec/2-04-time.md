@@ -49,6 +49,17 @@ The day divides by twelve at every step, and each step is one digit of the time:
 
 - The beat (0;3 breath, 1.0417 s) sits between the breath and the blink: 4 beats to a breath, 3 blinks to a beat
 
+Converting between the named times: read across, so one breath is 10 blinks, 4 beats or 0;1 moment.
+
+| One ... is | blink | beat | breath | moment | chime | day | SI |
+|---|---|---|---|---|---|---|---|
+| **blink** | **1** | 0;4 | 0;1 | 0;01 | 0;0001 | 0;00001 | 0.347 s |
+| **beat** | 3 | **1** | 0;3 | 0;03 | 0;0003 | 0;00003 | 1.04 s |
+| **breath** | 10 | 4 | **1** | 0;1 | 0;001 | 0;0001 | 4.17 s |
+| **moment** | 100 | 40 | 10 | **1** | 0;01 | 0;001 | 50 s |
+| **chime** | 10,000 | 4,000 | 1,000 | 100 | **1** | 0;1 | 2 h |
+| **day** | 100,000 | 40,000 | 10,000 | 1,000 | 10 | **1** | 24 h |
+
 **Decided:** the **chime** = 0;1 day = 1,000 breaths = 2 hours exactly, the dozenal hour (clocks chime on the
 hour). Rejected: bell (sounds like the bel, B; ship's bells are half-hours), hora, mark.
 

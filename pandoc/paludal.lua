@@ -425,7 +425,8 @@ local function pages(doc)
       local own, top = {}, { chapters = {} }
       top.file = #tops == 0 and "index" or b.identifier
       for _, c in ipairs(b.content) do
-        if is_section(c) then
+        -- Only ## headings are chapters; a ### straight under a part stays on the part's page
+        if is_section(c) and c.content[1].level == 2 then
           top.chapters[#top.chapters + 1] = { file = c.identifier, div = c }
         else
           own[#own + 1] = c
