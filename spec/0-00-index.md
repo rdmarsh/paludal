@@ -2,7 +2,7 @@
 
 Numbers are dozenal unless marked "(dec)".
 
-**Version 0.2**, 5 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.
+**Version 0.3**, 11 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.
 
 Paludal is a set of units, like metric, but counted in twelves instead of tens. This page is the short
 version: how to count, the handful of units you'd use every day, and how to tell the time. Everything

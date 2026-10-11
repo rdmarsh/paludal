@@ -57,14 +57,14 @@ long, so moment, spell and chime don't follow them. Most of the names do share a
 words for how long something takes (in the blink of an eye, wait a beat, catch your breath, just a moment,
 a short spell). Only chime, a clock sound, breaks it. Candidates, by theme:
 
-| Unit | Size | Now | "How long" words | Body | Medieval reckoning | Clock and bells | Prior art |
+| Part of a day | Size | Now | "How long" words | Body | Medieval reckoning | Clock and bells | Prior art |
 |---|---|---|---|---|---|---|---|
-| 0;00001 day | 0.35 s | blink | blink, flash, instant | blink, wink | atom (clashes with physics) | | blink (Primel's is half ours) |
-| 3 blinks | 1.04 s | *beat* | beat, tick | beat, pulse | ostent (Bede: about 1.5 s) | tick (rejected before) | beat (Primel) |
-| 0;0001 day | 4.17 s | breath | breath, breather | breath, sigh | | tock | lull (Primel, Rapoport) |
-| 0;001 day | 50 s | moment | moment, trice ("in a trice") | | moment (Bede: 90 s) | | trice (Primel); "minute" (Beers) |
-| 0;01 day | 10 min | spell | spell, break, pause, rest | nap (a power nap) | punct (Bede: 15 min) | | breather (Primel); spell (Beers) |
-| 0;1 day | 2 h | chime | sitting, stint, session, stretch | | | chime, peal | dwell (Primel); phase (Beers) |
+| 0;00001 | 0.35 s | blink | blink, flash, instant | blink, wink | atom (clashes with physics) | | blink (Primel's is half ours) |
+| (3 blinks) | 1.04 s | *beat* | beat, tick | beat, pulse | ostent (Bede: about 1.5 s) | tick (rejected before) | beat (Primel) |
+| 0;0001 | 4.17 s | breath | breath, breather | breath, sigh | | tock | lull (Primel, Rapoport) |
+| 0;001 | 50 s | moment | moment, trice ("in a trice") | | moment (Bede: 90 s) | | trice (Primel); "minute" (Beers) |
+| 0;01 | 10 min | spell | spell, break, pause, rest | nap (a power nap) | punct (Bede: 15 min) | | breather (Primel); spell (Beers) |
+| 0;1 | 2 h | chime | sitting, stint, session, stretch | | | chime, peal | dwell (Primel); phase (Beers) |
 
 - The body runs out after the breath; only "how long" words fill every row
 - Bede's hour held 4 puncts, 10 minutes, 15 parts or 40 moments (our moment comes from there), but his

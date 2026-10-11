@@ -249,10 +249,17 @@ local function Table(tbl)
   end
   scan(tbl.head.rows)
   for _, body in ipairs(tbl.bodies) do scan(body.body) end
-  local weight, sum = {}, 0
+  local weight, least, sum, sum_least = {}, {}, 0, 0
   for i = 1, ncols do
-    weight[i] = math.max(word[i] * 1.2, math.min(len[i], CAP)) + 2.5 -- headers are bold, plus cell padding
-    sum = sum + weight[i]
+    least[i] = word[i] * 1.2 + 2.5 -- headers are bold, plus cell padding
+    weight[i] = math.max(least[i], math.min(len[i], CAP) + 2.5)
+    sum, sum_least = sum + weight[i], sum_least + least[i]
+  end
+  -- Too wide: shrink only the room above each column's longest word, so no word is squeezed
+  if sum > PAGE and sum_least < PAGE then
+    local k = (PAGE - sum_least) / (sum - sum_least)
+    for i = 1, ncols do weight[i] = least[i] + (weight[i] - least[i]) * k end
+    sum = PAGE
   end
   local scale = math.max(sum, PAGE)
   for i = 1, ncols do tbl.colspecs[i] = { tbl.colspecs[i][1], weight[i] / scale } end

@@ -13,6 +13,14 @@ number in the system is dozenal.
 
 **Advantage:** anyone can say which version they mean, and see what changed since.
 
+- **0.3** (11 Oct 6859 DH, 2026 CE): easier to start with. The front page is now a five-minute guide that
+  teaches counting from clocks, eggs and inches, with a dozenal clock face, and a diagram of how the system
+  is built; the old intro decisions moved to a Principles chapter. New chapter Thinking in Paludal: landmarks
+  with no conversions beside them (decided). The site is one page per chapter, at paludal.org. Also: the
+  spell (10 minutes, decided for now) and a matrix of time-name candidates (Open items); italics for units
+  that aren't a power of twelve; more than four zeros after the point becomes a power or a prefix; length
+  and time conversion grids; prefix table; playing fields; seven-segment digits (proposed); moment listed
+  before chime in Names
 - **0.2** (5 Oct 6859 DH, 2026 CE): the first PDF edition (memoir), with dozenal page, chapter and section
   numbers, published with each release on GitHub. Also: time unit names compared with Primel, Rapoport,
   Beers and TGM (Prior art); licence (spec CC BY 4.0, code MIT); public repo and GitHub Pages
