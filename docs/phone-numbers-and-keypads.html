@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>$pagetitle$</title>
+<title>Phone numbers and keypads - Paludal units</title>
 <!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
@@ -99,12 +99,85 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-$nav$
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html" aria-current="page">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </nav>
 <main>
-$body$
-$pager$
+<section id="phone-numbers-and-keypads" class="has-table">
+<h2>Phone numbers and keypads</h2>
+<div class="block decided">
+<p><strong>Decided:</strong> phone numbers stay as they are, and phone keypads get a dozenal layout (below).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> phone numbers are names, not amounts, so dozenal gains them nothing; keypads still need X and E for amounts, and the 4 × 3 keypad has exactly twelve keys for the twelve digits. * and # can't be reused as digits because phone systems use them as menu keys.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> no number changes, and the keypad gains the two digits without losing * and # or changing where 1-9 and 0 are.</p>
+</div>
+<div class="block list">
+<ul>
+<li>Phone numbers are names, not amounts: nobody adds or divides them, so they gain nothing from dozenal, and changing every number in the world would cost a great deal. They're read digit by digit as now (see Spoken numbers), like postcodes, PINs and account numbers</li>
+<li>Keypads still need X and E for typing dozenal amounts (prices, times, quantities). * and # can't stand in for them: they're already used as menu and control keys by phone systems</li>
+<li>The standard keypad already has twelve keys in a 4 × 3 grid, so a dozenal keypad puts exactly the twelve digits there, and moves * and # to a row of their own:</li>
+</ul>
+</div>
+<div class="block code">
+<pre><code> 1   2   3
+ 4   5   6
+ 7   8   9
+ X   0   E
+ *       #</code></pre>
+</div>
+<div class="block list">
+<ul>
+<li>0 stays in the middle of the bottom row, where it is on phones today; X and E take the corners * and # used to have, in order (dek before el)</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the number pad on keyboards and calculators keeps its shape and its 7-8-9-on-top order, and makes room for X, E and the dozenal point (layout below).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> the bottom row matches the phone keypad (X 0 E), the footprint stays the same so existing keyboards and cases still fit, and 7-8-9 stays on top so people keep the muscle memory they have.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> every digit and the point get a key of their own without a bigger pad, and the same X 0 E row appears on phones, calculators and keyboards.</p>
+</div>
+<div class="block code">
+<pre><code> Num   /    *    -
+  7    8    9    +
+  4    5    6    ;
+  1    2    3   Ent
+  X    0    E   Ent</code></pre>
+</div>
+<div class="block list">
+<ul>
+<li>Today's wide 0 is split into X and 0, and the decimal point's key becomes E, so the bottom row reads X 0 E as on the phone keypad</li>
+<li>The tall + is split in two, + above and ; (the dozenal point) below; Enter stays tall</li>
+<li>Same footprint and key spacing as today (19 keys instead of 17), so existing cases and keyboards fit</li>
+<li>7-8-9 stays on top, as on every calculator: changing it would break the muscle memory people already have, even though phones count the other way</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> main keyboards need no new keys.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> X and E are typed as capital letters (the reason they were chosen; see Digits), and the semicolon is already on the home row, unshifted on most layouts. ↊ ↋ only need an input method, not new keys.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> dozenal can be typed on every keyboard in use today.</p>
+</div>
+<div class="block list">
+<ul>
+<li>X and E are typed as capital letters (see Digits), and ; is already on the home row, unshifted on most layouts - one reason the semicolon makes a good dozenal point</li>
+<li>For typeset ↊ ↋, a keyboard layout option types them with AltGr / Option + X and E; until then, text replacement (eg "dek" → ↊) or the Unicode codes (U+218A, U+218B)</li>
+</ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="hexadecimal.html">← Hexadecimal</a><a class="next" href="part-2-paludal-units.html">Part 2: Paludal units →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
@@ -115,15 +188,6 @@ const box = document.getElementById("tables-only");
 box.checked = false;  // browsers can restore a checkbox's state on reload
 box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
 </script>
-$if(redirects)$
-<script>
-// The spec used to be one page: send old links (paludal.org/#time) to the page that holds the id
-(() => {
-  const map = $redirects$, id = decodeURIComponent(location.hash.slice(1));
-  if (id && !document.getElementById(id) && map[id]) location.replace(map[id]);
-})();
-</script>
-$endif$
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {
@@ -134,13 +198,13 @@ $endif$
     const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
     let i = Math.floor(n / 1728), f = n % 1728, s = "";
     do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
-    s = s.replace(/\B(?=(.{3})+$$)/g, ",");  // group in threes: 100,000
-    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$$/, "");
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
     return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
   }
   function fromDoz(t) {
     t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
-    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$$/);
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
     if (!m || (m[2] + (m[3] || "")) === "") return null;
     let v = 0;
     for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
@@ -152,7 +216,7 @@ $endif$
   dec.addEventListener("input", () => {
     const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
     if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
-    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
     doz.value = toDoz(v);
     hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
   });
@@ -166,22 +230,5 @@ $endif$
   });
 })();
 </script>
-$if(mermaid)$
-<script type="module">
-// Diagrams: mermaid needs plain colours, so read them from the page's tokens (light or dark).
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-const css = getComputedStyle(document.documentElement), v = name => css.getPropertyValue(name).trim();
-mermaid.initialize({
-  startOnLoad: false, theme: "base",
-  themeVariables: {
-    background: v("--bg"), primaryColor: v("--panel"), primaryTextColor: v("--fg"),
-    primaryBorderColor: v("--accent"), lineColor: v("--muted"), textColor: v("--fg"),
-    secondaryColor: v("--row"), tertiaryColor: v("--bg"), clusterBkg: v("--row"), clusterBorder: v("--line"),
-    edgeLabelBackground: v("--bg"), fontFamily: getComputedStyle(document.body).fontFamily, fontSize: "14px",
-  },
-});
-await mermaid.run();
-</script>
-$endif$
 </body>
 </html>

@@ -1,5 +1,5 @@
 # Draws figures/clock.svg and figures/compass.svg. Run from the repo root: python3 figures/draw.py
-# Colours are the light theme; the classes (fg, muted, accent, line, panel) let index.html recolour them.
+# Colours are the light theme; the classes (fg, muted, accent, line, panel) let the web pages recolour them.
 import math
 FG, MUTED, LINE, ACCENT, PANEL = "#1f1d1a", "#6b665e", "#e4e0d8", "#9a4d1f", "#f3f0ea"
 DIG = "0123456789XE"

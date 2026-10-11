@@ -1,0 +1,1396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everyday reference - Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html" aria-current="page">Everyday reference</a><ul><li class="has-table"><a href="#everyday-reference-length">Length</a></li><li class="has-table"><a href="#everyday-reference-races-and-sport">Races and sport</a></li><li class="has-table"><a href="#everyday-reference-mass">Mass</a></li><li class="has-table"><a href="#everyday-reference-temperature">Temperature</a></li><li class="has-table"><a href="#everyday-reference-volume">Volume</a></li><li class="has-table"><a href="#everyday-reference-time">Time</a></li><li class="has-table"><a href="#everyday-reference-speed">Speed</a></li><li class="has-table"><a href="#everyday-reference-fuel-use">Fuel use</a></li><li class="has-table"><a href="#everyday-reference-energy">Energy</a></li><li class="has-table"><a href="#everyday-reference-power">Power</a></li><li class="has-table"><a href="#everyday-reference-pressure">Pressure</a></li><li class="has-table"><a href="#everyday-reference-voltage">Voltage</a></li><li class="has-table"><a href="#everyday-reference-current">Current</a></li></ul></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<section id="everyday-reference" class="has-table">
+<h2>Everyday reference</h2>
+<div class="block para">
+<p>What things come to in the new units (3 significant digits). <strong>Round</strong> is what a product, limit or setting would probably become: small values go to the nearest whole number, half, third or quarter (within 3%); large values (30 and over) go to a number ending in 0 or 6 - a multiple of six - at whatever scale suits (36, 56, 1X0, 800). Speed limits are the exception: they take the nearest whole number (see Speed limits and changeover). Left blank for natural values (body temperature, speed of sound) and where the value is already round. <strong>US</strong> gives the size in US customary units, for things measured that way in the US. Prefixes are used where the plain unit gives awkward numbers: tc ÷1,000, bc ÷100, uc ÷10, tq ×1,000.</p>
+</div>
+<div class="block list">
+<ul>
+<li><abbr title="tricia-lib (÷ 10^3)">t↓li</abbr> (1/1,000 lib) ≈ 1.03 g and <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr> (1 dig³) ≈ 1.03 mL - the new gram and millilitre</li>
+<li>ir (iter, 1,000 paces = <abbr title="triqua-pace (× 10^3)">t↑p</abbr>) ≈ 2.51 km; <abbr title="triqua-opus (× 10^3)">t↑op</abbr> (1,000 opus) ≈ 53.6 kJ; <abbr title="triqua-pres (× 10^3)">t↑pr</abbr> (1,000 pres) ≈ 17.5 kPa</li>
+</ul>
+</div>
+<section id="everyday-reference-length" class="has-table">
+<h3>Length</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Credit card (long side)</td>
+<td>85.6 mm</td>
+<td>3.37 in</td>
+<td>8;5X di</td>
+<td>8;6 <abbr title="dig">di</abbr></td>
+</tr>
+<tr>
+<td>Pencil-case ruler</td>
+<td>15-20 cm</td>
+<td>6 in</td>
+<td>0;12X-0;17X p</td>
+<td>0;2 <abbr title="pace">p</abbr> (a span, 24.2 cm)</td>
+</tr>
+<tr>
+<td>Desk ruler</td>
+<td>30 cm</td>
+<td>12 in</td>
+<td>0;259 <abbr title="pace">p</abbr></td>
+<td>0;3 <abbr title="pace">p</abbr> (36.3 cm)</td>
+</tr>
+<tr>
+<td>A4 page (long side)</td>
+<td>297 mm</td>
+<td></td>
+<td>2;55 <abbr title="unc">un</abbr></td>
+<td>2;6 <abbr title="unc">un</abbr></td>
+</tr>
+<tr>
+<td>Adult height</td>
+<td>1.70 m</td>
+<td>5 ft 7 in</td>
+<td>1;21 <abbr title="pace">p</abbr></td>
+<td>1;2 <abbr title="pace">p</abbr></td>
+</tr>
+<tr>
+<td>Tall person (6 ft)</td>
+<td>1.83 m</td>
+<td>6 ft</td>
+<td>1;31 <abbr title="pace">p</abbr></td>
+<td>1;3 <abbr title="pace">p</abbr></td>
+</tr>
+<tr>
+<td>Door height</td>
+<td>2.04 m</td>
+<td>6 ft 8 in</td>
+<td>1;4X p</td>
+<td>1;5 <abbr title="pace">p</abbr></td>
+</tr>
+<tr>
+<td>Car length</td>
+<td>4.5 m</td>
+<td>15 ft</td>
+<td>3;12 <abbr title="pace">p</abbr></td>
+<td>3;1 <abbr title="pace">p</abbr></td>
+</tr>
+<tr>
+<td>Cricket pitch</td>
+<td>20.12 m</td>
+<td>22 yd</td>
+<td>11;X p</td>
+<td>(keeps 22 yd)</td>
+</tr>
+<tr>
+<td>Olympic pool</td>
+<td>50 m</td>
+<td>164 ft</td>
+<td>2X;5 <abbr title="pace">p</abbr></td>
+<td>30 <abbr title="pace">p</abbr></td>
+</tr>
+<tr>
+<td>1 km</td>
+<td>1 km</td>
+<td>0.62 mi</td>
+<td>494 <abbr title="pace">p</abbr></td>
+<td>496 <abbr title="pace">p</abbr> (1.002 km)</td>
+</tr>
+<tr>
+<td>Marathon</td>
+<td>42.195 km</td>
+<td>26.2 mi</td>
+<td>14;99 <abbr title="iter">ir</abbr></td>
+<td>(keeps 42.195 km)</td>
+</tr>
+<tr>
+<td>Sydney–Melbourne (straight line)</td>
+<td>713 km</td>
+<td>443 mi</td>
+<td>1E8 <abbr title="iter">ir</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Letter page (long side)</td>
+<td>279 mm</td>
+<td>11 in</td>
+<td>2;38 <abbr title="unc">un</abbr></td>
+<td>2;4 <abbr title="unc">un</abbr> (P5 replaces Letter and A4)</td>
+</tr>
+<tr>
+<td>Ceiling height</td>
+<td>2.44 m</td>
+<td>8 ft</td>
+<td>1;82 <abbr title="pace">p</abbr></td>
+<td>1;8 <abbr title="pace">p</abbr></td>
+</tr>
+<tr>
+<td>Building sheet (plasterboard, plywood)</td>
+<td>1,200 × 2,400 mm</td>
+<td>4 × 8 ft</td>
+<td>0;9XE × 1;79E p</td>
+<td>0;X × 1;8 <abbr title="pace">p</abbr> (1,210 × 2,421 mm)</td>
+</tr>
+<tr>
+<td>Stud spacing (wide)</td>
+<td>600 mm</td>
+<td>24 in</td>
+<td>0;4E6 <abbr title="pace">p</abbr></td>
+<td>0;5 <abbr title="pace">p</abbr> (605 mm)</td>
+</tr>
+<tr>
+<td>Stud spacing (close)</td>
+<td>450 mm</td>
+<td>16 in</td>
+<td>0;387 <abbr title="pace">p</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Football field (US)</td>
+<td>91.4 m</td>
+<td>100 yd</td>
+<td>52;E p</td>
+<td>(keeps 100 yd)</td>
+</tr>
+<tr>
+<td>Mile</td>
+<td>1.61 km</td>
+<td>1 mi</td>
+<td>0;784 <abbr title="iter">ir</abbr> (783;E p)</td>
+<td>780 <abbr title="pace">p</abbr> (1.60 km)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-races-and-sport" class="has-table">
+<h3>Races and sport</h3>
+<div class="block para">
+<p>Exact conversions, and the round distance that would likely replace each one (rounded, not converted - see Speed limits and changeover). Traditional distances tied to history (marathon, cricket pitch) keep their length.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Distance now</th>
+<th>Exact</th>
+<th>Likely new distance</th>
+<th>That is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25 m pool</td>
+<td>15;3 <abbr title="pace">p</abbr></td>
+<td>16 <abbr title="pace">p</abbr></td>
+<td>26.1 m</td>
+</tr>
+<tr>
+<td>50 m pool</td>
+<td>2X;5 <abbr title="pace">p</abbr></td>
+<td>30 <abbr title="pace">p</abbr></td>
+<td>52.3 m</td>
+</tr>
+<tr>
+<td>100 m sprint</td>
+<td>58;X p</td>
+<td>60 <abbr title="pace">p</abbr></td>
+<td>104.6 m</td>
+</tr>
+<tr>
+<td>200 m</td>
+<td>E5;8 <abbr title="pace">p</abbr></td>
+<td>100 <abbr title="pace">p</abbr></td>
+<td>209.2 m</td>
+</tr>
+<tr>
+<td>400 m (1 lap)</td>
+<td>1XE;5 <abbr title="pace">p</abbr></td>
+<td>200 <abbr title="pace">p</abbr> (1 lap)</td>
+<td>418.3 m</td>
+</tr>
+<tr>
+<td>800 m</td>
+<td>39X;9 <abbr title="pace">p</abbr></td>
+<td>400 <abbr title="pace">p</abbr></td>
+<td>836.7 m</td>
+</tr>
+<tr>
+<td>1,500 m / mile</td>
+<td>720;8 <abbr title="pace">p</abbr> / 783;E p</td>
+<td>700 <abbr title="pace">p</abbr></td>
+<td>1,464 m</td>
+</tr>
+<tr>
+<td>5 km (parkrun)</td>
+<td>1;EE ir</td>
+<td>2 <abbr title="iter">ir</abbr></td>
+<td>5.02 km</td>
+</tr>
+<tr>
+<td>10 km</td>
+<td>3;EX ir</td>
+<td>4 <abbr title="iter">ir</abbr></td>
+<td>10.04 km</td>
+</tr>
+<tr>
+<td>Half marathon</td>
+<td>8;4X ir</td>
+<td>keeps 21.1 km</td>
+<td></td>
+</tr>
+<tr>
+<td>Marathon</td>
+<td>14;99 <abbr title="iter">ir</abbr></td>
+<td>keeps 42.195 km</td>
+<td></td>
+</tr>
+<tr>
+<td>Cricket pitch</td>
+<td>11;X p</td>
+<td>keeps 22 yd</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>The 100 m becomes the <strong>60-pace sprint</strong>; the 5 km and 10 km land almost exactly on 2 and 4 iters</li>
+</ul>
+</div>
+</section>
+<section id="everyday-reference-mass" class="has-table">
+<h3>Mass</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Egg</td>
+<td>60 g</td>
+<td>2.1 oz</td>
+<td>4X;6 <abbr title="tricia-lib (÷ 10^3)">t↓li</abbr></td>
+<td>50 <abbr title="tricia-lib (÷ 10^3)">t↓li</abbr></td>
+</tr>
+<tr>
+<td>Apple</td>
+<td>150 g</td>
+<td>5.3 oz</td>
+<td>102 <abbr title="tricia-lib (÷ 10^3)">t↓li</abbr></td>
+<td>100 <abbr title="tricia-lib (÷ 10^3)">t↓li</abbr></td>
+</tr>
+<tr>
+<td>1 L of water</td>
+<td>1 kg</td>
+<td>2.2 lb</td>
+<td>0;693 <abbr title="lib">li</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Newborn baby</td>
+<td>3.5 kg</td>
+<td>7.7 lb</td>
+<td>1;E9 <abbr title="lib">li</abbr></td>
+<td>2 <abbr title="lib">li</abbr></td>
+</tr>
+<tr>
+<td>Checked-in bag limit</td>
+<td>23 kg</td>
+<td>50 lb</td>
+<td>11 <abbr title="lib">li</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Adult</td>
+<td>75 kg</td>
+<td>165 lb</td>
+<td>36;4 <abbr title="lib">li</abbr></td>
+<td>36 <abbr title="lib">li</abbr></td>
+</tr>
+<tr>
+<td>Small car</td>
+<td>1,300 kg</td>
+<td>2,900 lb</td>
+<td>512 <abbr title="lib">li</abbr></td>
+<td>500 <abbr title="lib">li</abbr></td>
+</tr>
+<tr>
+<td>Stick of butter</td>
+<td>113 g</td>
+<td>4 oz</td>
+<td>92;7 <abbr title="tricia-lib (÷ 10^3)">t↓li</abbr></td>
+<td>90 <abbr title="tricia-lib (÷ 10^3)">t↓li</abbr></td>
+</tr>
+<tr>
+<td>Pack of ground beef</td>
+<td>454 g</td>
+<td>1 lb</td>
+<td>0;30X li</td>
+<td>0;3 <abbr title="lib">li</abbr></td>
+</tr>
+<tr>
+<td>Bag of flour</td>
+<td>2.27 kg</td>
+<td>5 lb</td>
+<td>1;34 <abbr title="lib">li</abbr></td>
+<td>1;3 <abbr title="lib">li</abbr></td>
+</tr>
+<tr>
+<td>Turkey</td>
+<td>6.8 kg</td>
+<td>15 lb</td>
+<td>3;X1 <abbr title="lib">li</abbr></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-temperature" class="has-table">
+<h3>Temperature</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Freezer</td>
+<td>-18 °C</td>
+<td>0 °F</td>
+<td>-21;E <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>-22 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+</tr>
+<tr>
+<td>Fridge</td>
+<td>4 °C</td>
+<td>39 °F</td>
+<td>5;92 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>5;8 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+</tr>
+<tr>
+<td>Cool day</td>
+<td>15 °C</td>
+<td>59 °F</td>
+<td>19;7 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>1X <abbr title="tep (degrees from freezing)">°t</abbr></td>
+</tr>
+<tr>
+<td>Room</td>
+<td>21 °C</td>
+<td>70 °F</td>
+<td>26;3 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>26 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+</tr>
+<tr>
+<td>Warm day</td>
+<td>30 °C</td>
+<td>86 °F</td>
+<td>37;2 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>36 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+</tr>
+<tr>
+<td>Body</td>
+<td>37 °C</td>
+<td>98.6 °F</td>
+<td>45;3 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Heatwave</td>
+<td>45 °C</td>
+<td>113 °F</td>
+<td>54;X <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>56 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+</tr>
+<tr>
+<td>Boiling water</td>
+<td>100 °C</td>
+<td>212 °F</td>
+<td>100 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Oven (moderate)</td>
+<td>180 °C</td>
+<td>350 °F</td>
+<td>197 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>1X0 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-volume" class="has-table">
+<h3>Volume</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teaspoon</td>
+<td>5 mL</td>
+<td>1 tsp</td>
+<td>4;X6 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>5 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+</tr>
+<tr>
+<td>Coffee, small (café)</td>
+<td>237 mL</td>
+<td>8 fl oz</td>
+<td>173 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>170 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+</tr>
+<tr>
+<td>Coffee, regular (café)</td>
+<td>355 mL</td>
+<td>12 fl oz</td>
+<td>24X <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>250 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+</tr>
+<tr>
+<td>Coffee, large (café)</td>
+<td>473 mL</td>
+<td>16 fl oz</td>
+<td>325 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>320 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+</tr>
+<tr>
+<td>Cup</td>
+<td>250 mL</td>
+<td>1 cup (237 mL)</td>
+<td>184 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>180 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+</tr>
+<tr>
+<td>Can of drink (AU)</td>
+<td>375 mL</td>
+<td></td>
+<td>265 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>260 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+</tr>
+<tr>
+<td>Wine bottle</td>
+<td>750 mL</td>
+<td>25.4 fl oz</td>
+<td>0;50E cu</td>
+<td>0;5 <abbr title="cub">cu</abbr></td>
+</tr>
+<tr>
+<td>Milk bottle (AU)</td>
+<td>2 L</td>
+<td></td>
+<td>1;16 <abbr title="cub">cu</abbr></td>
+<td>1;2 <abbr title="cub">cu</abbr></td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td>10 L</td>
+<td>2.6 gal</td>
+<td>5;78 <abbr title="cub">cu</abbr></td>
+<td>5;6 <abbr title="cub">cu</abbr></td>
+</tr>
+<tr>
+<td>Car fuel tank</td>
+<td>50 L</td>
+<td>13 gal</td>
+<td>24;2 <abbr title="cub">cu</abbr></td>
+<td>24 <abbr title="cub">cu</abbr></td>
+</tr>
+<tr>
+<td>Bath</td>
+<td>150 L</td>
+<td>40 gal</td>
+<td>70;7 <abbr title="cub">cu</abbr></td>
+<td>70 <abbr title="cub">cu</abbr></td>
+</tr>
+<tr>
+<td>Soda can (US)</td>
+<td>355 mL</td>
+<td>12 fl oz</td>
+<td>24X <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>250 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+</tr>
+<tr>
+<td>Pint glass (US)</td>
+<td>473 mL</td>
+<td>16 fl oz</td>
+<td>325 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>320 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+</tr>
+<tr>
+<td>Quart</td>
+<td>946 mL</td>
+<td>1 qt</td>
+<td>0;64X cu</td>
+<td></td>
+</tr>
+<tr>
+<td>Gallon of milk or gas</td>
+<td>3.79 L</td>
+<td>1 gal</td>
+<td>2;17 <abbr title="cub">cu</abbr></td>
+<td>2;2 <abbr title="cub">cu</abbr></td>
+</tr>
+<tr>
+<td>Bucket (US)</td>
+<td>18.9 L</td>
+<td>5 gal</td>
+<td>X;81 <abbr title="cub">cu</abbr></td>
+<td>X;9 <abbr title="cub">cu</abbr></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-time" class="has-table">
+<h3>Time</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heartbeat</td>
+<td>0.8 s</td>
+<td>0;93 <abbr title="beat">bt</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Minute</td>
+<td>60 s</td>
+<td>1;25 <abbr title="moment">mt</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Hour</td>
+<td>60 min</td>
+<td>0;6 <abbr title="chime">ch</abbr> (60 <abbr title="moment">mt</abbr>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Feature film</td>
+<td>2 h</td>
+<td>1 <abbr title="chime">ch</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Short meeting, lunch break</td>
+<td>30 min</td>
+<td>0;3 <abbr title="chime">ch</abbr> (30 <abbr title="moment">mt</abbr>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Lesson, meeting</td>
+<td>45 min</td>
+<td>0;46 <abbr title="chime">ch</abbr> (46 <abbr title="moment">mt</abbr>)</td>
+<td>0;4 <abbr title="chime">ch</abbr> (40 min) or 0;5 <abbr title="chime">ch</abbr> (50 min)</td>
+</tr>
+<tr>
+<td>Long meeting, lecture</td>
+<td>60 min</td>
+<td>0;6 <abbr title="chime">ch</abbr> (60 <abbr title="moment">mt</abbr>)</td>
+<td></td>
+</tr>
+<tr>
+<td>School day</td>
+<td>9:00-15:00 (6 h)</td>
+<td>460-760 (3 <abbr title="chime">ch</abbr>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Working day</td>
+<td>9:00-17:00 (8 h)</td>
+<td>460-860 (4 <abbr title="chime">ch</abbr>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Working week (AU)</td>
+<td>38 h</td>
+<td>17 <abbr title="chime">ch</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Working week (US)</td>
+<td>40 h</td>
+<td>18 <abbr title="chime">ch</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Night's sleep</td>
+<td>8 h</td>
+<td>4 <abbr title="chime">ch</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>School year</td>
+<td>about 200 days</td>
+<td>about 148 days</td>
+<td></td>
+</tr>
+<tr>
+<td>Year</td>
+<td>365.2422 days</td>
+<td>265;2XX days</td>
+<td></td>
+</tr>
+<tr>
+<td>School starting age</td>
+<td>5 years</td>
+<td>5 years</td>
+<td></td>
+</tr>
+<tr>
+<td>Adult (voting, driving)</td>
+<td>18 years</td>
+<td>16 years</td>
+<td></td>
+</tr>
+<tr>
+<td>Coming of age (21st birthday), US drinking age</td>
+<td>21 years</td>
+<td>19 years</td>
+<td></td>
+</tr>
+<tr>
+<td>Retirement age (Australia, US)</td>
+<td>67 years</td>
+<td>57 years</td>
+<td></td>
+</tr>
+<tr>
+<td>Average lifetime (world)</td>
+<td>73 years, about 26,660 days</td>
+<td>61 years, about 13,520 days</td>
+<td></td>
+</tr>
+<tr>
+<td>Average lifetime (Australia)</td>
+<td>83 years</td>
+<td>6E years</td>
+<td></td>
+</tr>
+<tr>
+<td>Century</td>
+<td>100 years</td>
+<td>84 years</td>
+<td>a gro of years (100) is 144 (dec)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-speed" class="has-table">
+<h3>Speed</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Walking</td>
+<td>5 km/h</td>
+<td>3 mph</td>
+<td>3;EX p/<abbr title="breath">br</abbr></td>
+<td>4 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+</tr>
+<tr>
+<td>Cycling</td>
+<td>20 km/h</td>
+<td>12 mph</td>
+<td>13;E p/<abbr title="breath">br</abbr></td>
+<td>14 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+</tr>
+<tr>
+<td>School zone</td>
+<td>40 km/h</td>
+<td>25 mph</td>
+<td>27;X p/<abbr title="breath">br</abbr></td>
+<td>28 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+</tr>
+<tr>
+<td>Town</td>
+<td>50 km/h</td>
+<td>30 mph</td>
+<td>33;X p/<abbr title="breath">br</abbr></td>
+<td>34 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+</tr>
+<tr>
+<td>Motorway</td>
+<td>110 km/h</td>
+<td>70 mph</td>
+<td>73;8 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+<td>74 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+</tr>
+<tr>
+<td>Airliner</td>
+<td>900 km/h</td>
+<td>560 mph</td>
+<td>4E9 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+<td>500 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+</tr>
+<tr>
+<td>Sound</td>
+<td>343 m/s</td>
+<td>767 mph</td>
+<td>6X p/<abbr title="blink">bl</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Residential street (US)</td>
+<td>40 km/h</td>
+<td>25 mph</td>
+<td>28;1 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+<td>28 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+</tr>
+<tr>
+<td>Freeway (US)</td>
+<td>105 km/h</td>
+<td>65 mph</td>
+<td>6E;4 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+<td>70 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-fuel-use" class="has-table">
+<h3>Fuel use</h3>
+<div class="block decided">
+<p><strong>Decided:</strong> fuel use is given in <strong>cubs per 100 iters</strong> (cu/100 <abbr title="iter">ir</abbr>, per 361 km dec), the way Australia and Europe use L/100 km. Rule of thumb: the value is about <strong>double</strong> the L/100 km figure (×2.04 dec).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> fuel per distance is the sensible measure, and 100 iters is a similar trip length to 100 km, so the numbers stay whole-ish. Rejected: distance per fuel (iters per cub, like mpg or km/L), judged a poor measure. The US mpg column is kept only as a familiar comparison for people learning the system.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> fuel for a trip is just the figure times the distance, and the numbers stay close to today's (about double L/100 km).</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>L/100 km (dec)</th>
+<th>US mpg (dec)</th>
+<th>cu/100 <abbr title="iter">ir</abbr></th>
+<th>Like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>58.8</td>
+<td>8;2</td>
+<td>hybrid</td>
+</tr>
+<tr>
+<td>5</td>
+<td>47.0</td>
+<td>X;2</td>
+<td>small car, highway</td>
+</tr>
+<tr>
+<td>6</td>
+<td>39.2</td>
+<td>10;3</td>
+<td>small car</td>
+</tr>
+<tr>
+<td>7</td>
+<td>33.6</td>
+<td>12;3</td>
+<td>mid-size car</td>
+</tr>
+<tr>
+<td>8</td>
+<td>29.4</td>
+<td>14;4</td>
+<td>family car</td>
+</tr>
+<tr>
+<td>10</td>
+<td>23.5</td>
+<td>18;5</td>
+<td>large car, SUV</td>
+</tr>
+<tr>
+<td>12</td>
+<td>19.6</td>
+<td>20;5</td>
+<td>ute, 4WD</td>
+</tr>
+<tr>
+<td>15</td>
+<td>15.7</td>
+<td>26;7</td>
+<td>large 4WD, towing</td>
+</tr>
+<tr>
+<td>20</td>
+<td>11.8</td>
+<td>34;9</td>
+<td>truck, city driving</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block para">
+<p>Electric cars, in <abbr title="triqua-opus (× 10^3)">t↑op</abbr> per iter (the energy to drive one iter):</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>kWh/100 km (dec)</th>
+<th><abbr title="triqua-opus (× 10^3)">t↑op</abbr>/<abbr title="iter">ir</abbr></th>
+<th>Like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>1X;3</td>
+<td>small EV</td>
+</tr>
+<tr>
+<td>15</td>
+<td>21;4</td>
+<td>typical EV</td>
+</tr>
+<tr>
+<td>18</td>
+<td>26;4</td>
+<td>large EV</td>
+</tr>
+<tr>
+<td>20</td>
+<td>29;9</td>
+<td>EV SUV</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-energy" class="has-table">
+<h3>Energy</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apple (food energy)</td>
+<td>400 kJ</td>
+<td>95 Cal</td>
+<td>7;57 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+<td>7;6 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+</tr>
+<tr>
+<td>Daily food intake</td>
+<td>8,700 kJ</td>
+<td>2,100 Cal</td>
+<td>116 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+<td>120 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+</tr>
+<tr>
+<td>Phone battery</td>
+<td>15 Wh</td>
+<td>15 Wh</td>
+<td>1;01 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+<td>1 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+</tr>
+<tr>
+<td>1 kWh</td>
+<td>3.6 MJ</td>
+<td>1 kWh</td>
+<td>57;2 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+<td>56 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+</tr>
+<tr>
+<td>Daily value (US food labels)</td>
+<td>8.37 MJ</td>
+<td>2,000 Cal</td>
+<td>110 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Gallon of gasoline</td>
+<td>121 MJ</td>
+<td>33.7 kWh</td>
+<td>1,390 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+<td>1,400 <abbr title="triqua-opus (× 10^3)">t↑op</abbr></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-power" class="has-table">
+<h3>Power</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LED bulb</td>
+<td>10 W</td>
+<td>10 W</td>
+<td>1;42 <abbr title="uncia-vig (÷ 10^1)">u↓vg</abbr></td>
+<td>1;4 <abbr title="uncia-vig (÷ 10^1)">u↓vg</abbr></td>
+</tr>
+<tr>
+<td>Person at rest</td>
+<td>100 W</td>
+<td>100 W</td>
+<td>1;15 <abbr title="vig">vg</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Kettle</td>
+<td>2,400 W</td>
+<td></td>
+<td>22;E vg</td>
+<td>23 <abbr title="vig">vg</abbr></td>
+</tr>
+<tr>
+<td>Small car engine</td>
+<td>100 kW</td>
+<td>134 hp</td>
+<td>794 <abbr title="vig">vg</abbr></td>
+<td>800 <abbr title="vig">vg</abbr></td>
+</tr>
+<tr>
+<td>Space heater, US kettle</td>
+<td>1,500 W</td>
+<td>1,500 W</td>
+<td>14;X vg</td>
+<td>15 <abbr title="vig">vg</abbr></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-pressure" class="has-table">
+<h3>Pressure</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atmosphere</td>
+<td>101.3 kPa</td>
+<td>14.7 psi</td>
+<td>5;97 <abbr title="triqua-pres (× 10^3)">t↑pr</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Car tyre (gauge)</td>
+<td>220 kPa</td>
+<td>32 psi</td>
+<td>10;7 <abbr title="triqua-pres (× 10^3)">t↑pr</abbr></td>
+<td>11 <abbr title="triqua-pres (× 10^3)">t↑pr</abbr></td>
+</tr>
+<tr>
+<td>Car tyre (US)</td>
+<td>241 kPa</td>
+<td>35 psi</td>
+<td>11;X <abbr title="triqua-pres (× 10^3)">t↑pr</abbr></td>
+<td>12 <abbr title="triqua-pres (× 10^3)">t↑pr</abbr></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-voltage" class="has-table">
+<h3>Voltage</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AA battery</td>
+<td>1.5 V</td>
+<td>1.5 V</td>
+<td>2;58 <abbr title="uncia-imp (÷ 10^1)">u↓im</abbr></td>
+<td>2;6 <abbr title="uncia-imp (÷ 10^1)">u↓im</abbr></td>
+</tr>
+<tr>
+<td>USB</td>
+<td>5 V</td>
+<td>5 V</td>
+<td>0;830 <abbr title="imp">im</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Car battery</td>
+<td>12 V</td>
+<td>12 V</td>
+<td>1;799 <abbr title="imp">im</abbr></td>
+<td>1;8 <abbr title="imp">im</abbr></td>
+</tr>
+<tr>
+<td>Mains (AU)</td>
+<td>230 V</td>
+<td></td>
+<td>27;79 <abbr title="imp">im</abbr></td>
+<td>28 <abbr title="imp">im</abbr></td>
+</tr>
+<tr>
+<td>Mains (UK, AU older)</td>
+<td>240 V</td>
+<td></td>
+<td>29;03 <abbr title="imp">im</abbr></td>
+<td>29 <abbr title="imp">im</abbr></td>
+</tr>
+<tr>
+<td>Mains (US)</td>
+<td>120 V</td>
+<td>120 V</td>
+<td>14;62 <abbr title="imp">im</abbr></td>
+<td>14;6 <abbr title="imp">im</abbr></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="everyday-reference-current" class="has-table">
+<h3>Current</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>SI</th>
+<th>US</th>
+<th>Dozenal</th>
+<th>Round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LED</td>
+<td>20 mA</td>
+<td>20 mA</td>
+<td>2;9X <abbr title="tricia-riv (÷ 10^3)">t↓ri</abbr></td>
+<td>2;9 <abbr title="tricia-riv (÷ 10^3)">t↓ri</abbr></td>
+</tr>
+<tr>
+<td>Phone charger</td>
+<td>2 A</td>
+<td>2 A</td>
+<td>0;1E5 <abbr title="riv">ri</abbr></td>
+<td>0;2 <abbr title="riv">ri</abbr></td>
+</tr>
+<tr>
+<td>Kettle (AU, UK)</td>
+<td>10 A</td>
+<td></td>
+<td>0;992 <abbr title="riv">ri</abbr></td>
+<td>0;X ri</td>
+</tr>
+<tr>
+<td>UK plug fuse</td>
+<td>13 A</td>
+<td></td>
+<td>1;084 <abbr title="riv">ri</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Socket circuit (EU, AU)</td>
+<td>16 A</td>
+<td></td>
+<td>1;376 <abbr title="riv">ri</abbr></td>
+<td>1;4 <abbr title="riv">ri</abbr></td>
+</tr>
+<tr>
+<td>Socket circuit (US)</td>
+<td>20 A</td>
+<td>20 A</td>
+<td>1;765 <abbr title="riv">ri</abbr></td>
+<td>1;8 <abbr title="riv">ri</abbr></td>
+</tr>
+<tr>
+<td>Oven, EV charger</td>
+<td>32 A</td>
+<td>32 A</td>
+<td>2;731 <abbr title="riv">ri</abbr></td>
+<td>2;8 <abbr title="riv">ri</abbr></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block para">
+<p>Notes:</p>
+</div>
+<div class="block list">
+<ul>
+<li>Temperatures, heights, speeds and voltages come out in comfortable numbers</li>
+<li>Café coffee sizes (8, 12 and 16 oz: 170, 250 and 320 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr>) are the cup's brim capacity, the way cups are sold. The drink served is less, depending on milk and froth: about 200 mL in a small, 300 mL in a regular</li>
+<li>Energy and pressure need the tq prefix for everyday sizes (opus and pres are small); food labels in <abbr title="triqua-opus (× 10^3)">t↑op</abbr></li>
+<li>A feature film is 1 chime; a working day and a night's sleep are 4 chimes each</li>
+<li>A 0;X p building sheet spans two 0;5 <abbr title="pace">p</abbr> stud gaps, as a 1,200 mm sheet spans two 600 mm gaps. The close spacing (450 mm, 16 in) has no round value nearby: 0;4 <abbr title="pace">p</abbr> is 484 mm</li>
+</ul>
+</div>
+</section>
+</section>
+<div class="pager"><a class="prev" href="shoe-sizes.html">← Shoe sizes</a><a class="next" href="imperial-conversions.html">Imperial conversions →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+</body>
+</html>

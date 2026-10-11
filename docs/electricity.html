@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>$pagetitle$</title>
+<title>Electricity - Paludal units</title>
 <!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
@@ -99,12 +99,138 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-$nav$
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html" aria-current="page">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </nav>
 <main>
-$body$
-$pager$
+<section id="electricity" class="has-table">
+<h2>Electricity</h2>
+<div class="block decided">
+<p><strong>Decided:</strong> fix the elementary charge <strong>e = 1 × 10^-16 onus</strong> exactly (12^-18 dec).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> a round fixed constant, exactly like SI. imp × riv is always a vig (89.3 W), so e only decides how that is split between voltage and current. This split puts the imp at 7.27 V and the riv at 12.3 A, where the everyday numbers fall best: the voltages printed on batteries, chargers, cars and sockets need no prefix (car 1;8 <abbr title="imp">im</abbr>, mains 28 or 29 <abbr title="imp">im</abbr>), and household currents are about a riv (a kettle 0;X riv, a 16 A circuit 1;4 riv). Replaces the earlier e = 1 × 10^-15 (riv 1.02 A, imp 87.2 V), which made currents neat but left every everyday voltage needing a prefix (AA 2;6 <abbr title="bicia-imp (÷ 10^2)">b↓im</abbr>, car 1;8 <abbr title="uncia-imp (÷ 10^1)">u↓im</abbr>).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> the numbers people actually read - voltages on labels and sockets, currents on chargers and circuits - mostly need no prefix.</p>
+</div>
+<div class="block diagram">
+<pre class="mermaid">flowchart LR
+  e([&quot;e = 1 × 10^-16 os&quot;]) --&gt; os[&quot;onus: charge&lt;br&gt;4.27 C&quot;]
+  os --&gt;|&quot;per blink&quot;| ri[&quot;riv: current&lt;br&gt;12.3 A&quot;]
+  op[&quot;opus: energy&lt;br&gt;31.0 J&quot;] --&gt;|&quot;per onus&quot;| im[&quot;imp: voltage&lt;br&gt;7.27 V&quot;]
+  os --&gt; im
+  im --&gt;|&quot;× riv&quot;| vg[&quot;vig: power&lt;br&gt;89.3 W&quot;]
+  ri --&gt; vg</pre>
+</div>
+<div class="block list">
+<ul>
+<li>1 onus (charge) ≈ 4.266 C</li>
+<li>1 riv (current, onus/blink) ≈ 12.285 A - about what a socket circuit carries (10-16 A)</li>
+<li>1 imp (voltage, opus/onus) ≈ 7.268 V</li>
+<li>Common voltages aren't round (set by chemistry and history), but they're all plain imps. Small ones use the uncia-imp (<abbr title="uncia-imp (÷ 10^1)">u↓im</abbr>, 0;1 imp ≈ 0.606 V), and small currents the tricia-riv (<abbr title="tricia-riv (÷ 10^3)">t↓ri</abbr> ≈ 7.1 mA):</li>
+</ul>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Voltage</th>
+<th>imp</th>
+<th>uncia-imp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.5 V (AA)</td>
+<td>0;258</td>
+<td>2;58</td>
+</tr>
+<tr>
+<td>5 V (USB)</td>
+<td>0;830</td>
+<td>8;30</td>
+</tr>
+<tr>
+<td>12 V (car)</td>
+<td>1;799</td>
+<td>17;99</td>
+</tr>
+<tr>
+<td>24 V</td>
+<td>3;376</td>
+<td>33;76</td>
+</tr>
+<tr>
+<td>120 V mains</td>
+<td>14;62</td>
+<td></td>
+</tr>
+<tr>
+<td>230 V mains</td>
+<td>27;79</td>
+<td></td>
+</tr>
+<tr>
+<td>240 V mains</td>
+<td>29;03</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Current</th>
+<th>riv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20 mA (LED)</td>
+<td>0;003 (2;9X <abbr title="tricia-riv (÷ 10^3)">t↓ri</abbr>)</td>
+</tr>
+<tr>
+<td>2 A (phone charger)</td>
+<td>0;1E5</td>
+</tr>
+<tr>
+<td>10 A (AU socket, kettle)</td>
+<td>0;992 (≈ 0;X)</td>
+</tr>
+<tr>
+<td>16 A (EU socket circuit)</td>
+<td>1;376</td>
+</tr>
+<tr>
+<td>20 A (US circuit)</td>
+<td>1;765</td>
+</tr>
+<tr>
+<td>32 A (oven, EV charger)</td>
+<td>2;731</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>Rejected: e = 1 × 10^-15 (riv 1.02 A, imp 87.2 V: every everyday voltage needs a prefix); 1 × 10^-17 (imp 0.61 V, riv 147 A: voltages are whole numbers, but a phone charger is 0;017 riv); 0;2 × 10^-15 (imp 14.5 V, riv 6.1 A: a car battery is about 1 imp, but mains and sockets come out no better).</li>
+<li>No choice makes both close to SI: imp × riv = vig (89.3 W), fixed by the mechanical units, where volt × amp = 1 W. The split can only trade one for the other.</li>
+</ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="mass.html">← Mass</a><a class="next" href="temperature.html">Temperature →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
@@ -115,15 +241,6 @@ const box = document.getElementById("tables-only");
 box.checked = false;  // browsers can restore a checkbox's state on reload
 box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
 </script>
-$if(redirects)$
-<script>
-// The spec used to be one page: send old links (paludal.org/#time) to the page that holds the id
-(() => {
-  const map = $redirects$, id = decodeURIComponent(location.hash.slice(1));
-  if (id && !document.getElementById(id) && map[id]) location.replace(map[id]);
-})();
-</script>
-$endif$
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {
@@ -134,13 +251,13 @@ $endif$
     const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
     let i = Math.floor(n / 1728), f = n % 1728, s = "";
     do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
-    s = s.replace(/\B(?=(.{3})+$$)/g, ",");  // group in threes: 100,000
-    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$$/, "");
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
     return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
   }
   function fromDoz(t) {
     t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
-    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$$/);
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
     if (!m || (m[2] + (m[3] || "")) === "") return null;
     let v = 0;
     for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
@@ -152,7 +269,7 @@ $endif$
   dec.addEventListener("input", () => {
     const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
     if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
-    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
     doz.value = toDoz(v);
     hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
   });
@@ -166,7 +283,6 @@ $endif$
   });
 })();
 </script>
-$if(mermaid)$
 <script type="module">
 // Diagrams: mermaid needs plain colours, so read them from the page's tokens (light or dark).
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
@@ -182,6 +298,5 @@ mermaid.initialize({
 });
 await mermaid.run();
 </script>
-$endif$
 </body>
 </html>

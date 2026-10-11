@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>$pagetitle$</title>
+<title>Temperature - Paludal units</title>
 <!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
@@ -99,12 +99,56 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-$nav$
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html" aria-current="page">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </nav>
 <main>
-$body$
-$pager$
+<section id="temperature" class="has-table">
+<h2>Temperature</h2>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>tep</strong>, defined by fixing the Boltzmann constant <strong>k = 2;07 × 10^-1E</strong> (opus/tep), exact.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> 0 tep = freezing is what people actually need for weather and cooking (like Celsius). The size splits the gap between freezing and boiling into 100; equal steps (144 dec), so water freezes at 0 <abbr title="tep (degrees from freezing)">°t</abbr> and boils at 100 <abbr title="tep (degrees from freezing)">°t</abbr> - the dozenal version of Celsius's 0 and 100.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> freezing is 0 and boiling 100, so weather and cooking temperatures read like Celsius.</p>
+</div>
+<div class="block list">
+<ul>
+<li>1 tep = 0.694346 K (within 0.014% of 0;01 of the freezing-boiling gap)</li>
+<li><strong>0 tep = freezing</strong>: exactly 289;485 ta (≈ 273.149 947 K, 53 µK (dec) below 0 °C; see below) - human focused; kelvin-style zero rejected</li>
+<li>Triple point of water (273.16 K = 0.01 °C) ≈ <strong>0;021 <abbr title="tep (degrees from freezing)">°t</abbr></strong>, not 0. The triple point has been a measured value (not exact) since SI's 2019 redefinition, so anchoring there would gain nothing</li>
+<li>boiling (sea level) ≈ EE;E9 tep, effectively 100 (144 dec). (SI's Celsius isn't exact either: 99.974 °C)</li>
+<li>1 tep ≈ 0.694 °C ≈ 1.25 °F</li>
+<li>body temperature ≈ 45;35 tep, room temperature (21 °C) ≈ 26 tep</li>
+<li>absolute zero = -289;485 <abbr title="tep (degrees from freezing)">°t</abbr> exactly (no nice ratio between absolute zero, freezing and boiling - fine)</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> absolute temperature (from absolute zero, for gas laws and physics) is written <strong>ta</strong>, spoken "tep absolute": 0 ta = absolute zero, and 0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta, so ta = °t + 289;485 exactly (see the next decision). Everyday temperatures stay °t (or te), from freezing.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> most people will only ever use the everyday scale, so it keeps the plain names; the absolute scale just needs to be distinguishable, as K is from °C. "a" for absolute follows psia / psig (pounds per square inch absolute / gauge). Rejected: "tabs" and "tea" (English words).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> everyday temperatures keep the simple name, and physics still gets an absolute scale that can't be mistaken for it.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the zero of the everyday scale is a defined number: <strong>0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta exactly</strong> (≈ 273.149 947 K, 53 µK (dec) below 0 °C).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> this is how SI does it: 0 °C isn't defined as where water freezes, but as exactly 273.15 K, a number that is exact because it's written in SI's own unit, the kelvin. Written in ta, 273.15 K is 289;48517..., a fraction that never ends, so tying 0 <abbr title="tep (degrees from freezing)">°t</abbr> to 0 °C would leave the offset between °t and ta inexact. Fixing it at 289;485 instead makes it exact and short. The 53 µK (dec) difference is far smaller than the accuracy of any real freezing point: dissolved air alone moves it by about 2 mK (dec).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> °t and ta convert exactly with one short number, and the zero can be rebuilt from k alone, with no water or air pressure needed.</p>
+</div>
+</section>
+<div class="pager"><a class="prev" href="electricity.html">← Electricity</a><a class="next" href="amount-of-substance.html">Amount of substance →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
@@ -115,15 +159,6 @@ const box = document.getElementById("tables-only");
 box.checked = false;  // browsers can restore a checkbox's state on reload
 box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
 </script>
-$if(redirects)$
-<script>
-// The spec used to be one page: send old links (paludal.org/#time) to the page that holds the id
-(() => {
-  const map = $redirects$, id = decodeURIComponent(location.hash.slice(1));
-  if (id && !document.getElementById(id) && map[id]) location.replace(map[id]);
-})();
-</script>
-$endif$
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {
@@ -134,13 +169,13 @@ $endif$
     const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
     let i = Math.floor(n / 1728), f = n % 1728, s = "";
     do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
-    s = s.replace(/\B(?=(.{3})+$$)/g, ",");  // group in threes: 100,000
-    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$$/, "");
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
     return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
   }
   function fromDoz(t) {
     t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
-    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$$/);
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
     if (!m || (m[2] + (m[3] || "")) === "") return null;
     let v = 0;
     for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
@@ -152,7 +187,7 @@ $endif$
   dec.addEventListener("input", () => {
     const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
     if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
-    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
     doz.value = toDoz(v);
     hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
   });
@@ -166,22 +201,5 @@ $endif$
   });
 })();
 </script>
-$if(mermaid)$
-<script type="module">
-// Diagrams: mermaid needs plain colours, so read them from the page's tokens (light or dark).
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-const css = getComputedStyle(document.documentElement), v = name => css.getPropertyValue(name).trim();
-mermaid.initialize({
-  startOnLoad: false, theme: "base",
-  themeVariables: {
-    background: v("--bg"), primaryColor: v("--panel"), primaryTextColor: v("--fg"),
-    primaryBorderColor: v("--accent"), lineColor: v("--muted"), textColor: v("--fg"),
-    secondaryColor: v("--row"), tertiaryColor: v("--bg"), clusterBkg: v("--row"), clusterBorder: v("--line"),
-    edgeLabelBackground: v("--bg"), fontFamily: getComputedStyle(document.body).fontFamily, fontSize: "14px",
-  },
-});
-await mermaid.run();
-</script>
-$endif$
 </body>
 </html>

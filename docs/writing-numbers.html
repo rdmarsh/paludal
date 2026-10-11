@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing numbers - Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html" aria-current="page">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<section id="writing-numbers" class="has-table">
+<h2>Writing numbers</h2>
+<div class="block decided">
+<p><strong>Decided:</strong> decimal uses a dot (eg 3.14); dozenal uses a semicolon (3;18481).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> the punctuation shows which base a number is in, so the two can't be confused.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> the base of any number can be seen at a glance, even with no unit or marker.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> long numbers are grouped in threes with commas, in both bases: 100,000 (dozenal), 86,400 (dec). Four-digit numbers are grouped too (1,728). Not grouped: years (2026 CE, 6859 DH), dates, times of day (EX0;53), and digits after the point.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> groups of three are the easiest for people to read, and they match how numbers are spoken (thousand / million, mo / bimo). The comma is free in both bases, since decimal uses a dot as the point and dozenal a semicolon. It replaces SI's thin space (86 400), which is easy to miss, gets lost when text is copied, and can split a number across two lines. Where the comma is the decimal point (much of Europe), 86,400 could be misread; the dot-and-semicolon rule above already settles which mark is the point.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> long numbers are easy to read, copy and say, in either base.</p>
+</div>
+<div class="block list">
+<ul>
+<li>eg 0;4 is 4/10; (a third), or 0.333... (dec)</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> documents number their pages, parts, chapters, sections, tables and figures in dozenal, with X and E (page 2X, chapter 1E, section 1E.3, figure 15.1). The dot between levels is a separator, not a point, as in version numbers. The PDF of this spec does this.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> asked for (2026 CE): every number in the system is dozenal, and a document about it shouldn't count its own pages in decimal. X and E rather than ↊ ↋, so page numbers match the spec's text.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a reader practises dozenal just by finding a page, and nothing in the document mixes bases.</p>
+</div>
+<div class="block para">
+<p>Halves, thirds, quarters and sixths all end after one digit. The catch: a quarter is 0;3 and a third is 0;4, the opposite of what the digits suggest. Fifths and tenths recur, as thirds do in decimal.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Fraction</th>
+<th>Dozenal</th>
+<th>Decimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/2</td>
+<td>0;6</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>1/3</td>
+<td>0;4</td>
+<td>0.333...</td>
+</tr>
+<tr>
+<td>2/3</td>
+<td>0;8</td>
+<td>0.666...</td>
+</tr>
+<tr>
+<td>1/4</td>
+<td>0;3</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>3/4</td>
+<td>0;9</td>
+<td>0.75</td>
+</tr>
+<tr>
+<td>1/6</td>
+<td>0;2</td>
+<td>0.1666...</td>
+</tr>
+<tr>
+<td>1/8</td>
+<td>0;16</td>
+<td>0.125</td>
+</tr>
+<tr>
+<td>3/8</td>
+<td>0;46</td>
+<td>0.375</td>
+</tr>
+<tr>
+<td>1/9</td>
+<td>0;14</td>
+<td>0.111...</td>
+</tr>
+<tr>
+<td>1/12 (dec)</td>
+<td>0;1</td>
+<td>0.0833...</td>
+</tr>
+<tr>
+<td>1/16 (dec)</td>
+<td>0;09</td>
+<td>0.0625</td>
+</tr>
+<tr>
+<td>1/5</td>
+<td>0;2497 2497...</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>1/10 (dec)</td>
+<td>0;1 2497 2497...</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>1/7</td>
+<td>0;186X35 186X35...</td>
+<td>0.142857...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the dozenal percent is <strong>per gro</strong> (per 144 dec), written <strong>/gro</strong>: 75% = 0;9 = 90 /gro; 65% ≈ 0;7X = 7X /gro.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> it parallels "per cent" (Latin centum is the number word, as gro is ours). The two digits after the semicolon are already the per-gro figure, so nothing needs converting. "Per bicia" was rejected: bicia already means ÷100;, so "per bicia" would mean ×100;. % can't be reused - it would be read as decimal. No established dozenal symbol is known, so /gro is used for now.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a per-gro figure is read straight off a fraction, with no arithmetic.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> fractions (numbers below one) always have a leading zero: 0;6, never ;6.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> a bare leading semicolon is easy to miss or mistake for punctuation, and it keeps a semicolon at the start of a number from ever being ambiguous.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a fraction can never lose its point in print or handwriting.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> how to tell dozenal and decimal numbers apart, when both are in use:</p>
+</div>
+<div class="block list">
+<ol type="1">
+<li>A number with a unit needs no marker: the unit says which system (46 <abbr title="pace">p</abbr> is dozenal, 54 m is decimal).</li>
+<li>A number containing X or E is dozenal.</li>
+<li>Each document states its default base (this one: dozenal).</li>
+<li>A bare number in mixed text is marked: dozenal with a trailing semicolon (<strong>46;</strong>), decimal with <strong>(dec)</strong>, or a subscript ᵈ in typeset documents. Small numbers that read the same in both (0-9) and number words (twelve) need no marker.</li>
+<li>Years: CE years are decimal (2026 CE), DH years are dozenal (6859 DH).</li>
+<li>Colour can be added on screen, but never as the only signal.</li>
+</ol>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> most real numbers carry a unit, so they're already unambiguous; markers are only needed for bare numbers. The trailing semicolon is just the dozenal point with nothing after it (like "46." in decimal), so it works in plain text and handwriting without any new symbol. Colour fails in print, handwriting, plain text and for colour-blind readers. Numeric subscripts (46₁₂) were rejected: "12" is itself ambiguous - in dozenal it means fourteen. Years get their era instead of a marker because the era is already written with years (CE / DH), so it costs nothing extra.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> mixed text stays unambiguous with almost no extra marks, in any medium and for any reader.</p>
+</div>
+</section>
+<div class="pager"><a class="prev" href="digits.html">← Digits</a><a class="next" href="spoken-numbers.html">Spoken numbers →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+</body>
+</html>

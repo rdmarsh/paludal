@@ -1,4 +1,5 @@
--- Pandoc filter for the Paludal docs (see the Makefile). It runs in three passes:
+-- Pandoc filter for the Paludal docs (see the Makefile). The spec is read from spec/*.md, one file
+-- per chapter, in file-name order. The filter runs in three passes:
 --
 -- 1. HTML only: nest the flat headings into <section>s with stable ids, and wrap each block in
 --    <div class="block KIND"> so the "hide notes" toggle can tell tables, decisions and reasons
@@ -8,7 +9,9 @@
 --    Mermaid diagrams are drawn in HTML, kept as [mermaid] blocks in AsciiDoc, and included in
 --    LaTeX as the PDFs mermaid-cli drew for the Makefile. SVG figures (figures/*.svg) are
 --    inlined in HTML so they follow the page's colours, and in LaTeX use the PDFs rsvg-convert drew.
--- 3. HTML only: build the nav from the sections into the `nav` variable for the template.
+-- 3. HTML only: split the site into pages, one per chapter and one per part (the opening section
+--    is index.html), each with the nav, previous / next links and the template. Pandoc writes
+--    index.html itself; the filter writes the other pages next to it.
 
 local stringify = pandoc.utils.stringify
 local is_html = FORMAT:match("html") ~= nil
@@ -73,12 +76,9 @@ local function wrap(b)
   return pandoc.Div({ b }, { class = "block " .. k }), MARKS_TABLE[k]
 end
 
-local function is_part(sec)
-  return sec.level == 1 and stringify(sec.header):match("^Part %d") ~= nil
-end
-
 local function to_div(sec)
-  local content = { pandoc.Header(sec.level + 1, sec.header.content) }
+  -- Each part and chapter heads its own page, so both are <h2>; ### is <h3> and so on
+  local content = { pandoc.Header(math.max(sec.level, 2), sec.header.content) }
   for _, b in ipairs(sec.blocks) do content[#content + 1] = b end
   for _, c in ipairs(sec.children) do content[#content + 1] = to_div(c) end
   local classes = { "section", sec.has_table and "has-table" or "no-table" }
@@ -93,8 +93,8 @@ local function sections(doc)
     if b.t == "Header" then
       while stack[#stack].level >= b.level do table.remove(stack) end
       local parent = stack[#stack]
-      -- A chapter directly under a Part gets a short id (#prefixes); deeper ones carry their parent's
-      local prefix = (parent == root or is_part(parent)) and "" or parent.id .. " "
+      -- A part or chapter gets a short id (#prefixes), which names its page; deeper ones carry their parent's
+      local prefix = b.level <= 2 and "" or parent.id .. " "
       local sec = { level = b.level, header = b, blocks = {}, children = {}, has_table = false,
                     id = slug(prefix .. stringify(b)) }
       table.insert(parent.children, sec)
@@ -291,7 +291,7 @@ local function latex_diagrams(doc)
         f:close()
         return pandoc.Para({ pandoc.Image({}, path) })
       end
-      return pandoc.Para({ pandoc.Emph({ pandoc.Str("(Diagram - see index.html for the drawn version.)") }) })
+      return pandoc.Para({ pandoc.Emph({ pandoc.Str("(Diagram - see paludal.org for the drawn version.)") }) })
     end,
   })
 end
@@ -308,7 +308,7 @@ local function latex_figures(b)
     img.src = path
     return pandoc.Figure({ pandoc.Plain({ img }) }, { img.caption })
   end
-  return pandoc.Para({ pandoc.Emph({ pandoc.Str("(Figure - see index.html for the drawing.)") }) })
+  return pandoc.Para({ pandoc.Emph({ pandoc.Str("(Figure - see paludal.org for the drawing.)") }) })
 end
 
 -- LaTeX (memoir): top-level headings are parts. "Part 1: Dozenal numbers" becomes part 1, "Dozenal
@@ -332,29 +332,143 @@ local function RawInline(el)
 end
 
 ----------------------------------------------------------------------------------------------
--- Pass 3: the nav
+-- Pass 3: pages
 
 local function is_section(b)
   return b.t == "Div" and b.classes:includes("section")
 end
 
-local function nav(doc)
+local function class_of(div)
+  return div.classes:includes("has-table") and "has-table" or "no-table"
+end
+
+local function child_sections(div)
+  local subs = {}
+  for _, c in ipairs(div.content) do
+    if is_section(c) then subs[#subs + 1] = c end
+  end
+  return subs
+end
+
+local function link(page, current)
+  return ('<a href="%s.html"%s>%s</a>'):format(page.file, page == current and ' aria-current="page"' or "",
+                                              render(page.div.content[1].content))
+end
+
+-- The nav lists every part and its chapters; the current chapter also lists its own sections
+local function nav(tops, current)
   local items = {}
-  for _, sec in ipairs(doc.blocks) do
-    if is_section(sec) then
-      local subs = {}
-      for _, c in ipairs(sec.content) do
-        if is_section(c) then
-          subs[#subs + 1] = ('<li><a href="#%s">%s</a></li>'):format(c.identifier, render(c.content[1].content))
+  for _, top in ipairs(tops) do
+    local subs = {}
+    for _, ch in ipairs(top.chapters) do
+      local inner = ""
+      if ch == current then
+        local anchors = {}
+        for _, s in ipairs(child_sections(ch.div)) do
+          anchors[#anchors + 1] = ('<li class="%s"><a href="#%s">%s</a></li>'):format(
+            class_of(s), s.identifier, render(s.content[1].content))
         end
+        if #anchors > 0 then inner = "<ul>" .. table.concat(anchors) .. "</ul>" end
       end
-      items[#items + 1] = ('<li class="%s"><a href="#%s">%s</a>%s</li>'):format(
-        sec.classes:includes("has-table") and "has-table" or "no-table", sec.identifier,
-        render(sec.content[1].content), #subs > 0 and "<ul>" .. table.concat(subs) .. "</ul>" or "")
+      subs[#subs + 1] = ('<li class="%s">%s%s</li>'):format(class_of(ch.div), link(ch, current), inner)
+    end
+    items[#items + 1] = ('<li class="%s">%s%s</li>'):format(class_of(top.div), link(top, current),
+      #subs > 0 and "<ul>" .. table.concat(subs) .. "</ul>" or "")
+  end
+  return table.concat(items, "\n")
+end
+
+local function pager(order, n)
+  local prev, next = order[n - 1], order[n + 1]
+  return ('<div class="pager">%s%s</div>'):format(
+    prev and ('<a class="prev" href="%s.html">← %s</a>'):format(prev.file, render(prev.div.content[1].content)) or "",
+    next and ('<a class="next" href="%s.html">%s →</a>'):format(next.file, render(next.div.content[1].content)) or "")
+end
+
+local function has_diagram(blocks)
+  local found = false
+  pandoc.Div(blocks):walk({ RawBlock = function(rb)
+    if rb.text:match('^<pre class="mermaid">') then found = true end
+  end })
+  return found
+end
+
+-- Links to the old single page (paludal.org/#time) still work: index.html sends any id it
+-- doesn't hold to the page that does. Ids under the opening section used to carry its id.
+local function redirects(order)
+  local map, intro = {}, order[1].div.identifier
+  local function add(div, file)
+    for _, s in ipairs(child_sections(div)) do
+      map[s.identifier] = file .. ".html#" .. s.identifier
+      add(s, file)
     end
   end
-  doc.meta.nav = pandoc.RawBlock("html", table.concat(items, "\n"))
-  return doc
+  for _, page in ipairs(order) do
+    if page.file ~= "index" then map[page.div.identifier] = page.file .. ".html" end
+    add(page.div, page.file)
+  end
+  for _, ch in ipairs(order[1].chapters) do
+    for id, target in pairs(map) do
+      if id == ch.div.identifier or id:sub(1, #ch.div.identifier + 1) == ch.div.identifier .. "-" then
+        map[intro .. "-" .. id] = target
+      end
+    end
+  end
+  return pandoc.json.encode(map)
+end
+
+local function pages(doc)
+  local tops, order = {}, {}
+  for _, b in ipairs(doc.blocks) do
+    if is_section(b) then
+      -- A part's page holds its opening text and a list of its chapters
+      local own, top = {}, { chapters = {} }
+      top.file = #tops == 0 and "index" or b.identifier
+      for _, c in ipairs(b.content) do
+        if is_section(c) then
+          top.chapters[#top.chapters + 1] = { file = c.identifier, div = c }
+        else
+          own[#own + 1] = c
+        end
+      end
+      top.div = pandoc.Div(own, b.attr)
+      tops[#tops + 1] = top
+      order[#order + 1] = top
+      for _, ch in ipairs(top.chapters) do order[#order + 1] = ch end
+    end
+  end
+  for _, top in ipairs(tops) do
+    local items = {}
+    for _, ch in ipairs(top.chapters) do items[#items + 1] = "<li>" .. link(ch) .. "</li>" end
+    if #items > 0 then
+      top.div.content:insert(pandoc.RawBlock("html", '<ul class="chapters">' .. table.concat(items) .. "</ul>"))
+    end
+  end
+
+  local dir = (PANDOC_STATE.output_file or ""):match("^(.*)/") or "."
+  local f = assert(io.open("pandoc/template.html"))
+  local template = pandoc.template.compile(f:read("a"), "pandoc/template.html")
+  f:close()
+  local index
+  for n, page in ipairs(order) do
+    local blocks = { page.div }
+    if n == 1 then table.insert(blocks, 1, doc.blocks[1]) end -- text before the first heading, if any
+    local meta = pandoc.Meta({})
+    for k, v in pairs(doc.meta) do meta[k] = v end
+    meta.pagetitle = n == 1 and "Paludal units" or stringify(page.div.content[1].content) .. " - Paludal units"
+    meta.nav = pandoc.RawBlock("html", nav(tops, page))
+    meta.pager = pandoc.RawBlock("html", pager(order, n))
+    meta.mermaid = has_diagram(blocks)
+    if n == 1 then
+      meta.redirects = pandoc.RawInline("html", redirects(order))
+      index = pandoc.Pandoc(blocks, meta)
+    else
+      local out = assert(io.open(("%s/%s.html"):format(dir, page.file), "w"))
+      out:write(pandoc.write(pandoc.Pandoc(blocks, meta), "html5", { template = template, wrap_text = "wrap-none" }))
+      out:close()
+    end
+  end
+  return index
 end
 
 ----------------------------------------------------------------------------------------------
@@ -363,7 +477,7 @@ if is_html then
   return {
     { Pandoc = sections },
     { Inlines = Inlines, Table = Table, RawInline = RawInline },
-    { Pandoc = nav },
+    { Pandoc = pages },
   }
 end
 return {

@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imperial conversions - Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html" aria-current="page">Imperial conversions</a><ul><li class="has-table"><a href="#imperial-conversions-fahrenheit">Fahrenheit</a></li></ul></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<section id="imperial-conversions" class="has-table">
+<h2>Imperial conversions</h2>
+<div class="block para">
+<p>Both directions. Dozenal-side values are dozenal; imperial-side values are decimal (as imperial is used now). UK and US units differ for volume and tons.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Imperial</th>
+<th>= dozenal units</th>
+<th>Dozenal unit = imperial (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length</td>
+<td>1 inch</td>
+<td>2;627 <abbr title="dig">di</abbr></td>
+<td>1 <abbr title="dig">di</abbr> = 0.3971 in</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>1 foot</td>
+<td>2;627 <abbr title="unc">un</abbr></td>
+<td>1 <abbr title="unc">un</abbr> = 0.3971 ft (4.765 in)</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>1 yard</td>
+<td>0;767X p</td>
+<td>1 <abbr title="pace">p</abbr> = 1.589 yd (4.765 ft)</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>1 mile</td>
+<td>783;E p (0;784 <abbr title="iter">ir</abbr>)</td>
+<td>1 <abbr title="iter">ir</abbr> = 1.560 mi</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>1 nautical mile</td>
+<td>8X3 <abbr title="pace">p</abbr> (0;E5X na)</td>
+<td>1 <abbr title="navis">na</abbr> = 1.045 nmi</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>1 furlong</td>
+<td>E6;6 <abbr title="pace">p</abbr></td>
+<td>1 <abbr title="iter">ir</abbr> = 12.48 furlongs</td>
+</tr>
+<tr>
+<td>Area</td>
+<td>1 square foot</td>
+<td>6;41 <abbr title="unc">un</abbr>²</td>
+<td>1 <abbr title="unc">un</abbr>² = 0.1577 sq ft</td>
+</tr>
+<tr>
+<td>Area</td>
+<td>1 acre</td>
+<td>1;13X ag</td>
+<td>1 <abbr title="ager">ag</abbr> = 0.9009 acre</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>1 ounce</td>
+<td>2;37X <abbr title="bicia-lib (÷ 10^2)">b↓li</abbr></td>
+<td>1 <abbr title="bicia-lib (÷ 10^2)">b↓li</abbr> = 0.4339 oz</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>1 pound</td>
+<td>0;30X6 <abbr title="lib">li</abbr></td>
+<td>1 <abbr title="lib">li</abbr> = 3.905 lb</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>1 stone</td>
+<td>3;703 <abbr title="lib">li</abbr></td>
+<td>1 <abbr title="lib">li</abbr> = 0.2790 st</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>1 ton (UK long)</td>
+<td>3E9;7 <abbr title="lib">li</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>1 ton (US short)</td>
+<td>368;1 <abbr title="lib">li</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>1 fl oz (UK)</td>
+<td>23;82 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>1 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr> = 0.03612 fl oz (UK)</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>1 fl oz (US)</td>
+<td>24;99 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr></td>
+<td>1 <abbr title="tricia-cub (÷ 10^3)">t↓cu</abbr> = 0.03471 fl oz (US)</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>1 pint (UK)</td>
+<td>0;3X18 <abbr title="cub">cu</abbr></td>
+<td>1 <abbr title="cub">cu</abbr> = 3.121 pt (UK)</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>1 pint (US)</td>
+<td>0;325 <abbr title="cub">cu</abbr></td>
+<td>1 <abbr title="cub">cu</abbr> = 3.748 pt (US)</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>1 gallon (UK)</td>
+<td>2;691 <abbr title="cub">cu</abbr></td>
+<td>1 <abbr title="cub">cu</abbr> = 0.3901 gal (UK)</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>1 gallon (US)</td>
+<td>2;174 <abbr title="cub">cu</abbr></td>
+<td>1 <abbr title="cub">cu</abbr> = 0.4685 gal (US)</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>1 cup (US)</td>
+<td>0;1726 <abbr title="cub">cu</abbr></td>
+<td>1 <abbr title="cub">cu</abbr> = 7.496 cups (US)</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>1 mph</td>
+<td>1;348 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+<td>1 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr> = 0.7798 mph</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>1 knot</td>
+<td>1;586 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr></td>
+<td>1 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr> = 0.6776 knot</td>
+</tr>
+<tr>
+<td>Energy</td>
+<td>1 Calorie (kcal)</td>
+<td>E2;E op</td>
+<td>1 <abbr title="triqua-opus (× 10^3)">t↑op</abbr> = 12.80 kcal</td>
+</tr>
+<tr>
+<td>Energy</td>
+<td>1 BTU</td>
+<td>2X;05 <abbr title="opus">op</abbr></td>
+<td>1 <abbr title="opus">op</abbr> = 0.02938 BTU</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>1 horsepower</td>
+<td>8;429 <abbr title="vig">vg</abbr></td>
+<td>1 <abbr title="vig">vg</abbr> = 0.1197 hp</td>
+</tr>
+<tr>
+<td>Pressure</td>
+<td>1 psi</td>
+<td>0;4897 <abbr title="triqua-pres (× 10^3)">t↑pr</abbr></td>
+<td>1 <abbr title="triqua-pres (× 10^3)">t↑pr</abbr> = 2.535 psi</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>A mile ≈ 0;8 iter (two-thirds of an iter, 1.67 km; the mile is 4% shorter). Half an iter (1.25 km) sits between a kilometre and a mile</li>
+<li>Inch → dig and foot → unc give the same digits (2;627), because both systems step by twelve there</li>
+<li>The name links too: Latin <em>uncia</em> (a twelfth) is the root of both inch (1/12 foot) and ounce (1/12 Roman pound)</li>
+</ul>
+</div>
+<section id="imperial-conversions-fahrenheit" class="has-table">
+<h3>Fahrenheit</h3>
+<div class="block para">
+<p>°t = (°F - 32) × 0.8001 (decimal arithmetic, then convert) - so roughly <strong>(°F - 32) × 4/5</strong>.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>°F</th>
+<th>°t</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>-21;7</td>
+<td></td>
+</tr>
+<tr>
+<td>32</td>
+<td>0</td>
+<td>freezing</td>
+</tr>
+<tr>
+<td>50</td>
+<td>12;5</td>
+<td></td>
+</tr>
+<tr>
+<td>68</td>
+<td>24;X</td>
+<td>room</td>
+</tr>
+<tr>
+<td>98.6</td>
+<td>45;3</td>
+<td>body</td>
+</tr>
+<tr>
+<td>100</td>
+<td>46;5</td>
+<td></td>
+</tr>
+<tr>
+<td>212</td>
+<td>100</td>
+<td>boiling</td>
+</tr>
+<tr>
+<td>350</td>
+<td>192</td>
+<td>oven</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<div class="pager"><a class="prev" href="everyday-reference.html">← Everyday reference</a><a class="next" href="log-scales.html">Log scales →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+</body>
+</html>

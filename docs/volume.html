@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>$pagetitle$</title>
+<title>Volume - Paludal units</title>
 <!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
@@ -99,12 +99,199 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-$nav$
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html" aria-current="page">Volume</a><ul><li class="has-table"><a href="#volume-rainfall">Rainfall</a></li></ul></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </nav>
 <main>
-$body$
-$pager$
+<section id="volume" class="has-table">
+<h2>Volume</h2>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>cub</strong> = a cube 1 unc per side ≈ 1.7736 L. Water in it ≈ 1 lib.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> volume follows directly from length (no separate definition), it makes the water rule of thumb work, and dozenal fractions of it land close to common drink sizes.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> volume needs no definition of its own, a cub of water weighs about a lib, and drink sizes stay familiar.</p>
+</div>
+<div class="block para">
+<p>How length leads to area, volume and (through water) mass:</p>
+</div>
+<div class="block diagram">
+<pre class="mermaid">flowchart LR
+  di[&quot;dig&lt;br&gt;1.01 cm&quot;] --&gt;|&quot;× 10&quot;| un[&quot;unc&lt;br&gt;12.1 cm&quot;]
+  un --&gt;|&quot;× 2&quot;| sp[&quot;span&lt;br&gt;24.2 cm&quot;]
+  un --&gt;|&quot;× 10&quot;| p[&quot;pace&lt;br&gt;1.45 m&quot;]
+  p --&gt;|&quot;squared, × 1,000&quot;| ag[&quot;ager&lt;br&gt;3,646 m²&quot;]
+  un --&gt;|&quot;cubed&quot;| cu[&quot;cub&lt;br&gt;1.77 L&quot;]
+  di --&gt;|&quot;cubed&quot;| dc[&quot;dig-cube&lt;br&gt;1.03 mL&quot;]
+  cu --&gt;|&quot;of water ≈&quot;| li[&quot;lib&lt;br&gt;1.77 kg&quot;]
+  dc --&gt;|&quot;of water ≈&quot;| mli[&quot;0;001 lib&lt;br&gt;1.03 g&quot;]</pre>
+</div>
+<div class="block para">
+<p>Good size for milk. Dozenal fractions land close to common drink and pub sizes (all ~4% larger):</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Fraction</th>
+<th>mL</th>
+<th>Close to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1,774</td>
+<td>large milk</td>
+</tr>
+<tr>
+<td>0;8 (2/3)</td>
+<td>1,182</td>
+<td>pub jug (AU 1,140)</td>
+</tr>
+<tr>
+<td>0;6 (1/2)</td>
+<td>887</td>
+<td></td>
+</tr>
+<tr>
+<td>0;4 (1/3)</td>
+<td>591</td>
+<td>pint (AU 570, UK 568); US 20 fl oz bottle (591) - almost exact</td>
+</tr>
+<tr>
+<td>0;3 (1/4)</td>
+<td>443</td>
+<td>schooner (AU 425); 440 mL can</td>
+</tr>
+<tr>
+<td>0;2 (1/6)</td>
+<td>296</td>
+<td>pot/middy (AU 285), UK half pint (284); 300 mL bottle</td>
+</tr>
+<tr>
+<td>0;1 (a twelfth)</td>
+<td>148</td>
+<td>small glass / wine pour (150)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block para">
+<p>Small volumes (kitchen and drinks):</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Fraction</th>
+<th>mL</th>
+<th>Close to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0;06</td>
+<td>73.9</td>
+<td>quarter cup</td>
+</tr>
+<tr>
+<td>0;1</td>
+<td>148</td>
+<td>half cup</td>
+</tr>
+<tr>
+<td>0;2</td>
+<td>296</td>
+<td>cup (AU 250, US 237) - a bit larger</td>
+</tr>
+<tr>
+<td>0;025</td>
+<td>29.8</td>
+<td>spirit shot (30 mL)</td>
+</tr>
+<tr>
+<td>0;01</td>
+<td>12.3</td>
+<td>standard drink of pure alcohol: 9.7 g ethanol (AU std drink = 10 g)</td>
+</tr>
+<tr>
+<td>0;004</td>
+<td>4.1</td>
+<td>teaspoon (5 mL)</td>
+</tr>
+<tr>
+<td>0;001</td>
+<td>1.03</td>
+<td>a dig-cube, about 1 mL / 1 g of water</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="volume-rainfall" class="has-table">
+<h3>Rainfall</h3>
+<div class="block decided">
+<p><strong>Proposed (not decided):</strong> rainfall is measured as a depth in <strong>lin</strong> (0;1 dig ≈ 0.84 mm; the name is also still proposed), and that's the same number as libs of water per square pace.</p>
+</div>
+<div class="block list">
+<ul>
+<li>A cub is 0;001 cubic pace, so 1 cub spread over 1 square pace is 0;001 <abbr title="pace">p</abbr> = 1 lin deep, and a cub of water weighs about a lib. So <strong>1 lin of rain = 1 <abbr title="lib">li</abbr> of water per p²</strong> - just as 1 mm of rain is 1 L (1 kg) per m²</li>
+<li>Gauges keep measuring depth, as they do now; the lib figure is for tanks, roofs and gardens: 10 lin of rain on a 100 <abbr title="pace">p</abbr>² roof (304 m²) is 1,000 <abbr title="lib">li</abbr>, which fills 1,000 <abbr title="cub">cu</abbr> (1 <abbr title="triqua-cub (× 10^3)">t↑cu</abbr>, 3.06 m³) of tank</li>
+</ul>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Rain</th>
+<th>mm (dec)</th>
+<th>lin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Light shower</td>
+<td>1</td>
+<td>1;2</td>
+</tr>
+<tr>
+<td>Rainy day</td>
+<td>10</td>
+<td>E;X</td>
+</tr>
+<tr>
+<td>Heavy storm</td>
+<td>25</td>
+<td>25;8</td>
+</tr>
+<tr>
+<td>Flood rain</td>
+<td>100</td>
+<td>9X;E</td>
+</tr>
+<tr>
+<td>Sydney, a year</td>
+<td>1,200</td>
+<td>9XE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<div class="pager"><a class="prev" href="area.html">← Area</a><a class="next" href="angle.html">Angle →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
@@ -115,15 +302,6 @@ const box = document.getElementById("tables-only");
 box.checked = false;  // browsers can restore a checkbox's state on reload
 box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
 </script>
-$if(redirects)$
-<script>
-// The spec used to be one page: send old links (paludal.org/#time) to the page that holds the id
-(() => {
-  const map = $redirects$, id = decodeURIComponent(location.hash.slice(1));
-  if (id && !document.getElementById(id) && map[id]) location.replace(map[id]);
-})();
-</script>
-$endif$
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {
@@ -134,13 +312,13 @@ $endif$
     const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
     let i = Math.floor(n / 1728), f = n % 1728, s = "";
     do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
-    s = s.replace(/\B(?=(.{3})+$$)/g, ",");  // group in threes: 100,000
-    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$$/, "");
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
     return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
   }
   function fromDoz(t) {
     t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
-    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$$/);
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
     if (!m || (m[2] + (m[3] || "")) === "") return null;
     let v = 0;
     for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
@@ -152,7 +330,7 @@ $endif$
   dec.addEventListener("input", () => {
     const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
     if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
-    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
     doz.value = toDoz(v);
     hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
   });
@@ -166,7 +344,6 @@ $endif$
   });
 })();
 </script>
-$if(mermaid)$
 <script type="module">
 // Diagrams: mermaid needs plain colours, so read them from the page's tokens (light or dark).
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
@@ -182,6 +359,5 @@ mermaid.initialize({
 });
 await mermaid.run();
 </script>
-$endif$
 </body>
 </html>

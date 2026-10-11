@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Summary - Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html" aria-current="page">Summary</a><ul><li class="has-table"><a href="#summary-base-units-and-defining-constants">Base units and defining constants</a></li><li class="has-table"><a href="#summary-exact-si-values">Exact SI values</a></li><li class="has-table"><a href="#summary-derived-and-everyday-units">Derived and everyday units</a></li><li class="has-table"><a href="#summary-how-the-units-connect">How the units connect</a></li><li class="no-table"><a href="#summary-rules-of-thumb">Rules of thumb</a></li></ul></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<section id="summary" class="has-table">
+<h2>Summary</h2>
+<section id="summary-base-units-and-defining-constants" class="has-table">
+<h3>Base units and defining constants</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Unit</th>
+<th>Size (SI)</th>
+<th>Defined by (exact)</th>
+<th>Named after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time</td>
+<td>blink</td>
+<td>0.347222 s (25/72 s)</td>
+<td>1 breath (10 blinks) = 25/6 SI seconds</td>
+<td>English: the blink of an eye</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>pace</td>
+<td>1.452545 m</td>
+<td>c = 2 × 10^7 paces/blink</td>
+<td>Latin passus, a pace</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>lib</td>
+<td>1.771431 kg</td>
+<td>h = 2;13 × 10^-28</td>
+<td>Latin libra, pound / scales</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>tep</td>
+<td>0.694346 K</td>
+<td>k = 2;07 × 10^-1E, 0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta (≈ freezing)</td>
+<td>Latin tepor, warmth</td>
+</tr>
+<tr>
+<td>Current</td>
+<td>riv</td>
+<td>12.2847 A</td>
+<td>e = 1 × 10^-16 onus</td>
+<td>Latin rivus, stream</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>grex</td>
+<td>6.17235 × 10^23 (dec) things</td>
+<td>1 grex = 1;15 × 10^1X things</td>
+<td>Latin grex, flock</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>lam</td>
+<td>0.980246 cd</td>
+<td>K_cd = 3 × 10^4 lam·sr/<abbr title="vig">vg</abbr> at 19,042,90X,764,540 per blink</td>
+<td>Latin lampas, lamp</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="summary-exact-si-values" class="has-table">
+<h3>Exact SI values</h3>
+<div class="block para">
+<p>Every unit converts to SI exactly. The definitions use Paludal's fixed constants, which give short round numbers; written as SI fractions most of them would be long:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Defined by</th>
+<th>Exact SI value</th>
+<th>Decimal (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>blink</td>
+<td>1 breath = 25/6 s</td>
+<td>25/72 s</td>
+<td>0.347 222 222 s</td>
+</tr>
+<tr>
+<td>pace</td>
+<td>c = 2 × 10^7 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr></td>
+<td>3,747,405,725 / 2,579,890,176 m</td>
+<td>1.452 544 670 m</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>h = 2;13 × 10^-28</td>
+<td>a fraction of 96 digits</td>
+<td>1.771 431 179 kg</td>
+</tr>
+<tr>
+<td>tep</td>
+<td>k = 2;07 × 10^-1E</td>
+<td>a fraction of 36 digits</td>
+<td>0.694 345 838 K</td>
+</tr>
+<tr>
+<td>0 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta</td>
+<td>289;485 tep above absolute zero</td>
+<td>273.149 946 686 K</td>
+</tr>
+<tr>
+<td>onus</td>
+<td>e = 1 × 10^-16</td>
+<td>1.602176634 × 10^-19 × 12^18 C (dec)</td>
+<td>4.265 528 250 C</td>
+</tr>
+<tr>
+<td>riv</td>
+<td>onus per blink</td>
+<td>a fraction of 44 digits</td>
+<td>12.284 721 361 A</td>
+</tr>
+<tr>
+<td>grex</td>
+<td>1;15 × 10^1X things</td>
+<td>a fraction of 38 digits</td>
+<td>1.024 943 427 mol</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="summary-derived-and-everyday-units" class="has-table">
+<h3>Derived and everyday units</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Unit</th>
+<th>Size (SI)</th>
+<th>Named after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beat</td>
+<td>beat</td>
+<td>1.04167 s (3 blinks, 25/24 s)</td>
+<td>English: a heartbeat</td>
+</tr>
+<tr>
+<td>Clock unit</td>
+<td>breath</td>
+<td>4.16667 s (10 blinks = 4 beats)</td>
+<td>English: one breath</td>
+</tr>
+<tr>
+<td>Dozenal hour</td>
+<td>chime</td>
+<td>2 hours exactly (1,000 breaths, 0;1 day)</td>
+<td>English: clocks chime on the hour</td>
+</tr>
+<tr>
+<td>Dozenal minute</td>
+<td>moment</td>
+<td>50 s exactly (0;01 chime, 10 breaths)</td>
+<td>English moment, from Latin momentum</td>
+</tr>
+<tr>
+<td>1/10 pace</td>
+<td>unc</td>
+<td>12.1 cm</td>
+<td>Latin uncia, a twelfth</td>
+</tr>
+<tr>
+<td>1/100 pace</td>
+<td>dig</td>
+<td>1.01 cm</td>
+<td>Latin digitus, finger</td>
+</tr>
+<tr>
+<td>0;2 pace</td>
+<td>span</td>
+<td>24.2 cm</td>
+<td>English span, a hand's spread</td>
+</tr>
+<tr>
+<td>0;4 pace</td>
+<td>ulna</td>
+<td>48.4 cm</td>
+<td>Latin ulna, forearm</td>
+</tr>
+<tr>
+<td>0;6 pace</td>
+<td>gress</td>
+<td>72.6 cm</td>
+<td>Latin gressus, a step</td>
+</tr>
+<tr>
+<td>1,000 paces</td>
+<td>iter</td>
+<td>2.51 km</td>
+<td>Latin iter, road, journey</td>
+</tr>
+<tr>
+<td>930 paces (sea, air)</td>
+<td>navis</td>
+<td>1.935 km</td>
+<td>Latin navis, ship</td>
+</tr>
+<tr>
+<td>Area (1,000 <abbr title="pace">p</abbr>²)</td>
+<td>ager</td>
+<td>3,646 m²</td>
+<td>Latin ager, field</td>
+</tr>
+<tr>
+<td>Volume (unc³)</td>
+<td>cub</td>
+<td>1.7736 L</td>
+<td>Latin cubus, cube</td>
+</tr>
+<tr>
+<td>Force</td>
+<td>vis</td>
+<td>≈ 21.3 N</td>
+<td>Latin vis, force</td>
+</tr>
+<tr>
+<td>Energy</td>
+<td>opus</td>
+<td>≈ 31.0 J</td>
+<td>Latin opus, work</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>vig</td>
+<td>≈ 89.3 W</td>
+<td>Latin vigor, liveliness</td>
+</tr>
+<tr>
+<td>Pressure</td>
+<td>pres</td>
+<td>≈ 10.1 Pa</td>
+<td>Latin pressus, pressed</td>
+</tr>
+<tr>
+<td>Charge</td>
+<td>onus</td>
+<td>≈ 4.266 C</td>
+<td>Latin onus, load</td>
+</tr>
+<tr>
+<td>Voltage</td>
+<td>imp</td>
+<td>≈ 7.268 V</td>
+<td>Latin impetus, push</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="summary-how-the-units-connect" class="has-table">
+<h3>How the units connect</h3>
+<div class="block para">
+<p>Each fixed constant defines one base unit; the derived units are built from the base units.</p>
+</div>
+<div class="block diagram">
+<pre class="mermaid">flowchart LR
+  subgraph K [Fixed constants]
+    cs([&quot;SI second: breath = 25/6 s&quot;])
+    c([&quot;c = 2 × 10^7 p/bl&quot;])
+    h([&quot;h = 2;13 × 10^-28&quot;])
+    e([&quot;e = 1 × 10^-16 os&quot;])
+    k([&quot;k = 2;07 × 10^-1E op/°t&quot;])
+    n([&quot;1;15 × 10^1X things&quot;])
+    kcd([&quot;K_cd = 3 × 10^4 la·sr/vg&quot;])
+  end
+  cs --&gt; bl[&quot;blink: time&quot;]
+  c --&gt; p[&quot;pace: length&quot;]
+  h --&gt; li[&quot;lib: mass&quot;]
+  e --&gt; os(&quot;onus: charge&quot;)
+  k --&gt; te[&quot;tep: temperature&quot;]
+  n --&gt; gx[&quot;grex: amount&quot;]
+  kcd --&gt; la[&quot;lam: light&quot;]
+  bl --&gt; p
+  bl &amp; p --&gt; li
+  li &amp; p &amp; bl --&gt; vi(&quot;vis = li·p/bl²: force&quot;)
+  vi --&gt; op(&quot;opus = vi·p: energy&quot;)
+  op --&gt; vg(&quot;vig = op/bl: power&quot;)
+  vi --&gt; pr(&quot;pres = vi/p²: pressure&quot;)
+  os &amp; bl --&gt; ri[&quot;riv = os/bl: current&quot;]
+  op &amp; os --&gt; im(&quot;imp = op/os: voltage&quot;)
+  op --&gt; te
+  vg --&gt; la</pre>
+</div>
+</section>
+<section id="summary-rules-of-thumb" class="no-table">
+<h3>Rules of thumb</h3>
+<div class="block list">
+<ul>
+<li>A cub of water weighs a lib (0.9994 at 20 °C). A dig-cube of water ≈ 1/1,000 lib ≈ 1 g.</li>
+<li>Time of day = three digits of moments since midnight, like 24-hour time: 000 midnight, 300 dawn, 600 noon, 900 dusk.</li>
+<li>A moment (50 s) is about a minute; a beat (1.04 s) is about a second.</li>
+<li>100 km/h ≈ 68 paces/breath; motorway limit 70 (105 km/h).</li>
+<li>Water freezes at 0 tep, boils at ≈ 100 tep. Body ≈ 45;3 tep.</li>
+<li>240 V mains ≈ 29 imp, 230 V ≈ 27;8, 120 V ≈ 14;6, a 12 V car ≈ 1;8. A kettle draws ≈ 0;X riv.</li>
+<li>A 6 ft person ≈ 1¼ paces. 1 inch ≈ 2;6 digs.</li>
+</ul>
+</div>
+</section>
+</section>
+<div class="pager"><a class="prev" href="part-2-paludal-units.html">← Part 2: Paludal units</a><a class="next" href="prefixes.html">Prefixes →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+<script type="module">
+// Diagrams: mermaid needs plain colours, so read them from the page's tokens (light or dark).
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+const css = getComputedStyle(document.documentElement), v = name => css.getPropertyValue(name).trim();
+mermaid.initialize({
+  startOnLoad: false, theme: "base",
+  themeVariables: {
+    background: v("--bg"), primaryColor: v("--panel"), primaryTextColor: v("--fg"),
+    primaryBorderColor: v("--accent"), lineColor: v("--muted"), textColor: v("--fg"),
+    secondaryColor: v("--row"), tertiaryColor: v("--bg"), clusterBkg: v("--row"), clusterBorder: v("--line"),
+    edgeLabelBackground: v("--bg"), fontFamily: getComputedStyle(document.body).fontFamily, fontSize: "14px",
+  },
+});
+await mermaid.run();
+</script>
+</body>
+</html>

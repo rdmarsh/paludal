@@ -1,6 +1,6 @@
 Paludal is licensed in two parts.
 
-The specification - ideas.md, index.html, the figures (figures/*.svg) and the other generated documents -
+The specification - spec/ (the Markdown source), docs/ (the website), the figures (figures/*.svg) and the other generated documents -
 is licensed under the Creative Commons Attribution 4.0 International licence (CC BY 4.0):
 https://creativecommons.org/licenses/by/4.0/
 You may share and adapt it for any purpose, as long as you give credit ("Paludal, by David Marsh"),

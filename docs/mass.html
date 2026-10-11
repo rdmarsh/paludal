@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>$pagetitle$</title>
+<title>Mass - Paludal units</title>
 <!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
@@ -99,12 +99,49 @@ body.tables-only section.lead, body.tables-only section.lead .block { display: b
 <span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
 </div>
 <ul>
-$nav$
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html" aria-current="page">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
 </ul>
 </nav>
 <main>
-$body$
-$pager$
+<section id="mass" class="has-table">
+<h2>Mass</h2>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>lib</strong> ≈ 1.7714 kg, defined by fixing Planck's constant: <strong>h = 2;13 × 10^-28 exactly</strong> (lib × pace² / blink) - same method SI has used since 2019 CE. (= 2;13 × 10^-27 in lib × pace² / breath - same unit, just expressed per breath)</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> fixing a constant is how SI defines mass since 2019 CE, so conversion is exact. The value of h was chosen so a cub of water ≈ 1 lib - the everyday rule of thumb matters more than a round constant.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> mass converts exactly to SI, and a cub of water still weighs about a lib.</p>
+</div>
+<div class="block list">
+<ul>
+<li>The value of h was chosen so a cube of water 1 unc per side (1 cub) ≈ 1 lib
+<ul>
+<li>water at 20 °C: 0.9994 (better than SI's 1 L of water = 0.9982 kg at 20 °C)</li>
+</ul></li>
+<li>Everyday rule of thumb works at every scale (1,728 (dec) = 1,000;):
+<ul>
+<li>1 cub of water (12.1 cm side) ≈ 1 lib (1.77 kg)</li>
+<li>1 dig-cube of water (1.01 cm side) ≈ 1/1,000 lib (≈ 1.03 g)</li>
+</ul></li>
+<li>0;1 lib ≈ 147.6 g, 0;01 lib ≈ 12.3 g, 0;001 lib ≈ 1.025 g</li>
+<li>Converts exactly to kg (h is exact in SI too)</li>
+<li>Rejected:
+<ul>
+<li>Water itself as the definition: density depends on temperature, pressure, isotopes (SI dropped it for this reason)</li>
+<li>10^20 carbon-12 atoms (1.584 kg; 12^24 dec): nicely dozenal, but the dalton is not exact in SI</li>
+<li>h = 2 × 10^-28 (1.864 kg): rounder h, but water cube only 0.95</li>
+</ul></li>
+<li>Priority used: c round &gt; water ≈ 1 &gt; h round. Normal people use c-based length and water; almost nobody uses h directly.</li>
+</ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="length.html">← Length</a><a class="next" href="electricity.html">Electricity →</a></div>
 <footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
 code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
 </main>
@@ -115,15 +152,6 @@ const box = document.getElementById("tables-only");
 box.checked = false;  // browsers can restore a checkbox's state on reload
 box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
 </script>
-$if(redirects)$
-<script>
-// The spec used to be one page: send old links (paludal.org/#time) to the page that holds the id
-(() => {
-  const map = $redirects$, id = decodeURIComponent(location.hash.slice(1));
-  if (id && !document.getElementById(id) && map[id]) location.replace(map[id]);
-})();
-</script>
-$endif$
 <script>
 // Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
 (() => {
@@ -134,13 +162,13 @@ $endif$
     const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
     let i = Math.floor(n / 1728), f = n % 1728, s = "";
     do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
-    s = s.replace(/\B(?=(.{3})+$$)/g, ",");  // group in threes: 100,000
-    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$$/, "");
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
     return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
   }
   function fromDoz(t) {
     t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
-    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$$/);
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
     if (!m || (m[2] + (m[3] || "")) === "") return null;
     let v = 0;
     for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
@@ -152,7 +180,7 @@ $endif$
   dec.addEventListener("input", () => {
     const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
     if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
-    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
     doz.value = toDoz(v);
     hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
   });
@@ -166,22 +194,5 @@ $endif$
   });
 })();
 </script>
-$if(mermaid)$
-<script type="module">
-// Diagrams: mermaid needs plain colours, so read them from the page's tokens (light or dark).
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-const css = getComputedStyle(document.documentElement), v = name => css.getPropertyValue(name).trim();
-mermaid.initialize({
-  startOnLoad: false, theme: "base",
-  themeVariables: {
-    background: v("--bg"), primaryColor: v("--panel"), primaryTextColor: v("--fg"),
-    primaryBorderColor: v("--accent"), lineColor: v("--muted"), textColor: v("--fg"),
-    secondaryColor: v("--row"), tertiaryColor: v("--bg"), clusterBkg: v("--row"), clusterBorder: v("--line"),
-    edgeLabelBackground: v("--bg"), fontFamily: getComputedStyle(document.body).fontFamily, fontSize: "14px",
-  },
-});
-await mermaid.run();
-</script>
-$endif$
 </body>
 </html>

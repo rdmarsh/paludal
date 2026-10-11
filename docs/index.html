@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html" aria-current="page">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<div class="intro">
+
+</div>
+<section id="the-paludal-system" class="lead has-table">
+<h2>The Paludal system</h2>
+<div class="block para">
+<p>Numbers are dozenal unless marked "(dec)".</p>
+</div>
+<div class="block para">
+<p><strong>Version 0.2</strong>, 5 Oct 6859 DH (2026 CE). See Versions in Part 4 for what changed.</p>
+</div>
+<div class="block para">
+<p>Paludal is a dozenal (base-12) system of units, built the way SI is built but counted in twelves. Time comes from a 24-hour day of 86,400 s (dec): the blink is 1/100,000 of a day (twelve to the fifth power, 25/72 s exactly), and every time unit up to the day is a power of twelve of it. Length comes from the speed of light, fixed at 2 × 10^7 (20,000,000, or 71,663,616 in decimal) paces per blink, which makes the pace about 1.45 m - close to the Roman pace. Mass comes from the Planck constant, chosen so that a cub of water (a cube 0;1 pace on each side) weighs a lib. Temperature, charge, amount and light are each fixed by a constant, as in SI, so every unit converts exactly to SI. Multiples and fractions step by twelve, which divides evenly by 2, 3, 4 and 6.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the system is called <strong>Paludal</strong> ("paludal units", "is that metric or paludal?"). Fallbacks if needed: <strong>Uncial</strong> (Latin uncia, a twelfth) or <strong>Passic</strong> (from passus, the pace - as metric is from the metre).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> named after its creator, as Fahrenheit, Celsius and Kelvin are - but hidden: Latin <em>palus, paludis</em> means "a marsh". It matches the Latin naming style of the units, and works as an adjective like "metric".</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a short name that works as an adjective ("paludal units") and fits the Latin unit names, without putting a person's name on show.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> <strong>dozenal</strong> is the number system (base twelve) and <strong>Paludal</strong> is the system of units built on it, as decimal is the number system and metric the units.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> to keep the two separate. Base ten can be used without metric units, and base twelve without Paludal ones. Dozenal counting is long established (the Dozenal Society, SDN and the X / E digits all predate this), and Paludal doesn't claim to have invented it - only the units are new.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> either half can be taught, adopted or argued about on its own - dozenal counting doesn't stand or fall with these units.</p>
+</div>
+<div class="block para">
+<p>Goals: as rigorous as SI (every unit defined by a fixed constant, exact conversion to SI), but human focused - everyday sizes and rules of thumb come first. A round constant is only a tie-breaker: any fixed value makes a definition exact (SI's c = 299,792,458 m/s isn't round), so where sizes are equally good for people, the one that makes a universal constant round is preferred.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>universal test</strong>: if people and another species had to agree units without access to the Earth, they could both arrive at Paludal's from physics, chemistry and maths alone. The only Earth-based inputs allowed are the day and the year (time of day and the calendar), which human life runs on.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> units that rest only on physics and maths could be shared with anyone - in principle even an alien species - and rebuilt anywhere, without an Earth measurement or object. Time is the exception because people live by the day and the year.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> every unit except time can be rebuilt from first principles, and anything that fails the test is easy to spot (see the table below).</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> adopt prior art. Where someone has already done something as well or better, use it rather than invent something new, and credit it (see Prior art).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> existing work has already been argued over and tested, and some people already use it. Paludal already adopts SDN, do / gro / mo, dek and el, and the dozenal clock.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> less to invent and less to learn, and Paludal fits in with the dozenal work already out there.</p>
+</div>
+<div class="block para">
+<p>How each part of the system does on the universal test:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Unit or value</th>
+<th>Rests on</th>
+<th>Universal test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>blink, beat, breath, moment, chime</td>
+<td>the SI second (caesium today, optical clocks later), sized to fit the day</td>
+<td>allowed (time); ≈ 8 × 10^11 hydrogen 1S-2S periods for a universal explanation</td>
+</tr>
+<tr>
+<td>pace</td>
+<td>c (physics) and the blink</td>
+<td>passes; its size follows from the day</td>
+</tr>
+<tr>
+<td>lib, cub</td>
+<td>h (physics), chosen so a cub of water ≈ 1 lib</td>
+<td>passes: water is the same everywhere</td>
+</tr>
+<tr>
+<td>riv, onus, imp</td>
+<td>e (physics)</td>
+<td>passes</td>
+</tr>
+<tr>
+<td>grex</td>
+<td>a count, chosen so molar mass ≈ atomic mass</td>
+<td>passes</td>
+</tr>
+<tr>
+<td>turn, prefixes, numbers</td>
+<td>maths</td>
+<td>passes</td>
+</tr>
+<tr>
+<td>acidity</td>
+<td>pure water</td>
+<td>passes</td>
+</tr>
+<tr>
+<td>tep (size)</td>
+<td>k, chosen so freezing to boiling ≈ 100</td>
+<td>mostly: boiling depends on air pressure, which is the Earth's</td>
+</tr>
+<tr>
+<td>tep (zero)</td>
+<td>a defined number, 0 <abbr title="tep (degrees from freezing)">°t</abbr> = 289;485 ta, chosen to match water freezing at the Earth's air pressure</td>
+<td>the number can be rebuilt from k; the reason for it is the Earth's water (see Open items)</td>
+</tr>
+<tr>
+<td>lam</td>
+<td>the human eye's sensitivity, at 540 THz</td>
+<td>fails (SI's candela has the same problem)</td>
+</tr>
+<tr>
+<td>vox (zero)</td>
+<td>the threshold of human hearing</td>
+<td>fails (human biology)</td>
+</tr>
+<tr>
+<td>navis</td>
+<td>the Earth's meridian</td>
+<td>fails (navigation on Earth only)</td>
+</tr>
+<tr>
+<td>parax</td>
+<td>the Earth's orbit (AU)</td>
+<td>fails (like the parsec)</td>
+</tr>
+<tr>
+<td>years, calendar</td>
+<td>the Earth's orbit</td>
+<td>allowed</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>The failures are all <strong>human conventions on top of the core</strong>: an everyday temperature zero, how bright light looks to us, how loud sound is to us, and Earth navigation. None of them is needed to define another unit, except that the lam is one of the seven base units</li>
+</ul>
+</div>
+<ul class="chapters"><li><a href="names.html">Names</a></li></ul>
+</section>
+<div class="pager"><a class="next" href="names.html">Names →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// The spec used to be one page: send old links (paludal.org/#time) to the page that holds the id
+(() => {
+  const map = {"a-day-in-paludal":"a-day-in-paludal.html","amount-of-substance":"amount-of-substance.html","angle":"angle.html","area":"area.html","clocks-time-zones-and-calendar":"clocks-time-zones-and-calendar.html","clocks-time-zones-and-calendar-analogue-clocks":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-analogue-clocks","clocks-time-zones-and-calendar-calendar":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-calendar","clocks-time-zones-and-calendar-daylight-saving-and-time-zones":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-daylight-saving-and-time-zones","clocks-time-zones-and-calendar-years":"clocks-time-zones-and-calendar.html#clocks-time-zones-and-calendar-years","constants":"constants.html","constants-defining-constants-exact":"constants.html#constants-defining-constants-exact","constants-derived-from-them-also-exact":"constants.html#constants-derived-from-them-also-exact","constants-earth-and-everyday":"constants.html#constants-earth-and-everyday","constants-measured":"constants.html#constants-measured","constants-pure-numbers-the-same-in-any-base-dozenal-digits":"constants.html#constants-pure-numbers-the-same-in-any-base-dozenal-digits","digits":"digits.html","electricity":"electricity.html","everyday-reference":"everyday-reference.html","everyday-reference-current":"everyday-reference.html#everyday-reference-current","everyday-reference-energy":"everyday-reference.html#everyday-reference-energy","everyday-reference-fuel-use":"everyday-reference.html#everyday-reference-fuel-use","everyday-reference-length":"everyday-reference.html#everyday-reference-length","everyday-reference-mass":"everyday-reference.html#everyday-reference-mass","everyday-reference-power":"everyday-reference.html#everyday-reference-power","everyday-reference-pressure":"everyday-reference.html#everyday-reference-pressure","everyday-reference-races-and-sport":"everyday-reference.html#everyday-reference-races-and-sport","everyday-reference-speed":"everyday-reference.html#everyday-reference-speed","everyday-reference-temperature":"everyday-reference.html#everyday-reference-temperature","everyday-reference-time":"everyday-reference.html#everyday-reference-time","everyday-reference-voltage":"everyday-reference.html#everyday-reference-voltage","everyday-reference-volume":"everyday-reference.html#everyday-reference-volume","hexadecimal":"hexadecimal.html","imperial-conversions":"imperial-conversions.html","imperial-conversions-fahrenheit":"imperial-conversions.html#imperial-conversions-fahrenheit","length":"length.html","length-gravity":"length.html#length-gravity","length-light-distances":"length.html#length-light-distances","length-star-distances":"length.html#length-star-distances","light":"light.html","log-scales":"log-scales.html","log-scales-acidity-ph":"log-scales.html#log-scales-acidity-ph","log-scales-earthquakes":"log-scales.html#log-scales-earthquakes","log-scales-sound":"log-scales.html#log-scales-sound","mass":"mass.html","money":"money.html","names":"names.html","open-items-next-steps":"open-items-next-steps.html","paper-sizes":"paper-sizes.html","part-1-dozenal-numbers":"part-1-dozenal-numbers.html","part-2-paludal-units":"part-2-paludal-units.html","part-3-everyday-use":"part-3-everyday-use.html","part-4-background":"part-4-background.html","phone-numbers-and-keypads":"phone-numbers-and-keypads.html","prefixes":"prefixes.html","prefixes-prefix-matrix":"prefixes.html#prefixes-prefix-matrix","prefixes-prefix-symbols":"prefixes.html#prefixes-prefix-symbols","prior-art":"prior-art.html","shoe-sizes":"shoe-sizes.html","speed-limits-and-changeover":"speed-limits-and-changeover.html","spoken-numbers":"spoken-numbers.html","summary":"summary.html","summary-base-units-and-defining-constants":"summary.html#summary-base-units-and-defining-constants","summary-derived-and-everyday-units":"summary.html#summary-derived-and-everyday-units","summary-exact-si-values":"summary.html#summary-exact-si-values","summary-how-the-units-connect":"summary.html#summary-how-the-units-connect","summary-rules-of-thumb":"summary.html#summary-rules-of-thumb","temperature":"temperature.html","the-paludal-system-names":"names.html","time":"time.html","time-definition-of-time":"time.html#time-definition-of-time","unit-symbols":"unit-symbols.html","versions":"versions.html","volume":"volume.html","volume-rainfall":"volume.html#volume-rainfall","writing-numbers":"writing-numbers.html"}, id = decodeURIComponent(location.hash.slice(1));
+  if (id && !document.getElementById(id) && map[id]) location.replace(map[id]);
+})();
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+</body>
+</html>

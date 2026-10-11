@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clocks, time zones and calendar - Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html" aria-current="page">Clocks, time zones and calendar</a><ul><li class="has-table"><a href="#clocks-time-zones-and-calendar-analogue-clocks">Analogue clocks</a></li><li class="has-table"><a href="#clocks-time-zones-and-calendar-daylight-saving-and-time-zones">Daylight saving and time zones</a></li><li class="has-table"><a href="#clocks-time-zones-and-calendar-years">Years</a></li><li class="has-table"><a href="#clocks-time-zones-and-calendar-calendar">Calendar</a></li></ul></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<section id="clocks-time-zones-and-calendar" class="has-table">
+<h2>Clocks, time zones and calendar</h2>
+<div class="block para">
+<p>The time units themselves are in Part 2 (Time).</p>
+</div>
+<section id="clocks-time-zones-and-calendar-analogue-clocks" class="has-table">
+<h3>Analogue clocks</h3>
+<div class="block decided">
+<p><strong>Decided:</strong> a 24-hour dial with twelve marks, noon at the top, turning clockwise.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> one turn per day shows the whole day at a glance; noon at the top matches the sun at its highest, and clockwise keeps the convention people already know. The design, and the idea of splitting the day by twelve, then twelve, then twelve as the basis of Paludal time, came from Paul Rapoport's Diurnal 1 clock (<a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a>).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> the whole day is visible at once, and the hand follows the sun.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> four hands, each turning twelve times faster than the one before, so each hand shows one digit of the time: at E91;7 they point at E, 9, 1 and 7. The hands are named after the digit they show: <strong>hand 1</strong> to <strong>hand 4</strong> (said "hand two", not "second hand").</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> with one hand per digit the time reads straight off the hands, every hand reads the same twelve marks, and the clock is the same as Paul Rapoport's Diurnal 1 (prior art adopted). The earlier design had a chime, moment and breath hand plus a beat hand: the moment hand showed two digits against 144 fine marks, and the breath hand turned 144 times faster than it, not twelve. Hour, minute and second hand don't fit four dozenal hands, and "second hand" already means something else. The beat hand was dropped: it shows no digit and adds clutter (clocks.dozenal.ca leaves out a fifth hand for the same reason).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> the time is read off the hands digit by digit, on the same dial as an existing dozenal clock.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Hand</th>
+<th>Turns once per</th>
+<th>Shows</th>
+<th>At E91;7</th>
+<th>Like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hand 1</td>
+<td>day</td>
+<td>chime</td>
+<td>E</td>
+<td>hour hand</td>
+</tr>
+<tr>
+<td>Hand 2</td>
+<td>chime (2 h)</td>
+<td>dozens of moments</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>Hand 3</td>
+<td>10 moments (10 min)</td>
+<td>moments</td>
+<td>1</td>
+<td>minute hand</td>
+</tr>
+<tr>
+<td>Hand 4</td>
+<td>moment (50 s)</td>
+<td>breath</td>
+<td>7</td>
+<td>second hand</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block figure">
+<figure class="figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-130 -130 260 260" width="320" role="img" color="#1f1d1a" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<title>Paludal clock showing E91;7</title>
+<desc>A 24-hour dial with twelve marks, 0 (midnight) at the bottom and 6 (noon) at the top, numbers running clockwise. Four hands, each twelve times faster than the last, each pointing at one digit of the time: hand 1 just before 0 (E), hand 2 just past 9, hand 3 between 1 and 2, hand 4 on 7. The time is E91;7, about 23:31.</desc>
+<circle class="panel" color="#f3f0ea" r="118" fill="currentColor"/>
+<circle class="line" color="#e4e0d8" r="118" fill="none" stroke="currentColor" stroke-width="2"/>
+<g class="muted" color="#6b665e" stroke="currentColor" stroke-width="0.8" stroke-linecap="round">
+<line x1="4.71" y1="-107.9" x2="4.89" y2="-111.89"/>
+<line x1="9.41" y1="-107.59" x2="9.76" y2="-111.57"/>
+<line x1="14.1" y1="-107.08" x2="14.62" y2="-111.04"/>
+<line x1="18.75" y1="-106.36" x2="19.45" y2="-110.3"/>
+<line x1="23.38" y1="-105.44" x2="24.24" y2="-109.35"/>
+<line x1="27.95" y1="-104.32" x2="28.99" y2="-108.18"/>
+<line x1="32.48" y1="-103.0" x2="33.68" y2="-106.82"/>
+<line x1="36.94" y1="-101.49" x2="38.31" y2="-105.25"/>
+<line x1="41.33" y1="-99.78" x2="42.86" y2="-103.47"/>
+<line x1="45.64" y1="-97.88" x2="47.33" y2="-101.51"/>
+<line x1="49.87" y1="-95.8" x2="51.72" y2="-99.35"/>
+<line x1="58.03" y1="-91.09" x2="60.18" y2="-94.46"/>
+<line x1="61.95" y1="-88.47" x2="64.24" y2="-91.75"/>
+<line x1="65.75" y1="-85.68" x2="68.18" y2="-88.86"/>
+<line x1="69.42" y1="-82.73" x2="71.99" y2="-85.8"/>
+<line x1="72.96" y1="-79.63" x2="75.67" y2="-82.58"/>
+<line x1="76.37" y1="-76.37" x2="79.2" y2="-79.2"/>
+<line x1="79.63" y1="-72.96" x2="82.58" y2="-75.67"/>
+<line x1="82.73" y1="-69.42" x2="85.8" y2="-71.99"/>
+<line x1="85.68" y1="-65.75" x2="88.86" y2="-68.18"/>
+<line x1="88.47" y1="-61.95" x2="91.75" y2="-64.24"/>
+<line x1="91.09" y1="-58.03" x2="94.46" y2="-60.18"/>
+<line x1="95.8" y1="-49.87" x2="99.35" y2="-51.72"/>
+<line x1="97.88" y1="-45.64" x2="101.51" y2="-47.33"/>
+<line x1="99.78" y1="-41.33" x2="103.47" y2="-42.86"/>
+<line x1="101.49" y1="-36.94" x2="105.25" y2="-38.31"/>
+<line x1="103.0" y1="-32.48" x2="106.82" y2="-33.68"/>
+<line x1="104.32" y1="-27.95" x2="108.18" y2="-28.99"/>
+<line x1="105.44" y1="-23.38" x2="109.35" y2="-24.24"/>
+<line x1="106.36" y1="-18.75" x2="110.3" y2="-19.45"/>
+<line x1="107.08" y1="-14.1" x2="111.04" y2="-14.62"/>
+<line x1="107.59" y1="-9.41" x2="111.57" y2="-9.76"/>
+<line x1="107.9" y1="-4.71" x2="111.89" y2="-4.89"/>
+<line x1="107.9" y1="4.71" x2="111.89" y2="4.89"/>
+<line x1="107.59" y1="9.41" x2="111.57" y2="9.76"/>
+<line x1="107.08" y1="14.1" x2="111.04" y2="14.62"/>
+<line x1="106.36" y1="18.75" x2="110.3" y2="19.45"/>
+<line x1="105.44" y1="23.38" x2="109.35" y2="24.24"/>
+<line x1="104.32" y1="27.95" x2="108.18" y2="28.99"/>
+<line x1="103.0" y1="32.48" x2="106.82" y2="33.68"/>
+<line x1="101.49" y1="36.94" x2="105.25" y2="38.31"/>
+<line x1="99.78" y1="41.33" x2="103.47" y2="42.86"/>
+<line x1="97.88" y1="45.64" x2="101.51" y2="47.33"/>
+<line x1="95.8" y1="49.87" x2="99.35" y2="51.72"/>
+<line x1="91.09" y1="58.03" x2="94.46" y2="60.18"/>
+<line x1="88.47" y1="61.95" x2="91.75" y2="64.24"/>
+<line x1="85.68" y1="65.75" x2="88.86" y2="68.18"/>
+<line x1="82.73" y1="69.42" x2="85.8" y2="71.99"/>
+<line x1="79.63" y1="72.96" x2="82.58" y2="75.67"/>
+<line x1="76.37" y1="76.37" x2="79.2" y2="79.2"/>
+<line x1="72.96" y1="79.63" x2="75.67" y2="82.58"/>
+<line x1="69.42" y1="82.73" x2="71.99" y2="85.8"/>
+<line x1="65.75" y1="85.68" x2="68.18" y2="88.86"/>
+<line x1="61.95" y1="88.47" x2="64.24" y2="91.75"/>
+<line x1="58.03" y1="91.09" x2="60.18" y2="94.46"/>
+<line x1="49.87" y1="95.8" x2="51.72" y2="99.35"/>
+<line x1="45.64" y1="97.88" x2="47.33" y2="101.51"/>
+<line x1="41.33" y1="99.78" x2="42.86" y2="103.47"/>
+<line x1="36.94" y1="101.49" x2="38.31" y2="105.25"/>
+<line x1="32.48" y1="103.0" x2="33.68" y2="106.82"/>
+<line x1="27.95" y1="104.32" x2="28.99" y2="108.18"/>
+<line x1="23.38" y1="105.44" x2="24.24" y2="109.35"/>
+<line x1="18.75" y1="106.36" x2="19.45" y2="110.3"/>
+<line x1="14.1" y1="107.08" x2="14.62" y2="111.04"/>
+<line x1="9.41" y1="107.59" x2="9.76" y2="111.57"/>
+<line x1="4.71" y1="107.9" x2="4.89" y2="111.89"/>
+<line x1="-4.71" y1="107.9" x2="-4.89" y2="111.89"/>
+<line x1="-9.41" y1="107.59" x2="-9.76" y2="111.57"/>
+<line x1="-14.1" y1="107.08" x2="-14.62" y2="111.04"/>
+<line x1="-18.75" y1="106.36" x2="-19.45" y2="110.3"/>
+<line x1="-23.38" y1="105.44" x2="-24.24" y2="109.35"/>
+<line x1="-27.95" y1="104.32" x2="-28.99" y2="108.18"/>
+<line x1="-32.48" y1="103.0" x2="-33.68" y2="106.82"/>
+<line x1="-36.94" y1="101.49" x2="-38.31" y2="105.25"/>
+<line x1="-41.33" y1="99.78" x2="-42.86" y2="103.47"/>
+<line x1="-45.64" y1="97.88" x2="-47.33" y2="101.51"/>
+<line x1="-49.87" y1="95.8" x2="-51.72" y2="99.35"/>
+<line x1="-58.03" y1="91.09" x2="-60.18" y2="94.46"/>
+<line x1="-61.95" y1="88.47" x2="-64.24" y2="91.75"/>
+<line x1="-65.75" y1="85.68" x2="-68.18" y2="88.86"/>
+<line x1="-69.42" y1="82.73" x2="-71.99" y2="85.8"/>
+<line x1="-72.96" y1="79.63" x2="-75.67" y2="82.58"/>
+<line x1="-76.37" y1="76.37" x2="-79.2" y2="79.2"/>
+<line x1="-79.63" y1="72.96" x2="-82.58" y2="75.67"/>
+<line x1="-82.73" y1="69.42" x2="-85.8" y2="71.99"/>
+<line x1="-85.68" y1="65.75" x2="-88.86" y2="68.18"/>
+<line x1="-88.47" y1="61.95" x2="-91.75" y2="64.24"/>
+<line x1="-91.09" y1="58.03" x2="-94.46" y2="60.18"/>
+<line x1="-95.8" y1="49.87" x2="-99.35" y2="51.72"/>
+<line x1="-97.88" y1="45.64" x2="-101.51" y2="47.33"/>
+<line x1="-99.78" y1="41.33" x2="-103.47" y2="42.86"/>
+<line x1="-101.49" y1="36.94" x2="-105.25" y2="38.31"/>
+<line x1="-103.0" y1="32.48" x2="-106.82" y2="33.68"/>
+<line x1="-104.32" y1="27.95" x2="-108.18" y2="28.99"/>
+<line x1="-105.44" y1="23.38" x2="-109.35" y2="24.24"/>
+<line x1="-106.36" y1="18.75" x2="-110.3" y2="19.45"/>
+<line x1="-107.08" y1="14.1" x2="-111.04" y2="14.62"/>
+<line x1="-107.59" y1="9.41" x2="-111.57" y2="9.76"/>
+<line x1="-107.9" y1="4.71" x2="-111.89" y2="4.89"/>
+<line x1="-107.9" y1="-4.71" x2="-111.89" y2="-4.89"/>
+<line x1="-107.59" y1="-9.41" x2="-111.57" y2="-9.76"/>
+<line x1="-107.08" y1="-14.1" x2="-111.04" y2="-14.62"/>
+<line x1="-106.36" y1="-18.75" x2="-110.3" y2="-19.45"/>
+<line x1="-105.44" y1="-23.38" x2="-109.35" y2="-24.24"/>
+<line x1="-104.32" y1="-27.95" x2="-108.18" y2="-28.99"/>
+<line x1="-103.0" y1="-32.48" x2="-106.82" y2="-33.68"/>
+<line x1="-101.49" y1="-36.94" x2="-105.25" y2="-38.31"/>
+<line x1="-99.78" y1="-41.33" x2="-103.47" y2="-42.86"/>
+<line x1="-97.88" y1="-45.64" x2="-101.51" y2="-47.33"/>
+<line x1="-95.8" y1="-49.87" x2="-99.35" y2="-51.72"/>
+<line x1="-91.09" y1="-58.03" x2="-94.46" y2="-60.18"/>
+<line x1="-88.47" y1="-61.95" x2="-91.75" y2="-64.24"/>
+<line x1="-85.68" y1="-65.75" x2="-88.86" y2="-68.18"/>
+<line x1="-82.73" y1="-69.42" x2="-85.8" y2="-71.99"/>
+<line x1="-79.63" y1="-72.96" x2="-82.58" y2="-75.67"/>
+<line x1="-76.37" y1="-76.37" x2="-79.2" y2="-79.2"/>
+<line x1="-72.96" y1="-79.63" x2="-75.67" y2="-82.58"/>
+<line x1="-69.42" y1="-82.73" x2="-71.99" y2="-85.8"/>
+<line x1="-65.75" y1="-85.68" x2="-68.18" y2="-88.86"/>
+<line x1="-61.95" y1="-88.47" x2="-64.24" y2="-91.75"/>
+<line x1="-58.03" y1="-91.09" x2="-60.18" y2="-94.46"/>
+<line x1="-49.87" y1="-95.8" x2="-51.72" y2="-99.35"/>
+<line x1="-45.64" y1="-97.88" x2="-47.33" y2="-101.51"/>
+<line x1="-41.33" y1="-99.78" x2="-42.86" y2="-103.47"/>
+<line x1="-36.94" y1="-101.49" x2="-38.31" y2="-105.25"/>
+<line x1="-32.48" y1="-103.0" x2="-33.68" y2="-106.82"/>
+<line x1="-27.95" y1="-104.32" x2="-28.99" y2="-108.18"/>
+<line x1="-23.38" y1="-105.44" x2="-24.24" y2="-109.35"/>
+<line x1="-18.75" y1="-106.36" x2="-19.45" y2="-110.3"/>
+<line x1="-14.1" y1="-107.08" x2="-14.62" y2="-111.04"/>
+<line x1="-9.41" y1="-107.59" x2="-9.76" y2="-111.57"/>
+<line x1="-4.71" y1="-107.9" x2="-4.89" y2="-111.89"/>
+</g>
+<g class="fg" color="#1f1d1a" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+<line x1="0.0" y1="-102.0" x2="0.0" y2="-113.0"/>
+<line x1="51.0" y1="-88.33" x2="56.5" y2="-97.86"/>
+<line x1="88.33" y1="-51.0" x2="97.86" y2="-56.5"/>
+<line x1="102.0" y1="-0.0" x2="113.0" y2="-0.0"/>
+<line x1="88.33" y1="51.0" x2="97.86" y2="56.5"/>
+<line x1="51.0" y1="88.33" x2="56.5" y2="97.86"/>
+<line x1="0.0" y1="102.0" x2="0.0" y2="113.0"/>
+<line x1="-51.0" y1="88.33" x2="-56.5" y2="97.86"/>
+<line x1="-88.33" y1="51.0" x2="-97.86" y2="56.5"/>
+<line x1="-102.0" y1="0.0" x2="-113.0" y2="0.0"/>
+<line x1="-88.33" y1="-51.0" x2="-97.86" y2="-56.5"/>
+<line x1="-51.0" y1="-88.33" x2="-56.5" y2="-97.86"/>
+</g>
+<g fill="currentColor" font-size="17" font-weight="600" text-anchor="middle" dominant-baseline="central">
+<text x="-0.0" y="88.0">0</text>
+<text x="-44.0" y="76.21">1</text>
+<text x="-76.21" y="44.0">2</text>
+<text x="-88.0" y="-0.0">3</text>
+<text x="-76.21" y="-44.0">4</text>
+<text x="-44.0" y="-76.21">5</text>
+<text x="0.0" y="-88.0">6</text>
+<text x="44.0" y="-76.21">7</text>
+<text x="76.21" y="-44.0">8</text>
+<text x="88.0" y="-0.0">9</text>
+<text x="76.21" y="44.0">X</text>
+<text x="44.0" y="76.21">E</text>
+</g>
+<g class="muted" color="#6b665e" fill="currentColor" font-size="9" text-anchor="middle"><text y="-61">noon</text><text y="68">midnight</text><text x="-62" y="-11">dawn</text><text x="62" y="-11">dusk</text></g>
+<text y="-34" text-anchor="middle" font-size="15" font-weight="600" fill="currentColor">E91;7</text>
+<line x1="-1.5" y1="-11.91" x2="6.24" y2="49.61" stroke="currentColor" stroke-width="6.5" stroke-linecap="round"/>
+<line x1="-11.97" y1="-0.83" x2="67.84" y2="4.69" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="8.85" y1="-8.11" x2="-61.93" y2="56.75" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+<line class="accent" color="#9a4d1f" x1="-9.0" y1="15.59" x2="49.0" y2="-84.87" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+<circle r="4.5" fill="currentColor"/><circle class="accent" color="#9a4d1f" r="2" fill="currentColor"/>
+</svg>
+<figcaption>The clock at E91;7 (about 23:31): hand 1 just before 0, hand 2 just past
+9, hand 3 half way from 1 to 2, hand 4 on 7.</figcaption>
+</figure>
+</div>
+<div class="block list">
+<ul>
+<li>Hand 1 is short and wide, hands 2 and 3 longer and thinner, hand 4 thin and coloured, like a second hand</li>
+<li>Hand 4 steps once per breath, landing on each mark, so it always points at the breath digit. It once stepped once per beat (4 steps per mark), but then it looked like a beat hand</li>
+<li>144 (dec) fine marks between the twelve are optional (clocks.dozenal.ca calls them bicia-marks)</li>
+<li><strong>Noon (600) points straight up, midnight (000) straight down</strong>
+<ul>
+<li>dawn ≈ 300 on the left, dusk ≈ 900 on the right (at the equinoxes)</li>
+<li><strong>Clockwise everywhere</strong> (bottom → left → top → right), both hemispheres - matches convention, and clocks are clockwise because they copied northern sundials</li>
+<li>matches the sun's path when facing south in the northern hemisphere, so a correctly oriented clock roughly agrees with a sundial</li>
+</ul></li>
+<li><strong>The clock as a compass</strong> (rough): the sun's bearing in turns is about the time of day - north (000) at midnight, east (300) at dawn, south (600) at noon, west (900) at dusk. So:
+<ul>
+<li>northern hemisphere: lay the clock face up and point hand 1 at the sun; 0 points north and 6 south</li>
+<li>southern hemisphere (where the sun moves the other way, through the north): point 6 at the sun; hand 1 points north</li>
+<li>it is only rough: clocks keep zone time, not sun time (up to 30 moments, half an hour, apart in most zones, another 60 with daylight saving), and the sun's bearing doesn't change evenly, least of all in the tropics near noon. The 12-hour watch trick (south is half way between the hour hand and 12) has the same limits</li>
+</ul></li>
+<li>Compared with the clocks at <a href="https://clocks.dozenal.ca">https://clocks.dozenal.ca</a> (Paul Rapoport; reviewed 2026 CE): Paludal's clock is their <strong>Diurnal 1</strong> - one turn a day ("diurnal", Latin <em>diurnus</em>, daily), 0 (midnight) at the bottom, 6 (noon) at the top, each hand twelve times faster than the next. Their readout (E51.E4) is the time format adopted, with a semicolon. Their other dials:
+<ul>
+<li><strong>Diurnal 2</strong>: 0 (midnight) at the top, noon at the bottom - the same way up as a compass</li>
+<li><strong>Diurnal 3</strong>: 0 at the top, but the day counted from noon, so 0 is noon (as astronomers counted days until 1925 CE, and Julian Day numbers still do)</li>
+<li><strong>Semidiurnal</strong>: the slow hand turns twice a day, like am / pm, with dozenal hands below it</li>
+<li><strong>Signed</strong> versions of each, which count down to the next mark after half way (as "twenty to eight" does)</li>
+<li>Their hand names are SDN place values on a hidden unit of 0;001 day, which is our moment: <strong>unqua-hand</strong> (×10 moments, our hand 2), <strong>nilqua-hand</strong> (×1 moment, hand 3) and <strong>uncia-hand</strong> (÷10 moment = a breath, hand 4); the slowest hand has no name. Nilqua could as well be nilcia, since 10^0 is 1 either way. Not adopted: they only work once the moment is taken as the unit, and uncia is close to our unc</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="clocks-time-zones-and-calendar-daylight-saving-and-time-zones" class="has-table">
+<h3>Daylight saving and time zones</h3>
+<div class="block decided">
+<p><strong>Decided:</strong> no daylight saving, for now.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> a 1-hour shift is half a chime (60 moments), which changes the moment digits (645 becomes 6X5). Shifting a whole chime (2 h) is too big a jump. Neither is good, and places half a chime apart (eg NSW and Queensland in summer) are annoying to deal with. Dropping it puts NSW and Queensland on the same time all year.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> the clock never jumps, and neighbouring places stay on the same time all year.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided (for now):</strong> keep today's 24 time zones, based on UTC (London is +0). Neighbouring zones are half a chime (1 hour) apart, so offsets are whole or half chimes; a few places keep their quarter-hour offsets. To review later.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> twelve whole-chime zones would probably be too few.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> today's zones and offsets carry over unchanged.</p>
+</div>
+<div class="block para">
+<p>Standard time (no daylight saving):</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>City</th>
+<th>UTC now (standard time)</th>
+<th>Paludal (moments)</th>
+<th>Local time when London is 600 (noon)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Honolulu</td>
+<td>UTC-10</td>
+<td>UTC-500</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Anchorage</td>
+<td>UTC-9</td>
+<td>UTC-460</td>
+<td>160</td>
+</tr>
+<tr>
+<td>Los Angeles, Vancouver</td>
+<td>UTC-8</td>
+<td>UTC-400</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Denver</td>
+<td>UTC-7</td>
+<td>UTC-360</td>
+<td>260</td>
+</tr>
+<tr>
+<td>Chicago, Mexico City</td>
+<td>UTC-6</td>
+<td>UTC-300</td>
+<td>300</td>
+</tr>
+<tr>
+<td>New York, Toronto</td>
+<td>UTC-5</td>
+<td>UTC-260</td>
+<td>360</td>
+</tr>
+<tr>
+<td>Santiago</td>
+<td>UTC-4</td>
+<td>UTC-200</td>
+<td>400</td>
+</tr>
+<tr>
+<td>São Paulo, Buenos Aires</td>
+<td>UTC-3</td>
+<td>UTC-160</td>
+<td>460</td>
+</tr>
+<tr>
+<td>London, Reykjavik</td>
+<td>UTC</td>
+<td>UTC</td>
+<td>600</td>
+</tr>
+<tr>
+<td>Paris, Berlin, Rome</td>
+<td>UTC+1</td>
+<td>UTC+060</td>
+<td>660</td>
+</tr>
+<tr>
+<td>Cairo, Johannesburg</td>
+<td>UTC+2</td>
+<td>UTC+100</td>
+<td>700</td>
+</tr>
+<tr>
+<td>Moscow, Istanbul</td>
+<td>UTC+3</td>
+<td>UTC+160</td>
+<td>760</td>
+</tr>
+<tr>
+<td>Dubai</td>
+<td>UTC+4</td>
+<td>UTC+200</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Karachi</td>
+<td>UTC+5</td>
+<td>UTC+260</td>
+<td>860</td>
+</tr>
+<tr>
+<td>Delhi, Mumbai</td>
+<td>UTC+5:30</td>
+<td>UTC+290</td>
+<td>890</td>
+</tr>
+<tr>
+<td>Kathmandu</td>
+<td>UTC+5:45</td>
+<td>UTC+2X6</td>
+<td>8X6</td>
+</tr>
+<tr>
+<td>Dhaka</td>
+<td>UTC+6</td>
+<td>UTC+300</td>
+<td>900</td>
+</tr>
+<tr>
+<td>Bangkok, Jakarta</td>
+<td>UTC+7</td>
+<td>UTC+360</td>
+<td>960</td>
+</tr>
+<tr>
+<td>Beijing, Singapore, Perth</td>
+<td>UTC+8</td>
+<td>UTC+400</td>
+<td>X00</td>
+</tr>
+<tr>
+<td>Tokyo, Seoul</td>
+<td>UTC+9</td>
+<td>UTC+460</td>
+<td>X60</td>
+</tr>
+<tr>
+<td>Adelaide, Darwin</td>
+<td>UTC+9:30</td>
+<td>UTC+490</td>
+<td>X90</td>
+</tr>
+<tr>
+<td>Sydney, Melbourne, Brisbane</td>
+<td>UTC+10</td>
+<td>UTC+500</td>
+<td>E00</td>
+</tr>
+<tr>
+<td>Auckland</td>
+<td>UTC+12</td>
+<td>UTC+600</td>
+<td>000 (next day)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="clocks-time-zones-and-calendar-years" class="has-table">
+<h3>Years</h3>
+<div class="block decided">
+<p><strong>Decided:</strong> years are counted in the <strong>Dozenal Holocene</strong> (DH) era of the Dozenal Holocene calendar: year 0 began in 9565 BCE, so for dates from 1 January on, <strong>DH year = CE year + 9563 (dec)</strong>. 2026 CE = <strong>6859 DH</strong>. The year still starts on 1 January.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> a dozenal system shouldn't start its count at 10,000 BCE: that's only a round number in decimal (5,954 in dozenal). Adopt prior art instead: the Dozenal Holocene calendar (Paul Rapoport and Sanketh Kolhar) already counts years in dozenal from the start of the Holocene, and its start has an astronomical reason - around 9564 BCE the Earth was last nearest the Sun on the northern summer solstice. Replaces the earlier Human (Holocene) Era (Emiliani's, 1 HE = 10,000 BCE, which made 2026 CE 6E62 HE). "DH" rather than "HE", because HE already means Emiliani's count.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> the year count shares an origin with existing dozenal calendars, has a reason other than a decimal round number, and keeps every year of recorded history positive.</p>
+</div>
+<div class="block list">
+<ul>
+<li>2026 CE = 11,589 (dec) = <strong>6859 DH</strong>. A BCE year n is 9564 - n (dec) DH</li>
+<li>New Year stays on 1 January (the Gregorian months are kept, see Calendar). The Dozenal Holocene calendar itself starts its year at the December solstice (about 21 December UTC), so between the solstice and 31 December its year number is already one higher. If that calendar is ever adopted, New Year moves with it</li>
+<li>Spoken as two pairs, like "twenty twenty-six" (that's how years are said now): 6859 = "six do eight, five do nine"
+<ul>
+<li>round years: 7000 = "seven mo", 6900 = "six do nine gro"</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="clocks-time-zones-and-calendar-calendar" class="has-table">
+<h3>Calendar</h3>
+<div class="block decided">
+<p><strong>Decided:</strong> keep the standard Gregorian months and 7-day weeks. Only the numbering changes: <strong>week numbers</strong> (ISO weeks) are written in dozenal: week 1 to 44 (52 dec), 45 in long years (53 dec).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> 365 (dec) days can't be split into dozenal-round months, and changing the 7-day week is too big a change. Writing the numbers in dozenal keeps the whole system consistent.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> dates and weeks stay as people know them; only the digits change.</p>
+</div>
+<div class="block list">
+<ul>
+<li>eg 3 Oct 2026 CE is week 34 (ISO week 40 dec)</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> keep the month names January to December (Jan to Dec). In all-number dates the month is its dozenal number: October is X, November E, December 10 (eg 6859-X-03).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> the names were briefly replaced by the SDN digit roots (Un, Bi, Tri ... Sept, Oct, Enn, Dek, El, Do), which fixed the Roman misnumbering (September to December were the seventh to tenth months when the year began in March). But Sept and Oct already mean September and October, so "3 Oct" became ambiguous - a permanent confusion, worse than the old misnumbering. Rejected: SDN roots (that clash); Greek roots (mono, di, tri, tetra ... octa, ennea, deca), which shorten to Oct and Dec and clash the same way; a -men suffix (Latin mensis), which reads as English "men" (Hexmen, Septmen).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> no month name can be mistaken for another, and dates read as they do today.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> months are numbered from 1 (January 1 to December 10), not from 0.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> numbering from 0 (January 0, December E) would fit every month in one digit, but it is confusing: month 3 would be April. Dates name a day or month (the 3rd, the tenth month), so they count from 1; a time of day measures how much of the day has passed, so it counts from 0. Days of the month would otherwise have to start at 0 too, and computing already shows the trap: JavaScript numbers months 0 to 11, a well-known source of bugs. Fixed-width dates use two digits for the month anyway (6859-0X-03, as 2026-01-03 today), so nothing is lost.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> month numbers mean what they always have; only December's is written differently (10).</p>
+</div>
+<div class="block decided">
+<p><strong>Day of month (decided):</strong> written in dozenal, 1 to 27 (31 dec).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> every number in the system is dozenal; a date shouldn't mix bases.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a date is written in one base, like every other number.</p>
+</div>
+<div class="block list">
+<ul>
+<li>eg 3 Oct 2026 CE = 3 Oct 6859; 31 (dec) Oct = 27 Oct; Christmas = 21 Dec</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Possibility (not decided):</strong> the Dozenal Holocene calendar (Paul Rapoport, with Sanketh Kolhar; <a href="https://clocks.dozenal.ca/pdf/dozenal-calendar.pdf">https://clocks.dozenal.ca/pdf/dozenal-calendar.pdf</a>): twelve months of 30 (dec) days, each of five 6-day weeks ("stretches"), with the 5-6 leftover "S-days" outside any month but spread through the year so the months keep in step with the seasons. The year starts on a solstice or equinox (the December solstice by default) instead of 1 January, so leap years follow the Sun rather than a divide-by-4 rule. Months are numbered (or named after the zodiac in Greek), and the six days are named after colours (Ruber, Arantius, Flāvus, Viridis, Cæruleus, Purpureus).</p>
+</div>
+<div class="block list">
+<ul>
+<li>A 6-day week would mean a 4-day working week with the usual 2-day weekend</li>
+<li>For now, the 7-day week stays: changing it is too big a change, and 365 (dec) days can't be split evenly anyway</li>
+</ul>
+</div>
+</section>
+</section>
+<div class="pager"><a class="prev" href="a-day-in-paludal.html">← A day in Paludal</a><a class="next" href="money.html">Money →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+</body>
+</html>

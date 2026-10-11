@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constants - Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html" aria-current="page">Constants</a><ul><li class="has-table"><a href="#constants-defining-constants-exact">Defining constants (exact)</a></li><li class="has-table"><a href="#constants-derived-from-them-also-exact">Derived from them (also exact)</a></li><li class="has-table"><a href="#constants-measured">Measured</a></li><li class="has-table"><a href="#constants-earth-and-everyday">Earth and everyday</a></li><li class="has-table"><a href="#constants-pure-numbers-the-same-in-any-base-dozenal-digits">Pure numbers (the same in any base, dozenal digits)</a></li></ul></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<section id="constants" class="has-table">
+<h2>Constants</h2>
+<div class="block para">
+<p>Physical constants in Paludal units (3-4 significant dozenal digits unless exact). "Exact" means fixed by definition; measured values carry the same uncertainty as in SI.</p>
+</div>
+<section id="constants-defining-constants-exact" class="has-table">
+<h3>Defining constants (exact)</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Paludal value</th>
+<th>SI value (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Breath (defines time)</td>
+<td>25/6 SI seconds; today = 7,50E,583,273 caesium periods</td>
+<td>9,192,631,770 Hz caesium</td>
+</tr>
+<tr>
+<td>Speed of light c</td>
+<td>2 × 10^7 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr> (2 × 10^8 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr>)</td>
+<td>299,792,458 m/s</td>
+</tr>
+<tr>
+<td>Planck constant h</td>
+<td>2;13 × 10^-28 <abbr title="lib">li</abbr>·<abbr title="pace">p</abbr>²/<abbr title="blink">bl</abbr></td>
+<td>6.62607015 × 10^-34 J s</td>
+</tr>
+<tr>
+<td>Elementary charge e</td>
+<td>1 × 10^-16 <abbr title="onus">os</abbr></td>
+<td>1.602176634 × 10^-19 C</td>
+</tr>
+<tr>
+<td>Boltzmann constant k</td>
+<td>2;07 × 10^-1E op/tep</td>
+<td>1.380649 × 10^-23 J/K</td>
+</tr>
+<tr>
+<td>Grex number</td>
+<td>1;15 × 10^1X per grex</td>
+<td>6.17235 × 10^23 (Avogadro: 6.022 × 10^23)</td>
+</tr>
+<tr>
+<td>Luminous efficacy K_cd</td>
+<td>3 × 10^4 lam·sr/<abbr title="vig">vg</abbr>, for light at 19,042,90X,764,540 per blink</td>
+<td>683 lm/W, at 540 THz</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="constants-derived-from-them-also-exact" class="has-table">
+<h3>Derived from them (also exact)</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Paludal value</th>
+<th>SI value (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reduced Planck ħ = h/2π</td>
+<td>4;028 × 10^-29 <abbr title="lib">li</abbr>·<abbr title="pace">p</abbr>²/<abbr title="blink">bl</abbr></td>
+<td>1.054572 × 10^-34 J s</td>
+</tr>
+<tr>
+<td>Gas constant R = k × grex number</td>
+<td>0;2359E op/(tep·<abbr title="grex">gx</abbr>)</td>
+<td>8.314 J/(mol K)</td>
+</tr>
+<tr>
+<td>Faraday constant F = e × grex number</td>
+<td><strong>1;15 × 10^4 <abbr title="onus">os</abbr>/<abbr title="grex">gx</abbr></strong></td>
+<td>96,485 C/mol</td>
+</tr>
+<tr>
+<td>Stefan-Boltzmann σ</td>
+<td>1;735 × 10^-9 <abbr title="vig">vg</abbr>/(p²·tep⁴)</td>
+<td>5.670 × 10^-8 W/(m² K⁴)</td>
+</tr>
+<tr>
+<td>Josephson constant K_J = 2e/h</td>
+<td>10^12 / 2;13 ≈ E;4X56 × 10^11 per (bl·<abbr title="imp">im</abbr>)</td>
+<td>483,597.848 × 10^9 Hz/V</td>
+</tr>
+<tr>
+<td>von Klitzing constant R_K = h/e²</td>
+<td><strong>2;13 × 10^4 <abbr title="imp">im</abbr>/<abbr title="riv">ri</abbr></strong></td>
+<td>25,812.807 Ω</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>The von Klitzing constant comes out round because h and e are: it carries h's digits (2;13). Standards labs realise the volt with Josephson junctions and the ohm with the quantum Hall effect, through exactly these two constants, so Paludal's electrical units can be realised directly, without going through SI</li>
+</ul>
+</div>
+</section>
+<section id="constants-measured" class="has-table">
+<h3>Measured</h3>
+<div class="block para">
+<p>Values from CODATA 2022 CE. The relative uncertainty is a ratio, so it's the same in any units; the Paludal values are rounded to 3-4 dozenal digits.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Paludal value</th>
+<th>SI value (dec)</th>
+<th>Relative uncertainty (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gravitational constant G</td>
+<td>3;558 × 10^-E p³/(li·<abbr title="blink">bl</abbr>²)</td>
+<td>6.67430 × 10^-11 m³/(kg s²)</td>
+<td>2.2 × 10^-5</td>
+</tr>
+<tr>
+<td>Electron mass</td>
+<td>X;21 × 10^-25 <abbr title="lib">li</abbr></td>
+<td>9.1093837139 × 10^-31 kg</td>
+<td>3.1 × 10^-10</td>
+</tr>
+<tr>
+<td>Proton mass</td>
+<td>X;986 × 10^-22 <abbr title="lib">li</abbr></td>
+<td>1.67262192595 × 10^-27 kg</td>
+<td>3.1 × 10^-10</td>
+</tr>
+<tr>
+<td>Fine-structure constant α (no units)</td>
+<td>1 / E5;0522</td>
+<td>1 / 137.035999177</td>
+<td>1.5 × 10^-10</td>
+</tr>
+<tr>
+<td>Magnetic constant μ0</td>
+<td>2;265 × 10^-5 <abbr title="vis">vi</abbr>/<abbr title="riv">ri</abbr>²</td>
+<td>1.25663706127 × 10^-6 N/A²</td>
+<td>1.6 × 10^-10</td>
+</tr>
+<tr>
+<td>Electric constant ε0 = 1/(μ0 c²)</td>
+<td>1;435 × 10^-X os/(im·<abbr title="pace">p</abbr>)</td>
+<td>8.8541878188 × 10^-12 F/m</td>
+<td>1.6 × 10^-10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>μ0 and ε0 are measured, as in SI since 2019 CE: with h and e fixed, μ0 = 2αh/(e²c), so it carries α's uncertainty. In Paludal the exact factor is short: <strong>μ0 = α × 2;13 × 10^-3 <abbr title="vis">vi</abbr>/<abbr title="riv">ri</abbr>²</strong> (2;13 × 10^-3 is 2R_K/c)</li>
+</ul>
+</div>
+</section>
+<section id="constants-earth-and-everyday" class="has-table">
+<h3>Earth and everyday</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Paludal</th>
+<th>SI (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard gravity g_n (exact in SI; Paludal value rounded)</td>
+<td>≈ 0;9926 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>² (99;26 <abbr title="pace">p</abbr>/<abbr title="breath">br</abbr>²)</td>
+<td>9.80665 m/s² (exact)</td>
+</tr>
+<tr>
+<td>Standard atmosphere</td>
+<td>5;969 <abbr title="triqua-pres (× 10^3)">t↑pr</abbr></td>
+<td>101,325 Pa</td>
+</tr>
+<tr>
+<td>Absolute zero</td>
+<td>-289;485 <abbr title="tep (degrees from freezing)">°t</abbr> (exact)</td>
+<td>-273.15 °C</td>
+</tr>
+<tr>
+<td>Water freezes / boils (sea level)</td>
+<td>0 <abbr title="tep (degrees from freezing)">°t</abbr> / ≈ EE;E9 <abbr title="tep (degrees from freezing)">°t</abbr></td>
+<td>0 °C / 99.974 °C</td>
+</tr>
+<tr>
+<td>Water density</td>
+<td>1;002 <abbr title="lib">li</abbr>/<abbr title="cub">cu</abbr> at 4 °C, 0;EEE at 20 °C</td>
+<td>999.97 / 998.2 kg/m³</td>
+</tr>
+<tr>
+<td>Speed of sound (20 °C)</td>
+<td>≈ 6X p/<abbr title="blink">bl</abbr></td>
+<td>343 m/s</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>10^5 <abbr title="blink">bl</abbr> = 10^4 <abbr title="breath">br</abbr> (exact)</td>
+<td>86,400 s</td>
+</tr>
+<tr>
+<td>Tropical year</td>
+<td>265;2XX days</td>
+<td>365.2422 days</td>
+</tr>
+<tr>
+<td>Earth radius (mean)</td>
+<td>1,576 <abbr title="iter">ir</abbr></td>
+<td>6,371 km</td>
+</tr>
+<tr>
+<td>Earth-Moon distance</td>
+<td>7;476 × 10^4 <abbr title="iter">ir</abbr></td>
+<td>384,400 km</td>
+</tr>
+<tr>
+<td>Astronomical unit (Earth-Sun, exact)</td>
+<td>1;7E63 × 10^X p = 1;7E63 × 10^7 <abbr title="iter">ir</abbr></td>
+<td>149,597,870,700 m</td>
+</tr>
+<tr>
+<td>Light from the Sun to Earth</td>
+<td>9E;9 <abbr title="breath">br</abbr> ≈ X moments</td>
+<td>499.0 s (8 min 19 s)</td>
+</tr>
+<tr>
+<td>Light from the Moon to Earth</td>
+<td>3;84 <abbr title="blink">bl</abbr> ≈ 1;3 <abbr title="beat">bt</abbr></td>
+<td>1.282 s</td>
+</tr>
+<tr>
+<td>Light-year (exact)</td>
+<td>5;0X6 × 10^12 <abbr title="pace">p</abbr></td>
+<td>9.461 × 10^15 m</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="constants-pure-numbers-the-same-in-any-base-dozenal-digits" class="has-table">
+<h3>Pure numbers (the same in any base, dozenal digits)</h3>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Dozenal</th>
+<th>Decimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>π</td>
+<td>3;184809493E92</td>
+<td>3.14159265358979</td>
+</tr>
+<tr>
+<td>2π (radians in a turn)</td>
+<td>6;34941697</td>
+<td>6.28318531</td>
+</tr>
+<tr>
+<td>e</td>
+<td>2;875236069822</td>
+<td>2.71828182846</td>
+</tr>
+<tr>
+<td>√2 (paper ratio)</td>
+<td>1;4E79170X07E8</td>
+<td>1.41421356237</td>
+</tr>
+<tr>
+<td>φ (golden ratio)</td>
+<td>1;74EE6772802X</td>
+<td>1.61803398875</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>The Faraday constant comes out round because both e and the grex number are round</li>
+<li>g isn't round: c is, and only one of them can be (see Gravity)</li>
+</ul>
+</div>
+</section>
+</section>
+<div class="pager"><a class="prev" href="angle.html">← Angle</a><a class="next" href="part-3-everyday-use.html">Part 3: Everyday use →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+</body>
+</html>

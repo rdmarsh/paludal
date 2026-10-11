@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prior art - Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html">Length</a></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html" aria-current="page">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<section id="prior-art" class="has-table">
+<h2>Prior art</h2>
+<div class="block list">
+<ul>
+<li><strong>TGM</strong> (Tom Pendlebury): Tim = 1/10^4 hour ≈ 0.1736 s (= half a blink exactly), Grafut ≈ 29.6 cm (from gravity), Maz ≈ 25.8 kg (water cube). Earth-based (hour + gravity), so less rigorous than this system; length and mass have no clean relation to ours.
+<ul>
+<li>Its time units are powers of twelve of the <strong>hour</strong>, not the day: Tim or tick (0;21 s, 0.174 dec), unctic (2;1 s, 2.08 dec), bictic (21 s, 25 dec), block (5 minutes), hour - so today's 12-hour clock carries over unchanged. Paludal divides the day instead (a diurnal clock), so the two line up only at the Tim (half a blink); the hour is 0;6 chime</li>
+</ul></li>
+<li><strong>SDN</strong> (John Volan, forum name Kodegadulo; published by the DSA in the Duodecimal Bulletin, 2014 CE, and worked out with other members of the Dozensonline forum - the same author as Primel): the prefix system adopted above. Inspired by Pendlebury's TGM prefixes, which told multiply from divide by a vowel alone (-a / -i). In speech those vowels both fade to "uh", so SDN used endings that differ in their consonants instead: <strong>-qua</strong> (hard "kw") and <strong>-cia</strong> ("shuh"), "novel endings that will not be confused with any prior usage". uncia- (÷10) is also the Latin <em>uncia</em>, a twelfth (the root of inch and ounce); the article calls this "a deliberate coincidence". The article also suggests saying the dozenal point as <strong>"dit"</strong> (as the semicolon "Humphrey point" is said), against "dot" for decimal.</li>
+<li><strong>Primel</strong> metrology (John Volan, 2019 CE, revised since): base time 1/10^6 day (= 0;01 breath), length unit ≈ 8.2 mm, uses an SDN variant. A different aim from Paludal's: Primel builds on everyday life on Earth (its "mundane realities": the day, the Earth's gravity, water), with exact values in feet and inches and nicknames after customary units (hand, foot, ell); Paludal keeps only the day and year from the Earth. Built on the day, the Earth's gravity and the density of water, not on fixed constants, so like TGM it doesn't convert exactly to SI. Its time units already have names for the same sizes as ours: <strong>dwell</strong> = 0;1 day (our chime), <strong>breather</strong> = 0;01 day (10 minutes), <strong>trice</strong> = 0;001 day (our moment), <strong>lull</strong> = 0;0001 day (our breath) and <strong>vibe</strong> (0;001 trice). Its beat (1/4 lull) is our beat, but its "blink" is half of ours (the TGM Tim).
+<ul>
+<li>Time lines up exactly: Primel's timel is defined by the same caesium count (75,0E5,832;73 periods), so our blink is precisely Primel's unqua·timel, one power of twelve up (until SI redefines the second; Paludal follows SI, Primel's wording follows caesium)</li>
+<li>No round c lines the pace up with Primel exactly: the matching value, 2;56232E32598E... × 10^7 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>, never ends, because Primel's length is 31/96 inch and the inch is 127/50 cm (31 and 127 don't divide into twelves). 2;56 × 10^7 would come within 0.05%, 2;562 × 10^7 within 0.006%</li>
+<li>Length and mass don't: Primel fixes gravity at exactly 32.1408 ft/s² (9.79651584 m/s² dec), just below its estimate of the Earth's median surface gravity (9.79757 m/s²), which makes its length unit exactly 31/96 inch (8.202 mm), and our pace is 129;11 (177.09 dec) of those. Lining the pace up with Primel's 100 lengthels (1.1811 m, 46.5 in) was considered (2026 CE): it would give g ≈ 1 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>², a lib of 0.953 kg and a cub of 0.953 L, but c would no longer be round. Not adopted: the round c was kept</li>
+<li>Temperature doesn't: Primel's degree comes from water's heat capacity (0.397 K), ours from freezing to boiling in 100 (0.694 K)</li>
+<li>Prefixes use the same roots and the same letters; Primel ends them with arrows (t↑ ×1,000, t↓ ÷1,000; in plain text t@ and t#) where Paludal uses q and c, so symbols convert letter for letter</li>
+<li>Notation: Primel writes the dozenal point as "." with a subscript z (1.6z), and dek and el as ᘔ and Ɛ (lookalikes of ↊ ↋), and says "galore" for 1,000;</li>
+</ul></li>
+<li><strong>clocks.dozenal.ca</strong> (Paul Rapoport, clocks by Rodrigo Flores and Thomas Cassidy): working dozenal clocks (once- and twice-a-day dials), a dozenal wristwatch, a "signed" digit notation for times (counting down to the next mark after half way), UTC-only clocks with no time zones, and the Dozenal Holocene calendar (see Calendar).</li>
+<li><strong>DSGB "Time Units" page</strong> (Dozenal Society of Great Britain, <a href="http://www.dozenalsociety.org.uk/apps/timeunits.html">http://www.dozenalsociety.org.uk/apps/timeunits.html</a>): sets out the two schemes - the hour in twelfths (TGM, which keeps today's 24-hour clock) and the day in twelve double hours (Paludal's). Few names exist for either: TGM names only the Tim and the hour (with "tekon" suggested for 10 Tim), and for the double-hour scheme only "duor" has been suggested for the double hour. A reader's comment there (uaxtecum) makes Paludal's angle-time link: with *1,000 "dozenal degrees" to the turn and the day in *10 double hours of *100 fifty-second "quasi-minutes", one quasi-minute is one dozenal degree of the Earth's turn - our moment and our bearing in thousandths of a turn</li>
+<li><strong>Dozenal Time Intuition</strong> (Theo Beers, 2020-2025 CE, <a href="https://www.theobeers.com/dozenal-time/">https://www.theobeers.com/dozenal-time/</a>): the day shown as four progress bars instead of a clock face, each filling twelve times faster than the one above, with a readout like Rapoport's (E91.7X). Calls the 2-hour unit a "phase", 10 minutes a "spell" and 50 s a "minute", and names each phase (Midnight, Witching, Predawn ... Twilight, Night). It refreshes every 347 ms - one blink. Bars may suit phone widgets and watch faces better than a dial</li>
+</ul>
+</div>
+<div class="block para">
+<p><strong>Time unit names compared.</strong> There is no standard: the DSA's manual (2016 CE) says people "can use the symbols and names that they like, and over time ... conventions will arise". Primel's names are the nearest to a convention, since Rapoport uses them too.</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Size (dozenal day)</th>
+<th>About</th>
+<th>Paludal</th>
+<th>Primel (Volan)</th>
+<th>Rapoport</th>
+<th>Beers</th>
+<th>TGM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0;1</td>
+<td>2 h</td>
+<td>chime</td>
+<td>dwell</td>
+<td>dwell</td>
+<td>phase</td>
+<td></td>
+</tr>
+<tr>
+<td>0;01</td>
+<td>10 min</td>
+<td>(none)</td>
+<td>breather</td>
+<td>breather</td>
+<td>spell</td>
+<td></td>
+</tr>
+<tr>
+<td>0;001</td>
+<td>50 s</td>
+<td>moment</td>
+<td>trice</td>
+<td>trice</td>
+<td>"minute"</td>
+<td></td>
+</tr>
+<tr>
+<td>0;0001</td>
+<td>4.2 s</td>
+<td>breath</td>
+<td>lull</td>
+<td>lull</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0;00003 (¼ lull)</td>
+<td>1.04 s</td>
+<td>beat</td>
+<td>beat</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0;00001</td>
+<td>0.35 s</td>
+<td>blink</td>
+<td>twinkling</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0;000006 (½ twinkling)</td>
+<td>0.17 s</td>
+<td>(wink, removed)</td>
+<td>blink</td>
+<td></td>
+<td></td>
+<td>Tim</td>
+</tr>
+<tr>
+<td>0;3</td>
+<td>6 h</td>
+<td></td>
+<td>phase</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>Two clashes: Primel's <strong>blink</strong> is half of ours (our blink is its twinkling), and Beers's <strong>phase</strong> (2 h) is not Primel's (6 h). The blink clash is the one to raise with John Volan before 1.0</li>
+<li>Not adopted (2026 CE): dwell, breather, spell, twinkling - disliked; breather also sounds like our breath (4 s) for something 144 times longer. Primel also means its names to be used as adjectives (a trice timel), a different style from Paludal's nouns</li>
+<li>"Trice" isn't from three: "in a trice" is Middle English <em>at a tryse</em>, at a single pull (Middle Dutch <em>trīsen</em>, to haul, as in "trice up" a sail)</li>
+<li><strong>Twelve double-hours a day</strong> (the chime) is the oldest clock division there is: the Babylonian <em>bēru</em> (Sumerian <em>danna</em>, from about 2400 BCE) and the Chinese <em>shíchen</em> (named after the twelve Earthly Branches) were both 2-hour units, twelve to a day. The DSA's dozenal clock uses the same split: the short hand turns once a day, midnight is 0 and noon is 600.</li>
+<li><strong>French Revolutionary decimal time</strong> (1793-1795 CE): 10 hours a day, 100 minutes an hour, 100 seconds a minute. Dropped after 18 months: every clock had to be replaced, and people saw little reason to change. The metric units brought in at the same time survived.</li>
+<li><strong>Swatch Internet Time</strong> (1998 CE): the day in 1,000 (dec) ".beats" of 86.4 s. Its "beat" is a different size from the Paludal beat (1.04 s).</li>
+<li><strong>Do-Gro-Mo</strong> (early DSA): do = 12, gro = 144, mo = 1,728 (dec). Adopted for spoken numbers, extended with bimo / trimo.</li>
+</ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="part-4-background.html">← Part 4: Background</a><a class="next" href="versions.html">Versions →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+</body>
+</html>

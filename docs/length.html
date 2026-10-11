@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Length - Paludal units</title>
+<!-- ↊ ↋ (U+218A/B) and ᘔ (U+1614, Primel's stand-in) are missing from most system fonts; load just those glyphs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%86%8A%E2%86%8B&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal&text=%E1%98%94&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1f1d1a; --muted: #6b665e; --line: #e4e0d8;
+  --panel: #f3f0ea; --accent: #9a4d1f; --row: #f7f5f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+    --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181715; --fg: #e9e6e0; --muted: #9b958b; --line: #34312c;
+  --panel: #211f1c; --accent: #e09a62; --row: #1d1c19;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Symbols", "Noto Sans Canadian Aboriginal", sans-serif; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 16px;
+  border-right: 1px solid var(--line); font-size: 14px; }
+nav h1 { font-size: 17px; margin: 0 0 12px; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul ul { padding-left: 12px; margin: 2px 0 6px; font-size: 13px; }
+nav a { color: var(--fg); text-decoration: none; display: block; padding: 2px 0; }
+nav a:hover { color: var(--accent); }
+nav ul ul a { color: var(--muted); }
+nav a[aria-current] { color: var(--accent); font-weight: 600; }
+.conv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: center;
+  margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.conv input { width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px; font-variant-numeric: tabular-nums; }
+.conv input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.conv .hint { grid-column: 1 / -1; font-size: 12px; }
+.pdf { margin: 0 0 12px; font-size: 13px; }
+.toggle { display: flex; gap: 8px; align-items: center; margin: 0 0 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
+main { padding: 24px 32px 80px; min-width: 0; }
+h2 { font-size: 28px; margin: 56px 0 8px; color: var(--accent); }
+h3 { font-size: 22px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h4 { font-size: 17px; margin: 28px 0 8px; }
+h5, h6 { font-size: 15px; margin: 20px 0 6px; }
+section { scroll-margin-top: 16px; }
+p, ul { margin: 6px 0 10px; }
+ul { padding-left: 20px; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+pre code { padding: 0; background: none; font-size: inherit; }  /* inline padding would push only the first line */
+a { color: var(--accent); }
+abbr { text-decoration: underline dotted var(--muted); text-underline-offset: 2px; cursor: help; }
+.intro { color: var(--muted); }
+.chapters { padding-left: 20px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; font-size: 14px; }
+.pager .next { margin-left: auto; text-align: right; }
+footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; }
+pre { background: var(--panel); padding: 8px 12px; border-radius: 4px; overflow-x: auto; font-size: 13px; }
+pre.mermaid { background: none; padding: 0; margin: 10px 0 16px; text-align: center; }
+/* SVG figures draw in currentColor; these classes give them the page's colours in both themes */
+.figure { margin: 10px 0 16px; text-align: center; }
+.figure svg { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 auto; color: var(--fg); font-family: inherit; }
+.figure .fg { color: var(--fg); } .figure .muted { color: var(--muted); } .figure .accent { color: var(--accent); }
+.figure .line { color: var(--line); } .figure .panel { color: var(--panel); }
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; vertical-align: top; }
+th { background: var(--panel); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--row); }
+td:empty, th:empty { border-top: none; border-bottom: none; background: var(--bg); padding: 0 4px; }
+.decided p { border-left: 3px solid var(--accent); padding-left: 10px; }
+.why p { margin-top: -4px; padding-left: 13px; color: var(--muted); font-size: 14px; }
+.why strong { color: var(--fg); }
+body.tables-only .block.para, body.tables-only .block.list, body.tables-only section.no-table,
+body.tables-only nav li.no-table, body.tables-only .intro { display: none; }
+body.tables-only section.lead, body.tables-only section.lead .block { display: block; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+  main { padding: 8px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout" id="top">
+<nav>
+<h1><a href="index.html">Paludal units</a></h1>
+<p class="pdf"><a href="https://github.com/rdmarsh/paludal/releases/latest/download/paludal.pdf">Download the PDF</a></p>
+<label class="toggle"><input type="checkbox" id="tables-only"> Hide notes (show only tables, decisions and reasons)</label>
+<div class="conv">
+<label for="conv-dec">Decimal</label><input id="conv-dec" inputmode="decimal" autocomplete="off" placeholder="20.5">
+<label for="conv-doz">Dozenal</label><input id="conv-doz" autocomplete="off" placeholder="18;6">
+<span class="hint" id="conv-hint">Type in either box. X = dek, E = el. Rounded to 3 places.</span>
+</div>
+<ul>
+<li class="has-table"><a href="index.html">The Paludal system</a><ul><li class="has-table"><a href="names.html">Names</a></li></ul></li>
+<li class="has-table"><a href="part-1-dozenal-numbers.html">Part 1: Dozenal numbers</a><ul><li class="has-table"><a href="digits.html">Digits</a></li><li class="has-table"><a href="writing-numbers.html">Writing numbers</a></li><li class="has-table"><a href="spoken-numbers.html">Spoken numbers</a></li><li class="has-table"><a href="hexadecimal.html">Hexadecimal</a></li><li class="has-table"><a href="phone-numbers-and-keypads.html">Phone numbers and keypads</a></li></ul></li>
+<li class="has-table"><a href="part-2-paludal-units.html">Part 2: Paludal units</a><ul><li class="has-table"><a href="summary.html">Summary</a></li><li class="has-table"><a href="prefixes.html">Prefixes</a></li><li class="has-table"><a href="unit-symbols.html">Unit symbols</a></li><li class="has-table"><a href="time.html">Time</a></li><li class="has-table"><a href="length.html" aria-current="page">Length</a><ul><li class="no-table"><a href="#length-gravity">Gravity</a></li><li class="has-table"><a href="#length-light-distances">Light distances</a></li><li class="has-table"><a href="#length-star-distances">Star distances</a></li></ul></li><li class="has-table"><a href="mass.html">Mass</a></li><li class="has-table"><a href="electricity.html">Electricity</a></li><li class="has-table"><a href="temperature.html">Temperature</a></li><li class="has-table"><a href="amount-of-substance.html">Amount of substance</a></li><li class="has-table"><a href="light.html">Light</a></li><li class="has-table"><a href="area.html">Area</a></li><li class="has-table"><a href="volume.html">Volume</a></li><li class="has-table"><a href="angle.html">Angle</a></li><li class="has-table"><a href="constants.html">Constants</a></li></ul></li>
+<li class="has-table"><a href="part-3-everyday-use.html">Part 3: Everyday use</a><ul><li class="has-table"><a href="a-day-in-paludal.html">A day in Paludal</a></li><li class="has-table"><a href="clocks-time-zones-and-calendar.html">Clocks, time zones and calendar</a></li><li class="has-table"><a href="money.html">Money</a></li><li class="has-table"><a href="speed-limits-and-changeover.html">Speed limits and changeover</a></li><li class="has-table"><a href="paper-sizes.html">Paper sizes</a></li><li class="has-table"><a href="shoe-sizes.html">Shoe sizes</a></li><li class="has-table"><a href="everyday-reference.html">Everyday reference</a></li><li class="has-table"><a href="imperial-conversions.html">Imperial conversions</a></li><li class="has-table"><a href="log-scales.html">Log scales</a></li></ul></li>
+<li class="has-table"><a href="part-4-background.html">Part 4: Background</a><ul><li class="has-table"><a href="prior-art.html">Prior art</a></li><li class="has-table"><a href="versions.html">Versions</a></li><li class="no-table"><a href="open-items-next-steps.html">Open items / next steps</a></li></ul></li>
+</ul>
+</nav>
+<main>
+<section id="length" class="has-table">
+<h2>Length</h2>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>pace</strong> ≈ 1.4525 m, defined by <strong>c = 2 × 10^7 paces per blink</strong> (exact).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> the size is human: close to the Roman pace (Latin passus, ~1.48 m), a double step. Fixing c makes the definition exact, as in SI; making it round was the tie-breaker, and cost nothing human, since of the round values tried (table below) only this one gives a body-sized pace.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> length is exact in SI terms and still a comfortable body size.</p>
+</div>
+<div class="block para">
+<p>Other round values of c were checked. Fewer paces per blink means a longer pace, so:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>c (paces/blink)</th>
+<th>pace</th>
+<th>unc</th>
+<th>dig</th>
+<th>cub (≈ lib of water)</th>
+<th>vis (force)</th>
+<th>opus (energy)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 × 10^7</td>
+<td>2.91 m</td>
+<td>24.2 cm</td>
+<td>2.0 cm</td>
+<td>14.2 L</td>
+<td>342 N</td>
+<td>993 J</td>
+</tr>
+<tr>
+<td><strong>2 × 10^7</strong></td>
+<td>1.45 m</td>
+<td>12.1 cm</td>
+<td>1.0 cm</td>
+<td>1.77 L</td>
+<td>21.3 N</td>
+<td>31.0 J</td>
+</tr>
+<tr>
+<td>4 × 10^7</td>
+<td>73 cm</td>
+<td>6.1 cm</td>
+<td>5 mm</td>
+<td>0.22 L</td>
+<td>1.3 N</td>
+<td>1.0 J</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block para">
+<p>Rejected: both alternatives. 1 × 10^7 makes everything bigger (a 2.9 m pace and a 14 kg lib are too large for everyday use).</p>
+</div>
+<div class="block para">
+<p>4 × 10^7, halving the pace so the base is a single step (72.6 cm), was looked at in detail (2026-10-05 CE) and rejected. With h re-rounded so a cub of water still weighs a lib, and e moved to 1 × 10^-15 so the riv is about an amp (1.02 A) and the imp 2.73 V, it has real attractions: the cub is about a cup (0.22 L), the lib about half a pound (0.22 kg), the opus about a joule, walking pace 8 steps per breath, and 1,000 base² (912 m²) about a quarter-acre block. But:</p>
+</div>
+<div class="block list">
+<ul>
+<li>The dig stops being about a centimetre (it becomes 5 mm, and the next step down 0.42 mm), so rulers no longer read like metric ones: today the dig ≈ 1 cm and the tricia-pace ≈ 0.84 mm</li>
+<li>The unc (6 cm) is no body measure; today's 12 cm unc is about a hand</li>
+<li>Mass becomes pound-sized: halving length makes volume, and so the water-based lib, an eighth. A 70 kg person is 224 lib (316 dec) instead of 33;6</li>
+<li>The vig drops to 2.8 W; today's 89 W vig is about a resting person's power</li>
+<li>The gains are mostly available anyway as named sizes - the step is the gress (0;6 <abbr title="pace">p</abbr>), the cup is 0;2 <abbr title="cub">cu</abbr> - but the losses can't be won back in the halved system (a centimetre would be 2 digs, a hand 2 uncs, neither a prefix step)</li>
+<li>Changing it would also mean recomputing almost every number in this spec</li>
+</ul>
+</div>
+<div class="block para">
+<p>So the pace stays the base, and the half pace is named instead (gress, below).</p>
+</div>
+<div class="block para">
+<p>Named sub-units (named because they're everyday sizes, like the inch and centimetre):</p>
+</div>
+<div class="block list">
+<ul>
+<li><strong>unc</strong> = 1/10 pace (1/12 dec) ≈ 12.1 cm</li>
+<li><strong>dig</strong> = 1/100 pace (1/144 dec) ≈ 1.01 cm</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>span</strong> (symbol <strong>sp</strong>) = 0;2 pace = 2 uncs ≈ 24.2 cm, a hand's spread.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> a body-measure name like pace and dig, for the gap between the unc (12 cm) and the pace (145 cm); the old English span (9 in, 22.9 cm) is close. "Hand" was rejected earlier (the horse hand is 10.16 cm).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a familiar body length for the 20-30 cm range, with no clash.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>ulna</strong> (symbol <strong>ul</strong>) = 0;4 pace = 4 uncs ≈ 48.4 cm, elbow to fingertip (a third of a pace).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> another body measure, filling the gap between the span (24 cm) and the pace (145 cm); it's also a handy length for a board ruler. Latin <em>ulna</em> is the forearm (and the forearm bone), and the old ell measure came from it. Rejected: cubit (Latin cubitum, elbow), which was liked, but its symbol would be "cu", the cub.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> fills the 30-90 cm gap with a body measure, and suits a board ruler.</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>gress</strong> (symbol <strong>gs</strong>) = 0;6 pace = 6 uncs ≈ 72.6 cm, a single step (half a pace).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> the pace is the Roman <em>passus</em>, a double step (from one heel striking to the same heel striking again), but in English today "pace" usually means a single step, so someone pacing out a room would count twice as many paces as there are. The gress names the single step. Prior art: the Roman <em>gradus</em> (step) was exactly half a passus, about 74 cm. Latin <em>gressus</em> is also a step (as in progress, egress). Rejected: gradus (six letters, and its short form grad is the gradian), step (its symbols clash: st is the stone, sp the span), and halving the pace itself (c = 4 × 10^7 in the table above), which shrinks every unit built on it.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> distances can be paced out the way people walk them - one gress per step, two per pace - and the 60-90 cm range gets a body measure.</p>
+</div>
+<div class="block list">
+<ul>
+<li>A gress is about an average adult walking step: men average ≈ 76 cm, women ≈ 67 cm (step length is roughly 0.41 × height). So "steps" is the everyday word for gresses, as "a k" is for a kilometre; the official name stays gress, because a step varies from person to person and the unit doesn't</li>
+<li>Two gresses make a pace, so 1,000 paces (an iter) is 2,000 gresses (3,456 dec steps): a step counter reads distance directly</li>
+<li>Today's "10,000 steps" goal (dec) ≈ 6,000 gresses (10,368 dec) = 3 iters ≈ 7.5 km</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>iter</strong> (symbol <strong>ir</strong>) = 1,000 paces (1,728 dec) ≈ 2.51 km, the unit for distances.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> the Romans counted distance in thousands of paces (mille passus, the Roman mile), and the iter does the same in dozenal. It isn't the Roman mile's length: that was a decimal thousand paces (≈ 1.48 km), and the iter is a dozenal thousand (1,728 dec, 2.51 km), about 1.7 Roman miles. Latin <em>iter</em> means a road or journey (as in itinerary), and Roman route lists counted in milia passuum. Rejected: mille / mil (mi is the mile, mil is the thou), via (vi is the vis). League and stade were also considered; their clashes hardly matter since almost no one uses them now, but iter was preferred.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> a round distance unit with a long history, whose name means "journey".</p>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> iter is pronounced <strong>"EYE-ter"</strong>, as in itinerary.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> a fixed pronunciation stops it being heard several ways ("IT-er", as in Latin, or "EE-ter"), and it's the sound people already know from itinerary.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> everyone says it the same way, using a sound they already know.</p>
+</div>
+<div class="block list">
+<ul>
+<li>Defined by the speed of light: <strong>c = 2 × 10^7 paces per blink</strong> (exact)
+<ul>
+<li>= 2 × 10^8 paces per breath = 859,963,392 (dec) per breath</li>
+<li>(equivalently 2 × 10^10 paces per day)</li>
+</ul></li>
+<li>Light travels 2 × 10^8 paces in one breath ≈ 1,249,135 km (dec), about 3.25× the Earth-Moon distance</li>
+<li>1 iter = 1,000 paces = 2.51 km is literally a "thousand paces", counted in dozenal (the Roman mille passus was a decimal thousand, ≈ 1.48 km, a little longer than half an iter)</li>
+<li>Half an iter, 0;6 <abbr title="iter">ir</abbr> (600 paces, 864 dec) ≈ 1.26 km, about a 15-minute walk, will be common. It needs no name of its own: halves are a single digit, and people already say "half a k" or "half a mile"</li>
+<li>15 iters ≈ 42.67 km ≈ a marathon (marathon = 14;99 iters)</li>
+</ul>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>navis</strong> (symbol <strong>na</strong>) = 930 paces (1,332 dec) ≈ 1.935 km, the sea and air mile, replacing the nautical mile (1,852 m).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> the nautical mile exists because one nautical mile north or south is one minute of latitude (1/21,600 (dec) of a turn), so a navigator can measure distance off a chart's latitude scale. The dozenal version is 0;0001 turn of the Earth's meridian (1/20,736 (dec), four digits of a turn):</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> navigators can still read distances straight off a chart's latitude scale.</p>
+</div>
+<div class="block list">
+<ul>
+<li>Meridian (pole to pole and back) = 40,007.86 km (dec)</li>
+<li>0;0001 turn = 40,007,860 m / 20,736 = 1,929.4 m = 1,328.3 (dec) paces = <strong>928;34 paces</strong></li>
+<li>A minute of latitude isn't constant (1,843 m at the equator, 1,862 m at the poles, as the Earth is flattened), so the nautical mile was fixed at a round 1,852 m in 1929 CE. The navis is rounded the same way</li>
+<li>928 paces is the nearest whole number (0.03% short); <strong>930</strong> was chosen as rounder (ends in 0) and it's only 0.3% long, well inside the ±0.5% that a minute of latitude itself varies</li>
+<li>So 1 navis ≈ 0;0001 turn of latitude, and 10,000 navis ≈ once round the Earth through the poles</li>
+<li>Name: Latin <em>navis</em>, a ship (as in navy, navigate). Symbol "na" follows the first-two-letters rule</li>
+<li>Still open: a speed unit for ships and aircraft, to replace the knot (1 nautical mile per hour)</li>
+</ul>
+</div>
+<div class="block para">
+<p>Imperial comparisons:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Imperial</th>
+<th>Paces</th>
+<th>Uncs</th>
+<th>Digs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6 ft</td>
+<td>1;314</td>
+<td>13;14</td>
+<td>131;4</td>
+</tr>
+<tr>
+<td>1 ft</td>
+<td>0;263</td>
+<td>2;63</td>
+<td>26;3</td>
+</tr>
+<tr>
+<td>6 in</td>
+<td>0;131</td>
+<td>1;31</td>
+<td>13;1</td>
+</tr>
+<tr>
+<td>1 in</td>
+<td>0;026</td>
+<td>0;26</td>
+<td>2;6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="length-gravity" class="no-table">
+<h3>Gravity</h3>
+<div class="block list">
+<ul>
+<li>Would like g to be a nice dozenal number, but c and g have a fixed ratio (~2,559,X65 breaths), so only one can be exact.</li>
+<li>With c exact: g ≈ 0;9926 paces/blink² (≈ 99;26 paces/breath², 117.2 dec)</li>
+<li>g varies ~0.5% over Earth's surface anyway, so it's a poor basis for a definition.</li>
+</ul>
+</div>
+</section>
+<section id="length-light-distances" class="has-table">
+<h3>Light distances</h3>
+<div class="block para">
+<p>Light covers a round number of paces in every time unit, because c is fixed at 2 × 10^7 <abbr title="pace">p</abbr>/<abbr title="blink">bl</abbr>. So light times make handy yardsticks for big distances, as light-seconds and light-years do now:</p>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Distance</th>
+<th>Paces</th>
+<th>Iters</th>
+<th>Light takes</th>
+<th>SI (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Light-blink</td>
+<td>2 × 10^7 <abbr title="pace">p</abbr> (exact)</td>
+<td>20,000 <abbr title="iter">ir</abbr></td>
+<td>1 <abbr title="blink">bl</abbr></td>
+<td>104,095 km</td>
+</tr>
+<tr>
+<td>Light-breath</td>
+<td>2 × 10^8 <abbr title="pace">p</abbr> (exact)</td>
+<td>200,000 <abbr title="iter">ir</abbr></td>
+<td>1 <abbr title="breath">br</abbr></td>
+<td>1,249,135 km</td>
+</tr>
+<tr>
+<td>Earth-Moon (mean)</td>
+<td>7;476 × 10^7 <abbr title="pace">p</abbr></td>
+<td>74,764 <abbr title="iter">ir</abbr></td>
+<td>3;84 <abbr title="blink">bl</abbr> (≈ 1;3 <abbr title="beat">bt</abbr>)</td>
+<td>384,400 km</td>
+</tr>
+<tr>
+<td>AU (Earth-Sun, exact in SI)</td>
+<td>1;7E63 × 10^X p</td>
+<td>17,E63,264 <abbr title="iter">ir</abbr></td>
+<td>9E;92 <abbr title="breath">br</abbr> (≈ X mt)</td>
+<td>149,597,870,700 m</td>
+</tr>
+<tr>
+<td>Light-day</td>
+<td>2 × 10^10 <abbr title="pace">p</abbr> (exact)</td>
+<td>2 × 10^7 <abbr title="iter">ir</abbr></td>
+<td>1 day</td>
+<td>25.90 × 10^9 km</td>
+</tr>
+<tr>
+<td>Light-year</td>
+<td>5;0X6 × 10^12 <abbr title="pace">p</abbr> (exact)</td>
+<td>5;0X6 × 10^E ir</td>
+<td>1 year</td>
+<td>9.461 × 10^12 km</td>
+</tr>
+<tr>
+<td>Parax (see below)</td>
+<td>3;2155 × 10^13 <abbr title="pace">p</abbr></td>
+<td>3;2155 × 10^10 <abbr title="iter">ir</abbr></td>
+<td>7;62 years</td>
+<td>7.515 light-years, 2.304 pc</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block list">
+<ul>
+<li>The light-year comes out exact and short: like SI's, it uses the Julian year of 265;3 days (365.25 dec), and light covers exactly 2 × 10^10 <abbr title="pace">p</abbr> a day, so a light-year is 265;3 × 2 × 10^10 = 5;0X6 × 10^12 <abbr title="pace">p</abbr></li>
+<li>The AU doesn't: it's fixed in metres (since 2012 CE), and the pace isn't a round number of metres</li>
+</ul>
+</div>
+</section>
+<section id="length-star-distances" class="has-table">
+<h3>Star distances</h3>
+<div class="block decided">
+<p><strong>Decided:</strong> the <strong>parax</strong> (symbol <strong>px</strong>), a dozenal parsec: the distance at which the Earth's orbit (1 AU, the Earth-Sun distance) spans <strong>0;000001 turn</strong> (1/2,985,984 dec of a turn, 0.434 arcseconds).</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> star distances come out as handy numbers - the nearest star is just under 1 (0;694), the centre of the Milky Way about 2,000 - and the distance is simply 1 over the parallax in millionths of a turn. 0;00001 turn was rejected because it makes star distances too large.</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> star distances are small, handy numbers, read straight from the measured parallax.</p>
+</div>
+<div class="block para">
+<p>The parsec is the same idea in degrees: the distance at which 1 AU spans 1 arcsecond (1/3,600 of a degree), so a star's distance follows straight from its parallax, the yearly shift in its position seen from either side of the Earth's orbit. That, not its size, is why astronomers use it: research papers give distances in parsecs (kpc, Mpc), star brightness is compared at a standard 10 parsecs (absolute magnitude), and the light-year is mostly for the public. The parsec is exact in SI (648,000/π AU), and this would be too:</p>
+</div>
+<div class="block list">
+<ul>
+<li>1 parax = 1,000,000 / 2π AU = 1X,E02;14 AU (475,234 dec) = 3;2155 × 10^13 <abbr title="pace">p</abbr></li>
+<li>= 2.304 parsecs = 7.515 light-years (dec)</li>
+<li>Parallax in millionths of a turn gives the distance directly: a star that shifts 0;000004 turn is 0;3 <abbr title="parax">px</abbr> away</li>
+<li>0;00001 turn (5.2 arcseconds) would give 0.192 parsecs</li>
+</ul>
+</div>
+<div class="block table">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Parsecs (dec)</th>
+<th>Parax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proxima Centauri (nearest star)</td>
+<td>1.30</td>
+<td>0;694</td>
+</tr>
+<tr>
+<td>Sirius</td>
+<td>2.64</td>
+<td>1;19</td>
+</tr>
+<tr>
+<td>Pleiades</td>
+<td>136</td>
+<td>4E</td>
+</tr>
+<tr>
+<td>Centre of the Milky Way</td>
+<td>8,180</td>
+<td>2,079</td>
+</tr>
+<tr>
+<td>Andromeda galaxy</td>
+<td>765,000</td>
+<td>140,193</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block decided">
+<p><strong>Decided:</strong> the name <strong>parax</strong>, symbol <strong>px</strong>.</p>
+</div>
+<div class="block why">
+<p><strong>Why:</strong> it's named after parallax, the way the parsec (parallax-second) is, so astronomers will recognise it. The root is Greek, but <em>parallaxis</em> was the word astronomers used when they wrote in Latin (Tycho Brahe, Kepler); classical Latin had no word for it, and the medieval <em>diversitas aspectus</em> ("difference of view") is too long to shorten well. Five letters, but the link to parallax is worth more than the rule. Symbol: "pa" is the pascal, so first and last letters; px is also the screen pixel, which isn't an SI or imperial unit. Rejected: sidus (Latin, a star; "si" reads as SI), caelum (Latin, the sky; too long).</p>
+</div>
+<div class="block para">
+<p><strong>Advantage:</strong> astronomers recognise it at once, and the name says how the distance is measured.</p>
+</div>
+</section>
+</section>
+<div class="pager"><a class="prev" href="time.html">← Time</a><a class="next" href="mass.html">Mass →</a></div>
+<footer>Paludal, by David Marsh. Spec licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+code MIT. <a href="https://paludal.org">paludal.org</a> · source: <a href="https://github.com/rdmarsh/paludal">github.com/rdmarsh/paludal</a>.</footer>
+</main>
+</div>
+<script>
+// Not remembered: the page always opens with everything showing.
+const box = document.getElementById("tables-only");
+box.checked = false;  // browsers can restore a checkbox's state on reload
+box.addEventListener("change", () => document.body.classList.toggle("tables-only", box.checked));
+</script>
+<script>
+// Number converter, rounded to 3 places each way: 10.3333333 shows as X;4, and 0;4 as 0.333.
+(() => {
+  const DIG = "0123456789XE", dec = document.getElementById("conv-dec"),
+    doz = document.getElementById("conv-doz"), hint = document.getElementById("conv-hint");
+  const HELP = "Type in either box. X = dek, E = el. Rounded to 3 places.";
+  function toDoz(x) {
+    const n = Math.round(Math.abs(x) * 1728);  // whole 1/1000 (doz) steps
+    let i = Math.floor(n / 1728), f = n % 1728, s = "";
+    do { s = DIG[i % 12] + s; i = Math.floor(i / 12); } while (i > 0);
+    s = s.replace(/\B(?=(.{3})+$)/g, ",");  // group in threes: 100,000
+    const frac = (DIG[Math.floor(f / 144)] + DIG[Math.floor(f / 12) % 12] + DIG[f % 12]).replace(/0+$/, "");
+    return (x < 0 && n ? "-" : "") + s + (frac ? ";" + frac : "");
+  }
+  function fromDoz(t) {
+    t = t.trim().replace(/,/g, "").toUpperCase().replace(/↊|A|T/g, "X").replace(/↋|B/g, "E");
+    const m = t.match(/^(-?)([0-9XE]*)(?:;([0-9XE]*))?$/);
+    if (!m || (m[2] + (m[3] || "")) === "") return null;
+    let v = 0;
+    for (const c of m[2]) v = v * 12 + DIG.indexOf(c);
+    let p = 1;
+    for (const c of m[3] || "") { p /= 12; v += DIG.indexOf(c) * p; }
+    return m[1] ? -v : v;
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-9 * Math.max(1, Math.abs(a));
+  dec.addEventListener("input", () => {
+    const t = dec.value.trim().replace(/,/g, ""), v = Number(t);
+    if (t === "") { doz.value = ""; hint.textContent = HELP; return; }
+    if (!isFinite(v) || !/^-?[0-9]*[.]?[0-9]*$/.test(t)) { hint.textContent = "Decimal uses digits 0-9 and a dot."; return; }
+    doz.value = toDoz(v);
+    hint.textContent = near(fromDoz(doz.value), v) ? "Exact." : "Rounded to 3 dozenal places.";
+  });
+  doz.addEventListener("input", () => {
+    const v = fromDoz(doz.value);
+    if (doz.value.trim() === "") { dec.value = ""; hint.textContent = HELP; return; }
+    if (v === null) { hint.textContent = "Dozenal uses 0-9, X, E and a semicolon (18;6)."; return; }
+    const r = Number(v.toFixed(3));
+    dec.value = r.toLocaleString("en-US", { maximumFractionDigits: 3 });
+    hint.textContent = near(r, v) ? "Exact." : "Rounded to 3 decimal places.";
+  });
+})();
+</script>
+</body>
+</html>
