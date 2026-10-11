@@ -50,11 +50,12 @@ The day divides by twelve at every step, and each step is one digit of the time:
 - The beat (0;3 breath, 1.0417 s) sits between the breath and the blink: 4 beats to a breath, 3 blinks to a beat
 
 Converting between the named times: read across, so one breath is 10 blinks, 4 beats or 0;1 moment.
+The beat is in italics because it isn't a power of twelve of the blink (see Names).
 
-| One ... is | blink | beat | breath | moment | chime | day | SI |
+| One ... is | blink | *beat* | breath | moment | chime | day | SI |
 |---|---|---|---|---|---|---|---|
 | **blink** | **1** | 0;4 | 0;1 | 0;01 | 0;0001 | 0;00001 | 0.347 s |
-| **beat** | 3 | **1** | 0;3 | 0;03 | 0;0003 | 0;00003 | 1.04 s |
+| ***beat*** | 3 | **1** | 0;3 | 0;03 | 0;0003 | 0;00003 | 1.04 s |
 | **breath** | 10 | 4 | **1** | 0;1 | 0;001 | 0;0001 | 4.17 s |
 | **moment** | 100 | 40 | 10 | **1** | 0;01 | 0;001 | 50 s |
 | **chime** | 10,000 | 4,000 | 1,000 | 100 | **1** | 0;1 | 2 h |

@@ -32,17 +32,17 @@ numbers; written as SI fractions most of them would be long:
 
 | Quantity          | Unit | Size (SI)        | Named after |
 |-------------------|------|------------------|---|
-| Beat              | beat | 1.04167 s (3 blinks, 25/24 s) | English: a heartbeat |
+| Beat              | *beat* | 1.04167 s (3 blinks, 25/24 s) | English: a heartbeat |
 | Clock unit        | breath | 4.16667 s (10 blinks = 4 beats) | English: one breath |
 | Dozenal hour      | chime | 2 hours exactly (1,000 breaths, 0;1 day) | English: clocks chime on the hour |
 | Dozenal minute    | moment | 50 s exactly (0;01 chime, 10 breaths) | English moment, from Latin momentum |
 | 1/10 pace         | unc  | 12.1 cm          | Latin uncia, a twelfth |
 | 1/100 pace        | dig  | 1.01 cm          | Latin digitus, finger |
-| 0;2 pace          | span | 24.2 cm          | English span, a hand's spread |
-| 0;4 pace          | ulna | 48.4 cm          | Latin ulna, forearm |
-| 0;6 pace          | gress | 72.6 cm         | Latin gressus, a step |
+| 0;2 pace          | *span* | 24.2 cm          | English span, a hand's spread |
+| 0;4 pace          | *ulna* | 48.4 cm          | Latin ulna, forearm |
+| 0;6 pace          | *gress* | 72.6 cm         | Latin gressus, a step |
 | 1,000 paces        | iter | 2.51 km          | Latin iter, road, journey |
-| 930 paces (sea, air) | navis | 1.935 km      | Latin navis, ship |
+| 930 paces (sea, air) | *navis* | 1.935 km      | Latin navis, ship |
 | Area (1,000 p²)   | ager | 3,646 m²         | Latin ager, field |
 | Volume (unc³)     | cub  | 1.7736 L         | Latin cubus, cube |
 | Force             | vis  | ≈ 21.3 N         | Latin vis, force |

@@ -68,7 +68,9 @@ The day is cut into twelves, and each cut is one digit of the time.
 | chime | ch | 2 hours | 10 (12 dec) in a day |
 | moment | mt | 50 seconds | 100 (144 dec) in a chime |
 | breath | br | 4.17 seconds | 10 (12 dec) in a moment |
-| beat | bt | 1.04 seconds - about a second | 4 in a breath |
+| *beat* | bt | 1.04 seconds - about a second | 4 in a breath |
+
+Units in *italics* aren't a power of twelve: a beat is 3 blinks, not a twelfth or a dozen of anything.
 
 The time is written as three digits, counting moments since midnight:
 

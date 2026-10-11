@@ -10,22 +10,32 @@ remember. The rule used to say "no clash with existing everyday words", which co
 
 **Advantage:** units are quick to say, easy to remember, and never confused with SI or imperial ones.
 
+**Decided:** in tables, a unit that isn't a power of twelve of its base unit is set in *italics*: *beat*
+(3 blinks), *span* (0;2 pace), *ulna* (0;4 pace), *gress* (0;6 pace), *navis* (930 paces) and *parax* (star
+distances). All the others - dig, unc, iter, breath, moment, chime, cub, ager - are a power of twelve.
+
+**Why:** asked for (2026 CE) so a reader can tell at a glance which units sit on the twelve-fold ladder and
+which are handy sizes between its steps. Converting a ladder unit only moves the dozenal point; converting an
+italic one also needs a multiplication (× 2, × 3, × 4 or × 6).
+
+**Advantage:** you can see which conversions are just a shift of the point and which need arithmetic.
+
 | Quantity               | Name  | Symbol | Size (SI)           | Named after                                       | English relatives            |
 |------------------------|-------|--------|---------------------|---------------------------------------------------|------------------------------|
 | Time (base)            | blink | bl     | 0.3472 s            | English: the blink of an eye                      |                              |
-| Time (≈ second)        | beat  | bt     | 1.0417 s            | English: a heartbeat                              |                              |
+| Time (≈ second)        | *beat*  | bt     | 1.0417 s            | English: a heartbeat                              |                              |
 | Time (clock)           | breath | br    | 4.1667 s            | English: one breath                               |                              |
 | Time (dozenal minute)  | moment | mt    | 50 s exactly        | Latin momentum, movement; medieval moment = 90 s  | moment, momentum             |
 | Time (dozenal hour)    | chime | ch     | 2 h exactly         | English: clocks chime on the hour                 |                              |
 | Length (base)          | pace  | p      | 1.4525 m            | Latin passus, a pace (Roman pace ≈ 1.48 m)        | pace, passage                |
 | 1/10 pace              | unc   | un     | ≈ 12.1 cm           | Latin uncia, a twelfth                            | inch, ounce                  |
 | 1/100 pace             | dig   | di     | ≈ 1.01 cm           | Latin digitus, finger (Roman digit ≈ 1.85 cm)     | digit                        |
-| 0;2 pace               | span  | sp     | ≈ 24.2 cm           | English span, a hand's spread                     | span                         |
-| 0;4 pace               | ulna  | ul     | ≈ 48.4 cm           | Latin ulna, forearm (elbow to fingertip)          | ell                          |
-| 0;6 pace (a step)      | gress | gs     | ≈ 72.6 cm           | Latin gressus, a step (Roman gradus = ½ passus)   | progress, egress             |
+| 0;2 pace               | *span*  | sp     | ≈ 24.2 cm           | English span, a hand's spread                     | span                         |
+| 0;4 pace               | *ulna*  | ul     | ≈ 48.4 cm           | Latin ulna, forearm (elbow to fingertip)          | ell                          |
+| 0;6 pace (a step)      | *gress* | gs     | ≈ 72.6 cm           | Latin gressus, a step (Roman gradus = ½ passus)   | progress, egress             |
 | 1,000 paces (distance)  | iter  | ir     | ≈ 2.51 km           | Latin iter, road, journey                         | itinerary                    |
-| 930 paces (sea, air)   | navis | na     | ≈ 1.935 km          | Latin navis, ship                                 | navy, navigate               |
-| Star distances         | parax | px     | 2.30 pc, 7.5 ly     | parallaxis, astronomers' Latin (from Greek)       | parallax                     |
+| 930 paces (sea, air)   | *navis* | na     | ≈ 1.935 km          | Latin navis, ship                                 | navy, navigate               |
+| Star distances         | *parax* | px     | 2.30 pc, 7.5 ly     | parallaxis, astronomers' Latin (from Greek)       | parallax                     |
 | Area                   | ager  | ag     | ≈ 3,646 m²          | Latin ager, field                                 | agriculture                  |
 | Mass                   | lib   | li     | ≈ 1.7714 kg         | Latin libra, pound; also scales (Roman pound)     | lb (pound), Libra            |
 | Volume (unc cube)      | cub   | cu     | 1.7736 L            | Latin cubus, cube                                 | cube, cubic                  |

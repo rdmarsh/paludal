@@ -19,19 +19,19 @@ its first and last letters (os) would be the onus, and "op" isn't a common word 
 | Unit   | Symbol | Quantity |
 |--------|--------|----------|
 | blink  | bl     | time |
-| beat   | bt     | time |
+| *beat*   | bt     | time |
 | breath | br     | time |
 | moment | mt     | time |
 | chime  | ch     | time |
 | pace   | p      | length |
 | unc    | un     | length |
 | dig    | di     | length |
-| span   | sp     | length |
-| ulna   | ul     | length |
-| gress  | gs     | length |
+| *span*   | sp     | length |
+| *ulna*   | ul     | length |
+| *gress*  | gs     | length |
 | iter   | ir     | length |
-| navis  | na     | length (sea and air) |
-| parax  | px     | length (stars) |
+| *navis*  | na     | length (sea and air) |
+| *parax*  | px     | length (stars) |
 | lib    | li     | mass |
 | cub    | cu     | volume |
 | ager   | ag     | area |

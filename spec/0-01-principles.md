@@ -55,7 +55,7 @@ How each part of the system does on the universal test:
 
 | Unit or value | Rests on | Universal test |
 |---|---|---|
-| blink, beat, breath, moment, chime | the SI second (caesium today, optical clocks later), sized to fit the day | allowed (time); ≈ 8 × 10^11 hydrogen 1S-2S periods for a universal explanation |
+| blink, *beat*, breath, moment, chime | the SI second (caesium today, optical clocks later), sized to fit the day | allowed (time); ≈ 8 × 10^11 hydrogen 1S-2S periods for a universal explanation |
 | pace | c (physics) and the blink | passes; its size follows from the day |
 | lib, cub | h (physics), chosen so a cub of water ≈ 1 lib | passes: water is the same everywhere |
 | riv, onus, imp | e (physics) | passes |
@@ -66,8 +66,8 @@ How each part of the system does on the universal test:
 | tep (zero) | a defined number, 0 °t = 289;485 ta, chosen to match water freezing at the Earth's air pressure | the number can be rebuilt from k; the reason for it is the Earth's water (see Open items) |
 | lam | the human eye's sensitivity, at 540 THz | fails (SI's candela has the same problem) |
 | vox (zero) | the threshold of human hearing | fails (human biology) |
-| navis | the Earth's meridian | fails (navigation on Earth only) |
-| parax | the Earth's orbit (AU) | fails (like the parsec) |
+| *navis* | the Earth's meridian | fails (navigation on Earth only) |
+| *parax* | the Earth's orbit (AU) | fails (like the parsec) |
 | years, calendar | the Earth's orbit | allowed |
 
 - The failures are all **human conventions on top of the core**: an everyday temperature zero, how bright
